@@ -1,0 +1,12 @@
+# Group 1
+User-agent: Googlebot
+Disallow: /nogooglebot/
+
+# Group 2
+User-agent: *
+Allow: /
+
+Sitemap: http://teama3.tech/sitemap.xml
+#Begin Attracta SEO Tools Sitemap. Do not remove
+sitemap: http://cdn.attracta.com/sitemap/6039356.xml.gz
+#End Attracta SEO Tools Sitemap. Do not remove
