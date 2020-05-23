@@ -1,2 +1,5 @@
 # student_source
-Source Code for website
+
+Source Code for KEC Student+ website
+
+This is completely illegal to use the code source - chumma
