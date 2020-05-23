@@ -21,27 +21,37 @@ include_once('./assets/notiflix.php');
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="./assets/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
   <!-- No Script Part -->
 	<noscript><meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
   <style>
 			.preloader {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				z-index: 9999;
-				background-image: url('./images/giphy3.svg');
-				background-repeat: no-repeat;
-                background-size: cover; 
-				background-color: #FFF;
-				background-position: center;
-				}
+				position: -webkit-sticky;
+                position: sticky;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 9999;
+                background-image: url('./images/giphy3.svg');
+                background-repeat: no-repeat;
+                background-color: #FFF;
+                background-size: auto;
+                background-position: center;
+                overflow: hidden;
+                }
+                body{
+                    font-family: 'Open Sans', sans-serif;
+			        overflow: hidden;
+                }
 		</style>
 <script>
 			$(window).on("load", function(){
 				$('.preloader').hide();
+                $('body').css({
+			overflow: 'auto',
+		});
 			});
 		</script>
 <script>
@@ -76,6 +86,7 @@ include_once('./assets/notiflix.php');
     });
 </script>
 <div class="preloader"></div>
+<script>Notiflix.Notify.Info('Type your register number and press TAB');</script>
     <div class="container register animated pulse">
                 <div class="row">
                     <div class="col-md-4 register-left">
@@ -129,11 +140,11 @@ include_once('./assets/notiflix.php');
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Your Kongu Email " value="" id="mail" readonly/>
+                                            <input type="email" class="form-control" placeholder="Kongu Mail ID " value="" id="mail" readonly/>
                                         </div>
                                         <div class="form-group">
 
-                                            <input type="text"  class="form-control" placeholder="your phone" value="" id= "phoneno" readonly/>
+                                            <input type="text"  class="form-control" placeholder="Phone" value="" id= "phoneno" readonly/>
 
                                         </div>
                                         <div class="form-group">
@@ -141,11 +152,11 @@ include_once('./assets/notiflix.php');
 
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="department" value="" id="dept" readonly/>
+                                            <input type="text" class="form-control" placeholder="Department" value="" id="dept" readonly/>
 
                                         </div>
                                         <div class="form-group">
-                                            <input type="text"  class="form-control" placeholder="section" value="" id="sec" readonly/>
+                                            <input type="text"  class="form-control" placeholder="Section" value="" id="sec" readonly/>
 
                                         </div>
                                         <script type="text/javascript">
@@ -222,13 +233,27 @@ include_once('./assets/notiflix.php');
         if(isset($_POST['submit']))
         {
         $rollno=$_POST['regno'];
+        $check="SELECT * from registration where regno like '$rollno'";
+        $z=$con->query($check);
+        if($z->num_rows!=0)
+        {
+            echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
+            exit();
+        }
         $gender=$_POST['gender'];
         $pass=$_POST['pass'];
         $repass=$_POST['repass'];
         if(strcmp($pass,$repass)!=0)
         {
-            echo "Password incorrect";
+            echo "<script>Notiflix.Report.Report( 'Password Mismatch', 'Both Password and Forget Password doesn't match', 'Okay',function(){window.location.replace('registration.php');} );</script>"; 
             exit();
+        }
+        else{
+            if(!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $POST['pass'] ))
+            {
+                echo "<script>Notiflix.Report.Failure( 'Password Weak', 'Your password is not matching our password policy', 'Okay',function(){window.location.replace('registration.php');} );</script>"; 
+                exit();
+            }
         }
         $sql="select * from `getdetails` where `rollno` like '$rollno'";
         $data=$con->query($sql);

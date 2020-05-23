@@ -10,6 +10,7 @@ include_once('../db.php');
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="../KEC.png">
    <!-- No Script Part -->
    <noscript><meta http-equiv="refresh" content="0; URL='../errorfile/noscript.html'" /></noscript>
