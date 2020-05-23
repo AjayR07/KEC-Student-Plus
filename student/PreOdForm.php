@@ -19,7 +19,7 @@ include_once('../assets/notiflix.php');
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->
@@ -40,15 +40,16 @@ include_once('../assets/notiflix.php');
 <link rel="icon" type="image/png" href="../KEC.png">
 <!--Import materialize.css-->
 
+
+</head>
+<body background="../backlogout.jpg">
 <style>
 body {
-  background-image: url("../backgrd.jpg");
+  background-image: url("../backlogout.jpg") !important;
 }
 
 </style>
 
-</head>
-<body>
 <?php require_once('studentnav.php');
 ?>
   <script type="text/javascript">
@@ -130,7 +131,7 @@ echo '<script>location.href="PermissionSuccess.php"</script>';
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form" name="myForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" onsubmit="return validate();">
 				<span class="contact100-form-title">
-					Pre OD Application
+					OD Permission Application
 				</span>
 
 				<div>
@@ -191,7 +192,6 @@ echo '<script>location.href="PermissionSuccess.php"</script>';
 							<option selected disabled>Select OD Type</option>
 							<option value="PAPER">Paper Presentation</option>
 							<option value="PROJECT">Project Presentation</option>
-							<option value="WORKSHOP">Workshop</option>
 							<option value="SPORT">Sports</option>
 							<option value="CODING">Coding</option>
 							<option value="HACKATHON">Hackathon</option>
