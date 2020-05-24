@@ -318,7 +318,8 @@ function mydelete(val)
 <body>
   <?php  include_once('adminnav.php'); ?>
 <style>
-  body{font-family: 'Open Sans', sans-serif;}
+  body{font-family: 'Open Sans', sans-serif;
+    background-image: url('../bgpic.jpg');}
 </style>
 <div class="ui raised segment" style="width:96% ;margin: 0 auto;padding: 2%;margin-top:3%;margin-bottom:3%" >
   <table class="ui selectable striped  table" style="width:100%;" id="employeeList">

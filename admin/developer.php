@@ -1,6 +1,10 @@
 <?php
+session_start();
+if(!isset($_SESSION['developer']))
+{
+  header('Location: login.php');
+}
 include_once("../db.php");
-
 include_once('./adminnav.php');
 $msg="";
 ?>
@@ -19,6 +23,7 @@ $msg="";
   body
   {
   font-family: 'Open Sans', sans-serif;
+  background-image: url('../bgpic.jpg');
   }
   </style>
 
