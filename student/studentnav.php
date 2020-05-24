@@ -104,9 +104,7 @@ $sql="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.s
 $sql2="SELECT c.status as othercert from othercert c where c.regno like '$regno'";
 $data=$con->query($sql);
 if($data->num_rows==0)
-{
-    echo '<tr><td colspan="6">No Record Found</td></tr>';
-}
+{}
 else{
 while ($row = mysqli_fetch_array($data))
 {
@@ -122,9 +120,7 @@ while ($row = mysqli_fetch_array($data))
 $data=$con->query($sql2);
 $a=$a+$data->num_rows;
 if($data->num_rows==0)
-{
-    echo '<tr><td colspan="6">No Record Found</td></tr>';
-}
+{}
 else{
 while ($row = mysqli_fetch_array($data))
 {

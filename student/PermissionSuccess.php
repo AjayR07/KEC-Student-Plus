@@ -96,63 +96,63 @@ else{
                 <div class="card-image">
                     <div class="card-body">
                     <center> <h1 class="ui header" style="color:white"><b>Permission Application</b> </h1></center>
-                        
+
+                                <div class="meta" style="color:yellow">Please note down the Applicaiton number for further communications</div><br>
+                              
                             <table>
                                 <tr>
                                     <td>Application:</td>
                                     <td><h2 style="color:green"><?php echo $appno;?></h2></td>                                
                                 </tr>
-                                <tr>
-                                <div class="meta" style="color:yellow">Please note down the Applicaiton number for further communications</div><br>
-                                </tr><br>
+                              
                                 <tr>
                                     <td>Roll No: </td>
                                     <td><?php echo $odrow['regno'];?></td>
-                                    </tr><br>
+                                    </tr>
                                 <tr>
                                     <td>Name: </td>
                                     <td><?php echo $name; ?></td>
-                                </tr><br>
+                                </tr>
                                 <tr>
                                     <td>Type:</td>
                                     <td><?php echo $odrow['odtype']; ?></td>
-                                </tr><br>
+                                </tr>
                                 <tr>
                                     <td >Applied Date: &nbsp</td>
                                     <td><?php echo date_format(date_create($odrow['appdate']),'d/m/Y');?></td>
-                                </tr><br>
+                                </tr>
                                 <tr>
                                     <td>Date: </td>
-                                    <td>From: &nbsp<?php echo date_format(date_create($odrow['odfrom']),'d/m/Y');?> <br>To &nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp<?php echo date_format(date_create($odrow['odto']),'d/m/Y');?></td>
+                                    <td>From: &nbsp<?php echo date_format(date_create($odrow['odfrom']),'d/m/Y');?> To &nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp<?php echo date_format(date_create($odrow['odto']),'d/m/Y');?></td>
                                 
-                                </tr><br>
+                                </tr>
                                 <tr>
                                     <td>No. of Hrs: </td>
                                     <td><?php echo $odrow['hrs'];?>
-                                </tr><br>
+                                </tr>
                                 <tr>
                                     <td>Purpose: </td>
                                     <td><?php echo $odrow['purpose'];?></td>
-                                </tr><br>
+                                </tr>
                                 <tr>
                                     <td>Title: </td>
                                     <td><?php echo $odrow['title'];?></td>
-                                </tr><br>
+                                </tr>
                                 <tr>
                                     <td>OD College: </td>
                                     <td><?php echo $odrow['college'];?></td>
-                                </tr><br>
+                                </tr>
                                 <tr>
                                     <td>State: </td>
                                     <td><?php echo $odrow['state'];?></td>
-                                </tr><br>
-                            </table>
-                        
+                                </tr>
+                            </table><br>
+                        <center> <button class="ui big green button" onclick="window.location.replace('Status.php');">Okay</button></center>
                     </div>
                 </div>
             </div>
     <!-- Jquery JS-->
-    <script src="../assets/Semantic/jquery.min.js"></script>
+
  
 
 </body>
