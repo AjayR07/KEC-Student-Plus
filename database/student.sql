@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: May 03, 2020 at 04:17 AM
--- Server version: 5.7.23
--- PHP Version: 7.4.3
+-- Host: 127.0.0.1:3308
+-- Generation Time: May 24, 2020 at 01:15 PM
+-- Server version: 8.0.18
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -33,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `authenticate` (
   `regno` varchar(10) NOT NULL,
   `status` varchar(10) NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`regno`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf16;
+) ENGINE=InnoDB DEFAULT CHARSET=utf16;
 
 --
 -- Dumping data for table `authenticate`
@@ -357,7 +356,8 @@ INSERT INTO `oddetails` (`appno`, `regno`, `appdate`, `odtype`, `title`, `odfrom
 ('18CSE002230339', '18CSR002', '2020-03-23', 'PAPER', 'Big Data', '2020-03-24', '2020-03-24', 'full', 'PSG iTech', 'TAMILNADU', 'Just for cheking purpose', 'Pending'),
 ('18CSE002240398', '18CSR002', '2020-03-24', 'PAPER', 'Foot Ball', '2020-03-25', '2020-03-25', 'half', 'Kongu Engineering COlelge', 'OTHERSTATE', 'Final Match aojoajd', 'Pending'),
 ('18CSE002300490', '18CSR002', '2020-04-30', 'PROJECT', 'Automatic Vending Machine', '2020-05-01', '2020-05-02', 'full', 'Kumaraguru College of Technology', 'TAMILNADU', 'Nothing Much', 'Pending'),
-('18CSE007160410', '18CSR007', '2020-04-16', 'PAPER', 'Big Data', '2020-04-17', '2020-04-17', 'full', 'Kongu', 'TAMILNADU', 'Getting in to that college', 'Approved');
+('18CSE007160410', '18CSR007', '2020-04-16', 'PAPER', 'Big Data', '2020-04-17', '2020-04-17', 'full', 'Kongu', 'TAMILNADU', 'Getting in to that college', 'Approved'),
+('18CSE007240526', '18CSR007', '2020-05-24', 'PROJECT', 'Checking', '2020-05-25', '2020-05-25', 'full', 'KEC', 'TAMILNADU', 'Precessing', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -448,7 +448,8 @@ INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comme
 ('18CSE002230339', 'maliga', 'nice', 'Approved', 'Nandhini', 'Good', 'Approved', 'Chitra', 'Good', 'Approved', 'Pending'),
 ('18CSE002240398', 'abi', 'Good', 'Approved', 'abi', 'Very Good', 'Approved', 'Abinash', 'good presentation', 'Approved', 'Approved'),
 ('18CSE002300490', 'Abinash', 'Very nice explanation', 'Approved', NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
-('18CSE007160410', 'malliga', 'good', 'Approved', 'latha', 'good', 'Approved', 'Geethaaaa', 'goodu', 'Approved', 'Approved');
+('18CSE007160410', 'malliga', 'good', 'Approved', 'latha', 'good', 'Approved', 'Geethaaaa', 'goodu', 'Approved', 'Approved'),
+('18CSE007240526', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -463,6 +464,7 @@ CREATE TABLE IF NOT EXISTS `registration` (
   `batch` int(11) NOT NULL,
   `dept` varchar(4) NOT NULL,
   `sec` varchar(1) NOT NULL,
+  `gender` varchar(7) NOT NULL DEFAULT 'male',
   `mail` varchar(50) NOT NULL,
   `phone` bigint(20) NOT NULL,
   `pass` varchar(255) NOT NULL,
@@ -475,10 +477,10 @@ CREATE TABLE IF NOT EXISTS `registration` (
 -- Dumping data for table `registration`
 --
 
-INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `mail`, `phone`, `pass`) VALUES
-('18CSR002', 'Abinash S', 2018, 'CSE', 'A', 'abinashs.18cse@kongu.edu', 8807973185, '202cb962ac59075b964b07152d234b70'),
-('18CSR007', 'AJAY R', 2018, 'CSE', 'A', 'ajayr.18cse@kongu.edu', 9944790344, 'a08ee45ef214dc905e59bfcc4c263565'),
-('18CSR015', 'ARUL PRASATH V', 2018, 'CSE', 'A', 'arulprasathv.18cse@kongu.edu', 9994198353, '1adf7abd51c72c622611dfa19339e603');
+INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `mail`, `phone`, `pass`) VALUES
+('18CSR002', 'Abinash S', 2018, 'CSE', 'A', 'male', 'abinashs.18cse@kongu.edu', 8807973185, '202cb962ac59075b964b07152d234b70'),
+('18CSR007', 'AJAY R', 2018, 'CSE', 'A', 'female', 'ajayr.18cse@kongu.edu', 9944790344, '202cb962ac59075b964b07152d234b70'),
+('18CSR015', 'ARUL PRASATH V', 2018, 'CSE', 'A', 'male', 'arulprasathv.18cse@kongu.edu', 9994198353, '1adf7abd51c72c622611dfa19339e603');
 
 -- --------------------------------------------------------
 
