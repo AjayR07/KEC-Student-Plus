@@ -2,4 +2,4 @@
 
 Source Code for KEC Student+ website
 
-vanakam da mapla
+vanakam da mapl
