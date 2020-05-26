@@ -2,5 +2,4 @@
 
 Source Code for KEC Student+ website
 
-bla bla bla
-ithum chumma
+vanakam da mapla
