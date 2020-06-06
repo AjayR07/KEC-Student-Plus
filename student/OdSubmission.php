@@ -136,7 +136,7 @@ include_once('../assets/notiflix.php');
 
 <div class="nupload">
 <center>
-<div class="page-wrapper p-t-20 p-b-20 font-poppins" >
+<div class="page-wrapper p-t-20 p-b-20" >
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
                 <center><br><br><br><h1 style="color:white" > <b>On Duty</b></h1><center>
@@ -406,6 +406,6 @@ $(function() {
 	bs_input_file();
 });
 </script>
-
+<link href="../staff/css/main.css" rel="stylesheet" media="all">
 </body>
 </html>
