@@ -75,7 +75,7 @@ if(!isset($_POST['PROCEED']))
 </script>
 <style>
 body  {
-  background-image: url("../backgrd.jpg");
+  background-image: url("../backlogout.jpg");
 }
 </style>
 
