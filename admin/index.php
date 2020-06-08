@@ -334,7 +334,7 @@ function mydelete(val)
         <th>Staff ID</th>
         <th>Name</th>
         <th>User ID</th>
-        <th>Password</th>
+        <th>Password</th>  
         <th>E-mail ID</th>
         <th>Designation</th>
         <th>Batch</th>
@@ -355,7 +355,7 @@ function mydelete(val)
       <td>'.$row['staffid'].'</td>
       <td>'.$row['name'].'</td>
       <td>'.$row['userid'].'</td>
-      <td>'.$row['pass'].'</td>
+      <td style="text-align:center">'."****".'</td>
       <td>'.$row['mail'].'</td>
       <td>'.$row['designation'].'</td>
       <td>'.$row['batch'].'</td>

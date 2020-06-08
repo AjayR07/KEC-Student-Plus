@@ -273,7 +273,7 @@ while ($row = mysqli_fetch_array($data))
                                     <td><?php echo ($_SESSION['type']=='OD')?$odrow['purpose']:$cr['purpose'];?></td>
                                 </tr>
                                 <tr>
-                                    <td>Title?Designation: </td>
+                                    <td>Title: </td>
                                     <td><?php echo ($_SESSION['type']=='OD')?$odrow['title']:$cr['title'];?></td>
                                 </tr>
                                 <tr>

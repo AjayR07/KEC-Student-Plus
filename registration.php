@@ -114,28 +114,37 @@ include_once('./assets/notiflix.php');
                                             </a>
                                         </div>
                                         <div class="form-group ">
-                                                <a  data-toggle="tooltip" data-placement="left" title="Must contain 8-12 char, 1 UPPER,1 LOWER,1 Special">
+                                                <!-- <a  data-toggle="tooltip" data-placement="left" title="Must contain 8-12 char, 1 UPPER,1 LOWER,1 Special">
                                               <input type="password" name="pass" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" placeholder="Password *" value="" required/>
                                             </a>  
                                           </div>
-                                          <div><span class="glyphicon glyphicon-eye-open" id="passtoggle" onclick="togglepass()">Show Password</span></div>                        
-                                        <div class="form-group">
+                                          <div><span class="glyphicon glyphicon-eye-open" id="passtoggle" onclick="togglepass()">Show Password</span></div>                         -->
+                                          <a  data-toggle="tooltip" data-placement="left" title="Must contain 8-12 char, 1 UPPER,1 LOWER,1 Special">
+                                          <div class="input-group no gutter">
+                                          
+                                            <input type="password" name="pass" id="pass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control" placeholder="Password *" value="" required >
+                                            <div class="input-group-text">
+                                                <i class="fa fa-eye" aria-hidden="true" id="passtoggle" onclick="togglepass()"></i>
+                                            </div>
+                                        </div></a>
+                                        </div>
+                                          <div class="form-group">
                                                
                                             <input type="password" name="repass" id="repass" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control"  placeholder="Confirm Password *" value="" required/>
                                             
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group"><center>
                                             <div class="maxl">
                                             <div class="radio">
-                                                <label class="radio inline"> 
+                                                <label class="radio-inline"> 
                                                     <input type="radio" name="gender" value="male" required>
-                                                    <span> Male </span> 
-                                                </label></div>
-                                                <div class="radio">                                                <label class="radio inline"> 
+                                                    <span> Male &nbsp&nbsp </span> 
+                                                </label>                                             <label class="radio-inline"> 
                                                     <input type="radio" name="gender" value="female" required>
                                                     <span>Female </span> 
-                                                </label></div>
+                                                </label>
                                             </div>
+                                            </div></center>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
