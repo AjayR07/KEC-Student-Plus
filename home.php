@@ -165,7 +165,8 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 														<a href="#">Student And Teacher</a>
 													</div>
 													<div class="ui content">
-														Now student and teacher have different logins for their specified roles.
+														<!-- Now student and teacher have different logins for their specified roles. -->
+														Now student and teacher can <br>co-ordinate in this e-Platform for their specified needs.
 													</div>
 											</div>
 										</div>
@@ -309,8 +310,8 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 
 							<marquee  direction="up" height=250px">
 								<ul type = "disc">
-							 <li > Enhanced UI / UX.</li>
-							<li>Mobile view has been improved.</li>
+							 <li > Enhanced UI / UX.</li><br>
+							<li>Mobile view has been improved.</li><br>
 							<li>Implementation of AJAX and Dyanamic Loading.</li>
 						</ul>
 							</marquee>
