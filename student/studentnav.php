@@ -96,7 +96,7 @@ $d=0;
 $o=0;
 $p=0;
 $mail=$temp['mail'];
-$phone=$temp['phone'];
+$phone=$temp['phone']; 
 $gender=$temp['gender'];
 $name=$temp['name'];
 $sql="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
@@ -217,5 +217,6 @@ while ($row = mysqli_fetch_array($data))
         });
       });
     </script>
+    
   </body>
 </html>
