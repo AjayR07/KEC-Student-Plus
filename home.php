@@ -19,27 +19,20 @@ include_once("db.php");
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="author" content="Abinash S Arul Prasath V Ajay R">
 		<style>
-/* width */
+/* Refers the whole setup */
 ::-webkit-scrollbar {
 	width: 13px;
 	border-radius: 13px;
-	/* opacity: 0.9; */
-	/* background-color: #F5F5F5; */
 }
 
-/* Track */
+/* Refers tracking path */
 ::-webkit-scrollbar-track {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
 	border-radius: 13px;
+	opacity: 1.0;
 	/* background-color: #F5F5F5; */
 }
-::-webkit-scrollbar-track-piece {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 13px;
-	/* background-color: #F5F5F5; */
-}
- 
-/* Handle */
+/* Refers Draggable Bar */
 ::-webkit-scrollbar-thumb {
 	border-radius: 13px;
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
