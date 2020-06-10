@@ -7,7 +7,7 @@
         header('Location:../studLog.php');
     }
     include_once('../db.php');
-    include_once('studentnav.php');
+
     include_once('../assets/notiflix.php');
 ?>
 <!DOCTYPE html>
@@ -82,14 +82,18 @@ else{
 ?>
 </head>
 
-<body background="../bgpic.jpg">
-<?php echo "<script>Notiflix.Notify.Success('Application Submitted Successfully');</script>";?>
+<div class="pusher" background="../backlogout.jpg">
+
+<?php     include_once('studentnav.php'); echo "<script>Notiflix.Notify.Success('Application Submitted Successfully');</script>";?>
+<style>
+.pusher {
+  background-image: url("../backlogout.jpg") !important;
+}
+
+</style>
+
     <center>
-        <style>
-            body{
-                background-image:url('../backgrd.jpg');
-            }
-        </style>
+
     <div class="page-wrapper p-t-100 p-b-100">
         <div class="wrapper wrapper--w780">
             <div class="card card-3">

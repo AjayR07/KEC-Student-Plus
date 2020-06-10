@@ -267,7 +267,7 @@ $('#rangeend').calendar({
         }
         while ($row = mysqli_fetch_array($query1))
         {
-            $url=sprintf("../repos/certificates/%s/%s/%s/%s",$batch,$dept,$sec,$row['file']);
+            $url=sprintf("https://docs.google.com/viewerng/viewer?url=https://kecstudent.xyz/repos/certificates/%s/%s/%s/%s",$batch,$dept,$sec,$row['file']);
             echo '<tr class="w3-hover-text-green">
             <td></td>
             <td> <a href='.$url.'> '.$row['appno'].'</a></td>

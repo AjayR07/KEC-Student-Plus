@@ -14,8 +14,7 @@ include_once('../assets/notiflix.php');
 	<title>OD Permission</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-<?php include_once('../assets/notiflix.php'); ?>
+
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -42,20 +41,16 @@ include_once('../assets/notiflix.php');
 
 
 </head>
-<body background="../backlogout.jpg">
-<style>
-body {
-  background-image: url("../backlogout.jpg") !important;
-}
 
-</style>
+<div class="pusher" background="../backlogout.jpg">
+
+
 
 <?php require_once('studentnav.php');
 ?>
   <script type="text/javascript">
   	function validate()
   	{
-
   		var fromdate=document.forms["myForm"]["odfrom"].value;
   		var todate=document.forms["myForm"]["odto"].value;
   		//var fromdate = document.getElementById('odfrom');
@@ -278,6 +273,6 @@ echo '<script>location.href="PermissionSuccess.php"</script>';
 
   gtag('config', 'UA-23581568-13');
 </script>
-
+	</div>
 </body>
 </html>

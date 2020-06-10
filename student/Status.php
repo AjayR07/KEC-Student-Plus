@@ -7,7 +7,7 @@ if(!isset($_SESSION['uname']))
 }
 $register=$_SESSION['uname'];
 include_once('../db.php');
-include_once('studentnav.php');
+
 include_once('../assets/notiflix.php');
 ?>
 <?php
@@ -151,6 +151,8 @@ function statusclassify($app,$con,$ele)
 <!DOCTYPE html>
 <html>
     <head>
+
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>OD Status</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
@@ -338,26 +340,20 @@ function statusclassify($app,$con,$ele)
    margin: 100px auto;
 }
        </style>
-       <script>
-
-     $(document).ready(function(){
-       $("button").click(function(){
-     $('.ui.basic.modal').modal('show');
-   });
-       });
-       </script>
-
-
+       
+       
+   
 
 <style>
-body  {
-  background-image: url("../backlogout.jpg");
+.pusher {
+  
+  padding-bottom:3%;
 }
 </style>
+
 </head>
 
-<body background="../backlogout.jpg">
-
+<div class="pusher" background="../backlogout.jpg">
 <?php include_once('studentnav.php');
 include_once('../assets/notiflix.php');
 ?>
@@ -419,7 +415,7 @@ include_once('../assets/notiflix.php');
 
   </tbody>
 </table>
-
+</div>
 <div class="ui basic modal">
   <div class="ui icon header">
     <i class="info icon"></i>
@@ -446,6 +442,13 @@ include_once('../assets/notiflix.php');
   </div>
 </div>
 
+<script>
 
+     $(document).ready(function(){
+       $("button").click(function(){
+     $('.ui.basic.modal').modal('show');
+   });
+       });
+       </script>
 </body>
 </html>
