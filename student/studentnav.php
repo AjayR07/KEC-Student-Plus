@@ -100,7 +100,7 @@ while ($row = mysqli_fetch_array($data))
             background-size: cover !important; 
                     
           }
-          .pusher {
+         body, .pusher {
   background-image: url("../backlogout.jpg") !important;
 }
            .header
@@ -199,9 +199,9 @@ while ($row = mysqli_fetch_array($data))
   <body id="root">
   <div class="preloader"><body><div class="ui active dimmer"><div class="ui large text loader">Please wait...</div></div></body></div>
     <div class="ui tablet computer only padded grid">
-      <div class="ui borderless fluid huge inverted menu">
+      <div class="ui borderless fluid  inverted menu" style="font-size:16px">
       <a class=" active  item" id="side_nav"><i class="sidebar icon"></i></a>
-        <a class="active green item" href="#root">KEC Student+</a>
+        <a class="active green item" href="#root" style="font-size:20px">KEC Student+</a>
       
         <a class="ui right aligned item" id="avatar" >
           <?php 
@@ -212,20 +212,21 @@ while ($row = mysqli_fetch_array($data))
           else
                 echo '<img class="ui avatar image" src="../images/elyse.png"/>';
           ?>
-          <div class="content">
-          <div class="ui sub header" style="color:white"><?php  echo $name; ?></div>
+          <div class="content" style="font-size:16px">
+          <div class="ui sub header" style="color:white;font-size:16px"><?php  echo $name; ?><br></div>
             Student
+            
           </div>
           
           </a>
          
-          <a class="item" href="../Logout.php" ><i class="share square outline icon"></i>Logout</a>
+          <a class="item" href="../Logout.php" style="font-size:20px"><i class="share square outline icon"></i>Logout</a>
 
       </div>
     </div>
 
     <div class="ui mobile only padded grid">
-      <div class="ui borderless fluid huge inverted menu">
+      <div class="ui borderless fluid huge inverted menu" style="font-size:16px">
       <a class=" active  item" id="side_nav_mobile"><i class="sidebar icon"></i></a>
        
       
@@ -238,14 +239,15 @@ while ($row = mysqli_fetch_array($data))
           else
                 echo '<img class="ui avatar image" src="../images/elyse.png"/>';
           ?>
-          <div class="content">
-          <div class="ui sub header" style="color:white"><?php  echo $name; ?></div>
-            Student
+          <div class="content" >
+           <div class="ui sub header" style="color:white;font-size:16px"><?php  echo $name; ?></div>
+           Student
+            
           </div>
           
           </a>
          
-          <a class="item" href="../Logout.php" ><i class="share square outline icon"></i>Logout</a>
+          <a class="item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
 
       </div>
     </div>
@@ -277,7 +279,7 @@ while ($row = mysqli_fetch_array($data))
       });
     </script>
 
-  <div class="ui sidebar inverted vertical menu" id="SideNavBar" >
+  <div class="ui sidebar inverted vertical menu" id="SideNavBar" style="font-size:18px">
     <div class="item">
       <a class="ui logo icon image" href="/">
       <?php 
@@ -289,15 +291,16 @@ while ($row = mysqli_fetch_array($data))
                   echo '<img class="ui avatar image" src="../images/elyse.png"/>';
             ?>
       </a>
-      <a href="/" style="font-size:100%"><b>Hi ! <?php echo $name; ?> </b></a>
+      <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php echo $name; ?> </b></a>
     </div>
-  <div class="item" ><div class="header"><span>On Duty<span style="font-weight:bold"></div></div>
-          <a class="item" href="PreOdForm" style="text-indent:20%">Permission Form</a>
-          <a class="item" href="OdSubmission" style="text-indent:20%">Submission</a>
-          <a class="item" href="Status" style="text-indent:20%">Status</a>
+  <div class="item" ><div class="header" >On Duty</div></div>
+          <a class="item" href="PreOdForm" style="text-indent:20%;font-size:18px">Permission Form</a>
+          <a class="item" href="OdSubmission" style="text-indent:20%;font-size:18px">Submission</a>
+          <a class="item" href="Status" style="text-indent:20%;font-size:18px">Status</a>
+          <a class="item" href="Non" style="text-indent:20%;font-size:18px">Others</a>
           <div class="item"><div class=" header">Certificates</div></div>
-          <a class="item" href="OtherCert" style="text-indent:20%">Registration</a>
-          <a class="item" href="CertRepos" style="text-indent:20%">Repository</a>
+          <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
+          <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
   </div>
    
           <!-- <div class="item">
@@ -307,6 +310,5 @@ while ($row = mysqli_fetch_array($data))
               <a class="item" href="/globals/site.html">Site</a>      
             </div>
         </div> -->  
-  </body>
-</html>
+  
 
