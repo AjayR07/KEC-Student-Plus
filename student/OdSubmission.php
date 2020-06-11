@@ -133,7 +133,7 @@ body  {
 <?php include_once('studentnav.php');
 include_once('../assets/notiflix.php');
 ?>
-
+ 
 <div class="nupload">
 <center>
 <div class="page-wrapper p-t-20 p-b-20" >

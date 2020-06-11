@@ -301,8 +301,14 @@ while ($row = mysqli_fetch_array($data))
                     <center>
                       <div class="ui form">
                       <div class="field">
-                      <a href="../repos/certificate/<?php echo ($_SESSION['type']=='OD')?($det['batch'].'/'.$det['dept'].'/'.$det['sec'].'/'.$postrow['certificate']):($cr['batch'].'/'.$cr['dept'].'/'.$cr['sec'].'/'.$cr['file']);?>" download><button class="big ui teal button">
-                      Download Proof</button></a><div><br><br>
+                          <center>
+                      <div class="ui buttons">
+                        <a href="https://docs.google.com/viewerng/viewer?url=https://kecstudent.xyz/repos/certificates/<?php echo ($_SESSION['type']=='OD')?($det['batch'].'/'.$det['dept'].'/'.$det['sec'].'/'.$postrow['certificate']):($cr['batch'].'/'.$cr['dept'].'/'.$cr['sec'].'/'.$cr['file']);?>" target="_blank"><button class="ui inverted primary button">&nbsp View &nbsp <i class="eye icon"></i></button></a>
+                        <div class="or"></div>
+                        <a href="../repos/certificates/<?php echo ($_SESSION['type']=='OD')?($det['batch'].'/'.$det['dept'].'/'.$det['sec'].'/'.$postrow['certificate']):($cr['batch'].'/'.$cr['dept'].'/'.$cr['sec'].'/'.$cr['file']);?>" download><button class="ui inverted green button">Download &nbsp<i class="download icon"></i></button></a>
+                      </div></center>
+                      
+                      <div><br><br>
                     <!-- <a href="../repos/certificates/<?php //echo $det['batch'].'/'.$det['dept'].'/'.$det['sec'].'/'.$postrow['certificate'];?>"> <button> Download Proof</button></a><br> -->
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <center>
