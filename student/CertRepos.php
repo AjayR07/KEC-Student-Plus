@@ -108,7 +108,7 @@
                 while ($row = mysqli_fetch_array($data))
                 {
                     $url=sprintf("https://docs.google.com/viewerng/viewer?url=https://kecstudent.xyz/repos/certificates/%s/%s/%s/%s",$batch,$dept,$sec,$row['file']);
-
+                    $url1=sprintf("../repos/certificates/%s/%s/%s/%s",$batch,$dept,$sec,$row['file']);
                   //  $filename=$row["odtype"].$row["title"].'pdf';
                   $filename=$row["title"].'.pdf';
                     echo "<tr>";
@@ -123,7 +123,7 @@
                     <div class="ui buttons">
                       <a href='.$url.' target="_blank" ><button class="ui button" id="Preview" data-content="This may not work on some Systems" data-variation="inverted" data-position="top center">Preview</button></a>
                         <div class="or"></div>
-                    <a href='.$url.' download='.$filename.'><button class="ui positive button" id="Download" data-content="Click to download PDF" data-variation="inverted" data-position="top center">Download</button></a>
+                    <a href='.$url1.' download='.$filename.'><button class="ui positive button" id="Download" data-content="Click to download PDF" data-variation="inverted" data-position="top center">Download</button></a>
 
                     </div></td>';
                   echo "</tr>";
