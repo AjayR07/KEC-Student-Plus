@@ -18,7 +18,32 @@ include_once("db.php");
         <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , https://kecstudent.xyz/ ,students,Certificates Repository ,perundurai"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="author" content="Abinash S Arul Prasath V Ajay R">
+		<style>
+/* Refers the whole setup */
+::-webkit-scrollbar {
+	width: 13px;
+	border-radius: 13px;
+}
 
+/* Refers tracking path */
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 13px;
+	opacity: 1.0;
+	/* background-color: #F5F5F5; */
+}
+/* Refers Draggable Bar */
+::-webkit-scrollbar-thumb {
+	border-radius: 13px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ef8376; 
+}
+</style>
 	<link rel="stylesheet" href="assets/css/main.css" />
 <!-- No Script Part -->
 	<noscript><meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>

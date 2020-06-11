@@ -53,6 +53,37 @@ include_once('../db.php');
             .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
               display: none;
             }
+  });
+</script>
+<?php
+$regno=$_SESSION['uname'];
+$sql="SELECT * from registration where regno like '$regno'";
+
+$temp=($con->query($sql))->fetch_assoc();
+
+$a=0;
+$d=0;
+$o=0;
+$p=0;
+$mail=$temp['mail'];
+$phone=$temp['phone']; 
+$gender=$temp['gender'];
+$name=$temp['name'];
+$sql="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
+//echo '<script>alert("'.$sql.'")</script>';
+$sql2="SELECT c.status as othercert from othercert c where c.regno like '$regno'";
+$data=$con->query($sql);
+if($data->num_rows==0)
+{}
+else{
+while ($row = mysqli_fetch_array($data))
+{
+    if($row['status']=='Approved' && $row['status1']=='Approved' && $row['status2']=='Approved' && $row['status3']=='Approved' && $row['advisor']=='Approved')
+    { $a++; }
+    else if($row['status']=='Declined' || $row['status1']=='Declined' || $row['status2']=='Declined' || $row['status3']=='Declined' || $row['advisor']=='Declined')
+    { $d++; }
+    else if($row['status']=='Pending' || $row['status1']=='Pending' || $row['status2']=='Pending' || $row['status3']=='Pending' || $row['advisor']=='Pending')
+    { $p++; }
 
             .ui.inverted.menu .item {
               color: rgb(157, 157, 157);
@@ -243,6 +274,7 @@ include_once('../db.php');
         });
       });
     </script>
+
   <div class="ui sidebar inverted vertical menu" id="SideNavBar" >
     <div class="item">
       <a class="ui logo icon image" href="/">
@@ -272,19 +304,7 @@ include_once('../db.php');
               <a class="item" href="/globals/reset.html">Reset</a>
               <a class="item" href="/globals/site.html">Site</a>      
             </div>
-        </div> -->
- 
-  
-  
+        </div> -->  
+  </body>
+</html>
 
-
-
-
-
-
-
-
-
-
-
- 
