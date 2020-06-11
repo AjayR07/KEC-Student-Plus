@@ -84,7 +84,9 @@ while ($row = mysqli_fetch_array($data))
     { $d++; }
     else if($row['status']=='Pending' || $row['status1']=='Pending' || $row['status2']=='Pending' || $row['status3']=='Pending' || $row['advisor']=='Pending')
     { $p++; }
-
+}
+}
+?>
             .ui.inverted.menu .item {
               color: rgb(157, 157, 157);
               font-size: 16px;
