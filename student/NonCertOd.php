@@ -84,7 +84,7 @@ include_once('../assets/notiflix.php');
       var addCols = function (num){
          for (var i=1;i<=num;i++) {
                 var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
-                var myPanel = $('<div class="container1"></div><div class="ui card" id="day'+i+'"><div class="content"><div class="header">DAY '+i+'</div><div class="ui divider"></div><div class="CardUI"><spam><b>Reason &nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></spam><div class="ui input">  <input type="text" id="Day'+i+'Reason" placeholder="" size="45" required></div></div><div class="CardUI1"><div class="hour"></div><div class="inline field"> <select name="day'+i+'hour[]" multiple="" class="label ui selection fluid dropdown" required> <option value="" class="dropcolor">Select Hour</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>  </select> </div> </div></div></div></div>');
+                var myPanel = $('<div class="container1"></div><div class="ui card" id="day'+i+'"><div class="content"><div class="header">DAY '+i+'</div><div class="ui divider"></div><div class="CardUI"><spam><b>Reason &nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></spam><div class="ui input">  <input type="text" id="Day'+i+'Reason" placeholder="" size="45" required></div></div><div class="CardUI1"><div class="hour"></div><div class="inline field"> <select name="day'+i+'hour[]" multiple="" class="label ui selection fluid dropdown" required> <option value="" class="dropcolor">Select Hours (Multi)</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>  </select> </div> </div></div></div></div>');
                 myPanel.appendTo(myCol);
                 myCol.appendTo('#contentPanel');
                 if(i==num)
@@ -154,13 +154,6 @@ include_once('../assets/notiflix.php');
         });
         });
 
-
-        // $(document).on('click', '#onsubmit', function(e) {
-        //   $('#daysform').submit();
-        //   console.log('#added clicked');
-        // })
-
-
         $(document).ready(function()
                 {
                   $('.label.ui.dropdown')
@@ -224,7 +217,7 @@ include_once('../assets/notiflix.php');
 ?>
 
     <center>
-    <h2 >Non Certificate On-Duty</h2>
+    <h2 style="color:bisque;">Non Certificate On-Duty</h2>
     <div class="container">
     <form class="ui form" name="myForm" id="daysform">
     <div class="ui card">
@@ -237,20 +230,20 @@ include_once('../assets/notiflix.php');
                
                     <div class="two fields">
                       <div class="field">
-                        <label>Start date</label>
+                        <label>Start Date </label>
                         <div class="ui calendar" id="rangestart">
                           <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="text"  id="start" onblur="getStart();" placeholder="Start" name="odStart">
+                            <input type="text"  id="start" onblur="getStart();" placeholder="Start (MM/DD/YYYY)" name="odStart">
                           </div>
                         </div>
                       </div>
                       <div class="field">
-                        <label>End date</label>
+                        <label>End Date</label>
                         <div class="ui calendar" id="rangeend">
                           <div class="ui input left icon">
                             <i class="calendar icon"></i>
-                            <input type="text" id="end" placeholder="End" onblur="getDiff();" name="odEnd">
+                            <input type="text" id="end" placeholder="End (MM/DD/YYYY)" onblur="getDiff();" name="odEnd">
                           </div>
                         </div>
                       </div>

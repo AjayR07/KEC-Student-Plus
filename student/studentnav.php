@@ -19,7 +19,32 @@ include_once('../db.php');
       <?php include_once('../assets/notiflix.php'); ?>
       <script src="../assets/jquery.min.js"></script>
       <script src="../assets/Semantic/dist/semantic.min.js"></script>
- 
+      <style>
+        /* Refers the whole setup */
+        ::-webkit-scrollbar {
+          width: 13px;
+          border-radius: 13px;
+        }
+
+        /* Refers tracking path */
+        ::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+          border-radius: 13px;
+          opacity: 1.0;
+          /* background-color: #F5F5F5; */
+        }
+        /* Refers Draggable Bar */
+        ::-webkit-scrollbar-thumb {
+          border-radius: 13px;
+          -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+          background-color: #555;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #ef8376; 
+        }
+        </style>
       <style type="text/css">
             body {
               -webkit-font-smoothing: antialiased;
@@ -297,7 +322,7 @@ while ($row = mysqli_fetch_array($data))
           <a class="item" href="PreOdForm" style="text-indent:20%;font-size:18px">Permission Form</a>
           <a class="item" href="OdSubmission" style="text-indent:20%;font-size:18px">Submission</a>
           <a class="item" href="Status" style="text-indent:20%;font-size:18px">Status</a>
-          <a class="item" href="Non" style="text-indent:20%;font-size:18px">Others</a>
+          <a class="item" href="NonCertOd" style="text-indent:20%;font-size:18px">Local OD</a>
           <div class="item"><div class=" header">Certificates</div></div>
           <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
           <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>

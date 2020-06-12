@@ -155,6 +155,7 @@ function statusclassify($app,$con,$ele)
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>OD Status</title>
+        <link rel="icon" type="image/png" href="../KEC.png">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
        <style>
 
