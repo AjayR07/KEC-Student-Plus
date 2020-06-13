@@ -7,10 +7,10 @@ include_once('../db.php');
       <meta charset="utf-8" />
       <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
-      
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
       <link rel="icon" type="image/png" href="../KEC.png">
-      <link rel="stylesheet" href="../assets/Semantic/dist/semantic.min.css" type="text/css" />
+      <link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css" />
+      <!-- <link rel="stylesheet" href="../assets/Semantic/dist/semantic.min.css" type="text/css" /> -->
    
       <!-- No Script Part -->
           <noscript><meta http-equiv="refresh" content="0; URL='../errorfile/noscript.html'" /></noscript>
@@ -18,7 +18,7 @@ include_once('../db.php');
 
       <?php include_once('../assets/notiflix.php'); ?>
       <script src="../assets/jquery.min.js"></script>
-      <script src="../assets/Semantic/dist/semantic.min.js"></script>
+      <script src="../assets/Fomantic/dist/semantic.min.js"></script>
       <style>
         /* Refers the whole setup */
         ::-webkit-scrollbar {
@@ -30,7 +30,6 @@ include_once('../db.php');
         ::-webkit-scrollbar-track {
           -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
           border-radius: 13px;
-          opacity: 1.0;
           /* background-color: #F5F5F5; */
         }
         /* Refers Draggable Bar */
@@ -49,6 +48,7 @@ include_once('../db.php');
             body {
               -webkit-font-smoothing: antialiased;
               -moz-font-smoothing: grayscale;
+              height: auto;
             }
 
             .ui.center.aligned.container {
@@ -78,7 +78,7 @@ include_once('../db.php');
             .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
               display: none;
             }
-  });
+
 </script>
 <?php
 $regno=$_SESSION['uname'];
@@ -152,8 +152,6 @@ while ($row = mysqli_fetch_array($data))
                       position   : 'bottom center',
                       popup: '#tool'
                 });
-
-                
                 $('#side_nav').on('click',function(){
                   $('.ui.sidebar').sidebar('toggle');
                 });
@@ -317,8 +315,8 @@ while ($row = mysqli_fetch_array($data))
             ?>
       </a>
       <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php echo $name; ?> </b></a>
-    </div>
-  <div class="item" ><div class="header" >On Duty</div></div>
+      </div>
+          <div class="item"><div class="header" >On Duty</div></div>
           <a class="item" href="PreOdForm" style="text-indent:20%;font-size:18px">Permission Form</a>
           <a class="item" href="OdSubmission" style="text-indent:20%;font-size:18px">Submission</a>
           <a class="item" href="Status" style="text-indent:20%;font-size:18px">Status</a>
@@ -326,14 +324,12 @@ while ($row = mysqli_fetch_array($data))
           <div class="item"><div class=" header">Certificates</div></div>
           <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
           <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
-  </div>
-   
-          <!-- <div class="item">
-            <div class=" header">Globals</div>
-            <div class="menu">
-              <a class="item" href="/globals/reset.html">Reset</a>
-              <a class="item" href="/globals/site.html">Site</a>      
-            </div>
-        </div> -->  
+          <div class="item"><div class=" header">Certificates</div></div>
+          <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
+          <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
+          <div class="item"><div class=" header">Certificates</div></div>
+          <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
+          <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
+    </div>
   
 
