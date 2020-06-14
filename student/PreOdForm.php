@@ -77,7 +77,7 @@ $temp5=date('m');
 $temp6=rand(10,99);
 $appno=strval($temp1).strval($temp2).strval($temp3).strval($temp4).strval($temp5).strval($temp6);
 //echo '<script>alert("'.$appno.'")</script>';
-$sql="insert into oddetails values('$appno','$register','$appdate','$type','$title','$odfrom','$odto','$hrs','$college','$state','$purpose','Pending')";
+$sql="insert into oddetails values('$appno','$register','$appdate','$type','$title','$odfrom','$odto','$hrs','$college','$state','$purpose','Pending','Pending')";
 $con->query($sql);
 $sql="insert into preod (appno) values ('$appno')";
 $con->query($sql);

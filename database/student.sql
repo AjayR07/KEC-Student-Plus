@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 12, 2020 at 06:18 AM
+-- Generation Time: Jun 14, 2020 at 11:03 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.5
 
@@ -475,6 +475,7 @@ CREATE TABLE IF NOT EXISTS `preod` (
   `comments3` varchar(50) DEFAULT NULL,
   `status3` varchar(10) DEFAULT NULL,
   `advisor` varchar(15) NOT NULL DEFAULT 'Pending',
+  `yearin` varchar(15) NOT NULL DEFAULT 'Pending',
   PRIMARY KEY (`appno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
@@ -482,16 +483,16 @@ CREATE TABLE IF NOT EXISTS `preod` (
 -- Dumping data for table `preod`
 --
 
-INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comments2`, `status2`, `staff3`, `comments3`, `status3`, `advisor`) VALUES
-('18CSE002060441', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
-('18CSE002070694', 'Abinash', 'asdah', 'Approved', 'Abinash', 'good', 'Approved', 'Abinash', 'dsfddf', 'Approved', 'Approved'),
-('18CSE002080618', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
-('18CSE002090414', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
-('18CSE002230339', 'maliga', 'nice', 'Approved', 'Nandhini', 'Good', 'Approved', 'Chitra', 'Good', 'Approved', 'Approved'),
-('18CSE002240398', 'abi', 'Good', 'Approved', 'abi', 'Very Good', 'Approved', 'Abinash', 'good presentation', 'Approved', 'Approved'),
-('18CSE002300490', 'Abinash', 'Very nice explanation', 'Approved', NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
-('18CSE007160410', 'malliga', 'good', 'Approved', 'latha', 'good', 'Approved', 'Geethaaaa', 'goodu', 'Approved', 'Approved'),
-('18CSE007240526', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending');
+INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comments2`, `status2`, `staff3`, `comments3`, `status3`, `advisor`, `yearin`) VALUES
+('18CSE002060441', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
+('18CSE002070694', 'Abinash', 'asdah', 'Approved', 'Abinash', 'good', 'Approved', 'Abinash', 'dsfddf', 'Approved', 'Approved', 'Approved'),
+('18CSE002080618', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
+('18CSE002090414', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
+('18CSE002230339', 'maliga', 'nice', 'Approved', 'Nandhini', 'Good', 'Approved', 'Chitra', 'Good', 'Approved', 'Approved', 'Pending'),
+('18CSE002240398', 'abi', 'Good', 'Approved', 'abi', 'Very Good', 'Approved', 'Abinash', 'good presentation', 'Approved', 'Approved', 'Pending'),
+('18CSE002300490', 'Abinash', 'Very nice explanation', 'Approved', NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
+('18CSE007160410', 'malliga', 'good', 'Approved', 'latha', 'good', 'Approved', 'Geethaaaa', 'goodu', 'Approved', 'Approved', 'Pending'),
+('18CSE007240526', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -552,7 +553,7 @@ CREATE TABLE IF NOT EXISTS `staff` (
 
 INSERT INTO `staff` (`staffid`, `name`, `userid`, `pass`, `mail`, `dept`, `batch`, `sec`, `designation`) VALUES
 ('12345', 'Abinash', 'abi', '202cb962ac59075b964b07152d234b70', 'abi@kongu.ac.in', 'CSE', '2018', 'A', 'Advisor'),
-('102', 'Latha', 'lathars', '202cb962ac59075b964b07152d234b70', 'latha@kongu.edu', 'CSE', '2018', 'A', 'Advisor');
+('102', 'Latha', 'lathars', '202cb962ac59075b964b07152d234b70', 'latha@kongu.edu', 'CSE', '2018', 'A', 'Year in Charge');
 
 --
 -- Constraints for dumped tables
