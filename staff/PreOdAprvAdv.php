@@ -55,8 +55,6 @@
     th,td{
         height: 35px;
     }
-
-
     </style>
 </head>
 
@@ -90,16 +88,20 @@ if(isset($_GET['id']))
     $prerow=$data->fetch_assoc();
     $_SESSION['appno']=$appno;
 }
-// else{
-//     echo "<script> Notiflix.Report.Success( 'KEC Student+', 'Application Status Updated Successfully.', 'Okay', function(){location.replace('OdList.php');} ); </script>";
-
-// }?>
+?>
 
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $stat=$_POST['advisor'];
-        $sql="UPDATE preod set advisor='$stat' where appno like '".$_SESSION['appno']."'";
+        if($_SESSION['design']=='Advisor')
+        {
+            $sql="UPDATE preod set advisor='$stat' where appno like '".$_SESSION['appno']."'";
+        }
+        else if($_SESSION['design']=='Year in Charge')
+        {
+            $sql="UPDATE preod set yearin='$stat' where appno like '".$_SESSION['appno']."'";
+        }
         if($con->query($sql))
         {
             echo "<script> Notiflix.Report.Success( 'KEC Student+', 'Application Status Updated Successfully.', 'Okay', function(){window.location.replace('OdList.php');}); </script>";
@@ -111,8 +113,6 @@ if(isset($_GET['id']))
             unset($_SESSION['appno']);
             exit();
         }
-
-
     }
     if(!isset($_GET['id']) && !isset($_POST['advisor']))
     {
@@ -174,8 +174,6 @@ while ($row = mysqli_fetch_array($data))
 }
 }
 ?>
-
-
     <center>
         <br>
         <script type="text/javascript">
@@ -289,8 +287,6 @@ while ($row = mysqli_fetch_array($data))
                                     <td>Comments if any:&nbsp&nbsp&nbsp </td>
                                     <td><?php echo $prerow['comments1'];?></td>
                                 </tr>
-
-
 
                             </table><br>
 
