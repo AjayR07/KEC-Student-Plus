@@ -78,16 +78,6 @@ include_once('../db.php');
             .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
               display: none;
             }
-<<<<<<< HEAD
-
-</script>
-<?php
-$regno=$_SESSION['uname'];
-$sql="SELECT * from registration where regno like '$regno'";
-
-$temp=($con->query($sql))->fetch_assoc();
-=======
->>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
 
             .ui.inverted.menu .item {
               color: rgb(157, 157, 157);
@@ -103,9 +93,9 @@ $temp=($con->query($sql))->fetch_assoc();
                     
           }
          body, .pusher {
-  background-image: url("../backlogout.jpg") !important;
+             background-image: url("../backlogout.jpg") !important;
  
-}
+          }
 
            .header
            {
@@ -295,13 +285,8 @@ $temp=($con->query($sql))->fetch_assoc();
             ?>
       </a>
       <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php echo $name; ?> </b></a>
-<<<<<<< HEAD
-      </div>
-          <div class="item"><div class="header" >On Duty</div></div>
-=======
     </div>
   <div class="item" ><div class="header" style="font-size:18px" >On Duty</div></div>
->>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
           <a class="item" href="PreOdForm" style="text-indent:20%;font-size:18px">Permission Form</a>
           <a class="item" href="OdSubmission" style="text-indent:20%;font-size:18px">Submission</a>
           <a class="item" href="Status" style="text-indent:20%;font-size:18px">Status</a>
@@ -309,12 +294,7 @@ $temp=($con->query($sql))->fetch_assoc();
           <div class="item"><div class=" header" style="font-size:18px">Certificates</div></div>
           <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
           <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
-          <div class="item"><div class=" header">Certificates</div></div>
-          <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
-          <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
-          <div class="item"><div class=" header">Certificates</div></div>
-          <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
-          <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
+         
     </div>
   
 

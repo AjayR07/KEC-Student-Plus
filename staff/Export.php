@@ -117,10 +117,10 @@ $('#rangeend').calendar({
     $e='All Events';
   }
 ?>
-<div class="ui placeholder segment">
+<div class="ui placeholder segment" style="width:98%;margin:1%;">
 <div class="ui container">
 <div class="main">
-    <div class="w3-container">
+<div class="w3-container">
 <button class="ui circular left floated icon button" id="filter" data-content="Click to Filter List" data-variation="inverted" >  <h1><i class="top right corner icon filter"></i></h1></button>
     <center>
         <h1 class="ui icon header">
@@ -170,7 +170,7 @@ $('#rangeend').calendar({
 </div>
 
         <br><br>
-        <table id="examples" class="ui  selectable striped table" style="width:100% ;overflow:auto;">
+        <table id="examples" class="ui  selectable striped table" style="overflow:auto;">
             <?php include_once '../db.php'; ?>
             <thead>
                 <tr class="w3-red ">
@@ -188,6 +188,7 @@ $('#rangeend').calendar({
 
 
 <?php
+    
     if(!strcmp($_SESSION['design'],'Advisor'))
     {
         $start=$end=$event='N/A';
@@ -281,8 +282,193 @@ $('#rangeend').calendar({
             </tr>';
         }
     }
-?>
+    if(!strcmp($_SESSION['design'],'Year in Charge'))
+    {
+        $start=$end=$event='N/A';
 
+
+        if (isset($_POST['sub'])&& isset($_POST['start'])&& isset($_POST['end']))
+        {
+            $start=$_POST['start'];
+            $end=$_POST['end'];
+
+            $start=date("Y-m-d", strtotime(str_replace('/', '-', $start)));
+            $end=date("Y-m-d", strtotime(str_replace('/', '-', $end)));
+            if(isset($_POST['events']))
+            {
+                $event=$_POST['events'];
+
+                $sql = "SELECT OD.appno,OD.regno,R.name,OD.odtype,OD.title,OD.college,OD.odfrom,OD.odto,PO.prize,OD.state,PO.certificate FROM postod PO LEFT JOIN oddetails OD ON PO.appno=OD.appno INNER JOIN registration R on OD.regno=R.regno WHERE OD.odtype LIKE '$event' AND R.dept LIKE '$dept'  AND R.batch LIKE '$batch' AND OD.status LIKE 'Approved' AND OD.odfrom Between '$start' and '$end' ORDER BY FIELD(PO.prize,'First','Second','Third','Consolation','Participation'),OD.regno ASC,OD.odtype ASC";
+                $query=mysqli_query($con, $sql);
+                $sql1 = "SELECT OD.appno,OD.regno,R.name,OD.type,OD.title,OD.cname,OD.start,OD.end,OD.state,OD.file FROM othercert OD INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept' AND R.batch LIKE '$batch' AND OD.type LIKE '$event' AND OD.status LIKE 'Approved' AND OD.start Between '$start' and '$end' ORDER BY OD.regno ASC,OD.type ASC";
+                $query1=mysqli_query($con, $sql1);
+                if (!$query || !$query1)
+                {
+                    die ('SQL Error: ' . mysqli_error($con));
+                }
+            }
+
+
+            else if (isset($_POST['TN']))
+            {
+                $sql = "SELECT OD.appno,OD.regno,R.name,OD.odtype,OD.title,OD.college,OD.odfrom,OD.odto,PO.prize,OD.state,PO.certificate FROM postod PO LEFT JOIN oddetails OD ON PO.appno=OD.appno INNER JOIN registration R on OD.regno=R.regno WHERE OD.state LIKE 'TAMILNADU' AND R.dept LIKE '$dept' AND R.batch LIKE '$batch' AND OD.status LIKE 'Approved' AND OD.odfrom Between '$start' and '$end' ORDER BY FIELD(PO.prize,'First','Second','Third','Consolation','Participation'),OD.regno ASC,OD.odtype ASC";
+                $query=mysqli_query($con, $sql);
+                $sql1 = "SELECT OD.appno,OD.regno,R.name,OD.type,OD.title,OD.cname,OD.start,OD.end,OD.state,OD.file FROM othercert OD INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept' AND R.batch LIKE '$batch' AND OD.state LIKE 'TAMILNADU' AND OD.status LIKE 'Approved' AND OD.start Between '$start' and '$end' ORDER BY OD.regno ASC,OD.type ASC";
+                $query1=mysqli_query($con, $sql1);
+                if (!$query || !$query1)
+                {
+                    die ('SQL Error: ' . mysqli_error($con));
+                }
+            }
+            else if (isset($_POST['non']))
+            {
+                $sql = "SELECT OD.appno,OD.regno,R.name,OD.odtype,OD.title,OD.college,OD.odfrom,OD.odto,PO.prize,OD.state,PO.certificate FROM postod PO LEFT JOIN oddetails OD ON PO.appno=OD.appno INNER JOIN registration R on OD.regno=R.regno WHERE OD.state LIKE 'OTHERSTATE' AND R.dept LIKE '$dept'  AND R.batch LIKE '$batch' AND OD.status LIKE 'Approved' AND OD.odfrom Between '$start' and '$end' ORDER BY FIELD(PO.prize,'First','Second','Third','Consolation','Participation'),OD.regno ASC,OD.odtype ASC";
+                $query=mysqli_query($con, $sql);
+                $sql1 = "SELECT OD.appno,OD.regno,R.name,OD.type,OD.title,OD.cname,OD.start,OD.end,OD.state,OD.file FROM othercert OD INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept' AND R.batch LIKE '$batch' AND OD.state LIKE 'OTHERSTATE' AND OD.status LIKE 'Approved' AND OD.start Between '$start' and '$end' ORDER BY OD.regno ASC,OD.type ASC";
+                $query1=mysqli_query($con, $sql1);
+                if (!$query || !$query1)
+                {
+                    die ('SQL Error: ' . mysqli_error($con));
+                }
+            }
+        }
+        else
+        {
+            $sql = "SELECT OD.appno,OD.regno,R.name,OD.odtype,OD.title,OD.college,OD.odfrom,OD.odto,PO.prize,OD.state,PO.certificate FROM postod PO LEFT JOIN oddetails OD ON PO.appno=OD.appno INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept' AND R.batch LIKE '$batch' AND OD.status LIKE 'Approved'  ORDER BY FIELD(PO.prize,'First','Second','Third','Consolation','Participation'),OD.regno ASC,OD.odtype ASC";
+            $query=mysqli_query($con, $sql);
+            $sql1 = "SELECT OD.appno,OD.regno,R.name,OD.type,OD.title,OD.cname,OD.start,OD.end,OD.state,OD.file FROM othercert OD INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept' AND R.batch LIKE '$batch' AND OD.status LIKE 'Approved'  ORDER BY OD.regno ASC,OD.type ASC";
+            $query1=mysqli_query($con, $sql1);
+            if (!$query || !$query1)
+            {
+                die ('SQL Error: ' . mysqli_error($con));
+            }
+        }
+
+        while ($row = mysqli_fetch_array($query))
+        {
+            $url=sprintf("../repos/certificates/%s/%s/%s/%s",$batch,$dept,$sec,$row['certificate']);
+            echo '<tr class="w3-hover-text-green">
+            <td></td>
+            <td> <a href='.$url.'> '.$row['appno'].'</a></td>
+            <td>'.$row['regno'].'</td>
+            <td>'.$row['name'].'</td>
+            <td>'.$row['odtype'].'</td>
+            <td>'.$row['title'].'</td>
+            <td>'.$row['college'].'</td>
+            <td>'.$row['prize'].'</td>
+            <td>'.$row['state'].'</td>
+            </tr>';
+        }
+        while ($row = mysqli_fetch_array($query1))
+        {
+            $url=sprintf("https://docs.google.com/viewerng/viewer?url=https://kecstudent.xyz/repos/certificates/%s/%s/%s/%s",$batch,$dept,$sec,$row['file']);
+            echo '<tr class="w3-hover-text-green">
+            <td></td>
+            <td> <a href='.$url.'> '.$row['appno'].'</a></td>
+            <td>'.$row['regno'].'</td>
+            <td>'.$row['name'].'</td>
+            <td>'.$row['type'].'</td>
+            <td>'.$row['title'].'</td>
+            <td>'.$row['cname'].'</td>
+            <td>N/A</td>
+            <td>'.$row['state'].'</td>
+            </tr>';
+        }
+    }
+    if(!strcmp($_SESSION['design'],'HOD'))
+    {
+        $start=$end=$event='N/A';
+
+
+        if (isset($_POST['sub'])&& isset($_POST['start'])&& isset($_POST['end']))
+        {
+            $start=$_POST['start'];
+            $end=$_POST['end'];
+
+            $start=date("Y-m-d", strtotime(str_replace('/', '-', $start)));
+            $end=date("Y-m-d", strtotime(str_replace('/', '-', $end)));
+            if(isset($_POST['events']))
+            {
+                $event=$_POST['events'];
+
+                $sql = "SELECT OD.appno,OD.regno,R.name,OD.odtype,OD.title,OD.college,OD.odfrom,OD.odto,PO.prize,OD.state,PO.certificate FROM postod PO LEFT JOIN oddetails OD ON PO.appno=OD.appno INNER JOIN registration R on OD.regno=R.regno WHERE OD.odtype LIKE '$event' AND R.dept LIKE '$dept' AND OD.status LIKE 'Approved' AND OD.odfrom Between '$start' and '$end' ORDER BY FIELD(PO.prize,'First','Second','Third','Consolation','Participation'),OD.regno ASC,OD.odtype ASC";
+                $query=mysqli_query($con, $sql);
+                $sql1 = "SELECT OD.appno,OD.regno,R.name,OD.type,OD.title,OD.cname,OD.start,OD.end,OD.state,OD.file FROM othercert OD INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept' AND OD.type LIKE '$event' AND OD.status LIKE 'Approved' AND OD.start Between '$start' and '$end' ORDER BY OD.regno ASC,OD.type ASC";
+                $query1=mysqli_query($con, $sql1);
+                if (!$query || !$query1)
+                {
+                    die ('SQL Error: ' . mysqli_error($con));
+                }
+            }
+
+
+            else if (isset($_POST['TN']))
+            {
+                $sql = "SELECT OD.appno,OD.regno,R.name,OD.odtype,OD.title,OD.college,OD.odfrom,OD.odto,PO.prize,OD.state,PO.certificate FROM postod PO LEFT JOIN oddetails OD ON PO.appno=OD.appno INNER JOIN registration R on OD.regno=R.regno WHERE OD.state LIKE 'TAMILNADU' AND R.dept LIKE '$dept' AND OD.status LIKE 'Approved' AND OD.odfrom Between '$start' and '$end' ORDER BY FIELD(PO.prize,'First','Second','Third','Consolation','Participation'),OD.regno ASC,OD.odtype ASC";
+                $query=mysqli_query($con, $sql);
+                $sql1 = "SELECT OD.appno,OD.regno,R.name,OD.type,OD.title,OD.cname,OD.start,OD.end,OD.state,OD.file FROM othercert OD INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept'  AND OD.state LIKE 'TAMILNADU' AND OD.status LIKE 'Approved' AND OD.start Between '$start' and '$end' ORDER BY OD.regno ASC,OD.type ASC";
+                $query1=mysqli_query($con, $sql1);
+                if (!$query || !$query1)
+                {
+                    die ('SQL Error: ' . mysqli_error($con));
+                }
+            }
+            else if (isset($_POST['non']))
+            {
+                $sql = "SELECT OD.appno,OD.regno,R.name,OD.odtype,OD.title,OD.college,OD.odfrom,OD.odto,PO.prize,OD.state,PO.certificate FROM postod PO LEFT JOIN oddetails OD ON PO.appno=OD.appno INNER JOIN registration R on OD.regno=R.regno WHERE OD.state LIKE 'OTHERSTATE' AND R.dept LIKE '$dept'  AND OD.status LIKE 'Approved' AND OD.odfrom Between '$start' and '$end' ORDER BY FIELD(PO.prize,'First','Second','Third','Consolation','Participation'),OD.regno ASC,OD.odtype ASC";
+                $query=mysqli_query($con, $sql);
+                $sql1 = "SELECT OD.appno,OD.regno,R.name,OD.type,OD.title,OD.cname,OD.start,OD.end,OD.state,OD.file FROM othercert OD INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept'  AND OD.state LIKE 'OTHERSTATE' AND OD.status LIKE 'Approved' AND OD.start Between '$start' and '$end' ORDER BY OD.regno ASC,OD.type ASC";
+                $query1=mysqli_query($con, $sql1);
+                if (!$query || !$query1)
+                {
+                    die ('SQL Error: ' . mysqli_error($con));
+                }
+            }
+        }
+        else
+        {
+            $sql = "SELECT OD.appno,OD.regno,R.name,OD.odtype,OD.title,OD.college,OD.odfrom,OD.odto,PO.prize,OD.state,PO.certificate FROM postod PO LEFT JOIN oddetails OD ON PO.appno=OD.appno INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept'  AND OD.status LIKE 'Approved'  ORDER BY FIELD(PO.prize,'First','Second','Third','Consolation','Participation'),OD.regno ASC,OD.odtype ASC";
+            $query=mysqli_query($con, $sql);
+            $sql1 = "SELECT OD.appno,OD.regno,R.name,OD.type,OD.title,OD.cname,OD.start,OD.end,OD.state,OD.file FROM othercert OD INNER JOIN registration R on OD.regno=R.regno WHERE R.dept LIKE '$dept'  AND OD.status LIKE 'Approved'  ORDER BY OD.regno ASC,OD.type ASC";
+            $query1=mysqli_query($con, $sql1);
+            if (!$query || !$query1)
+            {
+                die ('SQL Error: ' . mysqli_error($con));
+            }
+        }
+
+        while ($row = mysqli_fetch_array($query))
+        {
+            $url=sprintf("../repos/certificates/%s/%s/%s/%s",$batch,$dept,$sec,$row['certificate']);
+            echo '<tr class="w3-hover-text-green">
+            <td></td>
+            <td> <a href='.$url.'> '.$row['appno'].'</a></td>
+            <td>'.$row['regno'].'</td>
+            <td>'.$row['name'].'</td>
+            <td>'.$row['odtype'].'</td>
+            <td>'.$row['title'].'</td>
+            <td>'.$row['college'].'</td>
+            <td>'.$row['prize'].'</td>
+            <td>'.$row['state'].'</td>
+            </tr>';
+        }
+        while ($row = mysqli_fetch_array($query1))
+        {
+            $url=sprintf("https://docs.google.com/viewerng/viewer?url=https://kecstudent.xyz/repos/certificates/%s/%s/%s/%s",$batch,$dept,$sec,$row['file']);
+            echo '<tr class="w3-hover-text-green">
+            <td></td>
+            <td> <a href='.$url.'> '.$row['appno'].'</a></td>
+            <td>'.$row['regno'].'</td>
+            <td>'.$row['name'].'</td>
+            <td>'.$row['type'].'</td>
+            <td>'.$row['title'].'</td>
+            <td>'.$row['cname'].'</td>
+            <td>N/A</td>
+            <td>'.$row['state'].'</td>
+            </tr>';
+        }
+    }
+?>
 </table>
 </div>
 </div>
