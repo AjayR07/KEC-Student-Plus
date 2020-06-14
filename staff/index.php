@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+=======
+>>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
 <?php
 session_start();
 if(!isset($_SESSION['user']))
@@ -35,7 +39,11 @@ include_once('../assets/notiflix.php');
           <div class="header">Permission Appl.</div>
           <div class="meta">PreOd, Non-Cert Od</div>
           <div class="description">
+<<<<<<< HEAD
+          
+=======
             
+>>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
           </div>
         </div>
       </div>
@@ -56,5 +64,9 @@ include_once('../assets/notiflix.php');
   </div>
 </body>
 
+<<<<<<< HEAD
+</html>
+=======
 </html>
 
+>>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
