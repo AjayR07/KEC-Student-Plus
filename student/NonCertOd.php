@@ -10,7 +10,7 @@ $(document).ready(function(){
   $('.pusher').css('height', 'auto');
 });
 </script>
-<div>
+<div class="pusher">
 <link rel="stylesheet" href="../assets/Semantic/dist/semantic.min.css" type="text/css" />
 <script src="../assets/jquery.min.js"></script>
 <script src="../assets/Fomantic/dist/semantic.min.js"></script>
@@ -25,6 +25,7 @@ $(document).ready(function(){
             Select OD Range
             </div>
             <div class="description">
+              <div class="main">
                     <div class="two fields">
                       <div class="field">
                         <label>Start Date </label>
@@ -49,9 +50,10 @@ $(document).ready(function(){
                     <span class="positive ui button">OK</span>
                     </div>
                  </div>
-                 <div class="row" id="contentPanel">
-
                  </div>
+      
+
+                
                </div>
             
          </div>
@@ -69,13 +71,14 @@ $(document).ready(function(){
                 var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
                 var myPanel = $('<div class="container1"></div><div class="ui card" id="day'+i+'"><div class="content"><div class="header">DAY '+i+'</div><div class="ui divider"></div><div class="CardUI"><spam><b>Reason &nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></spam><div class="ui input">  <input type="text" id="Day'+i+'Reason" placeholder="" size="45" required></div></div><div class="CardUI1"><div class="hour"></div><div class="inline field"> <select name="day'+i+'hour[]" multiple="" class="label ui selection fluid dropdown" required> <option value="" class="dropcolor">Select Hours (Multi)</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>  </select> </div> </div></div></div></div>');
                 myPanel.appendTo(myCol);
-                myCol.appendTo('body');
+                myCol.appendTo('.main');
                 if(i==num)
                 {
                   var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
                   var myPanel = $('<div class="container2"><div class="ui card" id="submitcard"> <div><button type="submit" class="positive ui button">Submit</button></div></div></div>');
                   myPanel.appendTo(myCol);
-                  myCol.appendTo('body');
+                  myCol.appendTo('.main');
+                  $('.pusher').scroll();
                 }
               
             }
@@ -158,7 +161,10 @@ $(document).ready(function(){
   
     </style>
      <style>
-
+#contentPanel {
+height:100%;
+overflow:visible; 
+}
 h2{
   padding-top:10px;
   color:#686868;
