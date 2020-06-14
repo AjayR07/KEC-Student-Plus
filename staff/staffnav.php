@@ -179,7 +179,7 @@ $(document).ready(function(){
 <div class="preloader"><body><div class="ui active dimmer"><div class="ui large text loader">Please wait...</div></div></body></div>
     <div class="ui tablet computer only padded grid">
       <div class="ui borderless fluid huge inverted menu">
-        <a class="active green item" href="#root">KEC Student+</a>
+        <a class="active green item" href="index.php">KEC Student+</a>
         <a class="item" href="OdList">Pre-OD List</a>
           <a class="item" id="togglemodal">Suggestion Approval</a>
           <a class="item" href="PostOdList">Post-OD List</a>
@@ -190,7 +190,7 @@ $(document).ready(function(){
     </div>
     <div class="ui mobile only padded grid">
       <div class="ui borderless fluid huge inverted menu">
-        <a class="header item" href="#root">KEC Student+</a>
+        <a class="header item" href="index.php">KEC Student+</a>
         <div class="right menu">
           <div class="item">
             <button class="ui icon toggle basic inverted button">
