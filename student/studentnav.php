@@ -78,6 +78,7 @@ include_once('../db.php');
             .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
               display: none;
             }
+<<<<<<< HEAD
 
 </script>
 <?php
@@ -85,33 +86,9 @@ $regno=$_SESSION['uname'];
 $sql="SELECT * from registration where regno like '$regno'";
 
 $temp=($con->query($sql))->fetch_assoc();
+=======
+>>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
 
-$a=0;
-$d=0;
-$o=0;
-$p=0;
-$mail=$temp['mail'];
-$phone=$temp['phone']; 
-$gender=$temp['gender'];
-$name=$temp['name'];
-$sql="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
-//echo '<script>alert("'.$sql.'")</script>';
-$sql2="SELECT c.status as othercert from othercert c where c.regno like '$regno'";
-$data=$con->query($sql);
-if($data->num_rows==0)
-{}
-else{
-while ($row = mysqli_fetch_array($data))
-{
-    if($row['status']=='Approved' && $row['status1']=='Approved' && $row['status2']=='Approved' && $row['status3']=='Approved' && $row['advisor']=='Approved')
-    { $a++; }
-    else if($row['status']=='Declined' || $row['status1']=='Declined' || $row['status2']=='Declined' || $row['status3']=='Declined' || $row['advisor']=='Declined')
-    { $d++; }
-    else if($row['status']=='Pending' || $row['status1']=='Pending' || $row['status2']=='Pending' || $row['status3']=='Pending' || $row['advisor']=='Pending')
-    { $p++; }
-}
-}
-?>
             .ui.inverted.menu .item {
               color: rgb(157, 157, 157);
               font-size: 16px;
@@ -127,11 +104,14 @@ while ($row = mysqli_fetch_array($data))
           }
          body, .pusher {
   background-image: url("../backlogout.jpg") !important;
+ 
 }
+
            .header
            {
              color:cyan;
            }
+
       </style>
 
       <script type="text/javascript">
@@ -219,7 +199,7 @@ while ($row = mysqli_fetch_array($data))
       ?>
   </head>
 
-  <body id="root">
+  <body id="root" >
   <div class="preloader"><body><div class="ui active dimmer"><div class="ui large text loader">Please wait...</div></div></body></div>
     <div class="ui tablet computer only padded grid">
       <div class="ui borderless fluid  inverted menu" style="font-size:16px">
@@ -315,13 +295,18 @@ while ($row = mysqli_fetch_array($data))
             ?>
       </a>
       <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php echo $name; ?> </b></a>
+<<<<<<< HEAD
       </div>
           <div class="item"><div class="header" >On Duty</div></div>
+=======
+    </div>
+  <div class="item" ><div class="header" style="font-size:18px" >On Duty</div></div>
+>>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
           <a class="item" href="PreOdForm" style="text-indent:20%;font-size:18px">Permission Form</a>
           <a class="item" href="OdSubmission" style="text-indent:20%;font-size:18px">Submission</a>
           <a class="item" href="Status" style="text-indent:20%;font-size:18px">Status</a>
           <a class="item" href="NonCertOd" style="text-indent:20%;font-size:18px">Local OD</a>
-          <div class="item"><div class=" header">Certificates</div></div>
+          <div class="item"><div class=" header" style="font-size:18px">Certificates</div></div>
           <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
           <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
           <div class="item"><div class=" header">Certificates</div></div>
