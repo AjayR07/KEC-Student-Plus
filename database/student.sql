@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 14, 2020 at 11:03 AM
+-- Generation Time: Jun 14, 2020 at 05:34 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.5
 
@@ -348,6 +348,7 @@ DROP TABLE IF EXISTS `noncertod`;
 CREATE TABLE IF NOT EXISTS `noncertod` (
   `appno` varchar(16) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
   `regno` varchar(8) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `appdate` date NOT NULL,
   `need` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
   `appfacty` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
   `activity` varchar(25) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
@@ -389,11 +390,11 @@ CREATE TABLE IF NOT EXISTS `oddetails` (
 --
 
 INSERT INTO `oddetails` (`appno`, `regno`, `appdate`, `odtype`, `title`, `odfrom`, `odto`, `hrs`, `college`, `state`, `purpose`, `status`) VALUES
-('18CSE002060441', '18CSR002', '2020-04-06', 'SPORT', 'aefwtryhg', '2020-04-07', '2020-04-09', 'half', 'igyutfgjhsakld', 'TAMILNADU', 'sdfsdfsd', 'Pending'),
-('18CSE002070694', '18CSR002', '2020-06-07', 'PAPER', 'Big Data ', '2020-06-09', '2020-06-10', 'full', 'PSG iTech', 'TAMILNADU', 'NIL', 'Approved'),
+('18CSE002060441', '18CSR002', '2020-06-14', 'SPORT', 'aefwtryhg', '2020-06-14', '2020-06-15', 'half', 'igyutfgjhsakld', 'TAMILNADU', 'sdfsdfsd', 'Pending'),
+('18CSE002070694', '18CSR002', '2020-06-07', 'PAPER', 'Big Data ', '2020-06-09', '2020-06-15', 'full', 'PSG iTech', 'TAMILNADU', 'NIL', 'Approved'),
 ('18CSE002080618', '18CSR002', '2020-06-08', 'PROJECT', 'Hello', '2020-06-10', '2020-06-12', 'full', 'Kongu', 'TAMILNADU', 'NIL', 'Pending'),
 ('18CSE002090414', '18CSR002', '2020-04-09', 'SPORT', 'God ', '2020-04-10', '2020-04-10', 'half', 'Kongu Engineering', 'OTHERSTATE', 'hfxfhgjgjkh', 'Pending'),
-('18CSE002230339', '18CSR002', '2020-03-23', 'PAPER', 'Big Data', '2020-03-24', '2020-03-24', 'full', 'PSG iTech', 'TAMILNADU', 'Just for cheking purpose', 'Pending'),
+('18CSE002230339', '18CSR002', '2020-06-14', 'PAPER', 'Big Data', '2020-03-24', '2020-03-24', 'full', 'PSG iTech', 'TAMILNADU', 'Just for cheking purpose', 'Pending'),
 ('18CSE002240398', '18CSR002', '2020-03-24', 'PAPER', 'Foot Ball', '2020-03-25', '2020-03-25', 'half', 'Kongu Engineering COlelge', 'OTHERSTATE', 'Final Match aojoajd', 'Pending'),
 ('18CSE002300490', '18CSR002', '2020-04-30', 'PROJECT', 'Automatic Vending Machine', '2020-05-01', '2020-05-02', 'full', 'Kumaraguru College of Technology', 'TAMILNADU', 'Nothing Much', 'Pending'),
 ('18CSE007160410', '18CSR007', '2020-04-16', 'PAPER', 'Big Data', '2020-04-17', '2020-04-17', 'full', 'Kongu', 'TAMILNADU', 'Getting in to that college', 'Approved'),
@@ -488,7 +489,7 @@ INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comme
 ('18CSE002070694', 'Abinash', 'asdah', 'Approved', 'Abinash', 'good', 'Approved', 'Abinash', 'dsfddf', 'Approved', 'Approved', 'Approved'),
 ('18CSE002080618', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
 ('18CSE002090414', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
-('18CSE002230339', 'maliga', 'nice', 'Approved', 'Nandhini', 'Good', 'Approved', 'Chitra', 'Good', 'Approved', 'Approved', 'Pending'),
+('18CSE002230339', 'maliga', 'nice', 'Approved', 'Nandhini', 'Good', 'Approved', 'Chitra', 'Good', 'Approved', 'Pending', 'Pending'),
 ('18CSE002240398', 'abi', 'Good', 'Approved', 'abi', 'Very Good', 'Approved', 'Abinash', 'good presentation', 'Approved', 'Approved', 'Pending'),
 ('18CSE002300490', 'Abinash', 'Very nice explanation', 'Approved', NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
 ('18CSE007160410', 'malliga', 'good', 'Approved', 'latha', 'good', 'Approved', 'Geethaaaa', 'goodu', 'Approved', 'Approved', 'Pending'),
