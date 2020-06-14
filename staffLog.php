@@ -150,7 +150,7 @@ if(isset($_POST['submit']))
             $_SESSION['sec']=$row['sec'];
             $_SESSION['design']=$row['designation'];
             header('Location: ./staff/OdList.php');
-            echo '<script>window.location.replace("./staff/OdList.php");</script>';
+            echo '<script>window.location.replace("./staff/index.php");</script>';
             exit();
         }
         else
