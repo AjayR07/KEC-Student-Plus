@@ -3,9 +3,7 @@
   <head>
   <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
     <link rel="icon" type="image/png" href="../KEC.png">
 <link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css"/> 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -86,26 +84,10 @@
           align-items: center;
           justify-content: center;
         }
-       /* .ui.modal,
-        .ui.active.modal {
-          position: fixed;
-          margin: auto auto!important;
-          top:23%;
-          left:18%;
-          right: 18%;
-          transform-origin: center !important;
-          transition: all ease .5s;
-        }
-        .modal {
-            height: auto;
-            top: auto;
-            left: auto;
-            bottom: auto;
-            right: auto;
-        } */
+     
     </style>
     <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/Semantic/dist/semantic.min.js"></script>
+    <script src="../assets/Fomantic/dist/semantic.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
   $('.pop').popup();
@@ -151,46 +133,7 @@ $(document).ready(function(){
 
       });
 </script>
-<script> 
-        // $(function(){
-        //   $.ajaxSetup ({
-        //       cache: false
-        //   });
-        //   //var ajax_load = "<img src='../images/giphy3.svg' alt='Loading...' style='position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 9999;'/>";
-        //  // var ajax_load=Notiflix.Loading.Dots();Notiflix.Loading.Remove();
-        //   var ajax_load='<body><div class="ui active dimmer"><div class="ui loader"></div></div></body>';
-         
-        //   var loadUrl = "./OdList.php";
-        //   var loadUrl1 = "./PostOdList.php";
-        //   var loadUrl2 = "./Export.php";
-        //   var loadUrl3 = "./ClassInfo.php";
-          
-        //   $("#OdList").click(function(){
-        //     let stateObj = { id: "100" }; 
-        //     window.history.pushState(stateObj,"OD Permission", "./OdList");
-        //       $("body").html(ajax_load).load(loadUrl);
-        //   });
-        //   $("#PostOdList").click(function(){
-        //     let stateObj = { id: "100" }; 
-        //     window.history.pushState(stateObj,"OD Submission", "./PostOdList");
-        //     $("body").html(ajax_load).load(loadUrl1);
-        //   });
-         
-        //   $("#Export").click(function(){
-        //     let stateObj = { id: "100" }; 
-        //     window.history.pushState(stateObj,"OD Status", "./Export");
-        //       $("body").html(ajax_load).load(loadUrl2);
-        //   });
-  
-        //   $("#ClassInfo").click(function(){
-        //     let stateObj = { id: "100" }; 
-        //     window.history.pushState(stateObj,"Certificate Registration", "./ClassInfo");
-        //       $("body").html(ajax_load).load(loadUrl3);
-        //   });
-         
-        
-      // });
-    </script> 
+
      <script>
       $(window).on("load", function() {
         $('.preloader').hide();
@@ -200,7 +143,7 @@ $(document).ready(function(){
   </head>
 
 <body id="root">
-<div class="preloader"><body><div class="ui active dimmer"><div class="ui large active elastic loader">Please wait...</div></div></body></div>
+<div class="preloader"><body><div class="ui active dimmer"><div class="ui large active green elastic loader"></div></div></body></div>
     <div class="ui tablet computer only padded grid">
       <div class="ui borderless fluid huge inverted menu">
         <a class="active green item" href="index.php">KEC Student+</a>

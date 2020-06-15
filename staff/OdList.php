@@ -6,9 +6,9 @@
     if(!isset($_SESSION['user']))
     {
       header("Location: ../staffLog.php");
-        //echo '<script>window.location.replace("../staffLog.php");</script>';
     }
     include_once('staffnav.php');
+    include_once('../assets/notiflix.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +59,11 @@ else if($_SESSION['design']=='Year in Charge')
     $sql="SELECT r.regno,r.name,r.sec,d.appno,d.odfrom,d.appdate from registration r, oddetails d, preod p where (r.regno like d.regno) and (d.appno like p.appno)
     and (r.batch like '$batch') and (r.dept like '$dep') and (p.status1 is not null) and (p.status2 is not null)
     and (p.status3 is not null) and (p.advisor like 'Approved') and (p.yearin like 'Pending');";
+}
+else
+{
+    echo "<body><script> Notiflix.Report.Failure( 'Invalid Action', 'User has no class Association', 'Okay', function(){window.location.href='index.php'} ); </script></body>";
+    exit();
 }
      
      $data=$con->query($sql);

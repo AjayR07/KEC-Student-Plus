@@ -10,7 +10,7 @@ include_once('../db.php');
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
       <link rel="icon" type="image/png" href="../KEC.png">
       <link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css" />
-      <!-- <link rel="stylesheet" href="../assets/Semantic/dist/semantic.min.css" type="text/css" /> -->
+    
    
       <!-- No Script Part -->
           <noscript><meta http-equiv="refresh" content="0; URL='../errorfile/noscript.html'" /></noscript>
@@ -148,7 +148,7 @@ include_once('../db.php');
             $gender=$temp['gender'];
             $name=$temp['name'];
             $sql="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
-            //echo '<script>alert("'.$sql.'")</script>';
+           
             $sql2="SELECT c.status as othercert from othercert c where c.regno like '$regno'";
             $data=$con->query($sql);
             if($data->num_rows==0)
@@ -190,7 +190,7 @@ include_once('../db.php');
   </head>
 
   <body id="root" >
-  <div class="preloader"><body><div class="ui active dimmer"><div class="ui large text loader">Please wait...</div></div></body></div>
+  <div class="preloader"><body><div class="ui active dimmer"><div class="ui large active green elastic loader"></div></div></body></div>
     <div class="ui tablet computer only padded grid">
       <div class="ui borderless fluid  inverted menu" style="font-size:16px">
       <a class=" active  item" id="side_nav"><i class="sidebar icon"></i></a>
