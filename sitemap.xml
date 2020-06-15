@@ -1,13 +1,8 @@
 
 <url>
-<loc>https://kecstudent.xyz/</loc>
+<loc>https://kecstudent.xyz/home.php</loc>
 <lastmod>2020-04-10T04:42:22+00:00</lastmod>
 <priority>1.00</priority>
-</url>
-<url>
-<loc>https://kecstudent.xyz/index.php</loc>
-<lastmod>2020-04-10T04:42:22+00:00</lastmod>
-<priority>0.80</priority>
 </url>
 <url>
 <loc>https://kecstudent.xyz/studLog.php</loc>
@@ -20,12 +15,12 @@
 <priority>0.80</priority>
 </url>
 <url>
-<loc>https://kecstudent.xyz/staffLog</loc>
+<loc>https://kecstudent.xyz/staffLog.php</loc>
 <lastmod>2020-04-10T05:38:01+00:00</lastmod>
 <priority>0.80</priority>
 </url>
 <url>
-<loc>https://kecstudent.xyz/aboutUs</loc>
+<loc>https://kecstudent.xyz/aboutUs.html</loc>
 <lastmod>2019-09-01T15:44:00+00:00</lastmod>
 <priority>0.80</priority>
 </url>

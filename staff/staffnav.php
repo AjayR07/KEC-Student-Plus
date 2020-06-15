@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
     <link rel="icon" type="image/png" href="../KEC.png">
-<link rel="stylesheet" href="../assets/Semantic/dist/semantic.min.css" type="text/css"/> 
+<link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css"/> 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
        <!-- No Script Part -->
 	<noscript><meta http-equiv="refresh" content="0; URL='../errorfile/noscript.html'" /></noscript>
@@ -200,7 +200,7 @@ $(document).ready(function(){
   </head>
 
 <body id="root">
-<div class="preloader"><body><div class="ui active dimmer"><div class="ui large text loader">Please wait...</div></div></body></div>
+<div class="preloader"><body><div class="ui active dimmer"><div class="ui large active elastic loader">Please wait...</div></div></body></div>
     <div class="ui tablet computer only padded grid">
       <div class="ui borderless fluid huge inverted menu">
         <a class="active green item" href="index.php">KEC Student+</a>
