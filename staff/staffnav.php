@@ -185,6 +185,7 @@ $(document).ready(function(){
           <a class="item" href="PostOdList">Post-OD List</a>
           <a class="item" href="Export">Export</a>
           <a class="item" href="ClassInfo">Class Info</a>
+          <a class="item" href="StudentDetail">Student Details</a>
           <a class="right item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
       </div>
     </div>
@@ -204,6 +205,7 @@ $(document).ready(function(){
           <a class="item" href="PostOdList.php">Post-OD List</a>
           <a class="item" href="Export.php">Export</a>
           <a class="item" href="ClassInfo.php">Class Info</a>
+          <a class="item" href="StudentDetail.php">Student Details</a>
           <a class="item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
         </div>
       </div>

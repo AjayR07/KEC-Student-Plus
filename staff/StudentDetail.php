@@ -18,14 +18,8 @@ else
     <link rel="icon" type="image/png" href="../KEC.png">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.css"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.js"></script> 
+    <?php require_once('staffnav.php'); include_once('../assets/notiflix.php');?>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script>
       $(document).ready(function(){
         $('.ui.dropdown').dropdown('show');});
@@ -53,7 +47,7 @@ font-family: 'Open Sans', sans-serif;
 
 </head>
 <body background="../backstaff.jpg">
-<?php require_once('staffnav.php'); include_once('../assets/notiflix.php');?><br><br>
+<br><br>
 <style>
 
 
@@ -68,9 +62,9 @@ td{
  
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.js"></script>
+
+  
+
 <script>
 
 
@@ -128,7 +122,7 @@ function GetDetail(){
 </script>
 <div class="ui raised very padded container segment">
 <form class="ui form" onsubmit="return GetDetail();">
-<center><h1 class="ui header"><u>Search Student Detail</u></h1><br><br>
+<center><h1 class="ui header">Search Student Details</h1><br><br>
 <div class="ui content">
   <div class="ui form">
         <label for="">Enter Roll Number : &nbsp;&nbsp;</label>
@@ -136,7 +130,7 @@ function GetDetail(){
          <input  type="text" id="roll" placeholder="Roll Number" minlength="8" maxlength="8" onkeyup="this.value = this.value.toUpperCase();" required />
         </div>&nbsp;&nbsp;
        
-          <button  class="ui positive button">Find</button>
+          <button  class="ui positive button">Search</button>
           
     </div>
   </div>
