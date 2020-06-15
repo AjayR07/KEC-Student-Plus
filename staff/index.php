@@ -4,6 +4,10 @@ if(!isset($_SESSION['user']))
 {
     header("Location: ../staffLog.php");
 }
+if($_SESSION['design']=='HOD')
+{
+  header('Location: HODHome.php');
+}
 $staff=$_SESSION['user'];
 include_once('../db.php');
 include_once('staffnav.php');
@@ -42,14 +46,14 @@ $today=date("Y-m-d");
 if($design=='Advisor')
 {
   $sql="SELECT * FROM registration r INNER JOIN oddetails o ON r.regno like o.regno INNER JOIN preod p ON o.appno like p.appno 
-  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') and (o.appdate like '$today') AND (p.status1 is not null) and 
+  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec')  AND (p.status1 is not null) and 
   (p.status2 is not null) and (p.status3 is not null) and (p.advisor like 'Pending');";
   
 }
 else if($design='Year in Charge')
 {
   $sql="SELECT * FROM registration r INNER JOIN oddetails o ON r.regno like o.regno INNER JOIN preod p ON o.appno like p.appno 
-  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (o.appdate like '$today') AND (p.status1 is not null) and 
+  WHERE (r.batch like '$batch') AND (r.dept like '$dept') AND (p.status1 is not null) and 
   (p.status2 is not null) and (p.status3 is not null) and (p.advisor like 'Approved') and (p.yearin like 'Pending');";
 }
 $data=$con->query($sql);
@@ -59,14 +63,14 @@ $preod=$data->num_rows;
 if($design=='Advisor')
 {
   $sql="SELECT * FROM registration r INNER JOIN noncertod o ON r.regno like o.regno 
-  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') and (o.appdate like '$today')
+  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') 
   AND (o.advisor like 'Pending');"; 
 }
 else if($design='Year in Charge')
 {
-  // $sql="SELECT * FROM registration r INNER JOIN noncertod o ON r.regno like o.regno 
-  // WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') and (o.appdate like '$today')
-  // AND (o.advisor like 'Approved') and (p.yearin like 'Pending');";
+  $sql="SELECT * FROM registration r INNER JOIN noncertod o ON r.regno like o.regno 
+  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') 
+  AND (o.advisor like 'Approved') and (o.yearin like 'Pending');";
 }
 $data=$con->query($sql);
 $noncert=$data->num_rows;
@@ -76,7 +80,7 @@ $noncert=$data->num_rows;
 if($design=='Advisor')
 {
   $sql="SELECT * FROM registration r INNER JOIN oddetails o ON r.regno like o.regno INNER JOIN postod p ON o.appno like p.appno 
-  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') and (o.appdate like '$today') AND 
+  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') AND 
   (p.status like 'Pending');";
   $data=$con->query($sql);
   $postod=$data->num_rows;
@@ -92,7 +96,7 @@ else if($design='Year in Charge')
 if($design=='Advisor')
 {
   $sql="SELECT * FROM registration r INNER JOIN othercert o ON r.regno like o.regno 
-  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (o.appdate like '$today') AND 
+  WHERE (r.batch like '$batch') AND (r.dept like '$dept')  AND 
   (o.status like 'Pending');";
 
   $data=$con->query($sql);

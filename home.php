@@ -5,9 +5,21 @@ include_once("db.php");
 <html>
 
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151639011-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-151639011-2');
+</script>
+
 	<title>KEC Student+</title>
 	<link rel="icon" type="image/png" href="./KEC.png">
 	<meta charset="utf-8" />
+	<meta name="dark-theme" color="#181818" />
+	<link rel="manifest" href="/manifest.json">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
           <meta property="og:title" content="KEC Student+"/>
           <meta property="og:description" content="KEC Student+;Kec;cse ;Kongu Engineering College;KEC Student+ website;"/>
@@ -407,7 +419,15 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 			s0.parentNode.insertBefore(s1, s0);
 		})();
 	</script>
+
 	<!--End of Tawk.to Script-->
+<script type="module">
+import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+const el = document.createElement('pwa-update');
+document.body.appendChild(el);</script> 
+
+
 </body>
 
 </html>
