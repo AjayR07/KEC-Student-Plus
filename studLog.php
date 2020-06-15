@@ -10,7 +10,13 @@ include_once('./assets/notiflix.php');
 ?>
 <html>
     <head>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-151639011-2');
+</script>
   <title>Login</title>
 <link rel="icon" type="image/png" href="KEC.png">
   <meta charset="utf-8" />

@@ -11,7 +11,13 @@ if(isset($_SESSION["user"]))
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-151639011-2');
+</script>
    <title>Staff Login</title>
    <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
