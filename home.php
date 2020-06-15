@@ -5,6 +5,16 @@ include_once("db.php");
 <html>
 
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151639011-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-151639011-2');
+</script>
+
 	<title>KEC Student+</title>
 	<link rel="icon" type="image/png" href="./KEC.png">
 	<meta charset="utf-8" />
