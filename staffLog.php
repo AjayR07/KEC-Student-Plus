@@ -5,7 +5,7 @@ include_once('./db.php');
 
 if(isset($_SESSION["user"]))
 {
-    header("Location: ./staff/OdList.php");
+    header("Location: ./staff/index.php");
 }
 ?>
 <!DOCTYPE html>

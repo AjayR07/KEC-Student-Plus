@@ -4,6 +4,10 @@ if(!isset($_SESSION['user']))
 {
     header("Location: ../staffLog.php");
 }
+if($_SESSION['design']=='HOD')
+{
+  header('Location: HODHome.php');
+}
 $staff=$_SESSION['user'];
 include_once('../db.php');
 include_once('staffnav.php');
@@ -64,9 +68,9 @@ if($design=='Advisor')
 }
 else if($design='Year in Charge')
 {
-  // $sql="SELECT * FROM registration r INNER JOIN noncertod o ON r.regno like o.regno 
-  // WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') and (o.appdate like '$today')
-  // AND (o.advisor like 'Approved') and (p.yearin like 'Pending');";
+  $sql="SELECT * FROM registration r INNER JOIN noncertod o ON r.regno like o.regno 
+  WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (r.sec like '$sec') and (o.appdate like '$today')
+  AND (o.advisor like 'Approved') and (o.yearin like 'Pending');";
 }
 $data=$con->query($sql);
 $noncert=$data->num_rows;
