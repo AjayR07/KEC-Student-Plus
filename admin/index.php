@@ -245,7 +245,7 @@
       });
   });
 
-function myFunction(val)
+  function myFunction(val)
 {
   var ID=val;
   var xmlhttp = new XMLHttpRequest();
@@ -263,11 +263,8 @@ function myFunction(val)
         $("#editMail").val(staf.mail);
         $("#editSection").val(staf.sec);
         $("#editBatch").val(staf.batch);
-      //  $("#editDepart option[value=EIE]").attr('selected', 'selected');
-        //$("#editDepart").replaceWith($('<input/>',{'type':'text','value':staff.dept}));
-//$('#editDepart').val(staff.dept);
-
-        //$("#editDesign").val(staf.designation);
+        // document.getElementById( "editDesign").selectedIndex = staf.designation; 
+  
 
     }
     $('#editStaffModal').modal('show');
@@ -297,20 +294,44 @@ function mydelete(val)
     function desig(val)
     {
      if(val=='Advisor')
+     {
        $('#Adv').show();
-     else
-      $('#Adv').hide();
+       $('#yic').show();
+     }
+     else if(val=='Year in Charge')
+     { 
+        $('#yic').show();
+        $('#Adv').hide();
     }
-
-
-
+    else
+    {
+      $('#yic').hide();
+        $('#Adv').hide();
+    }
+    }
     function editDesig(val)
     {
      if(val=='Advisor')
+     {
        $('#editAdv').show();
+       $('#edityic').show();
+     }
+     else if(val=='Year in Charge')
+     {
+        $('#edityic').show();
+        $('#editAdv').hide();       
+     }
      else
-      $('#editAdv').hide();
+     {
+      $('#edityic').hide();
+        $('#editAdv').hide();  
+     }
+  
     }
+
+
+
+    
 
     </script>
     <?php include_once('../assets/notiflix.php');?>
@@ -401,7 +422,7 @@ function mydelete(val)
         <div class="six wide field">
         <label>Department</label>
         <select class="ui fluid search selection dropdown" name="depart" id="depart">
-          <option value="">Select Department</option>
+          <option disabled>Select Department</option>
           <option value="CSE"><i class=""></i>Computer Science And Engineering</option>
           <option  value="IT"><i class=""></i>Information Technology</option>
           <option value="EEE"><i class=""></i>Electrical And Electronics Engineering </option>
@@ -426,18 +447,18 @@ function mydelete(val)
       <select class="ui selection dropdown" name="design" id="design" onchange='desig(this.value);'>
         <option value="">Select Designation</option>
           <option  value="HOD">Head of the Department</option>
-          <option  value="Year Incharge">Year Incharge</option>
+          <option  value="Year in Charge">Year Incharge</option>
           <option  value="Advisor">Advisor</option>
           <option  value="Non Teaching Faculty">Non Teaching Faculty</option>
         </select>
     </div>
 
-    <div class="two fields" id="Adv">
-      <div class="field">
+    <div class="two fields" >
+      <div class="field" id="yic">
           <label>Batch</label>
         <input type="text" name="batch" id="batch" placeholder="Batch">
       </div>
-      <div class="field">
+      <div class="field" id="Adv">
           <label>Section</label>
         <input type="text" name="section" id="sec" placeholder="Section">
       </div>
@@ -496,9 +517,9 @@ function mydelete(val)
         <div class="six wide field">
         <label>Department</label>
         <select class="ui fluid search selection dropdown" name="editDepart" id="editDepart">
-          <option selected disabled>Select Department</option>
-          <option value="CSE"><i class=""></i>Computer Science And Engineering</option>
-          <option  value="IT"><i class=""></i>Information Technology</option>
+          <option  disabled>Select Department</option>
+          <option selected value="CSE">Computer Science And Engineering</option>
+          <option value="IT"><i class=""></i>Information Technology</option>
           <option value="EEE"><i class=""></i>Electrical And Electronics Engineering </option>
           <option value="ECE"><i class=""></i>Electronics And Communication Engineering</option>
           <option value="EIE"><i class=""></i>Electronics And Instrumentation Engineering</option>
@@ -521,18 +542,18 @@ function mydelete(val)
       <select class="ui selection dropdown" name="editDesign" id="editDesign" onchange='editDesig(this.value);'>
         <option selected disabled>Select Designation</option>
           <option  value="HOD">Head of the Department</option>
-          <option  value="Year Incharge">Year Incharge</option>
+          <option  value="Year in Charge">Year Incharge</option>
           <option  value="Advisor">Advisor</option>
           <option  value="Non Teaching Faculty">Non Teaching Faculty</option>
         </select>
     </div>
 
-    <div class="two fields" id="editAdv">
-      <div class="field">
+    <div class="two fields" >
+      <div class="field" id="edityic">
           <label>Batch</label>
         <input type="text" name="editBatch" id="editBatch" placeholder="Batch">
       </div>
-      <div class="field">
+      <div class="field" id="editAdv">
           <label>Section</label>
         <input type="text" name="editSection" id="editSection" placeholder="Section">
       </div>
