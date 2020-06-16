@@ -35,7 +35,7 @@ $(document).ready(function(){
 </script>
 <?php
 // Calculations
-$batch=$_SESSION['batch'];
+
 $sec=$_SESSION['sec'];
 $dept=$_SESSION['dept'];
 $design=$_SESSION['design'];
@@ -75,12 +75,67 @@ if($design='HOD')
        $noncert=$data->num_rows;
       }
 
-function getDetails()
+function getDetails($batch)
 {
-      global $design,$batch,$sec,$today,$dept,$con,$detailsList;
-    
-    
+      global $design,$today,$dept,$con,$detailsList,$batchAcc,$yprev;
+      $cA=$cB=$cC=$cD=0;
+      $tot=0;
+      $A=$B=$C=$D='';
+      $batchAcc='';
+      $sql="SELECT * FROM registration r INNER JOIN oddetails o ON r.regno like o.regno INNER JOIN preod p ON o.appno like p.appno 
+        WHERE (r.batch like '$batch') AND (r.dept like '$dept') and (o.odfrom <='$today' and o.odto >='$today') AND (p.status1 is not null) and 
+        (p.status2 is not null) and (p.status3 is not null) and (p.advisor like 'Approved') and (p.yearin like 'Approved');";
+      $data=$con->query($sql);
+      if($data->num_rows==0)
+      {
+          $batchAcc.='<div class="header">No Data</div>';
+      }
+      else{
+        
+        while($row = mysqli_fetch_array($data))
+        {
+            if($row['sec']=='A')
+            { 
+                $cA++;
+                $A.='<div class="item"><div class="header">'.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
+            }
+            else if($row['sec']=='B')
+            { 
+                $cB++;
+                $B.='<div class="item"><div class="header">'.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
+            }
+            else if($row['sec']=='C')
+            { 
+                $cC++;
+                $C.='<div class="item"><div class="header">'.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
+            }
+            else if($row['sec']=='D')
+            { 
+                $cD++;
+                $D.='<div class="item"><div class="header">'.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
+            }
+        }
+        $Aprev='<div class="accordion"><div class="title"><i class="dropdown icon"></i> A - '.$cA.'</div><div class="content"><div class="ui relaxed divided list">';
+        $Bprev='<div class="accordion"><div class="title"><i class="dropdown icon"></i> B - '.$cB.'</div><div class="content"><div class="ui relaxed divided list">';
+        $Cprev='<div class="accordion"><div class="title"><i class="dropdown icon"></i> C - '.$cC.'</div><div class="content"><div class="ui relaxed divided list">';
+        $Dprev='<div class="accordion"><div class="title"><i class="dropdown icon"></i> D - '.$cD.'</div><div class="content"><div class="ui relaxed divided list">';
+        $A.='</div></div></div>';
+        $B.='</div></div></div>';
+        $C.='</div></div></div>';
+        $D.='</div></div></div>';
+        $batchAcc.=$Aprev.$A;
+        $batchAcc.=$Bprev.$B;
+        $batchAcc.=$Cprev.$C;
+        $batchAcc.=$Dprev.$D;
+        $tot=$cA+$cB+$cC+$cD;
+      }
+      $yprev='<div class="ui accordion"><div class="title"><i class="dropdown icon"></i>'.$batch.' - '.$tot.'</div><div class="active content">';
+      $yprev.=$batchAcc;
+      $yprev.='</div></div>';
+      return $yprev;
 }
+    
+
 ?>
 
 <body>
@@ -153,10 +208,10 @@ function getDetails()
     <!-- CARD 2 -->
   <div class="ui raised very padded container segment">
   <div class="ui header">Students going OD Today</div>
-  <div class="ui inverted segment">
-  <div class="ui inverted accordion">
-
-  </div>
+  <div class="ui segment">
+  <?php echo getDetails(2017); ?>
+  <?php echo getDetails(2018); ?>
+  <?php echo getDetails(2019); ?>
  </div>
 </div><br>
 
