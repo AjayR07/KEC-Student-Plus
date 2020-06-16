@@ -277,17 +277,19 @@ include_once('../db.php');
 
   <div class="ui sidebar inverted vertical menu" id="SideNavBar" style="font-size:18px">
     <div class="item">
-      <a class="ui logo icon image" href="/">
+      <!-- <a class="ui logo icon image" href="/">
       <?php 
-            if($gender=='male')
-                  echo '<img class="ui avatar image" src="../images/matthew.png"/>';
-            else if($gender=='female')
-                  echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
-            else
-                  echo '<img class="ui avatar image" src="../images/elyse.png"/>';
+            // if($gender=='male')
+            //       echo '<img class="ui avatar image" src="../images/matthew.png"/>';
+            // else if($gender=='female')
+            //       echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
+            // else
+            //       echo '<img class="ui avatar image" src="../images/elyse.png"/>';
             ?>
       </a>
-      <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php echo $name; ?> </b></a>
+      <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php// echo $name; ?> </b></a> -->
+      <center><a href="index"><img src="../KEC.png" alt=""  style="width:70%"/></a>
+      <span class="ui large text" style="color:cyan"><center>Kec Student+</center></span></center><br>
     </div>
   <div class="item" ><div class="header" style="font-size:18px" >On Duty</div></div>
           <a class="item" href="PreOdForm" style="text-indent:20%;font-size:18px">Permission Form</a>
@@ -297,7 +299,9 @@ include_once('../db.php');
           <div class="item"><div class=" header" style="font-size:18px">Certificates</div></div>
           <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
           <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
+          <footer style="margin-top:30%;color:bisque;font-size:14px">
+			      <center>	&copy; Team A3 . <br>All rights reserved.</center>
+				    <br>
+		      </footer>
          
     </div>
-  
-

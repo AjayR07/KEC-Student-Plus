@@ -217,9 +217,9 @@ $(document).ready(function(){
             //       echo '<img class="ui avatar image" src="../images/elyse.png"/>';
             ?>
       </a> -->
-      <a href="index"><img src="../KEC.png" alt=""/></a>
-      <span class="ui large text" style="color:cyan"><center>Kec Student+</center></span><br>
-      <!-- <a href="/" style="font-size:18px;text-align:center">&nbsp Hi! &nbsp <b><?php echo $_SESSION["user"]; ?> </b></a> -->
+      <center><a href="index"><img src="../KEC.png" alt=""  style="width:70%"/></a>
+      <span class="ui large text" style="color:cyan"><center>Kec Student+</center></span></center><br>
+      <!-- <a href="/" style="font-size:18px;text-align:center">&nbsp Hi! &nbsp <b><?php// echo $_SESSION["user"]; ?> </b></a> -->
     </div>
     <div >
     <div class="item" ><div class="header" style="font-size:17px;" >Advisor / Year in Charge</div></div>
@@ -241,5 +241,3 @@ $(document).ready(function(){
 		</footer>
   </div>
 </div class="pusher">
-
-
