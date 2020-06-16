@@ -41,6 +41,9 @@
         -moz-font-smoothing: grayscale;
         font-family: 'Open Sans', sans-serif;
       }
+      html{
+		  scroll-behavior: smooth;
+      }
 
       .ui.center.aligned.container {
         margin-top: 4em;
@@ -153,6 +156,7 @@ $(document).ready(function(){
           <a class="item" href="Export">Export</a>
           <a class="item" href="ClassInfo">Class Info</a>
           <a class="item" href="StudentDetail">Student Details</a>
+          <a class="item" href="EventReg">Event Registration</a>
           <a class="right item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
       </div>
     </div>
@@ -173,6 +177,7 @@ $(document).ready(function(){
           <a class="item" href="Export.php">Export</a>
           <a class="item" href="ClassInfo.php">Class Info</a>
           <a class="item" href="StudentDetail.php">Student Details</a>
+          <a class="item" href="EventReg.php">Event Registration</a>
           <a class="item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
         </div>
       </div>

@@ -50,6 +50,9 @@ include_once('../db.php');
               -moz-font-smoothing: grayscale;
               height: auto;
             }
+            html{
+              scroll-behavior: smooth;
+              }
 
             .ui.center.aligned.container {
               margin-top: 4em;

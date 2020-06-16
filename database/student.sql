@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 15, 2020 at 03:50 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 16, 2020 at 04:03 AM
+-- Server version: 8.0.18
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -28,10 +27,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `authenticate`
 --
 
-CREATE TABLE `authenticate` (
-  `regno` varchar(10) NOT NULL,
-  `status` varchar(10) NOT NULL DEFAULT 'Pending'
-) ENGINE=InnoDB DEFAULT CHARSET=utf16;
+DROP TABLE IF EXISTS `authenticate`;
+CREATE TABLE IF NOT EXISTS `authenticate` (
+  `regno` varchar(10) CHARACTER SET utf16 NOT NULL,
+  `status` varchar(10) CHARACTER SET utf16 NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`regno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
 -- Dumping data for table `authenticate`
@@ -47,25 +48,28 @@ INSERT INTO `authenticate` (`regno`, `status`) VALUES
 -- Table structure for table `eventinfo`
 --
 
-CREATE TABLE `eventinfo` (
-  `eventid` varchar(15) NOT NULL,
-  `name` varchar(30) NOT NULL,
-  `staff` varchar(30) NOT NULL,
-  `staffid` varchar(15) NOT NULL,
+DROP TABLE IF EXISTS `eventinfo`;
+CREATE TABLE IF NOT EXISTS `eventinfo` (
+  `eventid` varchar(15) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `name` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `staff` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `staffid` varchar(15) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
   `date` date NOT NULL,
-  `description` varchar(300) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `description` varchar(300) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  PRIMARY KEY (`eventid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
 -- Dumping data for table `eventinfo`
 --
 
 INSERT INTO `eventinfo` (`eventid`, `name`, `staff`, `staffid`, `date`, `description`) VALUES
-('ER1506030', 'Enthusia', 'Rajesh', 'ST01056', '0000-00-00', 'Cultural Event'),
-('ER1506341', 'NCC Camp', 'Abinash', 'abi', '2020-06-22', 'National Cadet Corps'),
-('ER1506551', 'Blood Donation', 'Abinash', 'abi', '2020-06-18', 'Blood Donation camp'),
-('ER1506746', 'ABCD Webinar', 'Latha', 'lathars', '2020-06-23', 'Agile CyberSecurity DataScience Webinar'),
-('ER1506965', 'Swaram', 'Abinash', 'abi', '2020-06-16', 'Cultural');
+('ER1506341', '', '', '', '2020-06-22', ''),
+('ER1506361', '䅭', '', '', '2020-06-27', ''),
+('ER1506551', '䉬', '', '', '2020-06-18', ''),
+('ER1506746', '', 'L', '', '2020-06-23', ''),
+('ER1506965', '卷', '', '', '2020-06-16', ''),
+('ER1606871', '', '', '', '2020-06-17', '卡');
 
 -- --------------------------------------------------------
 
@@ -73,15 +77,17 @@ INSERT INTO `eventinfo` (`eventid`, `name`, `staff`, `staffid`, `date`, `descrip
 -- Table structure for table `getdetails`
 --
 
-CREATE TABLE `getdetails` (
-  `rollno` varchar(8) NOT NULL,
-  `name` varchar(27) DEFAULT NULL,
-  `mail` varchar(43) DEFAULT NULL,
-  `phone` varchar(54) DEFAULT NULL,
+DROP TABLE IF EXISTS `getdetails`;
+CREATE TABLE IF NOT EXISTS `getdetails` (
+  `rollno` varchar(8) CHARACTER SET utf8 NOT NULL,
+  `name` varchar(27) CHARACTER SET utf8 DEFAULT NULL,
+  `mail` varchar(43) CHARACTER SET utf8 DEFAULT NULL,
+  `phone` varchar(54) CHARACTER SET utf8 DEFAULT NULL,
   `batch` int(4) DEFAULT NULL,
-  `dept` varchar(3) DEFAULT NULL,
-  `sec` varchar(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `dept` varchar(3) CHARACTER SET utf8 DEFAULT NULL,
+  `sec` varchar(1) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`rollno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
 -- Dumping data for table `getdetails`
@@ -351,12 +357,14 @@ INSERT INTO `getdetails` (`rollno`, `name`, `mail`, `phone`, `batch`, `dept`, `s
 -- Table structure for table `noncertinfo`
 --
 
-CREATE TABLE `noncertinfo` (
+DROP TABLE IF EXISTS `noncertinfo`;
+CREATE TABLE IF NOT EXISTS `noncertinfo` (
   `appno` varchar(16) NOT NULL,
   `day` int(11) NOT NULL,
   `hrs` varchar(20) NOT NULL,
   `reason` varchar(50) NOT NULL,
-  `total` int(11) NOT NULL
+  `total` int(11) NOT NULL,
+  PRIMARY KEY (`appno`,`day`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- --------------------------------------------------------
@@ -365,18 +373,21 @@ CREATE TABLE `noncertinfo` (
 -- Table structure for table `noncertod`
 --
 
-CREATE TABLE `noncertod` (
-  `appno` varchar(16) NOT NULL,
-  `regno` varchar(8) NOT NULL,
+DROP TABLE IF EXISTS `noncertod`;
+CREATE TABLE IF NOT EXISTS `noncertod` (
+  `appno` varchar(16) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `regno` varchar(8) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
   `appdate` date NOT NULL,
-  `need` varchar(100) NOT NULL,
-  `appfacty` varchar(30) NOT NULL,
-  `activity` varchar(25) NOT NULL,
+  `need` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `appfacty` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `activity` varchar(25) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
   `start` date NOT NULL,
   `end` date NOT NULL,
   `nodays` int(11) NOT NULL,
-  `advisor` varchar(20) NOT NULL DEFAULT 'Pending',
-  `yearin` varchar(20) NOT NULL DEFAULT 'Pending'
+  `advisor` varchar(20) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT 'Pending',
+  `yearin` varchar(20) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`appno`),
+  KEY `Foreign` (`regno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 -- --------------------------------------------------------
@@ -385,7 +396,8 @@ CREATE TABLE `noncertod` (
 -- Table structure for table `oddetails`
 --
 
-CREATE TABLE `oddetails` (
+DROP TABLE IF EXISTS `oddetails`;
+CREATE TABLE IF NOT EXISTS `oddetails` (
   `appno` varchar(25) NOT NULL,
   `regno` varchar(8) NOT NULL,
   `appdate` date NOT NULL,
@@ -397,7 +409,9 @@ CREATE TABLE `oddetails` (
   `college` varchar(40) NOT NULL,
   `state` varchar(25) NOT NULL,
   `purpose` varchar(80) NOT NULL,
-  `status` varchar(15) NOT NULL DEFAULT 'Pending'
+  `status` varchar(15) NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`appno`),
+  KEY `regno constraint` (`regno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -421,7 +435,8 @@ INSERT INTO `oddetails` (`appno`, `regno`, `appdate`, `odtype`, `title`, `odfrom
 -- Table structure for table `othercert`
 --
 
-CREATE TABLE `othercert` (
+DROP TABLE IF EXISTS `othercert`;
+CREATE TABLE IF NOT EXISTS `othercert` (
   `appno` varchar(25) NOT NULL,
   `regno` varchar(8) NOT NULL,
   `appdate` date NOT NULL,
@@ -434,7 +449,9 @@ CREATE TABLE `othercert` (
   `state` varchar(25) NOT NULL,
   `purpose` varchar(80) NOT NULL,
   `file` varchar(50) NOT NULL,
-  `status` varchar(15) NOT NULL DEFAULT 'Pending'
+  `status` varchar(15) NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`appno`),
+  KEY `regno` (`regno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -451,11 +468,14 @@ INSERT INTO `othercert` (`appno`, `regno`, `appdate`, `type`, `title`, `start`, 
 -- Table structure for table `postod`
 --
 
-CREATE TABLE `postod` (
+DROP TABLE IF EXISTS `postod`;
+CREATE TABLE IF NOT EXISTS `postod` (
   `appno` varchar(25) NOT NULL,
   `prize` varchar(20) DEFAULT NULL,
   `certificate` varchar(30) DEFAULT NULL,
-  `status` varchar(15) DEFAULT 'Pending'
+  `status` varchar(15) DEFAULT 'Pending',
+  PRIMARY KEY (`appno`),
+  UNIQUE KEY `certificate` (`certificate`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -472,7 +492,8 @@ INSERT INTO `postod` (`appno`, `prize`, `certificate`, `status`) VALUES
 -- Table structure for table `preod`
 --
 
-CREATE TABLE `preod` (
+DROP TABLE IF EXISTS `preod`;
+CREATE TABLE IF NOT EXISTS `preod` (
   `appno` varchar(25) NOT NULL,
   `staff1` varchar(20) DEFAULT NULL,
   `comments1` varchar(50) DEFAULT NULL,
@@ -484,7 +505,8 @@ CREATE TABLE `preod` (
   `comments3` varchar(50) DEFAULT NULL,
   `status3` varchar(10) DEFAULT NULL,
   `advisor` varchar(15) NOT NULL DEFAULT 'Pending',
-  `yearin` varchar(15) NOT NULL DEFAULT 'Pending'
+  `yearin` varchar(15) NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`appno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -508,7 +530,8 @@ INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comme
 -- Table structure for table `registration`
 --
 
-CREATE TABLE `registration` (
+DROP TABLE IF EXISTS `registration`;
+CREATE TABLE IF NOT EXISTS `registration` (
   `regno` varchar(8) NOT NULL,
   `name` varchar(40) NOT NULL,
   `batch` int(11) NOT NULL,
@@ -517,7 +540,10 @@ CREATE TABLE `registration` (
   `gender` varchar(7) NOT NULL DEFAULT 'male',
   `mail` varchar(50) NOT NULL,
   `phone` bigint(20) NOT NULL,
-  `pass` varchar(255) NOT NULL
+  `pass` varchar(255) NOT NULL,
+  PRIMARY KEY (`regno`),
+  UNIQUE KEY `mail` (`mail`),
+  UNIQUE KEY `phoenee` (`phone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -535,7 +561,8 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 -- Table structure for table `staff`
 --
 
-CREATE TABLE `staff` (
+DROP TABLE IF EXISTS `staff`;
+CREATE TABLE IF NOT EXISTS `staff` (
   `staffid` varchar(12) NOT NULL,
   `name` varchar(30) NOT NULL,
   `userid` varchar(30) NOT NULL,
@@ -544,7 +571,10 @@ CREATE TABLE `staff` (
   `dept` varchar(5) NOT NULL,
   `batch` varchar(4) NOT NULL,
   `sec` varchar(2) NOT NULL,
-  `designation` varchar(25) NOT NULL
+  `designation` varchar(25) NOT NULL,
+  PRIMARY KEY (`userid`),
+  UNIQUE KEY `staffid` (`staffid`),
+  UNIQUE KEY `mail` (`mail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -553,85 +583,8 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`staffid`, `name`, `userid`, `pass`, `mail`, `dept`, `batch`, `sec`, `designation`) VALUES
 ('12345', 'Abinash', 'abi', '202cb962ac59075b964b07152d234b70', 'abi@kongu.ac.in', 'CSE', '2018', 'A', 'Advisor'),
-('102', 'Latha', 'lathars', '202cb962ac59075b964b07152d234b70', 'latha@kongu.edu', 'CSE', '2018', 'A', 'Year in Charge');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `authenticate`
---
-ALTER TABLE `authenticate`
-  ADD PRIMARY KEY (`regno`);
-
---
--- Indexes for table `eventinfo`
---
-ALTER TABLE `eventinfo`
-  ADD PRIMARY KEY (`eventid`);
-
---
--- Indexes for table `getdetails`
---
-ALTER TABLE `getdetails`
-  ADD PRIMARY KEY (`rollno`);
-
---
--- Indexes for table `noncertinfo`
---
-ALTER TABLE `noncertinfo`
-  ADD PRIMARY KEY (`appno`,`day`);
-
---
--- Indexes for table `noncertod`
---
-ALTER TABLE `noncertod`
-  ADD PRIMARY KEY (`appno`),
-  ADD KEY `Foreign` (`regno`);
-
---
--- Indexes for table `oddetails`
---
-ALTER TABLE `oddetails`
-  ADD PRIMARY KEY (`appno`),
-  ADD KEY `regno constraint` (`regno`);
-
---
--- Indexes for table `othercert`
---
-ALTER TABLE `othercert`
-  ADD PRIMARY KEY (`appno`),
-  ADD KEY `regno` (`regno`);
-
---
--- Indexes for table `postod`
---
-ALTER TABLE `postod`
-  ADD PRIMARY KEY (`appno`),
-  ADD UNIQUE KEY `certificate` (`certificate`);
-
---
--- Indexes for table `preod`
---
-ALTER TABLE `preod`
-  ADD PRIMARY KEY (`appno`);
-
---
--- Indexes for table `registration`
---
-ALTER TABLE `registration`
-  ADD PRIMARY KEY (`regno`),
-  ADD UNIQUE KEY `mail` (`mail`),
-  ADD UNIQUE KEY `phoenee` (`phone`);
-
---
--- Indexes for table `staff`
---
-ALTER TABLE `staff`
-  ADD PRIMARY KEY (`userid`),
-  ADD UNIQUE KEY `staffid` (`staffid`),
-  ADD UNIQUE KEY `mail` (`mail`);
+('102', 'Latha', 'lathars', '202cb962ac59075b964b07152d234b70', 'latha@kongu.edu', 'CSE', '2018', '', 'Year in Charge'),
+('CSE09', 'shanthi', 'shanthi', '17d84f171d54c301fabae1391a125c4e', 'shanthi.cse@kongu.ac.in', 'CSE', '', '', 'HOD');
 
 --
 -- Constraints for dumped tables
