@@ -41,6 +41,7 @@
     $user=$_SESSION["user"];
     $sql1="select * from eventinfo where `staffid` LIKE '$user'";
     $result1=$con->query($sql1);
+    $result2=$con->query($sql1);
     if(!$result1->num_rows)
     {
         echo "<script>document.getElementById('table1').disabled=true;</script>";
@@ -76,6 +77,65 @@
 
 
         }
+
+        .attendance>input[type=checkbox] {
+  cursor: pointer;
+  height: 30px;
+  margin:4px 0 0;
+  position: absolute;
+  opacity: 0;
+  width: 30px;
+  z-index: 2;
+}
+
+.attendance>input[type=checkbox] + span {
+  background: #e74c3c;
+  border-radius: 50%;
+  box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+  display: inline-block;
+  height: 20px;
+  margin:4px 0 0;
+  position:relative;
+  width: 20px;
+  transition: all .2s ease;
+}
+.attendance>input[type=checkbox] + span::before, .attendance>input[type=checkbox] + span::after{
+  background:#fff;
+  content:'';
+  display:block;
+  position:absolute;
+  width:2px;
+  transition: all .2s ease;
+}
+.attendance>input[type=checkbox] + span::before{
+  height:12px;
+  left:9px;
+  top:4px;
+  -webkit-transform:rotate(-45deg);
+  transform:rotate(-45deg);
+}
+.attendance>input[type=checkbox] + span::after{
+  height:12px;
+  right:9px;
+  top:4px;
+  -webkit-transform:rotate(45deg);
+  transform:rotate(45deg);
+}
+.attendance>input[type=checkbox]:checked + span {
+  background:#2ecc71;			    
+}
+.attendance>input[type=checkbox]:checked + span::before{
+  height: 7px;
+  left: 6px;
+  top: 8px;
+  -webkit-transform:rotate(-47deg);
+  transform:rotate(-47deg);
+}
+.attendance>input[type=checkbox]:checked + span::after{
+  height: 11px;
+  right: 6px;
+  top: 4px;
+}
     </style>
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.5/dist/semantic.min.js"></script>
 </head>
@@ -122,7 +182,7 @@
 </div>
 <div class="ui bottom attached tab" data-tab="second">
 <h1 style="text-align:center;color:bisque;">Your Events</h1>
-<table class="ui raised selectable striped inverted table" style="width:96%;margin:auto;margin-top:3%;">
+<table class="ui raised selectable striped inverted black table" style="width:96%;margin:auto;margin-top:3%;">
   <thead>
     
     <tr>
@@ -131,7 +191,7 @@
       <th>Event Name</th>
       <th>Event Date</th>
       <th>Event Description</th>
-      <!-- <th>Mark Attendance</th> -->
+      <th><center>Mark Attendance</center></th>
     </tr>
   </thead>
   <tbody>
@@ -149,8 +209,17 @@
        echo "<td>".$row["name"]."</td>";
     
        echo '<td>'.date_format(date_create($row['date']),'d/m/Y').'';
-       echo '<td>'.$row["description"].'</td>';
-    //    echo '<td>'.'<center><h3><i class="clipboard check icon"></i></h3></center>'.'</td>';
+       echo '<td style="max-width: 100px;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       white-space: nowrap;">'.$row["description"].'</td>';
+       echo '<td>'.'<center><h3><div class="ui animated fade blue button" tabindex="0">
+       <div class="visible content">Mark Attendees</div>
+       <div class="hidden content">
+         <i class="edit icon"></i>
+       </div>
+     </div></h3></center>'.'</td>';
+  
        echo "</tr>";
     }
     ?>
@@ -159,17 +228,32 @@
 
 </div>
 
-   
-
-
-
-
-
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="archive icon"></i>
+    Archive Old Messages
+  </div>
+  <div class="content">
+    <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>
    
 <!-- JavaScript -->
 <script>
     $(document).ready(function()
     {
+
+      // $('.ui.basic.modal').modal('show');
         $('.menu .item').tab();
         var today = new Date();
         $('#calendar').calendar({type: 'date', minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),direction: 'rightward'});
@@ -184,3 +268,23 @@
 
 </body>
 </html>
+
+
+<!-- 
+
+
+<div class="attendance">
+							<input type="checkbox" id="checkAll"/></div>
+
+
+  echo '<td>'.'<div class="attendance"><input type="checkbox" /><span></span></div>'.'</td>';
+    $("#checkAll").change(function () {
+    $("input:checkbox").prop('checked', $(this).prop("checked"));
+});
+ -->
+
+<!-- 
+  Mark Attendance button on click open fullpage modal
+  Header    : Event Details
+  Content   : Show only the students who applied for the particular event organized by that staff Mark Present / Absent
+ -->
