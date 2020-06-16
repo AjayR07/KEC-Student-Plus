@@ -10,6 +10,9 @@
        <!-- No Script Part -->
 	<noscript><meta http-equiv="refresh" content="0; URL='../errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
+
+  
+
   <style>
         /* Refers the whole setup */
         ::-webkit-scrollbar {
@@ -87,7 +90,21 @@
           align-items: center;
           justify-content: center;
         }
-     
+        #SideNavBar {
+            /* background-image: url('../images/sidenav.jpg') !important; */
+            background-size: cover !important; 
+                    
+          }
+         body, .pusher {
+             background-image: url("../backstaff.jpg") !important;
+ 
+          }
+          .header
+           {
+             color:cyan;
+           }
+
+
     </style>
     <script src="../assets/jquery.min.js"></script>
     <script src="../assets/Fomantic/dist/semantic.min.js"></script>
@@ -147,51 +164,8 @@ $(document).ready(function(){
 
 <body id="root">
 <div class="preloader"><body><div class="ui active dimmer"><div class="ui large active green elastic loader"></div></div></body></div>
-    <div class="ui tablet computer only padded grid">
-      <div class="ui borderless fluid huge inverted menu">
-        <a class="active green item" href="index.php">KEC Student+</a>
-        <a class="item" href="OdList">Pre-OD List</a>
-          <a class="item" id="togglemodal">Suggestion Approval</a>
-          <a class="item" href="PostOdList">Post-OD List</a>
-          <a class="item" href="Export">Export</a>
-          <a class="item" href="ClassInfo">Class Info</a>
-          <a class="item" href="StudentDetail">Student Details</a>
-          <a class="item" href="EventReg">Event Registration</a>
-          <a class="right item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
-      </div>
-    </div>
-    <div class="ui mobile only padded grid">
-      <div class="ui borderless fluid huge inverted menu">
-        <a class="header item" href="index.php">KEC Student+</a>
-        <div class="right menu">
-          <div class="item">
-            <button class="ui icon toggle basic inverted button">
-              <i class="content icon"></i>
-            </button>
-          </div>
-        </div>
-        <div class="ui vertical borderless fluid inverted menu">
-        <a class="item" href="OdList.php">Pre-OD List</a>
-          <a class="item" id="togglemobile">Suggestion Approval</a>
-          <a class="item" href="PostOdList.php">Post-OD List</a>
-          <a class="item" href="Export.php">Export</a>
-          <a class="item" href="ClassInfo.php">Class Info</a>
-          <a class="item" href="StudentDetail.php">Student Details</a>
-          <a class="item" href="EventReg.php">Event Registration</a>
-          <a class="item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
-        </div>
-      </div>
-    </div>
 
 
-    <script>
-      $(document).ready(function() {
-        $(".ui.toggle.button").click(function() {
-          $(".mobile.only.grid .ui.vertical.menu").toggle(100);
-        });
-      });
-
-    </script>
 <div class="ui modal" id="navmodal">
   <div class="header">KEC Student+</div>
   <div class="content">
@@ -211,5 +185,61 @@ $(document).ready(function(){
     </div>
     </div>
 </div>
-</body>
-</html>
+
+
+  <div class="ui borderless fluid huge inverted menu" style="margin-top:0%">
+      <a class=" active  item" id="side_nav"><i class="sidebar icon"></i></a>
+      <a class="active green item" href="index.php">KEC Student+</a>
+      <a class="right item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
+  </div>
+  
+
+  
+
+    <script>
+      $(document).ready(function() {
+        $('#side_nav').on('click',function(){
+                  $('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
+                });
+      });
+
+    </script>
+
+<div class="ui sidebar inverted vertical menu" id="SideNavBar" style="font-size:18px">
+    <div class="item">
+      <!-- <a class="ui logo icon image" href="/">
+      <?php 
+            // if($gender=='male')
+            //       echo '<img class="ui avatar image" src="../images/matthew.png"/>';
+            // else if($gender=='female')
+            //       echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
+            // else
+            //       echo '<img class="ui avatar image" src="../images/elyse.png"/>';
+            ?>
+      </a> -->
+      <a href="index"><img src="../KEC.png" alt=""/></a>
+      <span class="ui large text" style="color:cyan"><center>Kec Student+</center></span><br>
+      <!-- <a href="/" style="font-size:18px;text-align:center">&nbsp Hi! &nbsp <b><?php echo $_SESSION["user"]; ?> </b></a> -->
+    </div>
+    <div >
+    <div class="item" ><div class="header" style="font-size:17px;" >Advisor / Year in Charge</div></div>
+          <a class="ui item" href="OdList" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Pre-OD List</span></a>
+          <a class="item" href="PostOdList" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Post-OD List</span></a>
+          <div class="item" ><div class="header" style="font-size:18px;" >Suggestion</div></div>   
+          <a class="item" id="togglemodal" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Suggestion Approval</span></a>
+          <div class="item" ><div class="header" style="font-size:18px;" >Repository</div></div>   
+          <a class="item" href="Export" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Export</span></a>
+          <a class="item" href="ClassInfo" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Class Info</span></a>
+          <a class="item" href="StudentDetail" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Student Details</span></a>
+         
+         
+    </div>
+
+    <footer style="margin-top:20%;color:bisque;font-size:14px">
+			<center>	&copy; Team A3 . <br>All rights reserved.</center>
+				<br>
+		</footer>
+  </div>
+</div class="pusher">
+
+

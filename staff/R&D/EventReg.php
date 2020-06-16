@@ -213,7 +213,12 @@
        overflow: hidden;
        text-overflow: ellipsis;
        white-space: nowrap;">'.$row["description"].'</td>';
-       echo '<td>'.'<center><h3><i class="clipboard check icon"></i></h3></center>'.'</td>';
+       echo '<td>'.'<center><h3><div class="ui animated fade blue button" tabindex="0">
+       <div class="visible content">Mark Attendees</div>
+       <div class="hidden content">
+         <i class="edit icon"></i>
+       </div>
+     </div></h3></center>'.'</td>';
   
        echo "</tr>";
     }
@@ -276,4 +281,10 @@
     $("#checkAll").change(function () {
     $("input:checkbox").prop('checked', $(this).prop("checked"));
 });
+ -->
+
+<!-- 
+  Mark Attendance button on click open fullpage modal
+  Header    : Event Details
+  Content   : Show only the students who applied for the particular event organized by that staff Mark Present / Absent
  -->
