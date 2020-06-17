@@ -345,15 +345,16 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 		<h2 class="icon solid fa-bell circled"></h2><br><span class="label">What's New <i class="lightbulb yellow icon"></i></span>
 						</header>
 
-							<marquee  direction="up" height=250px">
-								<ul type = "disc">
-							 <li > Enhanced UI / UX.</li><br>
-							<li>Mobile view has been improved.</li><br>
-							<li>Implementation of AJAX and Dyanamic Loading.</li>
+						<marquee  direction="up" height="250px">
+						<ul type = "disc">
+						    <li>Bugs fixed.</li>
+							<li>Improved User Experience.</li><br>
+							<li>Mobile view improved.</li><br>
+							<li>Sidebar given for Staff and Students.</li>
 						</ul>
-							</marquee>
+						</marquee>
 
-					<h6 style="text-align:center;font-size:18px">		<span>Last Updated on <span class="ui green text">10-May-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 2.2 Dev</span></h6>
+					<h6 style="text-align:center;font-size:18px">		<span>Last Updated on <span class="ui green text">18-June-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 3.4 BETA</span></h6>
 
 					</section>
 
@@ -366,14 +367,14 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 							<header>
 								<h3>KEC Student+ </h3>
 							</header>
-							<p>A initiative managed by a group of teens, Working for the students utmost satisfaction.</p>
+							<p>An initiative managed by a group of teens, Working for the students utmost satisfaction.</p>
 
 							<ul class="icons">
 								<li><a href="mailto:keca3family@gmail.com" class="icon brands fa fa-google"><span class="label">Gmail</span></a></li>
 								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 								<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 							</ul>
-											<br><a href="./entity/feedback.php"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
+											<br><a href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
 						</section>
 						<!-- Copyright -->
 						<div class="copyright">
@@ -381,10 +382,10 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 								<li> &copy; Team A3 . All rights reserved.</li>
 								<li>Admin: <span ondragend="window.location.href='./admin/login.php'"><i class="fa fa-user-secret" aria-hidden="true"></i></span></li>
 								<li>Contact us: <a href="https://teama3.tech/">teama3.tech</a></li>
-								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <i class="in flag"></i></li>
+								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <!--i class="in flag"></!i--></li>
 							</ul>
 							<br>
-							<h4  style="text-decoration:underline;text-decoration-style: dotted;">Version : 2.2 Dev</h4>
+							<h4 style="text-decoration:underline;text-decoration-style: dotted;">Version : 3.4 BETA</h4>
 						</div>
 
 					</div>
