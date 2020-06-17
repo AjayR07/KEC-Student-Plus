@@ -1,4 +1,5 @@
 <h1>Welcome to KEC Student+</h1>
+[![version][3]][3]
 
 <h3><em>Test Login credentials provided here!</em></h3>
 <ul>
