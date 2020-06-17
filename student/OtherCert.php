@@ -15,7 +15,7 @@ include_once('../assets/notiflix.php');
     <head>
    
         <!-- <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />-->
-
+        <link rel="icon" type="image/png" href="../KEC.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Other Certificate Registration</title>
     </head>
