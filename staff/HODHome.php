@@ -88,7 +88,7 @@ function getDetails($batch)
       $data=$con->query($sql);
       if($data->num_rows==0)
       {
-          $batchAcc.='<div class="header">No Data</div>';
+          $batchAcc.='No Data</div>';
       }
       else{
         
@@ -97,22 +97,22 @@ function getDetails($batch)
             if($row['sec']=='A')
             { 
                 $cA++;
-                $A.='<div class="item"><div class="header">'.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
+                $A.='<div class="item"><div class="header"><i class="small star of life icon"></i> '.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
             }
             else if($row['sec']=='B')
             { 
                 $cB++;
-                $B.='<div class="item"><div class="header">'.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
+                $B.='<div class="item"><div class="header"><i class="small star of life icon"></i> '.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
             }
             else if($row['sec']=='C')
             { 
                 $cC++;
-                $C.='<div class="item"><div class="header">'.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
+                $C.='<div class="item"><div class="header"><i class="small star of life icon"></i> '.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
             }
             else if($row['sec']=='D')
             { 
                 $cD++;
-                $D.='<div class="item"><div class="header">'.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
+                $D.='<div class="item"><div class="header"><i class="small star of life icon"></i> '.$row['regno'].' - '.$row['name'].'</div><div class="description"><p>'.$row['odtype'].' ~ '.$row['college'].' ~ '.$row['title'].' </p></div></div>';
             }
         }
         $Aprev='<div class="accordion"><div class="title"><i class="dropdown icon"></i> A - '.$cA.'</div><div class="content"><div class="ui relaxed divided list">';
@@ -129,9 +129,9 @@ function getDetails($batch)
         $batchAcc.=$Dprev.$D;
         $tot=$cA+$cB+$cC+$cD;
       }
-      $yprev='<div class="ui accordion"><div class="title"><i class="dropdown icon"></i>'.$batch.' - '.$tot.'</div><div class="active content">';
+      $yprev='<div class="ui styled fluid accordion"><div class="title"><h3><i class="dropdown icon"></i>'.$batch.' - '.$tot.'</div></h3><div class="active content">';
       $yprev.=$batchAcc;
-      $yprev.='</div></div>';
+      $yprev.='</div></div></br>';
       return $yprev;
 }
     
@@ -210,7 +210,10 @@ function getDetails($batch)
   <div class="ui header">Students going OD Today</div>
   <div class="ui segment">
   <?php echo getDetails(2017); ?>
+  <div class="ui segment">
   <?php echo getDetails(2018); ?>
+  </div>
+  <div class="ui segment">
   <?php echo getDetails(2019); ?>
  </div>
 </div><br>

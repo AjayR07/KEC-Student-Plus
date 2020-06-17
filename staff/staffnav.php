@@ -163,7 +163,7 @@ $(document).ready(function(){
   </head>
 
 <body id="root">
-<div class="preloader"><body><div class="ui active dimmer"><div class="ui large active green elastic loader"></div></div></body></div>
+<div class="preloader"><body><div class="ui active dimmer"><div class="ui massive active green elastic loader"></div></div></body></div>
 
 
 <div class="ui modal" id="navmodal">
@@ -217,8 +217,8 @@ $(document).ready(function(){
             //       echo '<img class="ui avatar image" src="../images/elyse.png"/>';
             ?>
       </a> -->
-      <center><a href="index"><img src="../KEC.png" alt=""  style="width:70%"/></a>
-      <span class="ui large text" style="color:cyan"><center>Kec Student+</center></span></center><br>
+      <center><a href="index"><img src="../KEC.png" alt=""  style="width:60%"/></a>
+      <span class="ui large text" style="color:cyan"><center>KEC Student+</center></span></center><br>
       <!-- <a href="/" style="font-size:18px;text-align:center">&nbsp Hi! &nbsp <b><?php// echo $_SESSION["user"]; ?> </b></a> -->
     </div>
     <div >

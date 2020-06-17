@@ -13,8 +13,6 @@ include_once('../assets/notiflix.php');
 <!DOCTYPE html>
 <html>
     <head>
-   
-        <!-- <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />-->
         <link rel="icon" type="image/png" href="../KEC.png">
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Other Certificate Registration</title>
@@ -46,7 +44,6 @@ $temp4=date('d');
 $temp5=date('m');
 $temp6=rand(10,99);
 $appno=strval("CR").strval($temp1).strval($temp2).strval($temp3).strval($temp4).strval($temp5).strval($temp6);
-
 ?>
 
 <div class="ui card centered" style="width:75%;">
@@ -317,7 +314,6 @@ $('.ui.dropdown').dropdown();
 $('.ui.checkbox').checkbox();
 });
     </script>
-        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-          <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script> 
+
 </body>
 </html>

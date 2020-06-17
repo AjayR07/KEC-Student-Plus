@@ -193,7 +193,7 @@ include_once('../db.php');
   </head>
 
   <body id="root" >
-  <div class="preloader"><body><div class="ui active dimmer"><div class="ui large active green elastic loader"></div></div></body></div>
+  <div class="preloader"><body><div class="ui active dimmer"><div class="ui massive active green elastic loader"></div></div></body></div>
     <div class="ui tablet computer only padded grid">
       <div class="ui borderless fluid  inverted menu" style="font-size:16px">
       <a class=" active  item" id="side_nav"><i class="sidebar icon"></i></a>
@@ -288,8 +288,8 @@ include_once('../db.php');
             ?>
       </a>
       <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php// echo $name; ?> </b></a> -->
-      <center><a href="index"><img src="../KEC.png" alt=""  style="width:70%"/></a>
-      <span class="ui large text" style="color:cyan"><center>Kec Student+</center></span></center><br>
+      <center><a href="index"><img src="../KEC.png" alt=""  style="width:60%"/></a>
+      <span class="ui large text" style="color:cyan"><center>KEC Student+</center></span></center><br>
     </div>
   <div class="item" ><div class="header" style="font-size:18px" >On Duty</div></div>
           <a class="item" href="PreOdForm" style="text-indent:20%;font-size:18px">Permission Form</a>
