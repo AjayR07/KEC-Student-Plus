@@ -11,19 +11,6 @@ RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NC,L,R]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^ %{REQUEST_URI}.html [NC,L]
-RewriteRule \.(gif|jpg|jpeg|gif|svg|png|md|xml)$ - [F]
-
-Redirect /Paytm/ /errorfile/error403.html
-Redirect /images/ /errorfile/error403.html
-Redirect /database/ /errorfile/error403.html
-Redirect /assets/ /errorfile/error403.html
-Redirect /ClassInfo/ /errorfile/error403.html
-Redirect /css/ /errorfile/error403.html
-Redirect /js/ /errorfile/error403.html
-Redirect /Reference/ /errorfile/error403.html
-Redirect /PHPMailer/ /home.php
-Redirect /repos/ /home.php
-Redirect /trash/ /home.php
 
 
 ErrorDocument 403 /errorfile/error403.html
