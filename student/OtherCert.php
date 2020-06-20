@@ -6,78 +6,31 @@ if(!isset($_SESSION['uname']))
 }
 $register=$_SESSION['uname'];
 include_once('../db.php');
-include_once('studentnav.php');
+
 include_once('../assets/notiflix.php');
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
-  
+   
         <!-- <link href="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.css" rel="stylesheet" type="text/css" />-->
-        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
-          <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script> 
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Other Certificate Registration</title>
-    <script>
-    $(document).ready(function(){
-  $('#rangestart').calendar({
-  type: 'date',
-  maxDate: new Date(),
-  formatter: {
-    date: function (date, settings) {
-      if (!date) return '';
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-      if (day.toString().length == 1) {
-            day = "0" + day;
-        }
-        if (month.toString().length == 1) {
-            month = "0" + month;
-        }
-      return day + '/' + month + '/' + year;
-    }
-  },
-  
-  endCalendar: $('#rangeend')
-});
-$('#rangeend').calendar({
-  type: 'date',
-  maxDate: new Date(),
-  formatter: {
-    date: function (date, settings) {
-      if (!date) return '';
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-      if (day.toString().length == 1) {
-            day = "0" + day;
-        }
-        if (month.toString().length == 1) {
-            month = "0" + month;
-        }
-      return day + '/' + month + '/' + year;
-    }
-  },
-  startCalendar: $('#rangestart')
-});
-$('.ui.dropdown').dropdown();
-$('.ui.checkbox').checkbox();
-});
-    </script>
-<style>
-body  {
-  background-image: url("../backlogout.jpg");
-}
-</style>
-
     </head>
-<body background="../bgpic.jpg">
+<div class="pusher" background="../backlogout.jpg">
 
 <?php include_once('studentnav.php');
 include_once('../assets/notiflix.php');
 ?>
+<style>
+.pusher  {
+  background-image: url("../backlogout.jpg");
+  padding-bottom:3%;
+ 
+}
+</style>
 
 <?php
 $register=$_SESSION['uname'];
@@ -96,7 +49,7 @@ $appno=strval("CR").strval($temp1).strval($temp2).strval($temp3).strval($temp4).
 
 ?>
 
-<div class="ui card centered" style="width:75%">
+<div class="ui card centered" style="width:75%;">
   <div class="content">
     <div class="header"><h1 style="text-align:center">Other Certificate Registration</h1></div>
     <div class="meta" style="text-align:center">Only authenticated certificates can be uploaded</div>
@@ -218,7 +171,7 @@ $appno=strval("CR").strval($temp1).strval($temp2).strval($temp3).strval($temp4).
     </div>
   </div>
 </div>
-
+</div>
 <script>
     function bs_input_file() {
 	$(".input-file").before(
@@ -317,5 +270,54 @@ if(isset($_POST["submit"]))
     }
 }
 ?>
+<script>
+    $(document).ready(function(){
+  $('#rangestart').calendar({
+  type: 'date',
+  maxDate: new Date(),
+  formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      if (day.toString().length == 1) {
+            day = "0" + day;
+        }
+        if (month.toString().length == 1) {
+            month = "0" + month;
+        }
+      return day + '/' + month + '/' + year;
+    }
+  },
+  
+  endCalendar: $('#rangeend')
+});
+$('#rangeend').calendar({
+  type: 'date',
+  maxDate: new Date(),
+  formatter: {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      if (day.toString().length == 1) {
+            day = "0" + day;
+        }
+        if (month.toString().length == 1) {
+            month = "0" + month;
+        }
+      return day + '/' + month + '/' + year;
+    }
+  },
+  startCalendar: $('#rangestart')
+});
+$('.ui.dropdown').dropdown();
+$('.ui.checkbox').checkbox();
+});
+    </script>
+        <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+          <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script> 
 </body>
 </html>

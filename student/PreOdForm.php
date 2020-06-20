@@ -1,98 +1,58 @@
 <?php
-session_start();
-if(!isset($_SESSION['uname']))
-{
-    header("location: ../studLog.php");
-}
-$register=$_SESSION['uname'];
-include_once('../db.php');
-include_once('../assets/notiflix.php');
+	session_start();
+	if(!isset($_SESSION['uname']))
+	{
+		header("location: ../studLog.php");
+	}
+	$register=$_SESSION['uname'];
+	include_once('../db.php');
+	include_once('../assets/notiflix.php');
 ?>
 <!doctype html>
 <html lang="en">
-<head>
-	<title>OD Permission</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-<?php include_once('../assets/notiflix.php'); ?>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
+	<head>
+		<title>OD Permission</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="css/util.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!--Dont remove-->
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+	<!--===============================================================================================-->
 
-<link rel="icon" type="image/png" href="../KEC.png">
-<!--Import materialize.css-->
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" type="text/css" href="css/util.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	<!--===============================================================================================-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!--Dont remove-->
 
+		<link rel="icon" type="image/png" href="../KEC.png">
+	<!--Import materialize.css-->
+	
 
-</head>
-<body background="../backlogout.jpg">
-<style>
-body {
-  background-image: url("../backlogout.jpg") !important;
-}
+	</head>
 
-</style>
+<div class="pusher" background="../backlogout.jpg">
+<?php require_once('studentnav.php');?>
 
-<?php require_once('studentnav.php');
-?>
-  <script type="text/javascript">
-  	function validate()
-  	{
-
-  		var fromdate=document.forms["myForm"]["odfrom"].value;
-  		var todate=document.forms["myForm"]["odto"].value;
-  		//var fromdate = document.getElementById('odfrom');
-  		//var todate= document.getElementById('odto');
-  		if(new Date(fromdate)>new Date(todate))
-  		{
-  		//	alert('To date cannot be beyond from date');
-         Notiflix.Report.Failure( 'Error', 'End date cannot be beyond Start Date', 'Okay' );
-  			return false;
-  		}
-  		else
-  		{
-  			return true;
-  		}
-  	}
-  </script>
-
-  <script type="text/javascript">
-  function othersel(val){
-   var element=document.getElementById('other');
-   if(val=='OTHER')
-     element.style.display='block';
-   else
-     element.style.display='none';
-  }
-
-  </script>
 
 <?php
-$register=$_SESSION['uname'];
-$sql="SELECT * FROM `registration` WHERE `regno` LIKE '$register'";
-$data=$con->query($sql);
-$row=$data->fetch_assoc();
-$register=$row['regno'];
-$name=$row['name'];
-
-
+		$register=$_SESSION['uname'];
+		$sql="SELECT * FROM `registration` WHERE `regno` LIKE '$register'";
+		$data=$con->query($sql);
+		$row=$data->fetch_assoc();
+		$register=$row['regno'];
+		$name=$row['name'];
 ?>
 <?php
 if(isset($_POST['submit']))
@@ -126,6 +86,9 @@ echo '<script>location.href="PermissionSuccess.php"</script>';
 }
 ?>
 <?php echo "<script>Notiflix.Notify.Info('OD can be applied only before 7 Days');</script>";?>
+
+
+
 	<div class="container-contact100">
 
 		<div class="wrap-contact100">
@@ -240,10 +203,10 @@ echo '<script>location.href="PermissionSuccess.php"</script>';
 				</div>
 			</form>
 		</div>
-	</div>
+	
 
 
-	<div id="dropDownSelect1"></div>
+	<div id="dropDownSelect1"></div></div>
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -278,6 +241,36 @@ echo '<script>location.href="PermissionSuccess.php"</script>';
 
   gtag('config', 'UA-23581568-13');
 </script>
+<script type="text/javascript">
+  	function validate()
+  	{
+  		var fromdate=document.forms["myForm"]["odfrom"].value;
+  		var todate=document.forms["myForm"]["odto"].value;
+  		//var fromdate = document.getElementById('odfrom');
+  		//var todate= document.getElementById('odto');
+  		if(new Date(fromdate)>new Date(todate))
+  		{
+  		//	alert('To date cannot be beyond from date');
+         Notiflix.Report.Failure( 'Error', 'End date cannot be beyond Start Date', 'Okay' );
+  			return false;
+  		}
+  		else
+  		{
+  			return true;
+  		}
+  	}
+  </script>
 
+  <script type="text/javascript">
+  function othersel(val){
+   var element=document.getElementById('other');
+   if(val=='OTHER')
+     element.style.display='block';
+   else
+     element.style.display='none';
+  }
+
+  </script>
+	</div>
 </body>
 </html>

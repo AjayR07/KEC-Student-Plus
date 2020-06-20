@@ -2,8 +2,8 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3308
--- Generation Time: May 24, 2020 at 01:15 PM
+-- Host: 127.0.0.1:3306
+-- Generation Time: Jun 12, 2020 at 06:18 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.5
 
@@ -325,6 +325,44 @@ INSERT INTO `getdetails` (`rollno`, `name`, `mail`, `phone`, `batch`, `dept`, `s
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `noncertinfo`
+--
+
+DROP TABLE IF EXISTS `noncertinfo`;
+CREATE TABLE IF NOT EXISTS `noncertinfo` (
+  `appno` varchar(16) NOT NULL,
+  `day` int(11) NOT NULL,
+  `hrs` varchar(20) NOT NULL,
+  `reason` varchar(50) NOT NULL,
+  `total` int(11) NOT NULL,
+  PRIMARY KEY (`appno`,`day`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `noncertod`
+--
+
+DROP TABLE IF EXISTS `noncertod`;
+CREATE TABLE IF NOT EXISTS `noncertod` (
+  `appno` varchar(16) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `regno` varchar(8) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `need` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `appfacty` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `activity` varchar(25) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `nodays` int(11) NOT NULL,
+  `advisor` varchar(20) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT 'Pending',
+  `yearin` varchar(20) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT 'Pending',
+  PRIMARY KEY (`appno`),
+  KEY `Foreign` (`regno`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `oddetails`
 --
 
@@ -352,6 +390,8 @@ CREATE TABLE IF NOT EXISTS `oddetails` (
 
 INSERT INTO `oddetails` (`appno`, `regno`, `appdate`, `odtype`, `title`, `odfrom`, `odto`, `hrs`, `college`, `state`, `purpose`, `status`) VALUES
 ('18CSE002060441', '18CSR002', '2020-04-06', 'SPORT', 'aefwtryhg', '2020-04-07', '2020-04-09', 'half', 'igyutfgjhsakld', 'TAMILNADU', 'sdfsdfsd', 'Pending'),
+('18CSE002070694', '18CSR002', '2020-06-07', 'PAPER', 'Big Data ', '2020-06-09', '2020-06-10', 'full', 'PSG iTech', 'TAMILNADU', 'NIL', 'Approved'),
+('18CSE002080618', '18CSR002', '2020-06-08', 'PROJECT', 'Hello', '2020-06-10', '2020-06-12', 'full', 'Kongu', 'TAMILNADU', 'NIL', 'Pending'),
 ('18CSE002090414', '18CSR002', '2020-04-09', 'SPORT', 'God ', '2020-04-10', '2020-04-10', 'half', 'Kongu Engineering', 'OTHERSTATE', 'hfxfhgjgjkh', 'Pending'),
 ('18CSE002230339', '18CSR002', '2020-03-23', 'PAPER', 'Big Data', '2020-03-24', '2020-03-24', 'full', 'PSG iTech', 'TAMILNADU', 'Just for cheking purpose', 'Pending'),
 ('18CSE002240398', '18CSR002', '2020-03-24', 'PAPER', 'Foot Ball', '2020-03-25', '2020-03-25', 'half', 'Kongu Engineering COlelge', 'OTHERSTATE', 'Final Match aojoajd', 'Pending'),
@@ -413,7 +453,7 @@ CREATE TABLE IF NOT EXISTS `postod` (
 --
 
 INSERT INTO `postod` (`appno`, `prize`, `certificate`, `status`) VALUES
-('18CSE002230339', 'PARTICIPATION', '18CSR002__12APR_5732.pdf', 'Approved'),
+('18CSE002070694', 'FIRST', '18CSR002__07JUN_1424.pdf', 'Approved'),
 ('18CSE002240398', 'FIRST', '18CSR002__29APR_5997.pdf', 'Pending');
 
 -- --------------------------------------------------------
@@ -444,8 +484,10 @@ CREATE TABLE IF NOT EXISTS `preod` (
 
 INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comments2`, `status2`, `staff3`, `comments3`, `status3`, `advisor`) VALUES
 ('18CSE002060441', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
+('18CSE002070694', 'Abinash', 'asdah', 'Approved', 'Abinash', 'good', 'Approved', 'Abinash', 'dsfddf', 'Approved', 'Approved'),
+('18CSE002080618', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
 ('18CSE002090414', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
-('18CSE002230339', 'maliga', 'nice', 'Approved', 'Nandhini', 'Good', 'Approved', 'Chitra', 'Good', 'Approved', 'Pending'),
+('18CSE002230339', 'maliga', 'nice', 'Approved', 'Nandhini', 'Good', 'Approved', 'Chitra', 'Good', 'Approved', 'Approved'),
 ('18CSE002240398', 'abi', 'Good', 'Approved', 'abi', 'Very Good', 'Approved', 'Abinash', 'good presentation', 'Approved', 'Approved'),
 ('18CSE002300490', 'Abinash', 'Very nice explanation', 'Approved', NULL, NULL, NULL, NULL, NULL, NULL, 'Pending'),
 ('18CSE007160410', 'malliga', 'good', 'Approved', 'latha', 'good', 'Approved', 'Geethaaaa', 'goodu', 'Approved', 'Approved'),
@@ -510,11 +552,23 @@ CREATE TABLE IF NOT EXISTS `staff` (
 
 INSERT INTO `staff` (`staffid`, `name`, `userid`, `pass`, `mail`, `dept`, `batch`, `sec`, `designation`) VALUES
 ('12345', 'Abinash', 'abi', '202cb962ac59075b964b07152d234b70', 'abi@kongu.ac.in', 'CSE', '2018', 'A', 'Advisor'),
-('102', 'Latha', 'lathars', '202cb962ac59075b964b07152d234b70', 'latha@kongu.ac.in', 'CSE', '2018', 'A', 'Advisor');
+('102', 'Latha', 'lathars', '202cb962ac59075b964b07152d234b70', 'latha@kongu.edu', 'CSE', '2018', 'A', 'Advisor');
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `noncertinfo`
+--
+ALTER TABLE `noncertinfo`
+  ADD CONSTRAINT `nonappno constraint` FOREIGN KEY (`appno`) REFERENCES `noncertod` (`appno`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `noncertod`
+--
+ALTER TABLE `noncertod`
+  ADD CONSTRAINT `Foreign` FOREIGN KEY (`regno`) REFERENCES `registration` (`regno`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `oddetails`

@@ -17,8 +17,6 @@ include_once('../assets/notiflix.php');
 <?php
 if(isset($_POST['PROCEED']))
 {
-    
-    //echo '<script>alert("Getting into isset proceed");</script>';
     $appno =$_POST['appnum'];
     $sql="SELECT * FROM postod where appno LIKE '$appno'";
     $result=$con->query($sql);
@@ -75,7 +73,7 @@ if(!isset($_POST['PROCEED']))
 </script>
 <style>
 body  {
-  background-image: url("../backgrd.jpg");
+  background-image: url("../backlogout.jpg");
 }
 </style>
 
@@ -133,7 +131,7 @@ body  {
 <?php include_once('studentnav.php');
 include_once('../assets/notiflix.php');
 ?>
-
+ 
 <div class="nupload">
 <center>
 <div class="page-wrapper p-t-20 p-b-20" >
@@ -299,7 +297,7 @@ include_once('../assets/notiflix.php');
 function fill_appno($con)
  {
     $output = '';
-    $sql="SELECT O.appno from oddetails O inner JOIN preod PR on O.appno=PR.appno LEFT JOIN postod PO on PR.appno=PO.appno WHERE O.regno='{$_SESSION['uname']}' and PR.advisor='Approved' and O.`appno` not in (SELECT appno from postod)";
+    $sql="SELECT O.appno from oddetails O inner JOIN preod PR on O.appno=PR.appno LEFT JOIN postod PO on PR.appno=PO.appno WHERE O.regno='{$_SESSION['uname']}' and PR.advisor='Approved' and PR.yearin='Approved' and O.`appno` not in (SELECT appno from postod)";
    // echo '<script>alert("'.$sql.'");</script>';
     $result = $con->query($sql);
     if($result->num_rows==0)

@@ -20,7 +20,7 @@
    <!-- No Script Part -->
    <noscript><meta http-equiv="refresh" content="0; URL='../errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
-  <script src="../assets/dist/jquery.min.js"></script>
+  <script src="../assets/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.css">
   <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.4/dist/semantic.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -220,27 +220,17 @@
    ?>
 
 
-
-
-
-
-
-
 <div class="ui tiny inverted modal" id="otpvld">
-
-
     <div class="header">
         KEC Student+
       <button class="ui right floated icon button" id="closebtn1">
           <i class=" close icon"></i>
       </button>
             </div>
-
-
                   <div class="content">
+                    <script>Notiflix.Notify.Info('Please do not refresh this page');</script>
                     <div class="ui form" id="form1">
                           <form  action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-
                           <br></br>
                           <center>
                           <div class="ui header"><span class="ui inverted grey text"> Enter the OTP</span></div><br>
@@ -253,11 +243,8 @@
 
                           <div class="ui inverted red error message"></div>
                           </center>
-
                   </div>
                 </div>
-
-
             <div class="actions">
               <button class="ui positive right labeled icon button" type="submit" name="submit">
                   Verify<i class="checkmark icon"></i>
@@ -274,19 +261,14 @@
           <i class=" close icon"></i>
       </button>
             </div>
-
-
                   <div class="content">
                     <div class="ui form" id="form2">
                           <form  action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-
                           <br></br>
                           <center>
                           <div class="ui header"><span class="ui inverted grey text"> Enter New Password</span></div>
                           <div class="ui large  input focus">
                             <input type="password" name="pass" id="pass"  placeholder="Password *"  style="text-align:center;"/>
-
-
                           </div>
                           <br></br>
                               <div class="ui header"><span class="ui inverted grey text"> Confirm New Password</span></div>

@@ -18,7 +18,32 @@ include_once("db.php");
         <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , https://kecstudent.xyz/ ,students,Certificates Repository ,perundurai"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="author" content="Abinash S Arul Prasath V Ajay R">
+		<style>
+/* Refers the whole setup */
+::-webkit-scrollbar {
+	width: 13px;
+	border-radius: 13px;
+}
 
+/* Refers tracking path */
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 13px;
+	opacity: 1.0;
+	/* background-color: #F5F5F5; */
+}
+/* Refers Draggable Bar */
+::-webkit-scrollbar-thumb {
+	border-radius: 13px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #ef8376; 
+}
+</style>
 	<link rel="stylesheet" href="assets/css/main.css" />
 <!-- No Script Part -->
 	<noscript><meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>
@@ -165,7 +190,8 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 														<a href="#">Student And Teacher</a>
 													</div>
 													<div class="ui content">
-														Now student and teacher have different logins for their specified roles.
+														<!-- Now student and teacher have different logins for their specified roles. -->
+														Now student and teacher can <br>co-ordinate in this e-Platform for their specified needs.
 													</div>
 											</div>
 										</div>
@@ -309,8 +335,8 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 
 							<marquee  direction="up" height=250px">
 								<ul type = "disc">
-							 <li > Enhanced UI / UX.</li>
-							<li>Mobile view has been improved.</li>
+							 <li > Enhanced UI / UX.</li><br>
+							<li>Mobile view has been improved.</li><br>
 							<li>Implementation of AJAX and Dyanamic Loading.</li>
 						</ul>
 							</marquee>
