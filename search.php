@@ -28,8 +28,6 @@
         $Sec=$row['sec'];
         $Name=$row['name'];
         $Status="FOUND";
-        
-        
             $sql1="SELECT * from registration where `regno` like '$Roll'";
 
             $temp=($con->query($sql1))->fetch_assoc();
@@ -73,11 +71,6 @@
             }
             $total=$p+$a+$d;
             }
-
-
-
-
-
         }
         else{
             $Status="NOT FOUND";
@@ -85,10 +78,5 @@
     }
 $result=array("$Mail","$batch","$Dept","$Sec","$Name","$phone","$Status","$total","$p","$a","$d","$o","$Roll");
 $myJSON=json_encode($result);
-
-
 echo $myJSON;
-   
- 
-
 ?>
