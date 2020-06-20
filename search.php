@@ -17,7 +17,7 @@
 
     if($Roll!=="")
     {
-        $sql="select * from `getdetails` where `rollno` like '$Roll'";
+        $sql="select * from `registration` where `rollno` like '$Roll'";
         $data=$con->query($sql);
         if($data->num_rows!=0){
         $row=$data->fetch_assoc();
