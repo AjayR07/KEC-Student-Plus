@@ -17,7 +17,7 @@
 
     if($Roll!=="")
     {
-        $sql="select * from `registration` where `rollno` like '$Roll'";
+        $sql="select * from `registration` where `regno` like '$Roll'";
         $data=$con->query($sql);
         if($data->num_rows!=0){
         $row=$data->fetch_assoc();
@@ -30,7 +30,7 @@
         $Status="FOUND";
         
         
-            $sql1="SELECT * from registration where regno like '$Roll'";
+            $sql1="SELECT * from registration where `regno` like '$Roll'";
 
             $temp=($con->query($sql1))->fetch_assoc();
             $sql2="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$Roll') and (r.regno like o.regno) and (o.appno like p.appno)";
