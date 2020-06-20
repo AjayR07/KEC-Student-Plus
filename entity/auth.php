@@ -19,18 +19,17 @@
 
 $regno=$_GET['regno'];
 $hash=$_GET['hash'];
-$sql="select * from `authenticate` where `regno` like '$regno'";
+$sql="select * from `registration` where `regno` like '$regno'";
 $data=$con->query($sql);
 $row=$data->fetch_assoc();
 $status=$row['status'];
 $key='AbinashArulAjayMNC';
 $hash1=sha1($regno.$key);
-if(strcmp($status,'Pending')==0)
+if(strcmp($status,'Not Verified')==0)
 {
-
       if(strcmp($hash,$hash1)==0)
       {
-         $sql = "UPDATE `authenticate` SET `status` = 'Verified' WHERE `regno` = '$regno' ";
+         $sql = "UPDATE `registration` SET `status` = 'Verified' WHERE `regno` = '$regno' ";
          $con->query($sql);
          echo "<script> Notiflix.Report.Success( 'Verified Successful ! ', 'Your Account verified Successful', 'Okay', function(){location.replace('../index.php');} );</script>";
       }
