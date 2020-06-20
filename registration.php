@@ -2,11 +2,11 @@
 
 include_once('./db.php');
 include_once('./assets/notiflix.php');
-        use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\Exception;
-        require 'PHPMailer/src/Exception.php';
-        require 'PHPMailer/src/PHPMailer.php';
-        require 'PHPMailer/src/SMTP.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 ?>
 <html>
     <head>
@@ -271,14 +271,11 @@ include_once('./assets/notiflix.php');
         $batch=$row['batch'];
         $Dept=$row['dept'];
         $Sec=$row['sec'];
-
         $phone=$row['phone'];
         $Name=$row['name'];
         $passw=md5($pass);
-        $sql="insert into registration values('$rollno','$Name','$batch','$Dept','$Sec','$gender','$Mail','$phone','$passw')";
+        $sql="UPDATE `registration` SET `pass`='$passw' WHERE `regno` like '$rollno'";
         $con->query($sql);
-        $sql1="insert into authenticate (regno) values('$rollno')";
-        $con->query($sql1);
         $key='AbinashArulAjayMNC';
         $hash=sha1($rollno.$key);
         $link='http://kecstudent.com/entity/auth.php?regno='.$rollno.'&hash='.$hash;
