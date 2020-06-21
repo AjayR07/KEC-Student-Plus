@@ -163,7 +163,7 @@ $(document).ready(function(){
   </head>
 
 <body id="root">
-<div class="preloader"><body><div class="ui active dimmer"><div class="ui massive active green elastic loader"></div></div></body></div>
+<div class="preloader"><body><div class="ui active dimmer" style="position: fixed;><div class="ui massive active green elastic loader"></div></div></body></div>
 
 
 <div class="ui modal" id="navmodal">

@@ -15,6 +15,6 @@ else{
 }
 ?>
 <script type="text/javascript">
-   Notiflix.Notify.Init({ distance:"20px",timeout:"3000",position:"right-bottom",fontSize:"20px",borderRadius:"10px",width:"300px", });
+   Notiflix.Notify.Init({ distance:"20px",timeout:"5000",position:"right-bottom",fontSize:"20px",borderRadius:"10px",width:"300px", });
    Notiflix.Report.Init({ width:"360px",titleFontSize:"25px",messageFontSize:"20px",buttonFontSize:"20px", });
 </script>

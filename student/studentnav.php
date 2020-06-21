@@ -193,7 +193,7 @@ include_once('../db.php');
   </head>
 
   <body id="root" >
-  <div class="preloader"><body><div class="ui active dimmer"><div class="ui massive active green elastic loader"></div></div></body></div>
+  <div class="preloader"><body><div class="ui active dimmer" style="position: fixed;"><div class="ui massive active green elastic loader"></div></div></body></div>
     <div class="ui tablet computer only padded grid">
       <div class="ui borderless fluid  inverted menu" style="font-size:16px">
       <a class=" active  item" id="side_nav"><i class="sidebar icon"></i></a>
@@ -201,9 +201,9 @@ include_once('../db.php');
       
         <a class="ui right aligned item" id="avatar" >
           <?php 
-          if($gender=='male')
+          if($gender=='Male')
                 echo '<img class="ui avatar image" src="../images/matthew.png"/>';
-          else if($gender=='female')
+          else if($gender=='Female')
                 echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
           else
                 echo '<img class="ui avatar image" src="../images/elyse.png"/>';
@@ -228,9 +228,9 @@ include_once('../db.php');
       
         <a class="ui right aligned item" id="avatar" >
           <?php 
-          if($gender=='male')
+          if($gender=='Male')
                 echo '<img class="ui avatar image" src="../images/matthew.png"/>';
-          else if($gender=='female')
+          else if($gender=='Female')
                 echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
           else
                 echo '<img class="ui avatar image" src="../images/elyse.png"/>';
