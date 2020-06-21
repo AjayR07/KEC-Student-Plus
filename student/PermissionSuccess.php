@@ -19,7 +19,7 @@
     <meta name="description" content="Permission Success Page">
     <meta name="author" content="Team A3">
     <link rel="icon" type="image/png" href="../KEC.png">
-
+   
     <title>Successfull</title>
 
     <link href="../staff/css/main.css" rel="stylesheet" media="all">
@@ -62,6 +62,7 @@
         height: 35px;
     }
     </style>
+    
     <?php
 if(!isset($_SESSION['appno']))
 {
@@ -84,7 +85,11 @@ else{
 
 <div class="pusher" background="../backlogout.jpg">
 
-<?php     include_once('studentnav.php'); echo "<script>Notiflix.Notify.Success('Application Submitted Successfully');</script>";?>
+<?php     
+include_once('studentnav.php'); 
+echo "<script>Notiflix.Notify.Success('Application Submitted Successfully');</script>";
+echo "<script>Notiflix.Notify.Info('Click on the Copy icon to copy the register numeber');</script>";
+?>
 <style>
 .pusher {
   background-image: url("../backlogout.jpg") !important;
@@ -94,7 +99,7 @@ else{
 
     <center>
 
-    <div class="page-wrapper p-t-100 p-b-100">
+    <div class="page-wrapper p-t-50 p-b-100">
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
                 <div class="card-image">
@@ -106,7 +111,8 @@ else{
                             <table>
                                 <tr>
                                     <td>Application:</td>
-                                    <td><h2 style="color:green"><?php echo $appno;?></h2></td>                                
+                                    <td><h2 style="color:green" class="appnocopy"><?php echo $appno;?>
+                                    <i class="copy icon" id="copythis" data-clipboard-text="<?php echo $appno; ?>"></i></h2></td>                                
                                 </tr>
                               
                                 <tr>
@@ -156,7 +162,21 @@ else{
                 </div>
             </div>
     <!-- Jquery JS-->
+    <script src="../assets/clipboard.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        document.getElementById("copythis").click();
+     }); 
+    
+        var clipboard = new ClipboardJS('#copythis');
 
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+        clipboard.on('error', function(e) {
+        console.log(e);
+        });
+    </script>
  
 
 </body>
