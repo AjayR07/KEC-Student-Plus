@@ -19,7 +19,7 @@ $mail->Username = 'apikey';          // SMTP username
 $mail->Password = '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'; // SMTP password
 $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                          // TCP port to connect to
-$mail->setFrom('admin@teama3.tech', 'KEC Student+');
+$mail->setFrom('studentplus@kongu.edu', 'KEC Student+');
 $mail->addAddress($mailto);   // Add a recipient
 
 

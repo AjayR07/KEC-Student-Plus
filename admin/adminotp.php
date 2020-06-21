@@ -10,7 +10,7 @@ require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
 include_once('../assets/notiflix.php');
-$mailto="s.abinash333@gmail.com";
+$mailto="s.abinash891@gmail.com";
 $mail = new PHPMailer;
 $mail->isSMTP(true);                            // Set mailer to use SMTP
 $mail->Host = 'smtp.sendgrid.net';             // Specify main and backup SMTP servers
@@ -19,7 +19,7 @@ $mail->Username = 'apikey';          // SMTP username
 $mail->Password = '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'; // SMTP password
 $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                          // TCP port to connect to
-$mail->setFrom('keca3family@gmail.com', 'KEC Student+');
+$mail->setFrom('studentplus@kongu.edu', 'KEC Student+');
 $mail->addAddress($mailto);   // Add a recipient
 
 $mail->isHTML(true);  // Set email format to HTML
