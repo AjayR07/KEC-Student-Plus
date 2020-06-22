@@ -10,7 +10,8 @@ include_once("staffnav.php");
 $batch=$_SESSION['batch'];
 $dept=$_SESSION['dept'];
 $sec=$_SESSION['sec'];
-	$login_session=$_SESSION['user'];
+$design=$_SESSION['design'];
+$login_session=$_SESSION['user'];
 }
 ?>
 <html>
@@ -18,10 +19,6 @@ $sec=$_SESSION['sec'];
     <title>
         Export
     </title>
-
-
-
-
     <script>
         $(document).ready(function()
         {
@@ -98,7 +95,16 @@ $('#rangeend').calendar({
     </script>
 </head>
 <body>
-<?php include_once("staffnav.php"); ?>
+<?php include_once("staffnav.php");
+include_once('../assets/notiflix.php');
+?>
+<?php
+
+if(empty($design))
+{
+    echo "<script>Notiflix.Report.Failure( 'Invalid Action', 'The User has no class Association', 'Okay',function(){window.location.replace('index.php')}); </script>";
+}
+?>
 <?php
   if(isset($_POST['sub']))
   {

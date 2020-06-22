@@ -77,10 +77,19 @@ $temp5=date('m');
 $temp6=rand(10,99);
 $appno=strval($temp1).strval($temp2).strval($temp3).strval($temp4).strval($temp5).strval($temp6);
 //echo '<script>alert("'.$appno.'")</script>';
-$sql="insert into oddetails values('$appno','$register','$appdate','$type','$title','$odfrom','$odto','$hrs','$college','$state','$purpose','Pending')";
+$sql="INSERT into oddetails values('$appno','$register','$appdate','$type','$title','$odfrom','$odto','$hrs','$college','$state','$purpose','Pending')";
 $con->query($sql);
-$sql="insert into preod (appno) values ('$appno')";
-$con->query($sql);
+if($type!='PAPER' && $type!='PROJECT')
+{
+	$sql="INSERT INTO preod (appno,staff1,comments1,status1,staff2,comments2,status2,staff3,comments3,status3) VALUES ('$appno','NA','NA','Approved','NA','NA','Approved','NA','NA','Approved')";
+	$con->query($sql);
+}
+else
+{
+	$sql="INSERT into preod (appno) values ('$appno')";
+	$con->query($sql);
+}
+	
 $_SESSION['appno']=$appno;
 echo '<script>location.href="PermissionSuccess.php"</script>';
 }
