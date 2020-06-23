@@ -99,7 +99,6 @@ function model(){
 
 function loading()
 {
-
   $('#log').hide();
   $('#logloding').show();
 
