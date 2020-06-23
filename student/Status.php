@@ -566,5 +566,4 @@ include_once('../assets/notiflix.php');
        });
        </script>
 </body>
-
 </html>
