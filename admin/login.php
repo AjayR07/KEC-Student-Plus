@@ -94,6 +94,7 @@ session_start();
 <script>
 function model(){
   $('.ui.modal')
+  .modal({closable : false})
   .modal('show');
 }
 
@@ -112,7 +113,7 @@ function resendloading()
 }
 
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../assets/jquery.min.js"></script>
 <script src="../assets/Semantic/dist/semantic.min.js"></script>
 
 <?php
@@ -124,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $user=md5($_POST['user']);
         $pass=md5($_POST['pass']);
-        if($user==md5("kecadmin") && $pass==md5("123"))
+        if($user==md5("kecadmin") && $pass==md5("Admin@123"))
         {
             
             $generator = "1357902468";
