@@ -137,7 +137,7 @@ Notiflix.Notify.Failure('No Internet Connection Detected');
 if(isset($_POST['submit']))
 {
         $user=strtolower($_POST["user"]);
-        $pass=md5($_POST["pass"]);
+        $pass=sha1($_POST["pass"],false);
         $sql="SELECT * FROM `staff` WHERE `userid` LIKE '$user' AND `pass`LIKE '$pass' ";
         $data=$con->query($sql);
         if($data->num_rows==0)
