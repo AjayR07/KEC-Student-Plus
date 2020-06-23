@@ -10,24 +10,25 @@ include_once('../db.php');
 include_once('../assets/notiflix.php');
 ?>
 <?php
-function statusbar($i,$j)
+function statusbar($i,$j,$k)
 {
-  $legend=array("Permission Form Submission","Staff-1 Approval","Staff-2 Approval","Staff-3 Approval","Advisor Approval","Year in Charge Approval","Certificate Submission","OnDuty Approval");
+ 
   $status="<ul class='steps'>";
   $n=1;
   while($n<=$i)
   {
-    $status.='<li class="step step--complete step--inactive" ><span class="step__icon" ></span><span class="step__label">'.$n.'</span></li>';
+    $status.='<li class="step step--complete step--inactive" ><span class="step__icon"></span><span class="step__label">'.$n.'</span></li>';
     $n+=1;
   }
+  echo "<script>console.log(".$n.")</script>";
   if($j==1)
   {
-    if($n<8)
+    if($n<=$k)
     {
     $status.='<li class="step step--incomplete step--active" ><span class="step__icon"></span><span class="step__label">'.$n.'</span></li>';
     $n+=1;
     }
-    while($n<=8)
+    while($n<=$k)
     {
         $status.='<li class="step step--incomplete step--inactive" ><span class="step__icon"></span><span class="step__label">'.$n.'</span></li>';
         $n+=1;
@@ -35,125 +36,185 @@ function statusbar($i,$j)
   }
   else if($j==-1)
   {
-    while($n<=8)
+    while($n<=$k)
     {
-        $status.='<li class="step step--incomplete step--inactive"><span class="step__icon" style="   background-color: red;"></span><span class="step__label">'.$n.'</span></li>';
+        $status.='<li class="step step--incomplete step--inactive"><span class="step__icon" style="background-color: red;"></span><span class="step__label">'.$n.'</span></li>';
         $n+=1;
     }
   }
   $status.= '</ul>';
   return $status;
 }
-function statusclassify($app,$con,$ele)
+
+
+function statusclassify($app,$con,$tab)
 {
   //Function for the status bar
-    $i=1;$j=1;
-    $sql1="SELECT status1,status2,status3,advisor,yearin from preod where appno like '$app'";
-    $data=$con->query($sql1);
-    $set=$data->fetch_assoc();
-    if($set['status1']=='Approved')
+    $i=1;$j=1;$k=8;
+    $approve=array('Permission Form Submitted','Staff 1 Approved','Staff 2 Approved','Staff 3 Approved','Advisor Approved','Year in Charge Approved','Certificate Uploaded','OD Approved');
+    $legend=array("Waiting for Permission Form Submission","Waiting for Staff-1 Approval","Waiting for Staff-2 Approval","Waiting for Staff-3 Approval","Waiting for Advisor Approval","Waiting for Year in Charge Approval","Waiting for Certificate Submission","Waiting for OnDuty Approval");
+    $decline=array('Staff 1 Declined','Staff 2 Declined','Staff 3 Declined','Advisor Declined','Year in Charge Declined','OD Declined');
+    if(strcmp($tab,"oddetails")==0)
     {
-      $i++;
-      if($set['status2']=='Approved')
+      $sql1="SELECT status1,status2,status3,advisor,yearin from preod where appno like '$app'";
+      $data=$con->query($sql1);
+      $set=$data->fetch_assoc();
+      if($set['status1']=='Approved')
       {
         $i++;
-        if($set['status3']=='Approved')
+        if($set['status2']=='Approved')
         {
           $i++;
-          if($set['advisor']=='Approved')
+          if($set['status3']=='Approved')
           {
             $i++;
-            if($set['yearin']=='Approved')
+            if($set['advisor']=='Approved')
             {
               $i++;
+              if($set['yearin']=='Approved')
+              {
+                $i++;
+                $sql1="SELECT `certificate`,`status` from postod where appno like '$app'";
+                $data2=$con->query($sql1);
+                if($data2->num_rows)
+                {
+                  $set2=$data2->fetch_assoc();
+                  if($set2['certificate'])
+                  {
+                    $i++;
+                  
+                    if($set2['status']=='Approved')
+                    {
+                      $i++;
+                    }
+                    else if( $set2['status']=='Declined')
+                    {
+                        $j=-1;
+                    }
+                  }
+                }
+              }
             }
           }
         }
       }
+
+      if($set['yearin']=='Declined' || $set['advisor']=='Declined' || $set['status3']=='Declined'|| $set['status2']=='Declined' || $set['status1']=='Declined')  
+      {
+        $j=-1;
+      }
+   
+      $n=$i;
+      $sql2="SELECT odtype from oddetails where appno like '$app'";
+      $type=($con->query($sql2))->fetch_assoc();
+      if( strcmp($type["odtype"],"PROJECT") && strcmp($type["odtype"],"PAPER"))
+      {
+        $i-=3;
+        $k=5;
+        $approve=array('Permission Form Submitted','Advisor Approved','Year in Charge Approved','Certificate Uploaded','OD Approved',"","","");
+        $legend=array("Waiting for Permission Form Submission","Waiting for Advisor Approval","Waiting for Year in Charge Approval","Waiting for Certificate Submission","Waiting for OnDuty Approval","","","");
+        $decline=array('Advisor Declined','Year in Charge Declined',"",'OD Declined');
+      }
     }
 
-   if($set['yearin']=='Declined' || $set['advisor']=='Declined' || $set['status3']=='Declined'|| $set['status2']=='Declined' || $set['status1']=='Declined')  
-   {
-     $j=-1;
-   }
 
-    $sql1="SELECT `certificate`,`status` from postod where appno like '$app'";
-    $data2=$con->query($sql1);
-    if($data2->num_rows==0)
+    else if(strcmp($tab,"noncertod")==0)
     {
-      if($set['yearin']=='Approved')
-          $j=-1;
-    }
-    else
-    {
-      $set2=$data2->fetch_assoc();
-      if(!empty($set2['certificate']))
+      $sql1="select advisor,yearin from noncertod where appno like '$app'";
+      $data=$con->query($sql1);
+      $set=$data->fetch_assoc();
+      if($set['advisor']=='Approved')
       {
         $i++;
-        if($set2['status']=='Approved')
+        if($set['yearin']=='Approved')
         {
           $i++;
         }
-      }     
-      if(empty($set2['certificate']) || $set2['status']=='Declined')
+      }
+
+      if($set['yearin']=='Declined' || $set['advisor']=='Declined')  
+      {
+        $j=-1;
+      }
+      $approve=array('Permission Form Submitted','Advisor Approved','On Duty Approved','','','','','');
+      $legend=array("","Waiting for Advisor Approval","Waiting for Year in Charge Approval","","","","","","");
+      $decline=array('Advisor Declined','Year in Charge Declined','','','','','');
+
+      $k=3;
+    }
+
+
+    else if(strcmp($tab,"othercert")==0)
+    {
+   
+      $sql="SELECT r.status from othercert r where appno like '$app'";
+      $sts=($con->query($sql))->fetch_assoc();
+      if($sts['status']=='Approved')
+      {
+        $i++;
+      }
+      else if( $sts['status']=='Declined')
       {
           $j=-1;
       }
+      $approve=array('Certificate Registered','Certificate Approved','','','','','','');
+      $legend=array("","Waiting for Certificate Approval","","","","","","","");
+      $decline=array('Certificate Declined',"",'','','','','');
+    
+      $k=2;
     }
 
-    $legend=array("Permission Form Submission","Staff-1 Approval","Staff-2 Approval","Staff-3 Approval","Advisor Approval","Year in Charge Approval","Certificate Submission","OnDuty Approval");
+
     $st="<span style='color:cyan;'>";
-    $br="</span><br><br>Waiting for ";
+    $br="</span><br><br>";
     $status='';
-    if(strcmp($ele,"status")==0)
+
+    if($j==1)
     {
-      if($j==1)
+      switch($i)
       {
-        switch($i)
-        {
-          case 1: $status=$st.'Permission Form Submitted'.$br.$legend[1];
-                  break;
-          case 2: $status=$st.'Staff 1 Approved'.$br.$legend[2];
-                  break;
-          case 3: $status=$st.'Staff 2 Approved'.$br.$legend[3];
-                  break;
-          case 4: $status=$st.'Staff 3 Approved'.$br.$legend[4];
-                  break;
-          case 5: $status=$st.'Advisor Approved'.$br.$legend[5];
-                  break;
-          case 6: $status=$st.'Year in Charge Approved'.$br.$legend[6];
-                  break;
-          case 7: $status=$st.'Certificate Uploaded'.$br.$legend[7];
-                  break;
-          case 8: $status=$st.'OD Approved';
-                  break;
-        }
+
+
+        case 1: $status=$st.$approve[0].$br.$legend[1];
+                break;
+        case 2: $status=$st.$approve[1].$br.$legend[2];
+                break;
+        case 3: $status=$st.$approve[2].$br.$legend[3];
+                break;
+        case 4: $status=$st.$approve[3].$br.$legend[4];
+                break;
+        case 5: $status=$st.$approve[4].$br.$legend[5];
+                break;
+        case 6: $status=$st.$approve[5].$br.$legend[6];
+                break;
+        case 7: $status=$st.$approve[6].$br.$legend[7];
+                break;
+        case 8: $status=$st.$approve[7]."</span>";
+                break;
       }
-      else if($j==-1)
-      {      
-        $st="<span style='color:#F20056;'>";
-        $end="</span>";   
-        switch($i+1)
-          {
-            case 2: $status=$st.'Staff 1 Declined'.$end;
-                    break;
-            case 3: $status=$st.'Staff 2 Declined'.$end;
-                    break;
-            case 4: $status=$st.'Staff 3 Declined'.$end;
-                    break;
-            case 5: $status=$st.'Advisor Declined'.$end;
-                    break;
-            case 6: $status=$st.'Year in Charge Declined'.$end;
-                  break;
-            case 7: $status=$st.'Certificate Not Uploaded'.$end;
-                    break;
-            case 8: $status=$st.'OD Declined'.$end;
-                    break;
-          }
-      }
-      return $status;
     }
-  return statusbar($i,$j);
+    else if($j==-1)
+    {      
+      $st="<span style='color:#F20056;'>";
+      $end="</span>";   
+      switch($i+1)
+      {
+        
+          case 2: $status=$st.$decline[0].$end;
+                  break;
+          case 3: $status=$st.$decline[1].$end;
+                  break;
+          case 4: $status=$st.$decline[2].$end;
+                  break;
+          case 5: $status=$st.$decline[3].$end;
+                  break;
+          case 6: $status=$st.$decline[4].$end;
+                break; 
+          case 8: $status=$st.$decline[5].$end;
+                  break;
+      }
+    }
+    return array($i,$j,$k,$status);
 }
 ?>
 <!DOCTYPE html>
@@ -395,40 +456,81 @@ include_once('../assets/notiflix.php');
     </tr>
   </thead>
   <tbody>
-    <?php
+  <?php
     $i=1;
+
     $sql="SELECT r.appno,r.odfrom,r.odtype from oddetails r where `regno` like '$register'";
-    // , preod p where (r.regno like d.regno) and (d.appno like p.appno)
-    // and (r.batch like '$batch') and (r.dept like '$dep') and (r.sec like '$sec') and (p.status1 is not null) and (p.status2 is not null)
-    // and (p.status3 is not null) and (p.advisor like 'Pending');";
-    //echo '<script>alert("'.$sql.'");</script>';
     $data=$con->query($sql);
-    if($data->num_rows==0)
+    if($data->num_rows!=0)
     {
-        echo '<tr><td colspan="6">No Record Found</td></tr>';
-    }
-    else{
-    while ($row = mysqli_fetch_array($data))
-    {
-      $index=$row["appno"];
-       echo "<tr>";
-       echo '<td>'.$i++.'</td>';
-      echo '<td>'.$row["appno"].'</td>';
-      echo "<td>".date_format(date_create($row['odfrom']),'d/m/Y')."</td>";
-      echo "<td >".$row["odtype"]."</td>";
-      echo "<td id='pro' name='pro'>".statusclassify($row['appno'],$con,"bar")."</td>";
-      echo "<td style='font-size:15px'>".statusclassify($row['appno'],$con,"status")."</td>";
-      echo "</tr>";
-
+      while ($row = mysqli_fetch_array($data))
+      {
+ 
+        echo "<tr>";
+        echo '<td>'.$i++.'</td>';
+        echo '<td>'.$row["appno"].'</td>';
+        echo "<td>".date_format(date_create($row['odfrom']),'d/m/Y')."</td>";
+        echo "<td >".$row["odtype"]."</td>";
+        $arr=statusclassify($row['appno'],$con,"oddetails");
+        echo "<td id='pro' name='pro'>".statusbar($arr[0],$arr[1],$arr[2])."</td>";
+        echo "<td style='font-size:15px'>".$arr[3]."</td>";
+        echo "</tr>";
+      }
     }
 
-   }
+    $sql="SELECT r.appno,r.activity,r.start from noncertod r where `regno` like '$register'";
+    $data1=$con->query($sql);
+    if($data1->num_rows!=0)
+    {
+      while ($row = mysqli_fetch_array($data1))
+      {
+
+        echo "<tr>";
+        echo '<td>'.$i++.'</td>';
+        echo '<td>'.$row["appno"].'</td>';
+        echo "<td>".date_format(date_create($row['start']),'d/m/Y')."</td>";
+        echo '<td >'.$row["activity"].'</td>';
+        $arr=statusclassify($row['appno'],$con,"noncertod");
+        echo "<td id='pro' name='pro'>".statusbar($arr[0],$arr[1],$arr[2])."</td>";
+        echo "<td style='font-size:15px'>".$arr[3]."</td>";
+        echo "</tr>";
+      }
+    }
+
+    $sql="SELECT r.appno,r.start,r.type from othercert r where `regno` like '$register'";
+    $data2=$con->query($sql);
+    if($data2->num_rows!=0)
+    {
+      while ($row = mysqli_fetch_array($data2))
+      {
+   
+        echo "<tr>";
+        echo '<td>'.$i++.'</td>';
+        echo '<td>'.$row["appno"].'</td>';
+        echo "<td>".date_format(date_create($row['start']),'d/m/Y')."</td>";
+        echo '<td >'.$row["type"].'</td>';
+        $arr=statusclassify($row['appno'],$con,"othercert");
+        echo "<td id='pro' name='pro'>".statusbar($arr[0],$arr[1],$arr[2])."</td>";
+        echo "<td style='font-size:15px'>".$arr[3]."</td>";
+        echo "</tr>";
+      }
+    }
+
+    if(($data->num_rows==0)&&($data1->num_rows==0)&&($data2->num_rows==0))
+    {
+      echo "<tr><td colspan='6' ><center>No Records Found</center></td></tr>";
+    }
+
+    
     $con->close();
-?>
+  ?>
 
   </tbody>
 </table>
 </div>
+
+
+
 <div class="ui basic modal">
   <div class="ui icon header">
     <i class="info icon"></i>
