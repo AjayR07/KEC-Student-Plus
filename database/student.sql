@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 20, 2020 at 03:28 PM
+-- Generation Time: Jun 22, 2020 at 06:00 PM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.5
 
@@ -113,6 +113,14 @@ CREATE TABLE IF NOT EXISTS `oddetails` (
   KEY `regno constraint` (`regno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
+--
+-- Dumping data for table `oddetails`
+--
+
+INSERT INTO `oddetails` (`appno`, `regno`, `appdate`, `odtype`, `title`, `odfrom`, `odto`, `hrs`, `college`, `state`, `purpose`, `status`) VALUES
+('18CSE002210654', '18CSR002', '2020-06-21', 'SPORT', 'Yoga Competition', '2020-06-22', '2020-06-22', 'full', 'KEC', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE061210627', '18CSR061', '2020-06-21', 'PAPER', 'Big Data', '2020-06-22', '2020-06-22', 'full', 'Kongu Engineering College', 'TAMILNADU', 'NIL', 'Pending');
+
 -- --------------------------------------------------------
 
 --
@@ -177,6 +185,14 @@ CREATE TABLE IF NOT EXISTS `preod` (
   PRIMARY KEY (`appno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
+--
+-- Dumping data for table `preod`
+--
+
+INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comments2`, `status2`, `staff3`, `comments3`, `status3`, `advisor`, `yearin`) VALUES
+('18CSE002210654', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Pending'),
+('18CSE061210627', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending');
+
 -- --------------------------------------------------------
 
 --
@@ -204,7 +220,6 @@ CREATE TABLE IF NOT EXISTS `registration` (
 --
 
 INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `mail`, `phone`, `pass`, `status`) VALUES
-(' 17CSR10', 'Manisha Kokila M', 2017, 'CSE', 'B', 'Female', 'manishakokilam.17cse@kongu.edu', 7550300970, NULL, 'Not Verified'),
 ('16CSR046', 'Dharan Kumar M', 2017, 'CSE', 'A', 'Male', 'dharankumarm.16cse@kongu.edu', 9952376764, NULL, 'Not Verified'),
 ('17CSL239', 'Efshiba  V', 2017, 'CSE', 'A', 'Female', 'efshibav.17cse@kongu.edu', 9486671075, NULL, 'Not Verified'),
 ('17CSL240', 'Ezhil  Bharathi  P', 2017, 'CSE', 'A', 'Male', 'ezhilbharathip.17cse@kongu.edu', 9095385903, NULL, 'Not Verified'),
@@ -324,6 +339,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('17CSR103', 'Madhumitha S', 2017, 'CSE', 'B', 'Female', 'madhumithas.17cse@kongu.edu', 6381209789, NULL, 'Not Verified'),
 ('17CSR104', 'Malini M', 2017, 'CSE', 'B', 'Female', 'malinim.17cse@kongu.edu', 8668063753, NULL, 'Not Verified'),
 ('17CSR105', 'Manickam S', 2017, 'CSE', 'B', 'Male', 'manickams.17cse@kongu.edu', 9159743899, NULL, 'Not Verified'),
+('17CSR106', 'Manisha Kokila M', 2017, 'CSE', 'B', 'Female', 'manishakokilam.17cse@kongu.edu', 7550300970, NULL, 'Not Verified'),
 ('17CSR107', 'Manojj M', 2017, 'CSE', 'B', 'Male', 'manojjncp.17cse@kongu.edu', 9965673346, NULL, 'Not Verified'),
 ('17CSR108', 'Manoj Kumar S', 2017, 'CSE', 'B', 'Male', 'manojkumars.17cse@kongu.edu', 7539926147, NULL, 'Not Verified'),
 ('17CSR109', 'Mehul Gupta', 2017, 'CSE', 'B', 'Male', 'mehulguptan.17cse@kongu.edu', 9805902038, NULL, 'Not Verified'),
@@ -474,12 +490,12 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSL257', 'Vasantha Kumar.K', 2018, 'CSE', 'D', 'Male', 'vasanthakumark.18cse@kongu.edu ', 6385273838, NULL, 'Not Verified'),
 ('18CSL258', 'Vigneshwar.T', 2018, 'CSE', 'D', 'Male', 'Bigneshwart18cse@kongu.edu', 8667314256, NULL, 'Not Verified'),
 ('18CSR001', 'Aarthy S', 2018, 'CSE', 'A', 'Female', 'aarthys.18cse@kongu.edu', 8270881074, NULL, 'Not Verified'),
-('18CSR002', 'Abinash S', 2018, 'CSE', 'A', 'Male', 'abinashs.18cse@kongu.edu', 8807973185, NULL, 'Not Verified'),
+('18CSR002', 'Abinash S', 2018, 'CSE', 'A', 'Male', 'abinashs.18cse@kongu.edu', 8807973185, '202cb962ac59075b964b07152d234b70', 'Verified'),
 ('18CSR003', 'Abirami S P', 2018, 'CSE', 'A', 'Female', 'abiramisp.18cse@kongu.edu', 7598137901, NULL, 'Not Verified'),
 ('18CSR004', 'Adhithiya G J', 2018, 'CSE', 'A', 'Male', 'adhithiyagj.18cse@kongu.edu', 7871502525, NULL, 'Not Verified'),
 ('18CSR005', 'Ajay Krishnaa M', 2018, 'CSE', 'A', 'Female', 'ajaykrishnaam.18cse@kongu.edu', 9789345803, NULL, 'Not Verified'),
 ('18CSR006', 'Ajay Kumar K B', 2018, 'CSE', 'A', 'Female', 'ajaykumarkb.18cse@kongu.edu', 9843964484, NULL, 'Not Verified'),
-('18CSR007', 'Ajay R', 2018, 'CSE', 'A', 'Male', 'ajayr.18cse@kongu.edu', 9944790344, NULL, 'Not Verified'),
+('18CSR007', 'Ajay R', 2018, 'CSE', 'A', 'Male', 'ajayr.18cse@kongu.edu', 9944790344, '202cb962ac59075b964b07152d234b70', 'Verified'),
 ('18CSR008', 'Ajith Kumar K', 2018, 'CSE', 'A', 'Male', 'ajithkumark.18cse@kongu.edu', 8110859406, NULL, 'Not Verified'),
 ('18CSR009', 'Akash V', 2018, 'CSE', 'A', 'Male', 'akashv.18cse@kongu.edu', 9487992268, NULL, 'Not Verified'),
 ('18CSR010', 'Akshykumar Bhiva Mote B', 2018, 'CSE', 'A', 'Male', 'akshykumarbhivamoteb.18cse@kongu.edu', 6379516967, NULL, 'Not Verified'),
@@ -487,7 +503,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR012', 'Anju R', 2018, 'CSE', 'A', 'Female', 'anjur.18cse@kongu.edu', 9843137133, NULL, 'Not Verified'),
 ('18CSR013', 'Anuradha R', 2018, 'CSE', 'A', 'Female', 'anuradhar.18cse@kongu.edu', 9159795583, NULL, 'Not Verified'),
 ('18CSR014', 'Anusruti D', 2018, 'CSE', 'A', 'Female', 'anusrutid.18cse@kongu.edu', 9442122591, NULL, 'Not Verified'),
-('18CSR015', 'Arul Prasath V', 2018, 'CSE', 'A', 'Male', 'arulprasathv.18cse@kongu.edu', 9994198353, NULL, 'Not Verified'),
+('18CSR015', 'Arul Prasath V', 2018, 'CSE', 'A', 'Male', 'arulprasathv.18cse@kongu.edu', 9994198353, '202cb962ac59075b964b07152d234b70', 'Verified'),
 ('18CSR016', 'Arvindkumar P', 2018, 'CSE', 'A', 'Male', 'arvindkumarp.18cse@kongu.edu', 9489231654, NULL, 'Not Verified'),
 ('18CSR017', 'Arwin Prakadis R S', 2018, 'CSE', 'A', 'Male', 'arwinprakadisrs.18cse@kongu.edu', 6383348013, NULL, 'Not Verified'),
 ('18CSR018', 'Ashwath G S', 2018, 'CSE', 'A', 'Male', 'ashwathgs.18cse@kongu.edu', 9361144460, NULL, 'Not Verified'),
@@ -533,7 +549,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR058', 'Harseta S', 2018, 'CSE', 'A', 'Female', 'harsetas.18cse@kongu.edu', 7373173158, NULL, 'Not Verified'),
 ('18CSR059', 'Hemanandhini K', 2018, 'CSE', 'A', 'Female', 'hemanandhinik.18cse@kongu.edu', 7373118616, NULL, 'Not Verified'),
 ('18CSR060', 'Hemavathy N', 2018, 'CSE', 'A', 'Female', 'hemavathyn.18cse@kongu.edu', 9894476738, NULL, 'Not Verified'),
-('18CSR061', 'Indiraa K K', 2018, 'CSE', 'B', 'FEMALE', 'Indiraakk.18cse@kongu.edu', 9842355705, NULL, 'Not Verified'),
+('18CSR061', 'Indiraa K K', 2018, 'CSE', 'B', 'FEMALE', 'Indiraakk.18cse@kongu.edu', 9842355705, '202cb962ac59075b964b07152d234b70', 'Verified'),
 ('18CSR062', 'Induja N', 2018, 'CSE', 'B', 'FEMALE', 'indujan.18cse@kongu.edu', 9384309568, NULL, 'Not Verified'),
 ('18CSR063', 'Jayapriya J', 2018, 'CSE', 'B', 'FEMALE', 'jayapriyaj.18cse@kongu.edu', 6383786620, NULL, 'Not Verified'),
 ('18CSR064', 'Jayasri P V', 2018, 'CSE', 'B', 'FEMALE ', 'jayasripv.18cse@kongu.edu', 7558143665, NULL, 'Not Verified'),
@@ -936,7 +952,8 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('19CSR229', 'Yogapriya S', 2019, 'CSE', 'D', 'Female', 'yogapriyas.19cse@kongu.edu', 6379846198, NULL, 'Not Verified'),
 ('19CSR230', 'Yogeshwaran R', 2019, 'CSE', 'D', 'Male', 'yogeshwaranr.19cse@kongu.edu', 6382207515, NULL, 'Not Verified'),
 ('19CSR231', 'Amritpreet Singh', 2019, 'CSE', 'D', 'Male', 'amritpreetsingh.19cse@kongu.edu', 7889879208, NULL, 'Not Verified'),
-('19CSR232', 'Inder Pal Singh', 2019, 'CSE', 'D', 'Male', 'inderpalsingh.19cse@kongu.edu', 7051259395, NULL, 'Not Verified');
+('19CSR232', 'Inder Pal Singh', 2019, 'CSE', 'D', 'Male', 'inderpalsingh.19cse@kongu.edu', 7051259395, NULL, 'Not Verified'),
+('20CSR000', 'Test', 2000, 'CSE', 'T', 'Male', 'test@kongu.edu', 9876543210, '202cb962ac59075b964b07152d234b70', 'Verified');
 
 -- --------------------------------------------------------
 
@@ -949,25 +966,70 @@ CREATE TABLE IF NOT EXISTS `staff` (
   `staffid` varchar(12) NOT NULL,
   `name` varchar(30) NOT NULL,
   `userid` varchar(30) NOT NULL,
-  `pass` varchar(255) NOT NULL,
+  `pass` varchar(255) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
   `mail` varchar(45) NOT NULL,
   `dept` varchar(5) NOT NULL,
-  `batch` varchar(4) NOT NULL,
-  `sec` varchar(2) NOT NULL,
-  `designation` varchar(25) NOT NULL,
-  PRIMARY KEY (`userid`),
-  UNIQUE KEY `staffid` (`staffid`),
-  UNIQUE KEY `mail` (`mail`)
+  `batch` varchar(4) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
+  `sec` varchar(2) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
+  `designation` varchar(25) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
+  `status` varchar(12) NOT NULL DEFAULT 'Not Changed',
+  PRIMARY KEY (`staffid`) USING BTREE,
+  UNIQUE KEY `mail` (`mail`),
+  UNIQUE KEY `staffid` (`userid`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
 -- Dumping data for table `staff`
 --
 
-INSERT INTO `staff` (`staffid`, `name`, `userid`, `pass`, `mail`, `dept`, `batch`, `sec`, `designation`) VALUES
-('12345', 'Abinash', 'abi', '202cb962ac59075b964b07152d234b70', 'abi@kongu.ac.in', 'CSE', '2018', 'A', 'Advisor'),
-('102', 'Latha', 'lathars', '202cb962ac59075b964b07152d234b70', 'latha@kongu.edu', 'CSE', '2018', '', 'Year in Charge'),
-('CSE09', 'shanthi', 'shanthi', '17d84f171d54c301fabae1391a125c4e', 'shanthi.cse@kongu.ac.in', 'CSE', '', '', 'HOD');
+INSERT INTO `staff` (`staffid`, `name`, `userid`, `pass`, `mail`, `dept`, `batch`, `sec`, `designation`, `status`) VALUES
+('CSE001SF', 'Dr.N.Shanthi', 'shanthi', 'b2d788c31f49e1601f12eed77581cc6efa2e9b52', 'shanthi.cse@kongu.edu', 'CSE', NULL, NULL, 'HOD', 'Not Changed'),
+('CSE002SF', 'Dr.R.R.Rajalaxmi', 'rrr', 'dd7ca98ab81ec122dc2f0c809b438201cb32aeae', 'rrr.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE003SF', 'Dr.K.Kousalya', 'kouse', 'c8be9a810a9156f3042ad0447d49b50f111c010a', 'kouse.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE004SF', 'Dr.S.Malliga', 'mallisenthil', '0c422ba64421103f8f58fc3c8676caf9c7c73178', 'mallisenthil.cse@kongu.edu', 'CSE', '2018', NULL, 'Year in Charge', 'Not Changed'),
+('CSE005SF', 'Dr.R.C.Suganthe', 'suganthe_rc', '8bfcbc26ee80586b32a33934ffbfa1a5bad3ee06', 'suganthe_rc.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE006SF', 'Dr.P.Natesan', 'natesanp', 'a65152f5adc31a90dcd4d4130f69f9a98c424d0c', 'natesanp.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE007SF', 'Dr.C.S.Kanimozhi Selvi', 'kanimozhi', '5253762a6393e8c01c11e27e1682756e65dd4436', 'kanimozhi.cse@kongu.edu', 'CSE', '2019', NULL, 'Year in Charge', 'Not Changed'),
+('CSE008SF', 'Dr.E.Gothai', 'egothai', 'ab2a1808f6efbae0bbf812bd1b951255c0f14057', 'egothai.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE009SF', 'Dr.P.Jayanthi', 'jayanthime', '9a54585f1231c973d2dda47e691985123524f125', 'jayanthime.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE010SF', 'Dr.S.Shanthi', 'shanthis', '09b2c7022d2250d7da5b8a4d87be6f03b25978de', 'shanthis.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE011SF', 'Mr.N.P.Saravanan', 'npsaravanan', 'd6fc7991f7679ab1b36074c59860069778ab593a', 'npsaravanan.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE012SF', 'Dr.K.Nirmala Devi', 'k_nirmal', 'ca601d26bb1078ff401d39e885b750ec35a2f8f7', 'k_nirmal.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE013SF', 'Ms.PCD.Kalaivaani', 'kalairupa', '6185b6dc968a9507570a4bcf063dd40be8d62989', 'kalairupa.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE014SF', 'Dr.R.S.Latha', 'latha', 'c474c69ec38df64299cc7158e50c04556e8bf685', 'latha.cse@kongu.edu', 'CSE', '2018', 'A', 'Advisor', 'Not Changed'),
+('CSE015SF', 'Dr.N.Krishnamoorthy', 'nmoorthy', '2f70e239c7a5d80384275be451075e4cb7125e9e', 'nmoorthy.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE016SF', 'Dr.K.Sangeetha', 'sangeetha_k', '0570074901196255d91e99fd49c2b21193868d74', 'sangeetha_k.cse@kongu.edu', 'CSE', '2018', 'B', 'Advisor', 'Not Changed'),
+('CSE017SF', 'Dr.S.V.Kogilavani', 'kogilavani', '7bd56dbda41d30f8e7340e8934f18724b57f6350', 'kogilavani.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE018SF', 'Dr.P.Vishnu Raja', 'pvishnu', '867ef638be6118edc08bca8383c2e296d90905c6', 'pvishnu.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE019SF', 'Dr.P.Keerthika', 'keerthika', '90ec36d0dc282be87c670075e0b5cfc79c7328ab', 'keerthika.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE01TSF', 'Test Staff', 'test', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'test.cse@kongu.edu', 'CSE', '2000', 'T', 'Advisor', 'Changed'),
+('CSE020SF', 'Dr.S.K.Nivetha', 'nivetha', 'd81d94c63c94e24b2228b7b422ed4ef43d4413b6', 'nivetha.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE021SF', 'Dr.R.S.Mohana', 'mohanapragash', '01e42ae96b86995418054197a131c84b4a874cb5', 'mohanapragash.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE022SF', 'Ms.M.Geetha', 'geetha', '8355f9ab1b4480e690dfc98edf6f4716e53e1593', 'geetha.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE023SF', 'Dr.R.Manjula Devi', 'manjuladevi', '9d480592bc6b0b50103cb3b505c0f3647f87c2e8', 'manjuladevi.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE024SF', 'Mr.T.Kumaravel', 'tkumar', '41b06b1eb84052687588b4ce1abd3df9f534ea0e', 'tkumar.cse@kongu.edu', 'CSE', '2018', 'C', 'Advisor', 'Not Changed'),
+('CSE025SF', 'Ms.S.Ramya', 'sramya', 'bb986bbeb15d91025728b12f033501a4894cb481', 'sramya.cse@kongu.edu', 'CSE', '2019', 'B', 'Advisor', 'Not Changed'),
+('CSE026SF', 'Mr.K.Devendran', 'skdeva', '60fe82d4c44b3bb12ea6eb40867c38b9edc37cb4', 'skdeva.cse@kongu.edu', 'CSE', '2018', 'D', 'Advisor', 'Not Changed'),
+('CSE027SF', 'Ms.N.Sasipriyaa', 'sasipriya', 'd7e94e1f1485e03015d366e46ad19ce7e0857d3a', 'sasipriya.cse@kongu.edu', 'CSE', '2018', 'A', 'Advisor', 'Not Changed'),
+('CSE028SF', 'Mr.B.Bizu', 'bizu', '59f1d794faeb57b7b54da51760c2d9207536cfa6', 'bizu.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE029SF', 'Mr.R.Sureshkumar', 'sureshkec', '9d93f8113d6ac60e97d0769efd6f167a812f620b', 'sureshkec.eie@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE030SF', 'Ms.D.Deepa', 'deepa', 'a14e3f68eb8ecb63144f7dd61010f1fa8f518841', 'deepa.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE031SF', 'Mr.S.Selvaraj', 'selvarajs', '1fa14e37789fc5b5f6b5fa1fbfd0fe94eaec21ba', 'selvarajs.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE032SF', 'Ms.M.Sangeetha', 'sangeetham', '8805e457c02d39baf4a62a143900af272868451e', 'sangeetham.cse@kongu.edu', 'CSE', '2018', 'D', 'Advisor', 'Not Changed'),
+('CSE033SF', 'Ms.O.R.Deepa', 'ord', '0c9bc17fff9b24104038a0b93419944f4dd0d7ee', 'ord.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE034SF', 'Mr.P.S.Prakash', 'psprakash', 'c09617edc7ff700faf66ec71a7646b2506e20035', 'psprakash.cse@kongu.edu', 'CSE', '2019', 'B', 'Advisor', 'Not Changed'),
+('CSE035SF', 'Ms.K.S.Kalaivani', 'kalaivani', '17babd80c0b9495973220d7283bfdab71ed04148', 'kalaivani.cse@kongu.edu', 'CSE', '2018', 'B', 'Advisor', 'Not Changed'),
+('CSE036SF', 'Mr.S.Santhoshkumar', 'sanvins', '017f521f42d04b1e00374e9cd9ffd2cf0408d372', 'sanvins.cse@kongu.edu', 'CSE', '2019', 'D', 'Advisor', 'Not Changed'),
+('CSE037SF', 'Ms.C.Sagana', 'sagana', '8518d9dccfb1a70c5b53f3b4031afbea286df0ec', 'sagana.c.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE038SF', 'Mr.B.Krishnakumar', 'krishnakumar', '53a6593ea063a3cda52a0e5ef1ec89326dd75176', 'krishnakumar.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE039SF', 'Ms.S.Mohana Saranya', 'mohanasaranya', '8479315e5f0a64098994c2cc3e28e3d18ff94a3a', 'mohanasaranya.cse@kongu.edu', 'CSE', '2019', 'A', 'Advisor', 'Not Changed'),
+('CSE040SF', 'Ms.S.Mohanapriya', 'mohanapriyas', '33d6357cfaaf0f72991b0ecd8c56da066613c089', 'mohanapriyas.cse@kongu.edu', 'CSE', '2019', 'C', 'Advisor', 'Not Changed'),
+('CSE041SF', 'Ms.P.S.Nandhini', 'nandhini', '6633098f33b49f36c2bdb0d14a00912bfb8172de', 'nandhini.cse@kongu.edu', 'CSE', '2019', 'A', 'Advisor', 'Not Changed'),
+('CSE042SF', 'Ms.K.Tamil Selvi', 'tamilselvik', 'c3077f350f9aff932e72261a46ce6a250b1e85f4', 'tamilselvik.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE043SF', 'Ms.M.K.Dharani', 'dharani', 'eaeea4d6fc9e54f0ff16c4f4591ee7652580aaa3', 'dharani.cse@kongu.edu', 'CSE', '2019', 'D', 'Advisor', 'Not Changed'),
+('CSE044SF', 'Ms.Vani Rajasekar', 'vanikecit', '9aa209a1a53da2ba816c7b911235e5fac2a2a6a2', 'vanikecit.cse@kongu.edu', 'CSE', '2018', 'C', 'Advisor', 'Not Changed'),
+('CSE045SF', 'Ms.K.Venu', 'venu', '8deda5a8117c871c8fb9861137dd50db46b71568', 'venu.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
+('CSE046SF', 'Dr.K.Dinesh', 'dinesh', 'f23818deaf9b13ec78570b1013e87860cbcc6066', 'dinesh.cse@kongu.edu', 'CSE', '2019', 'C', 'Advisor', 'Not Changed');
 
 --
 -- Constraints for dumped tables
