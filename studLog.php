@@ -65,7 +65,13 @@ include_once('./assets/notiflix.php');
     x.type = "password";
     document.getElementById("passtoggle").className ="fa fa-eye";
   }}
-      </script>
+  $(document).ready(function(){
+    $("#err").hide();
+
+  });
+
+
+  </script>
 </head>
 <body background="images/backgrd.jpg">
 
@@ -91,7 +97,7 @@ include_once('./assets/notiflix.php');
         &nbsp;
         <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal2">Change Password</button>
         &nbsp;
-        <button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal3">Get Activation Link</button>
+        <button type="button" class="btn btn-link" data-toggle="modal"  data-target="#myModal3">Get Activation Link</button>
     </div>
 
   </div>
@@ -196,7 +202,7 @@ include_once('./assets/notiflix.php');
                     <div class="row">
                         <div class="col-sm-3"></div>
                         <div class="col-sm-6">
-                            <form action="changepass.php" method="post">
+                            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                                 <label>Enter your Register Number: </label>
                             <input type="text" name="RegNo" class="form-control" value="" placeholder="Roll No." minlength="8" maxlength="8" required/>
                             <label>Current Password: </label>
@@ -209,11 +215,10 @@ include_once('./assets/notiflix.php');
                                 <div class="col-sm-4"></div>
                         <div class="col-sm-3"></div>
                     </div>
-
                 </div>
-
+                <center><p id="err"style="color:red">Confirm Password must be same</p></center>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary" onclick="return Validate();">Submit</button>
+          <button type="submit" name="changepass" class="btn btn-primary" onclick="return Validate();">Submit</button>
 
         </form>
         <script type="text/javascript">
@@ -222,7 +227,13 @@ include_once('./assets/notiflix.php');
               var confirmPassword = document.getElementById("repass").value;
               var old=document.getElementById("old").value;
               if (password.localeCompare(confirmPassword) != 0) {
-                  alert("Passwords do not match.");
+                $('#repass').css('border-color', 'red');
+                $("#err").show();
+                setTimeout(function(){ 
+                  $('#repass').css('border-color', 'white');
+                  $("#err").hide();
+                }, 2500);
+                
                   return false;
               }
               else{
@@ -261,6 +272,11 @@ include_once('./assets/notiflix.php');
             exit();
         }
         $row=$data->fetch_assoc();
+        if($row['status']=="Not Verified")
+        {
+            echo "<script> Notiflix.Report.Warning( 'Account Not Activated !', 'please activated your account', 'Okay' );</script>";
+            exit();
+        }
         if($row['regno']==$register && $row['pass']==$pass)
         {
             $_SESSION['uname']=$register;
@@ -291,10 +307,10 @@ $con->close();
     if($row_cnt==1)
     {
 
-      $sql="SELECT * FROM `authenticate` WHERE `regno` LIKE '$rollno' ";
+      $sql="SELECT * FROM `registration` WHERE `regno` LIKE '$rollno' ";
       $data=$con->query($sql);
       $row=$data->fetch_assoc();
-      if($row["status"]=="Pending")
+      if($row["status"]=="Not Verified")
       {
         //echo "<script> Notiflix.Report.Failure( 'Account Not Activated', 'Please acrivate your account through the link sent to your registered mail id.', 'Okay');</script>";
         $_SESSION["rollno"]=$rollno;
@@ -313,6 +329,35 @@ $con->close();
       echo "<script> Notiflix.Report.Failure( 'Credentials Mismatch', 'There is no account associated with the register no and password given', 'Okay');</script>";
     }
   }
+
+// change pass
+if(isset($_POST["changepass"]))
+{
+  
+  $rollno=$_POST["RegNo"];
+  $pass=md5($_POST["old"]);
+  $sql="SELECT * FROM `registration` WHERE `regno` LIKE '$rollno' AND `pass`LIKE '$pass' ";
+  $data=$con->query($sql);
+  $row=$data->fetch_assoc();
+  $row_cnt = $data->num_rows;
+  if($row_cnt!=1)
+  {
+  echo "<script> Notiflix.Report.Failure( 'Credentials Mismatch', 'There is no account associated with the register no and password given', 'Okay');</script>";
+  }
+  else{
+
+  $newpass=md5($_POST["npass"]);
+  $sql = "UPDATE `registration` SET `pass` = '$newpass' WHERE `regno` = '$rollno' ";
+  $con->query($sql);
+  echo "<script> Notiflix.Report.Success( 'Password Changed ', 'Your Account Password Changed Successfully', 'Okay', function(){} );</script>";
+
+
+  }
+
+
+}
+
+
 
 ?>
 </body>
