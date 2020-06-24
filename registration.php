@@ -242,11 +242,18 @@ require 'PHPMailer/src/SMTP.php';
         if(isset($_POST['submit']))
         {
         $rollno=$_POST['regno'];
-        $check="SELECT * from registration where regno like '$rollno'";
+        $check="SELECT pass from registration where regno like '$rollno'";
         $z=$con->query($check);
         if($z->num_rows!=0)
         {
-            echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
+            $row=$data->fetch_assoc();
+            if(empty($row['pass']))
+                echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
+            exit();
+        }
+        else
+        {
+            echo "<script>Notiflix.Report.Failure( 'Data Not Found', 'Your information is not there in our sources. Please contact the Admin.', 'Okay',function(){window.location.replace('aboutUs.html');} );</script>"; 
             exit();
         }
         $gender=$_POST['gender'];
@@ -258,7 +265,7 @@ require 'PHPMailer/src/SMTP.php';
             exit();
         }
         else{
-            if(!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $POST['pass'] ))
+            if(!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $_POST['pass'] ))
             {
                 echo "<script>Notiflix.Report.Failure( 'Password Weak', 'Your password is not matching our password policy', 'Okay',function(){window.location.replace('registration.php');} );</script>"; 
                 exit();
