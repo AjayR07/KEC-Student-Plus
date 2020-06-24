@@ -31,7 +31,10 @@ $(document).ready(function(){
   $('.ui.accordion').accordion();
 
 });
-
+function openmodal()
+{
+    $("#togglepass").click();
+}
 
 </script>
 <?php
@@ -216,6 +219,18 @@ function getDetails()
 ?>
 
 <body>
+<?php
+
+$staffid=$_SESSION['staffid'];
+$sql="SELECT * from `staff` where `staffid` like '$staffid'";
+$data=$con->query($sql);
+$row=$data->fetch_assoc();
+if($row['status']=='Not Changed')
+{
+    echo "<script>Notiflix.Notify.Info('Click here to change to new password',function()
+    {openmodal();});</script>";
+}
+?>
   <style>
     body{
       background-image: url('../backstaff.jpg');

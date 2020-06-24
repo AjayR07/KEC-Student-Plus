@@ -151,7 +151,78 @@ $(document).ready(function(){
     }
   });
 
-      });
+  $('#togglepass').on("click",function(){
+    $('#changepass').modal({
+               onApprove :function()
+               {
+                 return false;
+               }
+             }).modal('show');
+  });
+
+
+  $('#passform').form({
+    fields: {
+      oldpass: {
+        identifier: 'oldpass',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please Enter the Old Password'
+          },
+          {
+            type   : 'maxLength[16]',
+            prompt : 'Please Enter Password upto 16 Characters'
+          },
+          {
+            type   : 'minLength[4]',
+            prompt : 'Please Enter Password above 4 characters'
+          }
+        ]
+      },
+      newpass: {
+        identifier: 'newpass',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please Enter the Old Password'
+          },
+          {
+            type   : 'maxLength[16]',
+            prompt : 'Please Enter Password upto 16 Characters'
+          },
+          {
+            type   : 'minLength[4]',
+            prompt : 'Please Enter Password above 4 characters'
+          }
+        ]
+      },
+      cnfmnewpass: {
+        identifier: 'cnfmnewpass',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please Enter the Old Password'
+          },
+          {
+            type   : 'maxLength[16]',
+            prompt : 'Please Enter Password upto 16 Characters'
+          },
+          {
+            type   : 'minLength[4]',
+            prompt : 'Please Enter Password above 4 characters'
+          },
+          {
+            type : 'isExactly[$("#newpass").val()]',
+            prompt : 'Password and Confirm Password Mismatch'
+          },
+          
+        ]
+      }
+
+    }
+  });
+});
 </script>
 
      <script>
@@ -165,6 +236,32 @@ $(document).ready(function(){
 <body id="root">
 <div class="preloader"><body><div class="ui active dimmer" style="position: fixed;><div class="ui massive active green elastic loader"></div></div></body></div>
 
+<div class="ui small modal" id="changepass">
+  <div class="header">Change Password</div>
+  <div class="content">
+  <form class="ui form segment error" id="passform">
+  <div class="field">
+      <label>Old Password:</label>
+      <input type="password" name="oldpass" id="oldpass" placeholder="Old Password">
+    </div>
+    <div class="field">
+      <label>New Password:</label>
+      <input type="password" name="newpass" id="newpass" placeholder="New Password">
+    </div>
+    <div class="field">
+      <label>Confirm New Password:</label>
+      <input type="password" name="cnfmnewpass" placeholder="Confirm Password">
+    </div>
+      <div class="actions" style="text-align: right;">
+        <button class="ui positive button" type="submit">Proceed</button>
+        <div class="ui negative button" onClick="return true">Ignore</div><br/>
+        <div class="ui error message"></div>
+      </div>
+  </form>
+  
+  </div>
+  
+</div>
 
 <div class="ui modal" id="navmodal">
   <div class="header">KEC Student+</div>
@@ -231,7 +328,8 @@ $(document).ready(function(){
           <a class="item" href="Export" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Export</span></a>
           <a class="item" href="ClassInfo" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Class Info</span></a>
           <a class="item" href="StudentDetail" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Student Details</span></a>
-         
+          <div class="item" ><div class="header" style="font-size:18px;" >Profile</div></div>   
+          <a class="item"  style="font-size:16px;text-indent:20%;"><span id="togglepass" class="ui inverted grey text">Change Password</span></a>
          
     </div>
 

@@ -150,6 +150,7 @@ if(isset($_POST['submit']))
         if($row['userid']==$user && $row['pass']==$pass)
         {
           echo "<script> Notiflix.Report.Success( 'Credentials Mismatch', 'There is no account associated with the username and password given.', 'Retry' );</script>";
+            $_SESSION['staffid']=$row['staffid'];
             $_SESSION['user']=$user;
             $_SESSION['staffname']=$row['name'];
             $_SESSION['batch']=$row['batch'];

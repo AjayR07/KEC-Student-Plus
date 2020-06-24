@@ -264,7 +264,7 @@ require 'PHPMailer/src/SMTP.php';
                 exit();
             }
         }
-        $sql="select * from `getdetails` where `rollno` like '$rollno'";
+        $sql="SELECT * from `registration` where `rollno` like '$rollno'";
         $data=$con->query($sql);
         $row=$data->fetch_assoc();
         $Mail=$row['mail'];
