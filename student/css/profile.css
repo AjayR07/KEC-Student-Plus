@@ -1,4 +1,4 @@
-html {
+/* html {
   height: 100%;
 }
 
@@ -31,7 +31,7 @@ body:before {
   transform: translate(-50%, -50%);
   -webkit-animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
   animation: puff 0.5s 1.8s cubic-bezier(0.55, 0.055, 0.675, 0.19) forwards, borderRadius 0.2s 2.3s linear forwards;
-}
+} */
 
 h1,
 h2 {
