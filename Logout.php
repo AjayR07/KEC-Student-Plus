@@ -9,7 +9,7 @@
     <link rel="icon" type="image/png" href="KEC.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css" />
+    <link rel="stylesheet" href="./assets/Fomantic/dist/semantic.min.css" type="text/css" />
   <script src="./assets/jquery.min.js"></script>
   <script src="./assets/Fomantic/dist/semantic.min.js"></script>
   <link rel="icon" type="image/png" href="./KEC.png">
