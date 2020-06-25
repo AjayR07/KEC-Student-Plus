@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<?php
+session_start();
+?>
+<?php include_once('studentnav.php');?>
   <title>Profile</title>
   <link rel="stylesheet" href="css/profile.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -22,15 +21,14 @@
     
     }
   </style>
-
-
-
 </head>
+
+<div class="pusher">
 <aside class="profile-card">
   
   <header>
     <a>
-      <img src="images/matthew.png" class="hoverZoomLink">
+      <img src="../images/matthew.png" class="hoverZoomLink">
     </a>
     <h1>John Doe</h1>
     
@@ -62,6 +60,7 @@
 
   </div>
 
-</aside>  
+</aside> 
+</div> 
 </body>
 </html>
