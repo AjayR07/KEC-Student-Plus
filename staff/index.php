@@ -222,6 +222,7 @@ function getDetails()
 <?php
 
 $staffid=$_SESSION['staffid'];
+//echo '<script>alert("'.$staffid.'");</script>';
 $sql="SELECT * from `staff` where `staffid` like '$staffid'";
 $data=$con->query($sql);
 $row=$data->fetch_assoc();

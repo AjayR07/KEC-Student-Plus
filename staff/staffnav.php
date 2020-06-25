@@ -158,6 +158,9 @@ $(document).ready(function(){
                  return false;
                }
              }).modal('show');
+  $('#newpass').on("change",function(){
+    var pass=$("#newpass").val();
+  });
   });
 
 
@@ -213,16 +216,37 @@ $(document).ready(function(){
             prompt : 'Please Enter Password above 4 characters'
           },
           {
-            type : 'isExactly[$("#newpass").val()]',
-            prompt : 'Password and Confirm Password Mismatch'
+            type : 'match[newpass]',
+            prompt : 'Password and Confirm Password should be same'
           },
           
         ]
       }
 
+    },
+    onSuccess: function(event,fields) {
+      event.preventDefault();
+      SubmitDetails();
     }
+ 
   });
 });
+function SubmitDetails()
+{
+    data=$("#passform").serializeArray();
+    data[3]={name: "staffid", value: "<?php echo $_SESSION['staffid'];?>"};
+    console.log(data);
+    $.ajax({
+			url:"ajax_handler.php",
+			type:"POST",
+			data:data,
+			success:function(d)
+			{
+        $('#changepass').modal('hide');
+				Notiflix.Notify.Success(d);
+			}
+		});
+}
 </script>
 
      <script>
@@ -253,7 +277,7 @@ $(document).ready(function(){
       <input type="password" name="cnfmnewpass" placeholder="Confirm Password">
     </div>
       <div class="actions" style="text-align: right;">
-        <button class="ui positive button" type="submit">Proceed</button>
+        <button class="ui positive button" type="submit" name="changepass">Proceed</button>
         <div class="ui negative button" onClick="return true">Ignore</div><br/>
         <div class="ui error message"></div>
       </div>
