@@ -19,7 +19,7 @@ include_once("db.php");
 	<link rel="icon" type="image/png" href="./KEC.png">
 	<meta charset="utf-8" />
 	<meta name="dark-theme" color="#181818" />
-	<link rel="manifest" href="/manifest.json">
+	<link rel="manifest" href="./manifest.json">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
           <meta property="og:title" content="KEC Student+"/>
           <meta property="og:description" content="KEC Student+;Kec;cse ;Kongu Engineering College;KEC Student+ website;"/>
@@ -60,9 +60,9 @@ include_once("db.php");
 <!-- No Script Part -->
 	<noscript><meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
-	<link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css" />
-	<script src="../assets/jquery.min.js"></script>
-    <script src="../assets/Fomantic/dist/semantic.min.js"></script>
+	<link rel="stylesheet" href="./assets/Fomantic/dist/semantic.min.css" type="text/css" />
+	<script src="./assets/jquery.min.js"></script>
+    <script src="./assets/Fomantic/dist/semantic.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 	<script src="https://use.fontawesome.com/4daae1ed5b.js"></script>
 	<style>
@@ -179,9 +179,6 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 			</div>
 			</div>
 		</section>
-
-
-
 									<div class="row" style="margin:3%">
 									<div class="ui stackable four column grid">
 									  <div class="column">
