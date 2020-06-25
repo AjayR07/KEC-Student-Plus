@@ -10,7 +10,7 @@ include_once('../db.php');
       <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
       <link rel="icon" type="image/png" href="../KEC.png">
       <link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css" />
-      <!-- <link rel="stylesheet" href="../assets/Semantic/dist/semantic.min.css" type="text/css" /> -->
+    
    
       <!-- No Script Part -->
           <noscript><meta http-equiv="refresh" content="0; URL='../errorfile/noscript.html'" /></noscript>
@@ -50,6 +50,9 @@ include_once('../db.php');
               -moz-font-smoothing: grayscale;
               height: auto;
             }
+            html{
+              scroll-behavior: smooth;
+              }
 
             .ui.center.aligned.container {
               margin-top: 4em;
@@ -78,16 +81,6 @@ include_once('../db.php');
             .ui.mobile.only.grid .ui.menu .ui.vertical.menu {
               display: none;
             }
-<<<<<<< HEAD
-
-</script>
-<?php
-$regno=$_SESSION['uname'];
-$sql="SELECT * from registration where regno like '$regno'";
-
-$temp=($con->query($sql))->fetch_assoc();
-=======
->>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
 
             .ui.inverted.menu .item {
               color: rgb(157, 157, 157);
@@ -103,9 +96,9 @@ $temp=($con->query($sql))->fetch_assoc();
                     
           }
          body, .pusher {
-  background-image: url("../backlogout.jpg") !important;
+             background-image: url("../backlogout.jpg") !important;
  
-}
+          }
 
            .header
            {
@@ -158,7 +151,7 @@ $temp=($con->query($sql))->fetch_assoc();
             $gender=$temp['gender'];
             $name=$temp['name'];
             $sql="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
-            //echo '<script>alert("'.$sql.'")</script>';
+           
             $sql2="SELECT c.status as othercert from othercert c where c.regno like '$regno'";
             $data=$con->query($sql);
             if($data->num_rows==0)
@@ -200,7 +193,7 @@ $temp=($con->query($sql))->fetch_assoc();
   </head>
 
   <body id="root" >
-  <div class="preloader"><body><div class="ui active dimmer"><div class="ui large text loader">Please wait...</div></div></body></div>
+  <div class="preloader"><body><div class="ui active dimmer" style="position: fixed;"><div class="ui massive active green elastic loader"></div></div></body></div>
     <div class="ui tablet computer only padded grid">
       <div class="ui borderless fluid  inverted menu" style="font-size:16px">
       <a class=" active  item" id="side_nav"><i class="sidebar icon"></i></a>
@@ -208,9 +201,9 @@ $temp=($con->query($sql))->fetch_assoc();
       
         <a class="ui right aligned item" id="avatar" >
           <?php 
-          if($gender=='male')
+          if($gender=='Male')
                 echo '<img class="ui avatar image" src="../images/matthew.png"/>';
-          else if($gender=='female')
+          else if($gender=='Female')
                 echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
           else
                 echo '<img class="ui avatar image" src="../images/elyse.png"/>';
@@ -235,9 +228,9 @@ $temp=($con->query($sql))->fetch_assoc();
       
         <a class="ui right aligned item" id="avatar" >
           <?php 
-          if($gender=='male')
+          if($gender=='Male')
                 echo '<img class="ui avatar image" src="../images/matthew.png"/>';
-          else if($gender=='female')
+          else if($gender=='Female')
                 echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
           else
                 echo '<img class="ui avatar image" src="../images/elyse.png"/>';
@@ -284,24 +277,21 @@ $temp=($con->query($sql))->fetch_assoc();
 
   <div class="ui sidebar inverted vertical menu" id="SideNavBar" style="font-size:18px">
     <div class="item">
-      <a class="ui logo icon image" href="/">
+      <!-- <a class="ui logo icon image" href="/">
       <?php 
-            if($gender=='male')
-                  echo '<img class="ui avatar image" src="../images/matthew.png"/>';
-            else if($gender=='female')
-                  echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
-            else
-                  echo '<img class="ui avatar image" src="../images/elyse.png"/>';
+            // if($gender=='male')
+            //       echo '<img class="ui avatar image" src="../images/matthew.png"/>';
+            // else if($gender=='female')
+            //       echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
+            // else
+            //       echo '<img class="ui avatar image" src="../images/elyse.png"/>';
             ?>
       </a>
-      <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php echo $name; ?> </b></a>
-<<<<<<< HEAD
-      </div>
-          <div class="item"><div class="header" >On Duty</div></div>
-=======
+      <a href="/" style="font-size:18px">&nbsp Hi! &nbsp <b><?php// echo $name; ?> </b></a> -->
+      <center><a href="index"><img src="../KEC.png" alt=""  style="width:60%"/></a>
+      <span class="ui large text" style="color:cyan"><center>KEC Student+</center></span></center><br>
     </div>
   <div class="item" ><div class="header" style="font-size:18px" >On Duty</div></div>
->>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
           <a class="item" href="PreOdForm" style="text-indent:20%;font-size:18px">Permission Form</a>
           <a class="item" href="OdSubmission" style="text-indent:20%;font-size:18px">Submission</a>
           <a class="item" href="Status" style="text-indent:20%;font-size:18px">Status</a>
@@ -309,12 +299,9 @@ $temp=($con->query($sql))->fetch_assoc();
           <div class="item"><div class=" header" style="font-size:18px">Certificates</div></div>
           <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
           <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
-          <div class="item"><div class=" header">Certificates</div></div>
-          <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
-          <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
-          <div class="item"><div class=" header">Certificates</div></div>
-          <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
-          <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
+          <footer style="margin-top:30%;color:bisque;font-size:14px">
+			      <center>	&copy; Team A3 . <br>All rights reserved.</center>
+				    <br>
+		      </footer>
+         
     </div>
-  
-

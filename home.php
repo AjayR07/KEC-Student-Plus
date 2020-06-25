@@ -5,9 +5,21 @@ include_once("db.php");
 <html>
 
 <head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151639011-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-151639011-2');
+</script>
+
 	<title>KEC Student+</title>
 	<link rel="icon" type="image/png" href="./KEC.png">
 	<meta charset="utf-8" />
+	<meta name="dark-theme" color="#181818" />
+	<link rel="manifest" href="/manifest.json">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
           <meta property="og:title" content="KEC Student+"/>
           <meta property="og:description" content="KEC Student+;Kec;cse ;Kongu Engineering College;KEC Student+ website;"/>
@@ -48,10 +60,10 @@ include_once("db.php");
 <!-- No Script Part -->
 	<noscript><meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.4/semantic.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css" />
+	<script src="../assets/jquery.min.js"></script>
+    <script src="../assets/Fomantic/dist/semantic.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 	<script src="https://use.fontawesome.com/4daae1ed5b.js"></script>
 	<style>
 		.preloader {
@@ -333,15 +345,17 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 		<h2 class="icon solid fa-bell circled"></h2><br><span class="label">What's New <i class="lightbulb yellow icon"></i></span>
 						</header>
 
-							<marquee  direction="up" height=250px">
-								<ul type = "disc">
-							 <li > Enhanced UI / UX.</li><br>
-							<li>Mobile view has been improved.</li><br>
-							<li>Implementation of AJAX and Dyanamic Loading.</li>
+						<marquee  direction="up" height="250px">
+						<ul type = "disc">
+						    <li>Bugs fixed.</li><br>
+							<li>Improved User Experience.</li><br>
+							<li>Mobile view improved.</li><br>
+							<li>Sidebar given for Staff and Students.</li><br>
 						</ul>
-							</marquee>
+						</marquee>
 
-					<h6 style="text-align:center;font-size:18px">		<span>Last Updated on <span class="ui green text">10-May-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 2.2 Dev</span></h6>
+					<h6 style="text-align:center;font-size:16px;font-family: Arial, Helvetica, sans-serif;">		
+					<span>Last Updated on <span class="ui green text">22-June-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 3.5 Beta</span></h6>
 
 					</section>
 
@@ -354,14 +368,14 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 							<header>
 								<h3>KEC Student+ </h3>
 							</header>
-							<p>A initiative managed by a group of teens, Working for the students utmost satisfaction.</p>
+							<p>An initiative managed by a group of teens, Working for the students utmost satisfaction.</p>
 
 							<ul class="icons">
-								<li><a href="mailto:keca3family@gmail.com" class="icon brands fa fa-google"><span class="label">Gmail</span></a></li>
+								<li><a href="mailto:studentplus@kongu.edu" class="icon brands fa fa-google"><span class="label">Gmail</span></a></li>
 								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 								<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 							</ul>
-											<br><a href="./entity/feedback.php"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
+											<br><a href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
 						</section>
 						<!-- Copyright -->
 						<div class="copyright">
@@ -369,10 +383,11 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 								<li> &copy; Team A3 . All rights reserved.</li>
 								<li>Admin: <span ondragend="window.location.href='./admin/login.php'"><i class="fa fa-user-secret" aria-hidden="true"></i></span></li>
 								<li>Contact us: <a href="https://teama3.tech/">teama3.tech</a></li>
-								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <i class="in flag"></i></li>
+								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank"><i class="fa fa-envelope-o""></i></a></li>
+								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <!--i class="in flag"></!i--></li>
 							</ul>
 							<br>
-							<h4  style="text-decoration:underline;text-decoration-style: dotted;">Version : 2.2 Dev</h4>
+							<h4 style="text-decoration:underline;text-decoration-style: dotted;">Version : 3.5 Beta</h4>
 						</div>
 
 					</div>
@@ -407,7 +422,15 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 			s0.parentNode.insertBefore(s1, s0);
 		})();
 	</script>
+
 	<!--End of Tawk.to Script-->
+<script type="module">
+import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+
+const el = document.createElement('pwa-update');
+document.body.appendChild(el);</script> 
+
+
 </body>
 
 </html>

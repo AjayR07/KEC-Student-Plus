@@ -2,11 +2,11 @@
 
 include_once('./db.php');
 include_once('./assets/notiflix.php');
-        use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\Exception;
-        require 'PHPMailer/src/Exception.php';
-        require 'PHPMailer/src/PHPMailer.php';
-        require 'PHPMailer/src/SMTP.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 ?>
 <html>
     <head>
@@ -242,11 +242,18 @@ include_once('./assets/notiflix.php');
         if(isset($_POST['submit']))
         {
         $rollno=$_POST['regno'];
-        $check="SELECT * from registration where regno like '$rollno'";
+        $check="SELECT pass from registration where regno like '$rollno'";
         $z=$con->query($check);
         if($z->num_rows!=0)
         {
-            echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
+            $row=$data->fetch_assoc();
+            if(empty($row['pass']))
+                echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
+            exit();
+        }
+        else
+        {
+            echo "<script>Notiflix.Report.Failure( 'Data Not Found', 'Your information is not there in our sources. Please contact the Admin.', 'Okay',function(){window.location.replace('aboutUs.html');} );</script>"; 
             exit();
         }
         $gender=$_POST['gender'];
@@ -258,30 +265,27 @@ include_once('./assets/notiflix.php');
             exit();
         }
         else{
-            if(!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $POST['pass'] ))
+            if(!preg_match("#.*^(?=.{8,20})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#", $_POST['pass'] ))
             {
                 echo "<script>Notiflix.Report.Failure( 'Password Weak', 'Your password is not matching our password policy', 'Okay',function(){window.location.replace('registration.php');} );</script>"; 
                 exit();
             }
         }
-        $sql="select * from `getdetails` where `rollno` like '$rollno'";
+        $sql="SELECT * from `registration` where `rollno` like '$rollno'";
         $data=$con->query($sql);
         $row=$data->fetch_assoc();
         $Mail=$row['mail'];
         $batch=$row['batch'];
         $Dept=$row['dept'];
         $Sec=$row['sec'];
-
         $phone=$row['phone'];
         $Name=$row['name'];
         $passw=md5($pass);
-        $sql="insert into registration values('$rollno','$Name','$batch','$Dept','$Sec','$gender','$Mail','$phone','$passw')";
+        $sql="UPDATE `registration` SET `pass`='$passw' WHERE `regno` like '$rollno'";
         $con->query($sql);
-        $sql1="insert into authenticate (regno) values('$rollno')";
-        $con->query($sql1);
         $key='AbinashArulAjayMNC';
         $hash=sha1($rollno.$key);
-        $link='http://kecstudent.com/entity/auth.php?regno='.$rollno.'&hash='.$hash;
+        $link='http://student.kongu.edu/entity/auth.php?regno='.$rollno.'&hash='.$hash;
         $len=strlen($pass);
         $star='';
         for($i=0;$i<$len-4;$i++)
@@ -297,7 +301,7 @@ include_once('./assets/notiflix.php');
         $mail->Password = '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'; // SMTP password
         $mail->SMTPSecure = 'ssl';                  // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 465;                          // TCP port to connect to
-        $mail->setFrom('admin@teama3.tech', 'Team A3 KEC');
+        $mail->setFrom('studentplus@kongu.edu', 'KEC Student+');
         $mail->addAddress($mailto);   // Add a recipient
         $mail->isHTML(true);
         $bodyContent = '<!doctype html>

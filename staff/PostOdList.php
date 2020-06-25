@@ -6,6 +6,7 @@
     }
     include_once('../db.php');
     include_once('staffnav.php');
+    include_once('../assets/notiflix.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +23,13 @@
 <link rel="icon" type="image/png" href="../KEC.png">
 </head>
 <body>
+<?php
+if($_SESSION['design']!="Advisor")
+{
+  echo "<body><script> Notiflix.Report.Failure( 'Invalid Action', 'User has no class Association', 'Okay', function(){window.location.href='index.php'} ); </script></body>";
+  exit();
+}
+?>
     <?php require_once('staffnav.php');?><br><br>
 <h1 align="center" style="color:bisque;">Students Submitted Proof</h1> <br>
 <center>
@@ -45,6 +53,7 @@
      $dep=$_SESSION['dept'];
      $sec=$_SESSION['sec'];
      $i=1;
+     $od=1;
      $sql="SELECT r.regno,r.name,d.appno,d.odfrom,d.appdate from registration r, oddetails d, postod p where (r.regno like d.regno) and (d.appno like p.appno)
      and (r.batch like '$batch') and (r.dept like '$dep') and (r.sec like '$sec') and (p.status like 'Pending');";
 
@@ -56,7 +65,7 @@
      if($data->num_rows==0 && $data2->num_rows==0)
      {
          //echo '<script>alert("getting in");</script>';
-         echo '<tr><td colspan="5">No Data Present</td></tr>';
+         echo '<tr><td colspan="8">No Data Present</td></tr>';
      }
      else{
      while ($row = mysqli_fetch_array($data))

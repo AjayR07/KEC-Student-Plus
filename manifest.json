@@ -1,8 +1,12 @@
 {
-    "name": "Kecstudent32 Push Notification",
-    "short_name": "kecstudent32",
+    "name": "KEC Student+",
+    "short_name": "Student",
+    "theme_color": "#181818",
     "gcm_sender_id": "539876079581",
-    "start_url": "/",
+    "background_color": "rgba(66,76,83,0.03)",
+    "orientation": "portrait",
+    "scope": "/",
+    "start_url": "/home.php",
     "display": "standalone",
     "icons": [
         {

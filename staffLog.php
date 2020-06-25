@@ -5,19 +5,26 @@ include_once('./db.php');
 
 if(isset($_SESSION["user"]))
 {
-    header("Location: ./staff/OdList.php");
+    header("Location: ./staff/index.php");
 }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-151639011-2');
+</script>
    <title>Staff Login</title>
    <meta charset="UTF-8">
        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link rel="icon" type="image/png" href="./KEC.png">
-
+	<meta name="dark-theme" color="#181818" />
+	<link rel="manifest" href="/manifest.json">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -130,7 +137,7 @@ Notiflix.Notify.Failure('No Internet Connection Detected');
 if(isset($_POST['submit']))
 {
         $user=strtolower($_POST["user"]);
-        $pass=md5($_POST["pass"]);
+        $pass=sha1($_POST["pass"],false);
         $sql="SELECT * FROM `staff` WHERE `userid` LIKE '$user' AND `pass`LIKE '$pass' ";
         $data=$con->query($sql);
         if($data->num_rows==0)
@@ -143,6 +150,7 @@ if(isset($_POST['submit']))
         if($row['userid']==$user && $row['pass']==$pass)
         {
           echo "<script> Notiflix.Report.Success( 'Credentials Mismatch', 'There is no account associated with the username and password given.', 'Retry' );</script>";
+            $_SESSION['staffid']=$row['staffid'];
             $_SESSION['user']=$user;
             $_SESSION['staffname']=$row['name'];
             $_SESSION['batch']=$row['batch'];
@@ -150,7 +158,7 @@ if(isset($_POST['submit']))
             $_SESSION['sec']=$row['sec'];
             $_SESSION['design']=$row['designation'];
             header('Location: ./staff/OdList.php');
-            echo '<script>window.location.replace("./staff/OdList.php");</script>';
+            echo '<script>window.location.replace("./staff/index.php");</script>';
             exit();
         }
         else

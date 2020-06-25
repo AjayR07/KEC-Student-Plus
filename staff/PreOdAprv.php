@@ -253,9 +253,12 @@ include_once('staffnav.php');?>
       Certificates Registered: <?php echo $o; ?> <br>
     </h4>
       </div>
+      
     </div>
-
-
+<?php
+if($odrow['odtype']!='PAPER' && $odrow['odtype']!='PROJECT')
+  echo '<script>Notiflix.Report.Failure( "Application Number Invalid", "Suggetion is not needed for this type of Applciations", "Okay", function(){window.location.replace("index.php");} ); </script>';
+?>
     <div class="page-wrapper p-t-80 p-b-100">
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
@@ -278,8 +281,12 @@ include_once('staffnav.php');?>
                                 <td><?php echo $name; ?></td>
                             </tr>
                             <tr>
+                                    <td>Category: </td>
+                                    <td><?php echo $odrow['odtype'];?></td>
+                            </tr>
+                            <tr>
                                 <td >Applied Date: &nbsp&nbsp&nbsp </td>
-                                <td align="center"><?php echo date_format(date_create($odrow['appdate']),'d/m/Y');?></td>
+                                <td><?php echo date_format(date_create($odrow['appdate']),'d/m/Y');?></td>
                             </tr>
                             <tr>
                                 <td>Date: </td>
@@ -288,7 +295,7 @@ include_once('staffnav.php');?>
                             </tr>
                             <tr>
                                     <td>No. of Hrs: </td>
-                                    <td><?php echo $odrow['hrs'];?>
+                                    <td><?php echo $odrow['hrs'];?></td>
                             </tr>
                             <tr>
                                 <td>Purpose: </td>

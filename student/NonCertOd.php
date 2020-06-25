@@ -1,59 +1,28 @@
 <?php
 session_start();
-include_once('studentnav.php');
+if(!isset($_SESSION['uname']))
+{
+    header("location: ../studLog.php");
+}
+$register=$_SESSION['uname'];
 include_once('../db.php');
-
-
-<<<<<<< HEAD
+include_once('studentnav.php');
+include_once('../assets/notiflix.php');
 ?>
-<script>
-$(document).ready(function(){
-  $('.pusher').css('height', 'auto');
-});
-</script>
-<div class="pusher">
-<link rel="stylesheet" href="../assets/Semantic/dist/semantic.min.css" type="text/css" />
-<script src="../assets/jquery.min.js"></script>
-<script src="../assets/Fomantic/dist/semantic.min.js"></script>
-    <center>
-    <div>
-    <h2 style="color:bisque;">Non Certificate On-Duty</h2>
-    <div  class="container">
-    <form class="ui form" name="myForm" id="daysform">
-    <div class="ui card">
-        <div class="content">
-            <div class="header">
-            Select OD Range
-            </div>
-            <div class="description">
-              <div class="main">
-                    <div class="two fields">
-                      <div class="field">
-                        <label>Start Date </label>
-                        <div class="ui calendar" id="rangestart">
-                          <div class="ui input left icon">
-                            <i class="calendar icon"></i>
-                            <input type="text"  id="start" onblur="getStart();" placeholder="Start (MM/DD/YYYY)" name="odStart">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="field">
-                        <label>End Date</label>
-                        <div class="ui calendar" id="rangeend">
-                          <div class="ui input left icon">
-                            <i class="calendar icon"></i>
-                            <input type="text" id="end" placeholder="End (MM/DD/YYYY)" onblur="getDiff();" name="odEnd">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                    <span class="positive ui button">OK</span>
-                    </div>
-                 </div>
-                 </div>
-      
-=======
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <!-- You MUST include jQuery before Fomantic -->
+              
+          
+          <title>Non Certificate OD</title>
+    <style>
+
+        h2{
+          padding-top:10px;
+          color:#686868;
+
         }
         #firstcard{
           padding-bottom:300px;
@@ -67,23 +36,19 @@ $(document).ready(function(){
             }
             .wrapper wrapper--w780
             {
->>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
 
+                visibility:hidden;
+            }
+            .container{
+                padding-top:10px;
+            }
+            .container1{
+                padding-top:10px;
+                                              
+            }
+            .container2>.ui.card{
+                padding-top:80px;
                 
-<<<<<<< HEAD
-               </div>
-            
-         </div>
-        </div>
-    </div>
-    </form>
-    </div>
-    </div>
-  </center>
-</div>
-<script >
-      
-=======
              }
              .container2{
               padding-top:30px;
@@ -116,26 +81,11 @@ $(document).ready(function(){
     </style>
     <script >
        var diff;
->>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
       var addCols = function (num){
          for (var i=1;i<=num+1;i++) {
                 var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
                 var myPanel = $('<div class="container1"></div><div class="ui card" id="day'+i+'"><div class="content"><div class="header">DAY '+i+'</div><div class="ui divider"></div><div class="CardUI"><spam><b>Reason &nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </b></spam><div class="ui input">  <input type="text" id="Day'+i+'Reason" placeholder="" size="45" required></div></div><div class="CardUI1"><div class="hour"></div><div class="inline field"> <select name="day'+i+'hour[]" multiple="" class="label ui selection fluid dropdown" required> <option value="" class="dropcolor">Select Hours (Multi)</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option>  </select> </div> </div></div></div></div>');
                 myPanel.appendTo(myCol);
-<<<<<<< HEAD
-                myCol.appendTo('.main');
-                if(i==num)
-                {
-                  var myCol = $('<div class="col-sm-3 col-md-3 pb-2"></div>');
-                  var myPanel = $('<div class="container2"><div class="ui card" id="submitcard"> <div><button type="submit" class="positive ui button">Submit</button></div></div></div>');
-                  myPanel.appendTo(myCol);
-                  myCol.appendTo('.main');
-                  $('.pusher').scroll();
-                }
-              
-            }
-        };
-=======
                 myCol.appendTo('#contentPanel');
               }
                  
@@ -147,7 +97,6 @@ $(document).ready(function(){
               
            
            };
->>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
        function getInputValue(count)
        {
           $('#contentPanel').empty();
@@ -224,72 +173,7 @@ $(document).ready(function(){
         background-image: url("../backlogout.jpg");
         
         }
-  
     </style>
-     <style>
-#contentPanel {
-height:100%;
-overflow:visible; 
-}
-h2{
-  padding-top:10px;
-  color:#686868;
-
-}
-.ui.card
-    {
-        padding-top: 10px;
-        height: 200px;
-        width: 800px;
-       
-    }
-    .wrapper wrapper--w780
-    {
-
-        visibility:hidden;
-    }
-    .container{
-        padding-top:10px;
-    }
-    .container1{
-        padding-top:10px;
-                                      
-    }
-    .container2>.ui.card{
-        padding-top:80px;
-        
-     }
-     .container2{
-      padding-top:30px;
-     }
-   .ui.calender{
-      width:20px;
-    }
-  .row{
-    padding-top:40px;
-  }
-
-  .inline.field{
-   width:300px;
-  }
-  .hour>.spam{
-    color:black;
-    padding: 30px 400px 0px 0px;
-
-  }
-  .CardUI1{
-    padding-top:20px;
-    padding-left:20px
-  }
- .ui.selection.dropdown{
-   color:red;
- }
- .ui.dropdown:not(.button)>.default.text {
-    color: rgba(16, 14, 14, 0.87);
-}
- 
-</style>
-
     <script type="text/javascript">
   	
     function getStart()
@@ -401,10 +285,8 @@ h2{
     
 
   </script>
-<<<<<<< HEAD
-=======
     </head>
-<body>
+    <body>
     <?php 
         include_once('studentnav.php');
         include_once('../assets/notiflix.php');
@@ -491,6 +373,9 @@ h2{
     </div>
     
   </center>
->>>>>>> b4c0f4b3be16687b7aad2fcea3aa8eb5e3af8e24
 </body>
 </html>
+
+
+
+

@@ -10,9 +10,18 @@ include_once('./assets/notiflix.php');
 ?>
 <html>
     <head>
-        <title>Login</title>
+    <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-151639011-2');
+</script>
+  <title>Login</title>
 <link rel="icon" type="image/png" href="KEC.png">
   <meta charset="utf-8" />
+  <meta name="dark-theme" color="#181818" />
+	<link rel="manifest" href="/manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -59,6 +68,7 @@ include_once('./assets/notiflix.php');
       </script>
 </head>
 <body background="images/backgrd.jpg">
+
 <div class="preloader"></div>
 <div class="wrapper fadeInDown">
   <div id="formContent">

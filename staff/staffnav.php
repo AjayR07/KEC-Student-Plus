@@ -3,21 +3,49 @@
   <head>
   <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2, user-scalable=no"/>
     <link rel="icon" type="image/png" href="../KEC.png">
-<link rel="stylesheet" href="../assets/Semantic/dist/semantic.min.css" type="text/css"/> 
+<link rel="stylesheet" href="../assets/Fomantic/dist/semantic.min.css" type="text/css"/> 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
        <!-- No Script Part -->
 	<noscript><meta http-equiv="refresh" content="0; URL='../errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
 
+  
+
+  <style>
+        /* Refers the whole setup */
+        ::-webkit-scrollbar {
+          width: 13px;
+          border-radius: 13px;
+        }
+
+        /* Refers tracking path */
+        ::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+          border-radius: 13px;
+          /* background-color: #F5F5F5; */
+        }
+        /* Refers Draggable Bar */
+        ::-webkit-scrollbar-thumb {
+          border-radius: 13px;
+          -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+          background-color: #555;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+          background: #ef8376; 
+        }
+        </style>
     <style type="text/css">
       body {
         -webkit-font-smoothing: antialiased;
         -moz-font-smoothing: grayscale;
         font-family: 'Open Sans', sans-serif;
+      }
+      html{
+		  scroll-behavior: smooth;
       }
 
       .ui.center.aligned.container {
@@ -62,26 +90,24 @@
           align-items: center;
           justify-content: center;
         }
-       /* .ui.modal,
-        .ui.active.modal {
-          position: fixed;
-          margin: auto auto!important;
-          top:23%;
-          left:18%;
-          right: 18%;
-          transform-origin: center !important;
-          transition: all ease .5s;
-        }
-        .modal {
-            height: auto;
-            top: auto;
-            left: auto;
-            bottom: auto;
-            right: auto;
-        } */
+        #SideNavBar {
+            /* background-image: url('../images/sidenav.jpg') !important; */
+            background-size: cover !important; 
+                    
+          }
+         body, .pusher {
+             background-image: url("../backstaff.jpg") !important;
+ 
+          }
+          .header
+           {
+             color:cyan;
+           }
+
+
     </style>
     <script src="../assets/jquery.min.js"></script>
-    <script src="../assets/Semantic/dist/semantic.min.js"></script>
+    <script src="../assets/Fomantic/dist/semantic.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
   $('.pop').popup();
@@ -125,48 +151,104 @@ $(document).ready(function(){
     }
   });
 
-      });
-</script>
-<script> 
-        // $(function(){
-        //   $.ajaxSetup ({
-        //       cache: false
-        //   });
-        //   //var ajax_load = "<img src='../images/giphy3.svg' alt='Loading...' style='position: absolute;top: 0;left: 0;width: 100%;height: 100%;z-index: 9999;'/>";
-        //  // var ajax_load=Notiflix.Loading.Dots();Notiflix.Loading.Remove();
-        //   var ajax_load='<body><div class="ui active dimmer"><div class="ui loader"></div></div></body>';
-         
-        //   var loadUrl = "./OdList.php";
-        //   var loadUrl1 = "./PostOdList.php";
-        //   var loadUrl2 = "./Export.php";
-        //   var loadUrl3 = "./ClassInfo.php";
+  $('#togglepass').on("click",function(){
+    $('#changepass').modal({
+               onApprove :function()
+               {
+                 return false;
+               }
+             }).modal('show');
+  $('#newpass').on("change",function(){
+    var pass=$("#newpass").val();
+  });
+  });
+
+
+  $('#passform').form({
+    fields: {
+      oldpass: {
+        identifier: 'oldpass',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please Enter the Old Password'
+          },
+          {
+            type   : 'maxLength[16]',
+            prompt : 'Please Enter Password upto 16 Characters'
+          },
+          {
+            type   : 'minLength[4]',
+            prompt : 'Please Enter Password above 4 characters'
+          }
+        ]
+      },
+      newpass: {
+        identifier: 'newpass',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please Enter the Old Password'
+          },
+          {
+            type   : 'maxLength[16]',
+            prompt : 'Please Enter Password upto 16 Characters'
+          },
+          {
+            type   : 'minLength[4]',
+            prompt : 'Please Enter Password above 4 characters'
+          }
+        ]
+      },
+      cnfmnewpass: {
+        identifier: 'cnfmnewpass',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please Enter the Old Password'
+          },
+          {
+            type   : 'maxLength[16]',
+            prompt : 'Please Enter Password upto 16 Characters'
+          },
+          {
+            type   : 'minLength[4]',
+            prompt : 'Please Enter Password above 4 characters'
+          },
+          {
+            type : 'match[newpass]',
+            prompt : 'Password and Confirm Password should be same'
+          },
           
-        //   $("#OdList").click(function(){
-        //     let stateObj = { id: "100" }; 
-        //     window.history.pushState(stateObj,"OD Permission", "./OdList");
-        //       $("body").html(ajax_load).load(loadUrl);
-        //   });
-        //   $("#PostOdList").click(function(){
-        //     let stateObj = { id: "100" }; 
-        //     window.history.pushState(stateObj,"OD Submission", "./PostOdList");
-        //     $("body").html(ajax_load).load(loadUrl1);
-        //   });
-         
-        //   $("#Export").click(function(){
-        //     let stateObj = { id: "100" }; 
-        //     window.history.pushState(stateObj,"OD Status", "./Export");
-        //       $("body").html(ajax_load).load(loadUrl2);
-        //   });
-  
-        //   $("#ClassInfo").click(function(){
-        //     let stateObj = { id: "100" }; 
-        //     window.history.pushState(stateObj,"Certificate Registration", "./ClassInfo");
-        //       $("body").html(ajax_load).load(loadUrl3);
-        //   });
-         
-        
-      // });
-    </script> 
+        ]
+      }
+
+    },
+    onSuccess: function(event,fields) {
+      event.preventDefault();
+      SubmitDetails();
+    }
+ 
+  });
+});
+function SubmitDetails()
+{
+    data=$("#passform").serializeArray();
+    data[3]={name: "staffid", value: "<?php echo $_SESSION['staffid'];?>"};
+    console.log(data);
+    $.ajax({
+			url:"ajax_handler.php",
+			type:"POST",
+			data:data,
+			success:function(d)
+			{
+        $('#changepass').modal('hide');
+				Notiflix.Notify.Success(d);
+			}
+		});
+}
+</script>
+
      <script>
       $(window).on("load", function() {
         $('.preloader').hide();
@@ -176,48 +258,35 @@ $(document).ready(function(){
   </head>
 
 <body id="root">
-<div class="preloader"><body><div class="ui active dimmer"><div class="ui large text loader">Please wait...</div></div></body></div>
-    <div class="ui tablet computer only padded grid">
-      <div class="ui borderless fluid huge inverted menu">
-        <a class="active green item" href="#root">KEC Student+</a>
-        <a class="item" href="OdList">Pre-OD List</a>
-          <a class="item" id="togglemodal">Suggestion Approval</a>
-          <a class="item" href="PostOdList">Post-OD List</a>
-          <a class="item" href="Export">Export</a>
-          <a class="item" href="ClassInfo">Class Info</a>
-          <a class="right item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
-      </div>
+<div class="preloader"><body><div class="ui active dimmer" style="position: fixed;><div class="ui massive active green elastic loader"></div></div></body></div>
+
+<div class="ui small modal" id="changepass">
+  <div class="header">Change Password</div>
+  <div class="content">
+  <form class="ui form segment error" id="passform">
+  <div class="field">
+      <label>Old Password:</label>
+      <input type="password" name="oldpass" id="oldpass" placeholder="Old Password">
     </div>
-    <div class="ui mobile only padded grid">
-      <div class="ui borderless fluid huge inverted menu">
-        <a class="header item" href="#root">KEC Student+</a>
-        <div class="right menu">
-          <div class="item">
-            <button class="ui icon toggle basic inverted button">
-              <i class="content icon"></i>
-            </button>
-          </div>
-        </div>
-        <div class="ui vertical borderless fluid inverted menu">
-        <a class="item" href="OdList.php">Pre-OD List</a>
-          <a class="item" id="togglemobile">Suggestion Approval</a>
-          <a class="item" href="PostOdList.php">Post-OD List</a>
-          <a class="item" href="Export.php">Export</a>
-          <a class="item" href="ClassInfo.php">Class Info</a>
-          <a class="item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
-        </div>
-      </div>
+    <div class="field">
+      <label>New Password:</label>
+      <input type="password" name="newpass" id="newpass" placeholder="New Password">
     </div>
+    <div class="field">
+      <label>Confirm New Password:</label>
+      <input type="password" name="cnfmnewpass" placeholder="Confirm Password">
+    </div>
+      <div class="actions" style="text-align: right;">
+        <button class="ui positive button" type="submit" name="changepass">Proceed</button>
+        <div class="ui negative button" onClick="return true">Ignore</div><br/>
+        <div class="ui error message"></div>
+      </div>
+  </form>
+  
+  </div>
+  
+</div>
 
-
-    <script>
-      $(document).ready(function() {
-        $(".ui.toggle.button").click(function() {
-          $(".mobile.only.grid .ui.vertical.menu").toggle(100);
-        });
-      });
-
-    </script>
 <div class="ui modal" id="navmodal">
   <div class="header">KEC Student+</div>
   <div class="content">
@@ -237,5 +306,60 @@ $(document).ready(function(){
     </div>
     </div>
 </div>
-</body>
-</html>
+
+
+  <div class="ui borderless fluid huge inverted menu" style="margin-top:0%">
+      <a class=" active  item" id="side_nav"><i class="sidebar icon"></i></a>
+      <a class="active green item" href="index.php">KEC Student+</a>
+      <a class="right item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
+  </div>
+  
+
+  
+
+    <script>
+      $(document).ready(function() {
+        $('#side_nav').on('click',function(){
+                  $('.ui.sidebar').sidebar('setting', 'transition', 'overlay').sidebar('toggle');
+                });
+      });
+
+    </script>
+
+<div class="ui sidebar inverted vertical menu" id="SideNavBar" style="font-size:18px">
+    <div class="item">
+      <!-- <a class="ui logo icon image" href="/">
+      <?php 
+            // if($gender=='male')
+            //       echo '<img class="ui avatar image" src="../images/matthew.png"/>';
+            // else if($gender=='female')
+            //       echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
+            // else
+            //       echo '<img class="ui avatar image" src="../images/elyse.png"/>';
+            ?>
+      </a> -->
+      <center><a href="index"><img src="../KEC.png" alt=""  style="width:60%"/></a>
+      <span class="ui large text" style="color:cyan"><center>KEC Student+</center></span></center><br>
+      <!-- <a href="/" style="font-size:18px;text-align:center">&nbsp Hi! &nbsp <b><?php// echo $_SESSION["user"]; ?> </b></a> -->
+    </div>
+    <div >
+    <div class="item" ><div class="header" style="font-size:17px;" >Advisor / Year in Charge</div></div>
+          <a class="ui item" href="OdList" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Pre-OD List</span></a>
+          <a class="item" href="PostOdList" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Post-OD List</span></a>
+          <div class="item" ><div class="header" style="font-size:18px;" >Suggestion</div></div>   
+          <a class="item" id="togglemodal" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Suggestion Approval</span></a>
+          <div class="item" ><div class="header" style="font-size:18px;" >Repository</div></div>   
+          <a class="item" href="Export" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Export</span></a>
+          <a class="item" href="ClassInfo" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Class Info</span></a>
+          <a class="item" href="StudentDetail" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Student Details</span></a>
+          <div class="item" ><div class="header" style="font-size:18px;" >Profile</div></div>   
+          <a class="item"  style="font-size:16px;text-indent:20%;"><span id="togglepass" class="ui inverted grey text">Change Password</span></a>
+         
+    </div>
+
+    <footer style="margin-top:20%;color:bisque;font-size:14px">
+			<center>	&copy; Team A3 . <br>All rights reserved.</center>
+				<br>
+		</footer>
+  </div>
+</div class="pusher">

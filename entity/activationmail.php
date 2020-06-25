@@ -15,7 +15,7 @@ $mailto=$_SESSION['mail'];
 $Name=$_SESSION['name'];
 $key='AbinashArulAjayMNC';
 $hash=sha1($rollno.$key);
-$link='http://kecstudent.com/entity/auth.php?regno='.$rollno.'&hash='.$hash;
+$link='http://student.kongu.edu/entity/auth.php?regno='.$rollno.'&hash='.$hash;
 $mail = new PHPMailer(true);
 $mail->isSMTP();                            // Set mailer to use SMTP
 $mail->SMTPDebug = 0;
@@ -25,7 +25,7 @@ $mail->Username = 'apikey';          // SMTP username
 $mail->Password = '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'; // SMTP password
 $mail->SMTPSecure = 'ssl';                  // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 465;                          // TCP port to connect to
-$mail->setFrom('admin@teama3.tech', 'Team A3 KEC');
+$mail->setFrom('studentplus@kongu.edu', 'KEC Student+');
 $mail->addAddress($mailto);   // Add a recipient
 $mail->isHTML(true);
 $bodyContent = '<!doctype html>
