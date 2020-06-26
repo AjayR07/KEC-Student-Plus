@@ -164,13 +164,13 @@ echo "<script>Notiflix.Notify.Info('Click on the Copy icon to copy the register 
     <!-- Jquery JS-->
     <script src="../assets/clipboard.min.js"></script>
     <script>
-      $(document).ready(function(){
-        document.getElementById("copythis").click();
-     }); 
+
     
         var clipboard = new ClipboardJS('#copythis');
 
-        clipboard.on('success', function(e) {
+        clipboard.on('success', function(e) 
+        {
+            Notiflix.Notify.Info('Copied'); 
             console.log(e);
         });
         clipboard.on('error', function(e) {
