@@ -281,7 +281,7 @@ include_once('./assets/notiflix.php');
         {
             $_SESSION['uname']=$register;
             $_SESSION['name']=$row["name"];
-            echo '<script>location.href="./student/PreOdForm.php";</script>';
+            echo '<script>location.href="./student/index.php";</script>';
             //header('Location: ./student/PreOdForm.php');
             exit();
 }

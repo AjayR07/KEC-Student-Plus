@@ -21,7 +21,6 @@
     <link rel="icon" type="image/png" href="../KEC.png">
    
     <title>Successfull</title>
-
     <link href="../staff/css/main.css" rel="stylesheet" media="all">
     <?php include_once('../assets/notiflix.php'); ?>
     <style>
@@ -61,6 +60,12 @@
     th,td{
         height: 35px;
     }
+    #copythis:hover {
+  
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
     </style>
     
     <?php
@@ -98,7 +103,6 @@ echo "<script>Notiflix.Notify.Info('Click on the Copy icon to copy the register 
 </style>
 
     <center>
-
     <div class="page-wrapper p-t-50 p-b-100">
         <div class="wrapper wrapper--w780">
             <div class="card card-3">
@@ -164,17 +168,10 @@ echo "<script>Notiflix.Notify.Info('Click on the Copy icon to copy the register 
     <!-- Jquery JS-->
     <script src="../assets/clipboard.min.js"></script>
     <script>
-      $(document).ready(function(){
-        document.getElementById("copythis").click();
-     }); 
-    
         var clipboard = new ClipboardJS('#copythis');
-
-        clipboard.on('success', function(e) {
-            console.log(e);
-        });
-        clipboard.on('error', function(e) {
-        console.log(e);
+        clipboard.on('success', function(e) 
+        {
+            Notiflix.Notify.Info('Copied'); 
         });
     </script>
  
