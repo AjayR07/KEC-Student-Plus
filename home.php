@@ -379,8 +379,8 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 						</ul>
 						</marquee>
 
-					<h6 style="text-align:center;font-size:16px;font-family: Arial, Helvetica, sans-serif;">		
-					<span>Last Updated on <span class="ui green text">22-June-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 3.5 Beta</span></h6>
+					<h6 style="text-align:center;font-size:13px;font-family: Arial, Helvetica, sans-serif;">		
+					<span>Last Updated on <span class="ui green text">01-July-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 3.5 Beta</span></h6>
 
 					</section>
 
@@ -395,23 +395,22 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 							</header>
 							<p>An initiative managed by a group of teens, Working for the students utmost satisfaction.</p>
 
-							<ul class="icons">
+							<!-- <ul class="icons">
 								<li><a href="mailto:studentplus@kongu.edu" class="icon brands fa fa-google"><span class="label">Gmail</span></a></li>
 								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 								<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							</ul> -->
+							<ul class="icons">
+							<a href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
 							</ul>
-											<br><a href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
+											
 						</section>
 						<!-- Copyright -->
-						<div class="copyright">
+						<div class="contact">
 							<ul class="menu">
-								<li> &copy; Kongu Engineering College. All rights reserved.</li>
 								<li>Admin: <span ondragend="window.location.href='./admin/login.php'"><i class="fa fa-user-secret" aria-hidden="true"></i></span></li>
-								<li>Contact us: <a href="https://teama3.tech/">teama3.tech</a></li>
-								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank"><i class="fa fa-envelope-o""></i></a></li>
-
-								<li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
-
+								<li>About us: <a href="./aboutUs.html">Check out!</a></li>
+								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank">studentplus@kongu.edu</a></li>
 								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <!--i class="in flag"></!i--></li>
 							</ul>
 							<br>
@@ -426,6 +425,7 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 			<div class="copyright">
 
 				<ul class="menu">
+					<li> &copy; Kongu Engineering College. All rights reserved.</li>
 					<li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
 					<li><a href="./entity/policy/terms-conditions">Terms & Condition</a> </li>
 					<li><a href="./entity/policy/cookie-policy">Cookie Policy</a> </li>						
