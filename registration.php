@@ -243,14 +243,17 @@ include_once('./entity/mailheader.php');
         if(isset($_POST['submit']))
         {
         $rollno=$_POST['regno'];
+        // echo '<script>alert("'.$sql.'"</script>';
         $check="SELECT pass from registration where regno like '$rollno'";
+        // echo '<script>alert("'.$sql.'"</script>';
         $z=$con->query($check);
         if($z->num_rows!=0)
         {
             $row=$z->fetch_assoc();
             if(!empty($row['pass']))
-                echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
-            exit();
+            {    echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
+                exit();
+            }
         }
         else
         {
@@ -272,7 +275,7 @@ include_once('./entity/mailheader.php');
                 exit();
             }
         }
-        $sql="SELECT * from `registration` where `rollno` like '$rollno'";
+        $sql="SELECT * from `registration` where `regno` like '$rollno'";
         $data=$con->query($sql);
         $row=$data->fetch_assoc();
         $Mail=$row['mail'];
@@ -283,6 +286,7 @@ include_once('./entity/mailheader.php');
         $Name=$row['name'];
         $passw=sha1($pass,false);
         $sql="UPDATE `registration` SET `pass`='$passw', `residence`='$residence' WHERE `regno` like '$rollno'";
+      //  echo '<script>alert("'.$sql.'"</script>';
         $con->query($sql);
         $key='AbinashArulAjayMNC';
         $hash=sha1($rollno.$key);
