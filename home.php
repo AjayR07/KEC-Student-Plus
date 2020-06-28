@@ -29,7 +29,9 @@ include_once("db.php");
         <meta name="description" content="KEC Student+, A initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>,Integrated with On-Duty Management, Kongu Engineering College, Perundurai,Student & Teacher Oriented"/>
         <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , https://kecstudent.xyz/ ,students,Certificates Repository ,perundurai"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="author" content="Abinash S Arul Prasath V Ajay R">
+		<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
+		<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.min.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
 		<style>
 /* Refers the whole setup */
 ::-webkit-scrollbar {
@@ -109,11 +111,37 @@ include_once("db.php");
                         s.parentNode.insertBefore(g, s);
                 }(document, "script"));
         </script>
-        <!-- End PushAlert -->
+		<!-- End PushAlert -->
+		
 </head>
 
 <body class="homepage is-preload">
 	<div class="preloader"></div>
+	
+	<!-- Cookie popup -->
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.min.js"></script>
+  <script language="javascript">
+      $(function() {
+          toastr.options = {
+             "closeButton": true,
+             "debug": false,
+             "positionClass": "toast-bottom-left",
+             "showDuration": "300",
+             "hideDuration": "300",
+             "timeOut": "5000",
+             "extendedTimeOut": "1000",
+             "showEasing": "swing",
+             "hideEasing": "linear",
+             "showMethod": "fadeIn",
+             "hideMethod": "fadeOut"
+          }
+    toastr.info("<p'>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a href='entity/policy/cookie-policy.html' target='_new'>More details</a></p>");
+      });
+  </script>
+
+  	<!-- Cookie popup End -->
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
@@ -377,11 +405,10 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 						<!-- Copyright -->
 						<div class="copyright">
 							<ul class="menu">
-								<li> &copy; Team A3 . All rights reserved.</li>
+								<li> &copy; Kongu Engineering College. All rights reserved.</li>
 								<li>Admin: <span ondragend="window.location.href='./admin/login.php'"><i class="fa fa-user-secret" aria-hidden="true"></i></span></li>
 								<li>Contact us: <a href="https://teama3.tech/">teama3.tech</a></li>
 								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank"><i class="fa fa-envelope-o""></i></a></li>
-								<li><a href="./policy/privacy-policy">Privacy Policy</a> </li>
 								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <!--i class="in flag"></!i--></li>
 							</ul>
 							<br>
@@ -392,8 +419,16 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 
 				</div>
 			</div>
-		</div>
+			<br><br><br>
+			<div class="copyright">
 
+				<ul class="menu">
+					<li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
+					<li><a href="./entity/policy/terms-conditions">Terms & Condition</a> </li>
+					<li><a href="./entity/policy/cookie-policy">Cookie Policy</a> </li>						
+				</ul>
+			</div>	
+		</div>
 	</div>
 
 	<!-- Scripts -->
