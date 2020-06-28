@@ -150,6 +150,9 @@ include_once('../db.php');
             $phone=$temp['phone'];
             $gender=$temp['gender'];
             $name=$temp['name'];
+            $batch=$temp['batch'];
+            $sec=$temp['sec'];
+            $dept=$temp['dept'];
             $sql="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
            
             $sql2="SELECT c.status as othercert from othercert c where c.regno like '$regno'";

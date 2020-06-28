@@ -250,7 +250,7 @@ include_once('./assets/notiflix.php');
     if(isset($_POST['regno']) && isset($_POST['pass']))
     {
         $register=strtoupper($_POST["regno"]);
-        $pass=md5($_POST["pass"]);
+        $pass=sha1($_POST["pass"],false);
         $sql="SELECT * FROM `registration` WHERE `regno` LIKE '$register' AND `pass`LIKE '$pass' ";
         $data=$con->query($sql);
         $row_cnt = $data->num_rows;
@@ -281,7 +281,7 @@ $con->close();
   if(isset($_POST['actsubmit']))
   {
     $rollno=$_POST["regno"];
-    $pass=md5($_POST["pass"]);
+    $pass=sha1($_POST["pass"],false);
     $sql="SELECT * FROM `registration` WHERE `regno` LIKE '$rollno' AND `pass`LIKE '$pass' ";
     $data=$con->query($sql);
     $row=$data->fetch_assoc();
