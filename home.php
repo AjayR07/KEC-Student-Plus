@@ -425,7 +425,8 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 			<div class="copyright">
 
 				<ul class="menu">
-					<li> &copy; Kongu Engineering College. All rights reserved.</li>
+					<li> &copy; Kongu Engineering College.</li>
+					<li>All rights reserved.</li>
 					<li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
 					<li><a href="./entity/policy/terms-conditions">Terms & Condition</a> </li>
 					<li><a href="./entity/policy/cookie-policy">Cookie Policy</a> </li>						
