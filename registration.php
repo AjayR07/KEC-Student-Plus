@@ -138,11 +138,11 @@ include_once('./entity/mailheader.php');
                                             <div class="maxl">
                                             <div class="radio">
                                                 <label class="radio-inline"> 
-                                                    <input type="radio" name="gender" value="male" required>
-                                                    <span> Male &nbsp&nbsp </span> 
-                                                </label>                                             <label class="radio-inline"> 
-                                                    <input type="radio" name="gender" value="female" required>
-                                                    <span>Female </span> 
+                                                    <input type="radio" name="residence" value="Hosteller" required>
+                                                    <span>Hosteller &nbsp;&nbsp; </span> 
+                                                </label><label class="radio-inline"> 
+                                                    <input type="radio" name="residence" value="Day Scholar" required>
+                                                    <span>Day-Scholar </span> 
                                                 </label>
                                             </div>
                                             </div></center>
@@ -247,8 +247,8 @@ include_once('./entity/mailheader.php');
         $z=$con->query($check);
         if($z->num_rows!=0)
         {
-            $row=$data->fetch_assoc();
-            if(empty($row['pass']))
+            $row=$z->fetch_assoc();
+            if(!empty($row['pass']))
                 echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
             exit();
         }
@@ -257,7 +257,7 @@ include_once('./entity/mailheader.php');
             echo "<script>Notiflix.Report.Failure( 'Data Not Found', 'Your information is not there in our sources. Please contact the Admin.', 'Okay',function(){window.location.replace('aboutUs.html');} );</script>"; 
             exit();
         }
-        $gender=$_POST['gender'];
+        $residence=$_POST['residence'];
         $pass=$_POST['pass'];
         $repass=$_POST['repass'];
         if(strcmp($pass,$repass)!=0)
@@ -282,7 +282,7 @@ include_once('./entity/mailheader.php');
         $phone=$row['phone'];
         $Name=$row['name'];
         $passw=sha1($pass,false);
-        $sql="UPDATE `registration` SET `pass`='$passw' WHERE `regno` like '$rollno'";
+        $sql="UPDATE `registration` SET `pass`='$passw', `residence`='$residence' WHERE `regno` like '$rollno'";
         $con->query($sql);
         $key='AbinashArulAjayMNC';
         $hash=sha1($rollno.$key);
