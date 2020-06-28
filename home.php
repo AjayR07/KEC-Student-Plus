@@ -381,7 +381,7 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 								<li>Admin: <span ondragend="window.location.href='./admin/login.php'"><i class="fa fa-user-secret" aria-hidden="true"></i></span></li>
 								<li>Contact us: <a href="https://teama3.tech/">teama3.tech</a></li>
 								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank"><i class="fa fa-envelope-o""></i></a></li>
-								<li><a href="./policy/privacy-policy">Privacy Policy</a> </li>
+								<li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
 								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <!--i class="in flag"></!i--></li>
 							</ul>
 							<br>
