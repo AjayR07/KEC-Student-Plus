@@ -8,7 +8,7 @@ $register=$_SESSION['uname'];
 include_once('../db.php');
 include_once('../assets/notiflix.php');
 ?>
-<?php include_once('studentnav.php');?>
+
   <title>Profile</title>
   <link rel="stylesheet" href="css/profile.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,10 +26,19 @@ include_once('../assets/notiflix.php');
       background-position: center;
     
     }
+    .profile-card
+    {
+      margin-top:4% ! important;
+      margin-bottom:2% ! important;
+    }
   </style>
 </head>
 
-<div class="pusher">
+<div class="pusher" >
+
+
+<?php include_once('studentnav.php');?>
+
 <aside class="profile-card">
   
   <header>
@@ -48,7 +57,7 @@ include_once('../assets/notiflix.php');
     
   </header>
 
-  <div class="profile-bio">
+  <div class="profile-bio" >
   <h5 style="color: #009933; font-size: 20px;">Computer Science and Engineering</h5>
     <h5 style="font-size: 17px">
       <label class="prf">Batch/Section:</label>
@@ -74,6 +83,8 @@ include_once('../assets/notiflix.php');
       <div class="row" style="height: 10px;"></div>
       <label class="prf">Certificates Registered:</label>
       <a><?php echo $o; ?></a><br>
+      
+      
     </h5>
   </div>
 </aside> 
