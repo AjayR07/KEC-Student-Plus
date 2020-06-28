@@ -1,5 +1,6 @@
 <?php
 include_once("db.php");
+include_once('./assets/notiflix.php');
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -98,50 +99,16 @@ include_once("db.php");
 		$(window).on("load", function() {
 			$('.preloader').hide();
 			$('body').css({
-			overflow: 'auto',
-		});
+			overflow: 'auto',});
+			//Cookie Policy
+			Notiflix.Notify.Init({ position:"left-bottom",width:"350px",borderRadius:"15px", timeout: "5000",}); 
+			Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our use of cookies. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
 		});
 	</script>
-<!-- PushAlert -->
-<script type="text/javascript">
-                (function(d, t) {
-                        var g = d.createElement(t),
-                        s = d.getElementsByTagName(t)[0];
-                        g.src = "https://cdn.pushalert.co/integrate_e72bc8c16ca6aa277143fddf36527c65.js";
-                        s.parentNode.insertBefore(g, s);
-                }(document, "script"));
-        </script>
-		<!-- End PushAlert -->
-		
 </head>
 
 <body class="homepage is-preload">
 	<div class="preloader"></div>
-	
-	<!-- Cookie popup -->
-	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/js/toastr.min.js"></script>
-  <script language="javascript">
-      $(function() {
-          toastr.options = {
-             "closeButton": true,
-             "debug": false,
-             "positionClass": "toast-bottom-left",
-             "showDuration": "300",
-             "hideDuration": "300",
-             "timeOut": "5000",
-             "extendedTimeOut": "1000",
-             "showEasing": "swing",
-             "hideEasing": "linear",
-             "showMethod": "fadeIn",
-             "hideMethod": "fadeOut"
-          }
-    toastr.info("<p'>Cookies help us deliver our services. By using our services, you agree to our use of cookies. <a href='entity/policy/cookie-policy.html' target='_new'>More details</a></p>");
-      });
-  </script>
-
-  	<!-- Cookie popup End -->
-
 	<div id="page-wrapper">
 
 		<!-- Header -->
