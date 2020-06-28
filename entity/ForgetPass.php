@@ -195,7 +195,7 @@
   {
 
         $register=$_SESSION['username'];
-        $pass=md5($_POST["pass"]);
+        $pass=sha1($_POST["pass"],false);
         $ins="UPDATE `registration` SET `pass`='$pass' WHERE `regno`='$register' ";
         if ($con->query($ins) == TRUE)
         {

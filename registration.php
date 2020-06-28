@@ -281,7 +281,7 @@ include_once('./entity/mailheader.php');
         $Sec=$row['sec'];
         $phone=$row['phone'];
         $Name=$row['name'];
-        $passw=md5($pass);
+        $passw=sha1($pass,false);
         $sql="UPDATE `registration` SET `pass`='$passw' WHERE `regno` like '$rollno'";
         $con->query($sql);
         $key='AbinashArulAjayMNC';
