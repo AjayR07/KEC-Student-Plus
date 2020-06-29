@@ -20,18 +20,18 @@ include_once("db.php");
 	<link rel="icon" type="image/png" href="./KEC.png">
 	<meta charset="utf-8" />
 	<meta name="dark-theme" color="#181818" />
-	<link rel="manifest" href="./manifest.json">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
           <meta property="og:title" content="KEC Student+"/>
-          <meta property="og:description" content="KEC Student+;Kec;cse ;Kongu Engineering College;KEC Student+ website;"/>
+          <meta property="og:description" content="KEC Student+;Kec;cse;Kongu Engineering College;KEC Student+ website;"/>
           <meta property="og:type" content="On-Duty"/>
           <meta property="og:url" content="index.php"/>
           <meta property="og:site_name" content="KEC Student+" />
         <meta name="description" content="KEC Student+, A initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>,Integrated with On-Duty Management, Kongu Engineering College, Perundurai,Student & Teacher Oriented"/>
-        <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , https://kecstudent.xyz/ ,students,Certificates Repository ,perundurai"/>
+        <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , http://student.kongu.edu ,students,Certificates Repository ,perundurai"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
-		<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.min.css" rel="stylesheet"/>
+		
     <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
 	<script src="./assets/Notiflix/Minified/notiflix-2.1.2.min.js"></script>
 	  <link rel="stylesheet" href="./assets/Notiflix/Minified/notiflix-2.1.2.min.css">
@@ -431,11 +431,6 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 	</script>
 
 	<!--End of Tawk.to Script-->
-<script type="module">
-import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
-
-const el = document.createElement('pwa-update');
-document.body.appendChild(el);</script> 
 
 
 </body>
