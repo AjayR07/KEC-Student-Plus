@@ -204,7 +204,7 @@ include_once('./assets/notiflix.php');
                         <div class="col-sm-6">
                             <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
                                 <label>Enter your Register Number: </label>
-                            <input type="text" name="RegNo" class="form-control" value="" placeholder="Roll No." minlength="8" maxlength="8" required/>
+                            <input type="text" name="RegNo" class="form-control" value="" placeholder="Roll No." minlength="8" maxlength="8" onkeyup="this.value = this.value.toUpperCase();" required/>
                             <label>Current Password: </label>
                             <input type="password" name="old" id="old" class="form-control" value="" placeholder="Old Password"  required/>
                             <label>New Password: </label>
@@ -265,7 +265,8 @@ include_once('./assets/notiflix.php');
         $sql="SELECT * FROM `registration` WHERE `regno` LIKE '$register' AND `pass`LIKE '$pass' ";
         $data=$con->query($sql);
         $row_cnt = $data->num_rows;
-
+        echo $register;
+        echo $pass;
         if($row_cnt==0)
         {
           echo "<script> Notiflix.Report.Failure( 'Credentials Mismatch', 'There is no account associated with the register no and password given', 'Okay');</script>";
@@ -335,7 +336,7 @@ if(isset($_POST["changepass"]))
 {
   
   $rollno=$_POST["RegNo"];
-  $pass=md5($_POST["old"]);
+  $pass=sha1($_POST["old"],false);
   $sql="SELECT * FROM `registration` WHERE `regno` LIKE '$rollno' AND `pass`LIKE '$pass' ";
   $data=$con->query($sql);
   $row=$data->fetch_assoc();
@@ -346,7 +347,7 @@ if(isset($_POST["changepass"]))
   }
   else{
 
-  $newpass=md5($_POST["npass"]);
+  $newpass=sha1($_POST["npass"],false);
   $sql = "UPDATE `registration` SET `pass` = '$newpass' WHERE `regno` = '$rollno' ";
   $con->query($sql);
   echo "<script> Notiflix.Report.Success( 'Password Changed ', 'Your Account Password Changed Successfully', 'Okay', function(){} );</script>";
