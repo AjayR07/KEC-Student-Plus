@@ -1,5 +1,6 @@
 <?php
 include_once("db.php");
+include_once('./assets/notiflix.php');
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -29,7 +30,9 @@ include_once("db.php");
         <meta name="description" content="KEC Student+, A initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>,Integrated with On-Duty Management, Kongu Engineering College, Perundurai,Student & Teacher Oriented"/>
         <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , https://kecstudent.xyz/ ,students,Certificates Repository ,perundurai"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="author" content="Abinash S Arul Prasath V Ajay R">
+		<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
+		<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.min.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
 		<style>
 /* Refers the whole setup */
 ::-webkit-scrollbar {
@@ -96,20 +99,12 @@ include_once("db.php");
 		$(window).on("load", function() {
 			$('.preloader').hide();
 			$('body').css({
-			overflow: 'auto',
-		});
+			overflow: 'auto',});
+			//Cookie Policy
+			Notiflix.Notify.Init({ position:"left-bottom",width:"350px",borderRadius:"15px", timeout: "5000",}); 
+			Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our use of cookies. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
 		});
 	</script>
-<!-- PushAlert -->
-<script type="text/javascript">
-                (function(d, t) {
-                        var g = d.createElement(t),
-                        s = d.getElementsByTagName(t)[0];
-                        g.src = "https://cdn.pushalert.co/integrate_e72bc8c16ca6aa277143fddf36527c65.js";
-                        s.parentNode.insertBefore(g, s);
-                }(document, "script"));
-        </script>
-        <!-- End PushAlert -->
 </head>
 
 <body class="homepage is-preload">
@@ -351,8 +346,8 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 						</ul>
 						</marquee>
 
-					<h6 style="text-align:center;font-size:16px;font-family: Arial, Helvetica, sans-serif;">		
-					<span>Last Updated on <span class="ui green text">22-June-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 3.5 Beta</span></h6>
+					<h6 style="text-align:center;font-size:13px;font-family: Arial, Helvetica, sans-serif;">		
+					<span>Last Updated on <span class="ui green text">01-July-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 3.5 Beta</span></h6>
 
 					</section>
 
@@ -367,21 +362,22 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 							</header>
 							<p>An initiative managed by a group of teens, Working for the students utmost satisfaction.</p>
 
-							<ul class="icons">
+							<!-- <ul class="icons">
 								<li><a href="mailto:studentplus@kongu.edu" class="icon brands fa fa-google"><span class="label">Gmail</span></a></li>
 								<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
 								<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							</ul> -->
+							<ul class="icons">
+							<a href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
 							</ul>
-											<br><a href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
+											
 						</section>
 						<!-- Copyright -->
-						<div class="copyright">
+						<div class="contact">
 							<ul class="menu">
-								<li> &copy; Team A3 . All rights reserved.</li>
 								<li>Admin: <span ondragend="window.location.href='./admin/login.php'"><i class="fa fa-user-secret" aria-hidden="true"></i></span></li>
-								<li>Contact us: <a href="https://teama3.tech/">teama3.tech</a></li>
-								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank"><i class="fa fa-envelope-o""></i></a></li>
-								<li><a href="./policy/privacy-policy">Privacy Policy</a> </li>
+								<li>About us: <a href="./aboutUs.html">Check out!</a></li>
+								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank">studentplus@kongu.edu</a></li>
 								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <!--i class="in flag"></!i--></li>
 							</ul>
 							<br>
@@ -392,8 +388,18 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 
 				</div>
 			</div>
-		</div>
+			<br><br><br>
+			<div class="copyright">
 
+				<ul class="menu">
+					<li> &copy; Kongu Engineering College.</li>
+					<li>All rights reserved.</li>
+					<li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
+					<li><a href="./entity/policy/terms-conditions">Terms & Condition</a> </li>
+					<li><a href="./entity/policy/cookie-policy">Cookie Policy</a> </li>						
+				</ul>
+			</div>	
+		</div>
 	</div>
 
 	<!-- Scripts -->

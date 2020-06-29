@@ -10,6 +10,7 @@ include_once('../assets/notiflix.php');
 ?>
 <?php include_once('studentnav.php');?>
   <title>Profile</title>
+  <link rel="icon" type="image/png" href="../KEC.png">
   <link rel="stylesheet" href="css/profile.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
@@ -44,17 +45,21 @@ include_once('../assets/notiflix.php');
     ?>
       
     </a>
-    <h1><?php echo $name; ?></h1>
+    <h1 style="font-family: Georgia, serif; font-size: 25px;"><?php echo $name; ?></h1>
     
   </header>
 
   <div class="profile-bio">
-    <p>
+  <h5 style="color: #009933; font-size: 20px;">Computer Science and Engineering</h5>
+    <h5 style="font-size: 17px">
+      <label class="prf">Batch/Section:</label>
+      <a><?php echo $batch.' / '.$sec; ?></a><br>
+      <div class="row" style="height: 10px;"></div>
       <label class="prf">Phone:</label>
       <a><?php echo $phone; ?></a><br>
       <div class="row" style="height: 10px;"></div>
       <label class="prf">Mail Id:</label>
-      <a href="mailto:<?php echo $mail; ?>" target="_blank"><i class="fa fa-envelope" style="color: purple;" aria-hidden="true"></i></a><br>
+      <a href="mailto:<?php echo $mail; ?>" target="_blank"><?php echo $mail;?></a><br>
       <div class="row" style="height: 10px;"></div>
       <label class="prf">Total Applied:</label>
       <a><?php echo $a+$p+$d; ?></a><br>
@@ -70,10 +75,8 @@ include_once('../assets/notiflix.php');
       <div class="row" style="height: 10px;"></div>
       <label class="prf">Certificates Registered:</label>
       <a><?php echo $o; ?></a><br>
-    </p>
-
+    </h5>
   </div>
-
 </aside> 
 </div> 
 </body>

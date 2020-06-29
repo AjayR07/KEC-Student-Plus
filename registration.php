@@ -7,6 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 require 'PHPMailer/src/Exception.php';
 require 'PHPMailer/src/PHPMailer.php';
 require 'PHPMailer/src/SMTP.php';
+include_once('./entity/mailheader.php');
 ?>
 <html>
     <head>
@@ -137,11 +138,11 @@ require 'PHPMailer/src/SMTP.php';
                                             <div class="maxl">
                                             <div class="radio">
                                                 <label class="radio-inline"> 
-                                                    <input type="radio" name="gender" value="male" required>
-                                                    <span> Male &nbsp&nbsp </span> 
-                                                </label>                                             <label class="radio-inline"> 
-                                                    <input type="radio" name="gender" value="female" required>
-                                                    <span>Female </span> 
+                                                    <input type="radio" name="residence" value="Hosteller" required>
+                                                    <span>Hosteller &nbsp;&nbsp; </span> 
+                                                </label><label class="radio-inline"> 
+                                                    <input type="radio" name="residence" value="Day Scholar" required>
+                                                    <span>Day-Scholar </span> 
                                                 </label>
                                             </div>
                                             </div></center>
@@ -242,21 +243,24 @@ require 'PHPMailer/src/SMTP.php';
         if(isset($_POST['submit']))
         {
         $rollno=$_POST['regno'];
+        // echo '<script>alert("'.$sql.'"</script>';
         $check="SELECT pass from registration where regno like '$rollno'";
+        // echo '<script>alert("'.$sql.'"</script>';
         $z=$con->query($check);
         if($z->num_rows!=0)
         {
-            $row=$data->fetch_assoc();
-            if(empty($row['pass']))
-                echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
-            exit();
+            $row=$z->fetch_assoc();
+            if(!empty($row['pass']))
+            {    echo "<script>Notiflix.Report.Failure( 'Already Registered', 'You are already registered with us. Please proceed to login.', 'Okay',function(){window.location.replace('studLog.php');} );</script>"; 
+                exit();
+            }
         }
         else
         {
             echo "<script>Notiflix.Report.Failure( 'Data Not Found', 'Your information is not there in our sources. Please contact the Admin.', 'Okay',function(){window.location.replace('aboutUs.html');} );</script>"; 
             exit();
         }
-        $gender=$_POST['gender'];
+        $residence=$_POST['residence'];
         $pass=$_POST['pass'];
         $repass=$_POST['repass'];
         if(strcmp($pass,$repass)!=0)
@@ -271,7 +275,7 @@ require 'PHPMailer/src/SMTP.php';
                 exit();
             }
         }
-        $sql="SELECT * from `registration` where `rollno` like '$rollno'";
+        $sql="SELECT * from `registration` where `regno` like '$rollno'";
         $data=$con->query($sql);
         $row=$data->fetch_assoc();
         $Mail=$row['mail'];
@@ -280,8 +284,9 @@ require 'PHPMailer/src/SMTP.php';
         $Sec=$row['sec'];
         $phone=$row['phone'];
         $Name=$row['name'];
-        $passw=md5($pass);
-        $sql="UPDATE `registration` SET `pass`='$passw' WHERE `regno` like '$rollno'";
+        $passw=sha1($pass,false);
+        $sql="UPDATE `registration` SET `pass`='$passw', `residence`='$residence' WHERE `regno` like '$rollno'";
+      //  echo '<script>alert("'.$sql.'"</script>';
         $con->query($sql);
         $key='AbinashArulAjayMNC';
         $hash=sha1($rollno.$key);
@@ -295,12 +300,12 @@ require 'PHPMailer/src/SMTP.php';
         $mail = new PHPMailer(true);
         $mail->isSMTP();                            // Set mailer to use SMTP
         $mail->SMTPDebug = 0;
-        $mail->Host = 'smtp.sendgrid.net';             // Specify main and backup SMTP servers
-        $mail->SMTPAuth = true;                     // Enable SMTP authentication
-        $mail->Username = 'apikey';          // SMTP username
-        $mail->Password = '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'; // SMTP password
-        $mail->SMTPSecure = 'ssl';                  // Enable TLS encryption, `ssl` also accepted
-        $mail->Port = 465;                          // TCP port to connect to
+        $mail->Host = $Host;             // Specify main and backup SMTP servers
+        $mail->SMTPAuth = $SMTPAuth;                     // Enable SMTP authentication
+        $mail->Username = $Username;          // SMTP username
+        $mail->Password = $Password; // SMTP password
+        $mail->SMTPSecure = $SMTPSecure;                  // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = $Port;                         // TCP port to connect to
         $mail->setFrom('studentplus@kongu.edu', 'KEC Student+');
         $mail->addAddress($mailto);   // Add a recipient
         $mail->isHTML(true);

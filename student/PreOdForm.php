@@ -213,7 +213,7 @@
         $('#rangestart').calendar({
             type: 'date',
             endCalendar: $('#rangeend'),
-            minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() +1),
+            minDate: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
             maxDate: new Date(today.getFullYear(), today.getMonth(), today.getDate() + 7),
             formatter: 
             {
