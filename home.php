@@ -101,8 +101,8 @@ include_once('./assets/notiflix.php');
 			$('body').css({
 			overflow: 'auto',});
 			//Cookie Policy
-			Notiflix.Notify.Init({ position:"left-bottom",width:"350px",borderRadius:"15px", timeout: "5000",}); 
-			Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our use of cookies. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
+			Notiflix.Notify.Init({position:"left-bottom",timeout:"3000",borderRadius:"15px",width:"350px",});
+			Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our cookie policy. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
 		});
 	</script>
 </head>
