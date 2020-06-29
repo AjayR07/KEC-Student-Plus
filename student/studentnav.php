@@ -227,16 +227,16 @@ include_once('../db.php');
     <div class="ui mobile only padded grid">
       <div class="ui borderless fluid huge inverted menu" style="font-size:16px">
       <a class=" active  item" id="side_nav_mobile"><i class="sidebar icon"></i></a>
-       
+      <a class="active green item" href="#root" style="font-size:20px">KEC Student+</a>
       
-        <a class="ui right aligned item" id="avatar" >
+        <!-- <a class="ui right aligned item" id="avatar" >
           <?php 
-          if($gender=='Male')
-                echo '<img class="ui avatar image" src="../images/matthew.png"/>';
-          else if($gender=='Female')
-                echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
-          else
-                echo '<img class="ui avatar image" src="../images/elyse.png"/>';
+          // if($gender=='Male')
+          //       echo '<img class="ui avatar image" src="../images/matthew.png"/>';
+          // else if($gender=='Female')
+          //       echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
+          // else
+          //       echo '<img class="ui avatar image" src="../images/elyse.png"/>';
           ?>
           <div class="content" >
            <div class="ui sub header" style="color:white;font-size:16px"><?php  echo $name; ?></div>
@@ -244,9 +244,9 @@ include_once('../db.php');
             
           </div>
           
-          </a>
+          </a> -->
          
-          <a class="item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
+          <a class="ui right aligned item" href="../Logout.php"><i class="share square outline icon"></i></a>
 
       </div>
     </div>
@@ -303,8 +303,10 @@ include_once('../db.php');
           <div class="item"><div class=" header" style="font-size:18px">Certificates</div></div>
           <a class="item" href="OtherCert" style="text-indent:20%;font-size:18px">Registration</a>
           <a class="item" href="CertRepos" style="text-indent:20%;font-size:18px">Repository</a>
+          <div class="item"><div class=" header" style="font-size:18px">Profile</div></div>
+          <a class="item" href="../Logout.php" style="text-indent:20%;font-size:18px">Logout<i class="share square outline icon"></i></a>
           <footer style="margin-top:30%;color:bisque;font-size:14px">
-			      <center>	&copy; Team A3 . <br>All rights reserved.</center>
+			      <center>	&copy; Kongu Engineering College . <br>All rights reserved.</center>
 				    <br>
 		      </footer>
          
