@@ -1,6 +1,6 @@
 <?php
 include_once("db.php");
-include_once('./assets/notiflix.php');
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -33,7 +33,9 @@ include_once('./assets/notiflix.php');
 		<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
 		<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.min.css" rel="stylesheet"/>
     <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
-		<style>
+	<script src="./assets/Notiflix/Minified/notiflix-2.1.2.min.js"></script>
+	  <link rel="stylesheet" href="./assets/Notiflix/Minified/notiflix-2.1.2.min.css">
+   		<style>
 /* Refers the whole setup */
 ::-webkit-scrollbar {
 	width: 13px;
@@ -96,14 +98,15 @@ include_once('./assets/notiflix.php');
 		}
 	</style>
 	<script>
+	//Notiflix.Notify.Init({position:'left-bottom', closeButton: true, borderRadius:'15px', width:'350px',});		
 		$(window).on("load", function() {
 			$('.preloader').hide();
 			$('body').css({
 			overflow: 'auto',});
 			//Cookie Policy
-			Notiflix.Notify.Init({position:"left-bottom",timeout:"3000",borderRadius:"15px",width:"350px",});
-			Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our cookie policy. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
+			//Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our cookie policy. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
 		});
+
 	</script>
 </head>
 
