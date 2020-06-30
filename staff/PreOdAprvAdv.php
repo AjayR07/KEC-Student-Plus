@@ -185,7 +185,6 @@ while ($row = mysqli_fetch_array($data))
                 position   : 'bottom center',
             popup: '#tool'
           });
-
           });
         </script>
     <h1 align="center" style="color:bisque;">OD Permission Form of <?php echo $name; ?><div class="pop"><i class="user circle icon" id="pop"></i></div></h1> <br>
@@ -268,7 +267,7 @@ while ($row = mysqli_fetch_array($data))
             </div>
             <br>
 
-            <div class="card card-3">
+            <div class="card card-3" id="staff1">
                 <div class="card-image">
                     <div class="card-body">
                     <center> <h1 class="title"><b>Suggestion 1</b> </h1></center>
@@ -296,7 +295,7 @@ while ($row = mysqli_fetch_array($data))
             </div><br>
 
 
-            <div class="card card-3">
+            <div class="card card-3" id="staff2">
                 <div class="card-image">
                     <div class="card-body">
                     <center> <h1 class="title"><b>Seggestion 2</b> </h1></center>
@@ -326,7 +325,7 @@ while ($row = mysqli_fetch_array($data))
             </div><br>
 
 
-            <div class="card card-3">
+            <div class="card card-3" id="staff3">
                 <div class="card-image">
                     <div class="card-body">
                     <center> <h1 class="title"><b>Suggestion 3</b> </h1></center>
@@ -382,6 +381,18 @@ while ($row = mysqli_fetch_array($data))
     $('.ui.checkbox').checkbox();
     });
 </script>
+<?php
+
+ if($odrow['odtype']!='PAPER' || $odrow['odtype']!='PROJECT')
+ {
+    echo '<script>$(document).ready(function(){'; 
+    echo '$("#staff1").hide();';
+    echo '$("#staff2").hide();';
+    echo '$("#staff3").hide();});</script>';
+ }
+?>
+
+
 </body>
 
 </html>

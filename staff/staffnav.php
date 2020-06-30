@@ -354,11 +354,11 @@ function SubmitDetails()
           <a class="item" href="StudentDetail" style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Student Details</span></a>
           <div class="item" ><div class="header" style="font-size:18px;" >Profile</div></div>   
           <a class="item"  style="font-size:16px;text-indent:20%;"><span id="togglepass" class="ui inverted grey text">Change Password</span></a>
-         
+          <a class="item" href="../Logout.php"  style="font-size:16px;text-indent:20%;"><span class="ui inverted grey text">Logout<i class="share square outline icon"></i></span></a>
     </div>
 
     <footer style="margin-top:20%;color:bisque;font-size:14px">
-			<center>	&copy; Team A3 . <br>All rights reserved.</center>
+			<center>	&copy; Kongu Engineering College . <br>All rights reserved.</center>
 				<br>
 		</footer>
   </div>

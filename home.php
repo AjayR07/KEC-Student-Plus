@@ -1,6 +1,6 @@
 <?php
 include_once("db.php");
-include_once('./assets/notiflix.php');
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -20,20 +20,22 @@ include_once('./assets/notiflix.php');
 	<link rel="icon" type="image/png" href="./KEC.png">
 	<meta charset="utf-8" />
 	<meta name="dark-theme" color="#181818" />
-	<link rel="manifest" href="./manifest.json">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
           <meta property="og:title" content="KEC Student+"/>
-          <meta property="og:description" content="KEC Student+;Kec;cse ;Kongu Engineering College;KEC Student+ website;"/>
+          <meta property="og:description" content="KEC Student+;Kec;cse;Kongu Engineering College;KEC Student+ website;"/>
           <meta property="og:type" content="On-Duty"/>
           <meta property="og:url" content="index.php"/>
           <meta property="og:site_name" content="KEC Student+" />
         <meta name="description" content="KEC Student+, A initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>,Integrated with On-Duty Management, Kongu Engineering College, Perundurai,Student & Teacher Oriented"/>
-        <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , https://kecstudent.xyz/ ,students,Certificates Repository ,perundurai"/>
+        <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , http://student.kongu.edu ,students,Certificates Repository ,perundurai"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
-		<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.1/css/toastr.min.css" rel="stylesheet"/>
+		
     <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
-		<style>
+	<script src="./assets/Notiflix/Minified/notiflix-2.1.2.min.js"></script>
+	  <link rel="stylesheet" href="./assets/Notiflix/Minified/notiflix-2.1.2.min.css">
+   		<style>
 /* Refers the whole setup */
 ::-webkit-scrollbar {
 	width: 13px;
@@ -96,14 +98,15 @@ include_once('./assets/notiflix.php');
 		}
 	</style>
 	<script>
+	//Notiflix.Notify.Init({position:'left-bottom', closeButton: true, borderRadius:'15px', width:'350px',});		
 		$(window).on("load", function() {
 			$('.preloader').hide();
 			$('body').css({
 			overflow: 'auto',});
 			//Cookie Policy
-			Notiflix.Notify.Init({ position:"left-bottom",width:"350px",borderRadius:"15px", timeout: "5000",}); 
-			Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our use of cookies. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
+			//Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our cookie policy. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
 		});
+
 	</script>
 </head>
 
@@ -139,7 +142,7 @@ include_once('./assets/notiflix.php');
 		</div>
 <?php
 $cert=($con->query("SELECT `appno` FROM `oddetails` WHERE `STATUS` LIKE 'Approved' UNION SELECT `appno` FROM `othercert` WHERE `STATUS` LIKE 'Approved'"))->num_rows;
-$user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registration`"))->num_rows;
+$user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registration` WHERE `STATUS` LIKE 'Verified'"))->num_rows;
  ?>
 <!-- Banner -->
 		<section id="banner">
@@ -429,11 +432,6 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 	</script>
 
 	<!--End of Tawk.to Script-->
-<script type="module">
-import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
-
-const el = document.createElement('pwa-update');
-document.body.appendChild(el);</script> 
 
 
 </body>

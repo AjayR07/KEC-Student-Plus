@@ -65,13 +65,13 @@ else{
         $data=$con->query($sql);
         if($data==true)
         {
-            echo '<body><script>Notiflix.Report.Success("Updated Successfully", "Press Okay to continue", "Okay",window.location.replace("OdList.php")); </script></body>';
+            echo '<body><script>Notiflix.Report.Success("Updated Successfully", "Press Okay to continue", "Okay",function{window.location.replace("OdList.php");}); </script></body>';
             exit();
          
         }
         else
         {
-            echo '<body><script>Notiflix.Report.Failure("Updated Failure", "Some Error Occured. Please verify and try again", "Okay",window.location.replace("OdList.php")); </script></body>';
+            echo '<body><script>Notiflix.Report.Failure("Update Failure", "Some Error Occured. Please verify and try again", "Okay",function(){window.location.replace("OdList.php");}); </script></body>';
             exit();
         }
     }
@@ -84,12 +84,12 @@ else{
         $data=$con->query($sql);
         if($data==true)
         {
-            echo '<body><script>Notiflix.Report.Success("Updated Successfully", "Press Okay to continue", "Okay",window.location.replace("OdList.php")); </script></body>';
+            echo '<body><script>Notiflix.Report.Success("Updated Successfully", "Press Okay to continue", "Okay",function(){window.location.replace("OdList.php");}); </script></body>';
             exit();
         }
         else
         {
-            echo '<body><script>Notiflix.Report.Failure("Updated Failure", "Some Error Occured. Please verify and try again", "Okay",window.location.replace("OdList.php")); </script></body>';
+            echo '<body><script>Notiflix.Report.Failure("Update Failure", "Some Error Occured. Please verify and try again", "Okay",function(){window.location.replace("OdList.php");}); </script></body>';
             exit();
         }
     }
@@ -103,12 +103,12 @@ else{
         $data=$con->query($sql);
         if($data==true)
         {
-            echo '<body><script>Notiflix.Report.Success("Updated Successfully", "Press Okay to continue", "Okay",window.location.replace("OdList.php")); </script></body>';
+            echo '<body><script>Notiflix.Report.Success("Updated Successfully", "Press Okay to continue", "Okay",function{window.location.replace("OdList.php");}); </script></body>';
             exit();
         }
         else
         {
-            echo '<body><script>Notiflix.Report.Failure("Updated Failure", "Some Error Occured. Please verify and try again", "Okay",window.location.replace("OdList.php")); </script></body>';
+            echo '<body><script>Notiflix.Report.Failure("Update Failure", "Some Error Occured. Please verify and try again", "Okay",function{window.location.replace("OdList.php");}); </script></body>';
             exit();
         }
     }
