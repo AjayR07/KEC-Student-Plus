@@ -142,7 +142,7 @@ include_once("db.php");
 		</div>
 <?php
 $cert=($con->query("SELECT `appno` FROM `oddetails` WHERE `STATUS` LIKE 'Approved' UNION SELECT `appno` FROM `othercert` WHERE `STATUS` LIKE 'Approved'"))->num_rows;
-$user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registration`"))->num_rows;
+$user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registration` WHERE `STATUS` LIKE 'Verified'"))->num_rows;
  ?>
 <!-- Banner -->
 		<section id="banner">

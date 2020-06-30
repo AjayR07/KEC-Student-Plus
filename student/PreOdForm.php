@@ -13,48 +13,7 @@
     $register=$row['regno'];
     $name=$row['name'];
 ?>
-<?php
-    if(isset($_POST['submit']))
-    {
-    $appdate=date('Y-m-d');
-    $from = str_replace('/', '-',$_POST['odfrom']);
-    $odfrom = date('Y-m-d', strtotime($from));
-    $to = str_replace('/', '-',$_POST['odto']);
-    $odto = date('Y-m-d', strtotime($to));
-    $hrs=$_POST['hrs'];
-    $type=$_POST['odtype'];
-    if(strlen($_POST['odtypeother'])>0)
-        $type=$_POST['odtypeother'];
 
-    $college=$_POST['college'];
-    $state=$_POST['state'];
-    $title=$_POST['title'];
-    $purpose=$_POST['purpose'];
-    $temp1=$row['batch']%2000;
-    $temp2=$row['dept'];
-    $temp3=substr($row['regno'],5);
-    $temp4=date('d');
-    $temp5=date('m');
-    $temp6=rand(10,99);
-    $appno=strval($temp1).strval($temp2).strval($temp3).strval($temp4).strval($temp5).strval($temp6);
-    //echo '<script>alert("'.$appno.'")</script>';
-    $sql="INSERT into oddetails values('$appno','$register','$appdate','$type','$title','$odfrom','$odto','$hrs','$college','$state','$purpose','Pending')";
-    $con->query($sql);
-    if($type!='PAPER' && $type!='PROJECT')
-    {
-        $sql="INSERT INTO preod (appno,staff1,comments1,status1,staff2,comments2,status2,staff3,comments3,status3) VALUES ('$appno','NA','NA','Approved','NA','NA','Approved','NA','NA','Approved')";
-        $con->query($sql);
-    }
-    else
-    {
-        $sql="INSERT into preod (appno) values ('$appno')";
-        $con->query($sql);
-    }
-        
-    $_SESSION['appno']=$appno;
-    echo '<script>location.href="PermissionSuccess.php"</script>';
-}
-?>
 <?php echo "<script>Notiflix.Notify.Info('OD can be applied only before 7 Days');</script>";?>
 
 
@@ -110,7 +69,7 @@
 </head>
 <body >
     <div class="ui segment" id="seg">
-        <form class="ui form" id="preodform" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+        <form class="ui form" id="preodform" >
 
             <h1 style="font-size:39px;color:#333333;font-weight:1;"><center>OD Permission Application<center></h1>
             
@@ -195,21 +154,20 @@
             <div class="field">
                 <label id="lbl">Purpose</label>
                 <input type="text" name="purpose" id="int" value="NIL" placeholder="Purpose" required/>
+            </div><br>
+            <div id="subbtn">
+            <button class="ui black button" type="submit" name="submit" style="width:100%;border-radius:30px;height:50px;"> Submit</button>
             </div>
-
-            <button class="ui primary button" type="submit" name="submit" style="width:100%;border-radius:30px;height:50px;"> Submit</button>
-
         </form>
     </div>
 
 <script>
 
-    $(document).ready(function(){
+    $(document).ready(function()
+    {
         $('.ui.dropdown').dropdown();
         
         var today = new Date();
-  
-  
         $('#rangestart').calendar({
             type: 'date',
             endCalendar: $('#rangeend'),
@@ -279,7 +237,25 @@
      element.style.display='none';
   }
 
+$(document).ready(function(){
+    $("#preodform").on("submit",function()
+    {
+        $("#subbtn").html('<div class="ui active centered inline loader"></div><center>Processing</center>');
+        var arr= $("#preodform").serialize();
+        arr+="&preod=submitted";
+        $.ajax({
+        url:"ajax_handler.php",
+        type:"POST",
+        data:arr 
+        }).done(function(d)
+        {
+            $("#subbtn").html('<button class="ui positive button" type="submit" name="submit" style="width:100%;border-radius:30px;height:50px;"> Application Submitted </button>');
+            location.href ='PermissionSuccess.php';
+        });
+        return false;
+    });
 
+});
   
     </script>
 </body>
