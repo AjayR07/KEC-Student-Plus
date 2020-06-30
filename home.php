@@ -136,6 +136,7 @@ include_once("db.php");
 					<li><a href="studLog.php">Login</a></li>
 					<li><a href="registration.php">Registration</a></li>
 					<li><a href="staffLog.php">Staff</a></li>
+					<li><a href="./entity/faq/index.html">FAQ </a></li>
 					<li><a href="aboutUs.html">About Us</a></li>
 				</ul>
 			</nav>
