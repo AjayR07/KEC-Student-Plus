@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 28, 2020 at 08:23 AM
+-- Generation Time: Jun 30, 2020 at 05:02 AM
 -- Server version: 8.0.18
 -- PHP Version: 7.4.5
 
@@ -120,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `oddetails` (
 INSERT INTO `oddetails` (`appno`, `regno`, `appdate`, `odtype`, `title`, `odfrom`, `odto`, `hrs`, `college`, `state`, `purpose`, `status`) VALUES
 ('00CSE000230643', '20CSR000', '2020-06-23', 'PAPER', 'Big Data', '2020-06-24', '2020-06-24', 'full', 'Kumaraguru College of Tech', 'TAMILNADU', 'NIL', 'Pending'),
 ('0CSE000230697', '20CSR000', '2020-06-23', 'SPORT', 'Yoga', '2020-06-24', '2020-06-24', 'full', 'KEC', 'TAMILNADU', 'NIL', 'Pending'),
+('0CSE000290686', '20CSR000', '2020-06-29', 'PAPER', 'Big Data', '2020-06-29', '2020-06-29', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Pending'),
 ('18CSE002210654', '18CSR002', '2020-06-21', 'SPORT', 'Yoga Competition', '2020-06-22', '2020-06-22', 'full', 'KEC', 'TAMILNADU', 'NIL', 'Pending'),
 ('18CSE061210627', '18CSR061', '2020-06-21', 'PAPER', 'Big Data', '2020-06-22', '2020-06-22', 'full', 'Kongu Engineering College', 'TAMILNADU', 'NIL', 'Pending');
 
@@ -192,8 +193,9 @@ CREATE TABLE IF NOT EXISTS `preod` (
 --
 
 INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comments2`, `status2`, `staff3`, `comments3`, `status3`, `advisor`, `yearin`) VALUES
-('00CSE000230643', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
+('00CSE000230643', 'Check', 'Good', 'Approved', 'Check2', 'Good', 'Approved', 'Test Staff', 'Good', 'Approved', 'Pending', 'Pending'),
 ('0CSE000230697', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Pending', 'Pending'),
+('0CSE000290686', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
 ('18CSE002210654', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Pending'),
 ('18CSE061210627', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending');
 
