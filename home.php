@@ -382,6 +382,7 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 								<li>About us: <a href="./aboutUs.html">Check out!</a></li>
 								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank">studentplus@kongu.edu</a></li>
 								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <!--i class="in flag"></!i--></li>
+								<li><a href="./entity/faq/index.html">FAQ </a></li>
 							</ul>
 							<br>
 							<h4 style="text-decoration:underline;text-decoration-style: dotted;">Version : 3.5 Beta</h4>
