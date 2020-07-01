@@ -36,6 +36,7 @@
 <th>Application No.</th>
 <th>Applied Date</th>
 <th>OD Date</th>
+<th>Cat.</th>
 <th>Action</th>
 </tr>
 </thead>
@@ -50,6 +51,8 @@ if($_SESSION['design']=='Advisor')
     $sql="SELECT r.regno,r.name,r.sec,d.appno,d.odfrom,d.appdate from registration r, oddetails d, preod p where (r.regno like d.regno) and (d.appno like p.appno)
     and (r.batch like '$batch') and (r.dept like '$dep') and (r.sec like '$sec') and (p.status1 is not null) and (p.status2 is not null)
     and (p.status3 is not null) and (p.advisor like 'Pending');";
+    $sql2="SELECT r.regno,r.name,r.sec,d.appno,d.appdate,d.start,d.end from registration r, noncertod d where (r.regno like d.regno)
+    and (r.batch like '$batch') and (r.dept like '$dep') and (r.sec like '$sec') and (d.advisor like 'Pending') and (d.yearin like 'Pending');";
 }
 else if($_SESSION['design']=='Year in Charge')
 {
@@ -67,11 +70,10 @@ else
 }
      
      $data=$con->query($sql);
-
-     if($data->num_rows==0)
+     $data2=$con->query($sql2);
+     if($data->num_rows==0 && $data2->num_rows==0)
      {
-         //echo '<script>alert("getting in");</script>';
-         echo '<tr><td colspan="8"><b>No Data Present</b></td></tr>';
+         echo '<tr><td colspan="9"><b>No Data Present</b></td></tr>';
      }
      else{
      while ($row = mysqli_fetch_array($data))
@@ -84,15 +86,33 @@ else
        echo '<td>'.$row["appno"].'';
        echo '<td>'.date_format(date_create($row['appdate']),'d/m/Y').'';
        echo "<td>".date_format(date_create($row['odfrom']),'d/m/Y')."</td>";
+       echo "<td>On-Duty</td>";
        echo '<td><a class="ui olive button" href="PreOdAprvAdv.php?id='.$row["appno"].'">View</a></td>';
        echo "</tr>";
      }
+    $od=$i;
+    while ($row = mysqli_fetch_array($data2))
+    {
+       echo "<tr>";
+       echo '<td>'.$i++.'</td>';
+      echo '<td>'.$row["regno"].'</td>';
+      echo "<td>".$row["name"]."</td>";
+      echo "<td>".$row['sec']."</td>";
+      echo '<td>'.$row["appno"].'</a></td>';
+      echo '<td>'.date_format(date_create($row['appdate']),'d/m/Y').'';
+      echo "<td>".date_format(date_create($row['start']),'d/m/Y')."</td>";
+      echo "<td>Local OD</td>";
+      echo '<td><a class="ui olive button" href="PostOdAprv.php?id='.$row["appno"].'">View</a></td>';
+      echo "</tr>";
     }
+   }
+   $non=$i-$od;
      $con->close();
 ?>
 </tbody>
 <tfoot>
-    <tr><th><?php echo --$i; ?> People</th>
+    <tr><th><?php echo --$od; ?> On-Duty</th>
+    <th><?php echo $non; ?> Local OD</th>
     <th></th>
     <th></th>
     <th></th>
