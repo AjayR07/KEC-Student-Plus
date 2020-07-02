@@ -394,15 +394,11 @@
   </div>
   </div>
 
-
   <div class="ui borderless fluid huge inverted menu" style="margin-top:0%">
     <a class=" active  item" id="side_nav"><i class="sidebar icon"></i></a>
     <a class="active green item" href="index.php">KEC Student+</a>
     <a class="right item" href="../Logout.php"><i class="share square outline icon"></i>Logout</a>
   </div>
-
-
-
 
   <script>
     $(document).ready(function() {

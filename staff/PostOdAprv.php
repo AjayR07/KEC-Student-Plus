@@ -116,50 +116,9 @@ include_once('../assets/notiflix.php');
     }
 
     ?>
-    <?php include_once('EditApplication.php'); ?>
-    <?php
-    $a = 0;
-    $d = 0;
-    $o = 0;
-    $p = 0;
-    $mail = ($_SESSION['type'] == 'OD') ? $det['mail'] : $cr['mail'];
-    $gender = ($_SESSION['type'] == 'OD') ? $det['gender'] : $cr['gender'];
-    $phone = ($_SESSION['type'] == 'OD') ? $det['phone'] : $cr['phone'];
-    $regno = ($_SESSION['type'] == 'OD') ? $odrow['regno'] : $cr['regno'];
-    $name = ($_SESSION['type'] == 'OD') ? $name : $cr['name'];
-    $sql = "SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
-    //echo '<script>alert("'.$sql.'")</script>';
-    $sql2 = "SELECT c.status as othercert from othercert c where c.regno like '$regno'";
-    $data = $con->query($sql);
-    if ($data->num_rows == 0) {
-        echo '<tr><td colspan="6">No Record Found</td></tr>';
-    } else {
-        while ($row = mysqli_fetch_array($data)) {
-            if ($row['status'] == 'Approved' && $row['status1'] == 'Approved' && $row['status2'] == 'Approved' && $row['status3'] == 'Approved' && $row['advisor'] == 'Approved') {
-                $a++;
-            } else if ($row['status'] == 'Declined' || $row['status1'] == 'Declined' || $row['status2'] == 'Declined' || $row['status3'] == 'Declined' || $row['advisor'] == 'Declined') {
-                $d++;
-            } else if ($row['status'] == 'Pending' || $row['status1'] == 'Pending' || $row['status2'] == 'Pending' || $row['status3'] == 'Pending' || $row['advisor'] == 'Pending') {
-                $p++;
-            }
-        }
-    }
-    $data = $con->query($sql2);
-    $a = $a + $data->num_rows;
-    if ($data->num_rows == 0) {
-        echo '<tr><td colspan="6">No Record Found</td></tr>';
-    } else {
-        while ($row = mysqli_fetch_array($data)) {
-            if ($row['othercert'] == 'Approved') {
-                $o++;
-            } else if ($row['othercert'] == 'Declined') {
-                $d++;
-            } else if ($row['othercert'] == 'Pending') {
-                $p++;
-            }
-        }
-    }
-    ?>
+    <?php include_once('EditApplication.php');
+    include_once('./StudentProfile.php'); ?>
+
 
     <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -198,13 +157,6 @@ include_once('../assets/notiflix.php');
 
         <script type="text/javascript">
             $(document).ready(function() {
-
-                $('#pop').popup({
-                    on: 'click',
-                    inline: true,
-                    position: 'bottom center',
-                    popup: '#tool'
-                });
                 $("#FAB").append('<a href="https://docs.google.com/viewerng/viewer?url=https://kecstudent.xyz/repos/certificates/<?php echo ($_SESSION['type'] == 'OD') ? ($det['batch'] . '/' . $det['dept'] . '/' . $det['sec'] . '/' . $postrow['certificate']) : ($cr['batch'] . '/' . $cr['dept'] . '/' . $cr['sec'] . '/' . $cr['file']); ?>" target="_blank" data-tooltip="View Proof" data-position="left center"><i class="eye icon"></i></a><a href="../repos/certificates/<?php echo ($_SESSION['type'] == 'OD') ? ($det['batch'] . '/' . $det['dept'] . '/' . $det['sec'] . '/' . $postrow['certificate']) : ($cr['batch'] . '/' . $cr['dept'] . '/' . $cr['sec'] . '/' . $cr['file']); ?>" download  data-tooltip="Download Proof" data-position="left center"><i class="download icon"></i></a>');
             });
         </script>
@@ -221,22 +173,7 @@ include_once('../assets/notiflix.php');
                         ?></a></h3>
             </div>
         </h1> <br>
-        <div class="ui special basic popup" id="tool">
-            <h1 class="header">
-                Profile
-            </h1>
-            <br>
-            <h4 class="content">
-                Name: <?php echo $name; ?><br>
-                Phone: <?php echo $phone; ?><br>
-                Mail Id: <a href="mailto:<?php echo $mail; ?>"><i class="mail icon"></i></a><br>
-                Total Applied: <?php echo $a + $p + $d; ?><br>
-                Total Pending: <?php echo $p; ?><br>
-                Total Granted: <?php echo $a; ?><br>
-                Total Rejected: <?php echo $d; ?><br>
-                Certificates Registered: <?php echo $o; ?> <br>
-            </h4>
-        </div>
+
         </div>
 
         <div class="page-wrapper p-t-80 p-b-100">
