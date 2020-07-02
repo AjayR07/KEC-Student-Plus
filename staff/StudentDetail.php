@@ -42,8 +42,8 @@ if (!isset($_SESSION['user'])) {
     }
 
     .css {
-      top-margin: 15%;
-      bottom-margin: 15%;
+      margin-top: 15%;
+      margin-bottom: 15%;
     }
   </style>
   <title>Class Info</title>
