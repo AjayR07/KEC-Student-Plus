@@ -18,7 +18,7 @@ include_once('../assets/notiflix.php');
 
     <link rel="icon" type="image/png" href="../KEC.png">
 
-    <title>OD Details</title>
+    <title>Local OD Approval</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet">
 
@@ -67,7 +67,7 @@ include_once('../assets/notiflix.php');
 
         th,
         td {
-            height: 35px;
+            height: 40px;
         }
     </style>
 </head>
@@ -85,7 +85,7 @@ include_once('../assets/notiflix.php');
     <?php
     if (isset($_GET['id'])) {
         $appno = $_GET['id'];
-        $sql1 = "Select * from oddetails where appno like '$appno'";
+        $sql1 = "Select * from noncertod where appno like '$appno'";
         $data = $con->query($sql1);
         if ($data->num_rows <= 0) {
             echo "<script> Notiflix.Report.Failure( 'KEC Student+', 'Application Number Invalid.', 'Retry', function(){location.replace('OdList.php');} ); </script>";
@@ -96,7 +96,7 @@ include_once('../assets/notiflix.php');
         $data = $con->query($sql2);
         $temp = $data->fetch_assoc();
         $name = $temp['name'];
-        $sql3 = "select * from preod where appno like '$appno'";
+        $sql3 = "select * from noncertinfo where appno like '$appno'";
         $data = $con->query($sql3);
         $prerow = $data->fetch_assoc();
         $_SESSION['appno'] = $appno;
@@ -108,9 +108,9 @@ include_once('../assets/notiflix.php');
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stat = $_POST['advisor'];
         if ($_SESSION['design'] == 'Advisor') {
-            $sql = "UPDATE preod set advisor='$stat' where appno like '" . $_SESSION['appno'] . "'";
+            $sql = "UPDATE noncertod set advisor='$stat' where appno like '" . $_SESSION['appno'] . "'";
         } else if ($_SESSION['design'] == 'Year in Charge') {
-            $sql = "UPDATE preod set yearin='$stat' where appno like '" . $_SESSION['appno'] . "'";
+            $sql = "UPDATE noncertod set yearin='$stat' where appno like '" . $_SESSION['appno'] . "'";
         }
         if ($con->query($sql)) {
             echo "<script> Notiflix.Report.Success( 'KEC Student+', 'Application Status Updated Successfully.', 'Okay', function(){window.location.replace('OdList.php');}); </script>";
@@ -186,33 +186,8 @@ include_once('../assets/notiflix.php');
                 });
             });
         </script>
-        <script>
-            function editmodal() {
-                $("#Editor").form('set values', {
 
-                    e_regno: "<?php echo $odrow['regno']; ?>",
-                    e_name: "<?php echo $name; ?>",
-
-                    e_appno: "<?php echo $appno ?>",
-                    e_date: "<?php echo $odrow['appdate']; ?>",
-
-                    e_start: "<?php echo date_format(date_create($odrow['odfrom']), 'm/d/Y'); ?>",
-                    e_end: "<?php echo date_format(date_create($odrow['odto']), 'm/d/Y'); ?>",
-
-                    e_type: "<?php echo $odrow['odtype']; ?>",
-                    e_hrs: "<?php echo $odrow['hrs']; ?>",
-
-                    e_title: "<?php echo $odrow['title']; ?>",
-                    e_college: "<?php echo $odrow['college']; ?>",
-
-                    e_state: "<?php echo $odrow['state']; ?>",
-
-
-                });
-                $("#Editor").modal("show");
-            }
-        </script>
-        <h1 align="center" style="color:bisque;">OD Permission Form of <?php echo $name; ?><div class="pop">
+        <h1 align="center" style="color:bisque;">Local OD Permission Form of <?php echo $name; ?><div class="pop">
                 <h3><a class="ui right aligned item" id="pop">
                         <?php
                         if ($gender == 'Male')
@@ -248,14 +223,14 @@ include_once('../assets/notiflix.php');
                     <div class="card-image">
                         <div class="card-body">
                             <center>
-                                <h1 class="title"><b>Permission Form</b> </h1>
+                                <h1 class="title"><b>Local OD Permission Form</b> </h1>
                             </center>
                             <br>
                             <table id="tab">
                                 <tr>
                                     <td>Application:</td>
                                     <td>
-                                        <h3><?php echo $appno; ?>&nbsp <button class="ui circular icon button" style="background-color:bisque;color:black;" id="mod"> <i class="edit icon"></i></button></h3>
+                                        <h3><?php echo $appno; ?>&nbsp
                                     </td>
                                 </tr>
 
@@ -273,32 +248,20 @@ include_once('../assets/notiflix.php');
                                 </tr>
                                 <tr>
                                     <td>Date: </td>
-                                    <td>From: &nbsp<?php echo date_format(date_create($odrow['odfrom']), 'd/m/Y'); ?> <br></br>To &nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp<?php echo date_format(date_create($odrow['odto']), 'd/m/Y'); ?></td>
+                                    <td>From: &nbsp<?php echo date_format(date_create($odrow['start']), 'd/m/Y'); ?> <br></br>To &nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp<?php echo date_format(date_create($odrow['end']), 'd/m/Y'); ?></td>
 
                                 </tr>
                                 <tr>
-                                    <td>OD Type: </td>
-                                    <td><?php echo $odrow['odtype']; ?></td>
+                                    <td>Authorising Faculty: </td>
+                                    <td><?php echo $odrow['appfacty']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>No. of Hrs: </td>
-                                    <td><?php echo $odrow['hrs']; ?></td>
+                                    <td>Activity: </td>
+                                    <td><?php echo $odrow['activity']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Purpose: </td>
-                                    <td><?php echo $odrow['purpose']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Title: </td>
-                                    <td><?php echo $odrow['title']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>OD College: </td>
-                                    <td><?php echo $odrow['college']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>State: </td>
-                                    <td><?php echo $odrow['state']; ?></td>
+                                    <td>No. of Days: </td>
+                                    <td><?php echo $odrow['nodays']; ?></td>
                                 </tr>
                             </table>
 
@@ -311,88 +274,31 @@ include_once('../assets/notiflix.php');
                     <div class="card-image">
                         <div class="card-body">
                             <center>
-                                <h1 class="title"><b>Suggestion 1</b> </h1>
+                                <h1 class="title"><b>Application Details</b> </h1>
                             </center>
                             <br>
-                            <table>
+                            <table class="ui very basic collapsing celled inverted very padded table">
                                 <tr>
-                                    <td>Staff Name: </td>
-                                    <td><?php echo $prerow['staff1']; ?></td>
+                                    <th><b>Day</b></th>
+                                    <th><b>Reason</b></th>
+                                    <th><b>Hrs.</b></th>
+                                    <th><b>Total</b></th>
                                 </tr>
-                                <tr>
-                                    <td>Recommendation: &nbsp </td>
-                                    <td><?php echo $prerow['status1']; ?></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Comments if any:&nbsp&nbsp&nbsp </td>
-                                    <td><?php echo $prerow['comments1']; ?></td>
-                                </tr>
-
+                                <?php
+                                $qr = "SELECT * from noncertinfo where appno like '$appno'";
+                                $z = $con->query($qr);
+                                //$fet=$z->fetch_assoc();
+                                while ($d = mysqli_fetch_array($z)) {
+                                    echo '<tr>
+                                    <td>' . $d['day'] . '</td>
+                                    <td>' . $d['reason'] . '</td>
+                                    <td>' . $d['hrs'] . '</td>
+                                    <td>' . $d['total'] . '</td>
+                                    </tr>';
+                                }
+                                ?>
                             </table><br>
 
-
-                        </div>
-                    </div>
-                </div><br>
-
-
-                <div class="card card-3" id="staff2">
-                    <div class="card-image">
-                        <div class="card-body">
-                            <center>
-                                <h1 class="title"><b>Suggestion 2</b> </h1>
-                            </center>
-                            <br>
-                            <table>
-
-                                <tr>
-                                    <td>Staff Name: </td>
-                                    <td><?php echo $prerow['staff2']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Recommendation: &nbsp </td>
-                                    <td><?php echo $prerow['status2']; ?></td>
-                                </tr>
-
-                                <tr>
-                                    <td>Comments if any:&nbsp&nbsp&nbsp </td>
-                                    <td><?php echo $prerow['comments2']; ?></td>
-                                </tr>
-
-
-
-                            </table><br>
-
-                        </div>
-                    </div>
-                </div><br>
-
-
-                <div class="card card-3" id="staff3">
-                    <div class="card-image">
-                        <div class="card-body">
-                            <center>
-                                <h1 class="title"><b>Suggestion 3</b> </h1>
-                            </center>
-                            <br>
-                            <table>
-                                <td>Staff Name: </td>
-                                <td><?php echo $prerow['staff3']; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Recommendation: &nbsp </td>
-                                    <td><?php echo $prerow['status3']; ?></td>
-
-                                </tr>
-                                <tr>
-                                    <td>Comments if any:&nbsp&nbsp&nbsp </td>
-                                    <td><?php echo $prerow['comments3']; ?></td>
-                                </tr>
-
-
-
-                            </table><br>
 
                         </div>
                     </div>
@@ -427,24 +333,11 @@ include_once('../assets/notiflix.php');
 
     </center>
 
-
-
-    <?php include_once('EditApplication.php'); ?>
-
     <script>
         $(document).ready(function() {
             $('.ui.checkbox').checkbox();
         });
     </script>
-    <?php
-
-    if ($odrow['odtype'] != 'PAPER' || $odrow['odtype'] != 'PROJECT') {
-        echo '<script>$(document).ready(function(){';
-        echo '$("#staff1").hide();';
-        echo '$("#staff2").hide();';
-        echo '$("#staff3").hide();});</script>';
-    }
-    ?>
 
 </body>
 
