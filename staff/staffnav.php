@@ -335,6 +335,8 @@
                   $(op).appendTo("#appdrop");
                 }
                 $("#sec").attr("class", "field");
+
+                $('#msubmit').prop("disabled", false);
               } else {
                 Notiflix.Notify.Info("No Application Pending");
               }
@@ -343,12 +345,15 @@
 
         }
       });
-      $("#appdrop").select(function() {
-        if ($('#appdrop').val() != "") {
-          $("#msubmit").removeAttr("disabled");
-        }
-      });
+
     });
+
+    function dropy() {
+      console.log('getting in')
+      if (document.getElementById("appdrop").val() != "") {
+        document.getElementById("msubmit").removeAttribute("disabled");
+      }
+    }
   </script>
 
   <div class="ui modal" id="navmodal">
@@ -361,21 +366,21 @@
           <div class="field" id="pri">
             <label>Enter Register and Search: </label>
             <div class="ui icon input" data-children-count="1">
-              <input type="text" placeholder="Enter Roll Number" id="rollno" name="rollno" onkeyup="this.value = this.value.toUpperCase();">
+              <input type="text" placeholder="Enter Roll Number" id="rollno" name="rollno" onkeyup="this.value = this.value.toUpperCase();" required>
               <i class="inverted circular search link icon" id="activateajax" style="color:#000099;"></i>
             </div>
           </div>
 
           <div class="disabled field" id="sec">
             <label>Select the Application Number: </label>
-            <select class="ui clearable search dropdown" id="appdrop" name="appdrop">
+            <select class="ui clearable search dropdown" id="appdrop" name="appdrop" onchange="dropy()" required>
               <option value="">Select an Application</option>
             </select>
           </div>
         </div>
 
         <div class="actions">
-          <center><button type="submit" class="ui positive submit button" id="msubmit" disabled>Go</button>
+          <center><button type="submit" class="ui positive submit button" id="msubmit" disabled="disabled">Go</button>
             <div class="ui negative button">Close</div>
             <div class="ui error message"></div>
         </div>

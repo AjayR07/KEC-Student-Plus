@@ -19,7 +19,7 @@ if (isset($_POST['oldpass'])) // Change Password in Staff nav
 {
     $regno = $_POST['regno'];
     $sql = "SELECT o.appno from registration r, oddetails o, preod p where (r.regno like '$regno') and 
-        (r.regno like o.regno) and (o.appno like p.appno) and (p.advisor like 'Pending')";
+        (r.regno like o.regno) and (o.appno like p.appno) and (p.staff3 is null) and (p.advisor like 'Pending')";
     $data = $con->query($sql);
     $arr = array();
     if ($data->num_rows == 0) {
