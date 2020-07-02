@@ -19,7 +19,7 @@ if (!isset($_SESSION['user'])) {
 
   <?php require_once('staffnav.php');
   include_once('../assets/notiflix.php'); ?>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
   <script>
     $(document).ready(function() {
       $('.ui.dropdown').dropdown('show');
@@ -46,7 +46,7 @@ if (!isset($_SESSION['user'])) {
       margin-bottom: 15%;
     }
   </style>
-  <title>Class Info</title>
+  <title>Student Details</title>
 
 </head>
 
@@ -84,15 +84,17 @@ if (!isset($_SESSION['user'])) {
           if (this.readyState == 4 && this.status == 200) {
 
             var myOBJ = JSON.parse(this.responseText);
+
             if (myOBJ[6] == "NOT FOUND") {
               $(".detail").hide();
               Notiflix.Report.Failure('No Data Found!', 'Error fetching your data from our sources', 'Okay', function() {});
             } else {
-              $('#rollno').text(myOBJ[12]);
+
+              $('#regno').text(myOBJ[12]);
               $('#name').text(myOBJ[4]);
               $('#dept').text(myOBJ[2]);
               $('#batch').text(myOBJ[1]);
-              $('#sec').text(myOBJ[3]);
+              $('#section').text(myOBJ[3]);
               $('#email').text(myOBJ[0]);
               $('#phone').text(myOBJ[5]);
               $('#t').text(myOBJ[7]);
@@ -100,6 +102,7 @@ if (!isset($_SESSION['user'])) {
               $('#p').text(myOBJ[8]);
               $('#d').text(myOBJ[10]);
               $('#certi').text(myOBJ[11]);
+
               $(".detail").show();
             }
 
@@ -141,7 +144,7 @@ if (!isset($_SESSION['user'])) {
         <tbody>
           <tr>
             <td>Roll Number</td>
-            <td><label id="rollno"></label></td>
+            <td><label id="regno"></label></td>
           </tr>
           <tr>
             <td>Name</td>
@@ -157,7 +160,7 @@ if (!isset($_SESSION['user'])) {
           </tr>
           <tr>
             <td>Section</td>
-            <td><label id="sec"></label></td>
+            <td><label id="section"></label></td>
           </tr>
           <tr>
             <td>Mail ID</td>
