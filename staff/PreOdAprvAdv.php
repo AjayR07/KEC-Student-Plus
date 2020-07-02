@@ -61,6 +61,7 @@
 <body>
 <?php include_once('staffnav.php');
 include_once('../assets/notiflix.php');?>
+
 <style>
     body{
         background:url('../backstaff.jpg');
@@ -87,6 +88,7 @@ if(isset($_GET['id']))
     $data=$con->query($sql3);
     $prerow=$data->fetch_assoc();
     $_SESSION['appno']=$appno;
+    $_SESSION['type']='OD';
 }
 ?>
 
@@ -121,6 +123,7 @@ if(isset($_GET['id']))
     }
 
 ?>
+
 <?php
 $a=0;
 $d=0;
@@ -128,6 +131,7 @@ $o=0;
 $p=0;
 $mail=$temp['mail'];
 $phone=$temp['phone'];
+$gender=$temp['gender'];
 $regno=$odrow['regno'];
 $name=$temp['name'];
 $sql="SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
@@ -174,6 +178,7 @@ while ($row = mysqli_fetch_array($data))
 }
 }
 ?>
+
     <center>
         <br>
         <script type="text/javascript">
@@ -187,7 +192,43 @@ while ($row = mysqli_fetch_array($data))
           });
           });
         </script>
-    <h1 align="center" style="color:bisque;">OD Permission Form of <?php echo $name; ?><div class="pop"><i class="user circle icon" id="pop"></i></div></h1> <br>
+        <script>
+function editmodal()
+    {
+        $("#Editor").form('set values', {
+
+        e_regno    : "<?php echo $odrow['regno'];?>",
+        e_name     : "<?php echo $name; ?>",
+
+        e_appno    : "<?php echo $appno ?>",
+        e_date     : "<?php echo $odrow['appdate'];?>",
+
+        e_start    : "<?php echo date_format(date_create($odrow['odfrom']),'m/d/Y');?>",
+        e_end      : "<?php echo date_format(date_create($odrow['odto']),'m/d/Y');?>",
+
+        e_type     : "<?php echo $odrow['odtype'];?>",
+        e_hrs      : "<?php echo $odrow['hrs'];?>",
+
+        e_title    : "<?php echo $odrow['title'];?>",
+        e_college  : "<?php echo $odrow['college'];?>",
+
+        e_state    : "<?php echo $odrow['state'];?>",
+  
+
+    });
+    $("#Editor").modal("show");
+    }
+
+</script>
+    <h1 align="center" style="color:bisque;">OD Permission Form of <?php echo $name; ?><div class="pop"><h3><a class="ui right aligned item" id="pop" >
+<?php 
+if($gender=='Male')
+    echo '<img class="ui avatar image" src="../images/matthew.png"/>';
+else if($gender=='Female')
+    echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
+else
+    echo '<img class="ui avatar image" src="../images/elyse.png"/>';
+?></a></h3></div></h1> <br>
     <div class="ui special basic popup" id="tool">
       <h1 class="header">
          Profile
@@ -213,10 +254,10 @@ while ($row = mysqli_fetch_array($data))
                     <div class="card-body">
                     <center> <h1 class="title"><b>Permission Form</b> </h1></center>
                         <br>
-                            <table>
+                            <table id="tab">
                                 <tr>
                                     <td>Application:</td>
-                                    <td><?php echo $appno;?></td>
+                                    <td><h3><?php echo $appno;?>&nbsp <button class="ui circular icon button" style="background-color:bisque;color:black;" id="mod"> <i class="edit icon" ></i></button></h3></td>
                                 </tr>
 
                                 <tr>
@@ -229,20 +270,20 @@ while ($row = mysqli_fetch_array($data))
                                 </tr>
                                 <tr>
                                     <td >Applied Date: &nbsp&nbsp&nbsp </td>
-                                    <td align="center"><?php echo $odrow['appdate'];?></td>
+                                    <td ><?php echo date_format(date_create($odrow['appdate']),'d/m/Y');?></td>
                                 </tr>
                                 <tr>
                                     <td>Date: </td>
-                                    <td>From: &nbsp<?php echo date_format(date_create($odrow['odfrom']),'d/m/Y');?> <br>To &nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp<?php echo date_format(date_create($odrow['odto']),'d/m/Y');?></td>
+                                    <td>From: &nbsp<?php echo date_format(date_create($odrow['odfrom']),'d/m/Y');?> <br></br>To &nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp<?php echo date_format(date_create($odrow['odto']),'d/m/Y');?></td>
 
                                 </tr>
                                 <tr>
                                     <td>OD Type: </td>
-                                    <td><?php echo $odrow['odtype'];?>
+                                    <td><?php echo $odrow['odtype'];?></td>
                                 </tr>
                                 <tr>
                                     <td>No. of Hrs: </td>
-                                    <td><?php echo $odrow['hrs'];?>
+                                    <td><?php echo $odrow['hrs'];?></td>
                                 </tr>
                                 <tr>
                                     <td>Purpose: </td>
@@ -298,7 +339,7 @@ while ($row = mysqli_fetch_array($data))
             <div class="card card-3" id="staff2">
                 <div class="card-image">
                     <div class="card-body">
-                    <center> <h1 class="title"><b>Seggestion 2</b> </h1></center>
+                    <center> <h1 class="title"><b>Suggestion 2</b> </h1></center>
                         <br>
                             <table>
 
@@ -376,6 +417,11 @@ while ($row = mysqli_fetch_array($data))
     </div>
 
 </center>
+
+
+
+<?php include_once('EditApplication.php');?>
+
 <script>
     $(document).ready(function(){
     $('.ui.checkbox').checkbox();
@@ -392,8 +438,8 @@ while ($row = mysqli_fetch_array($data))
  }
 ?>
 
-
 </body>
 
 </html>
+
 
