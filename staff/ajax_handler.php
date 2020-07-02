@@ -15,7 +15,7 @@ if (isset($_POST['oldpass'])) // Change Password in Staff nav
         $con->query($sql);
         echo 'Password Changed Succefully';
     }
-} else if ($_POST['regno']) // Suggestion Modal Back
+} else if (isset($_POST["regno"])) // Suggestion Modal Back
 {
     $regno = $_POST['regno'];
     $sql = "SELECT o.appno from registration r, oddetails o, preod p where (r.regno like '$regno') and 
@@ -27,8 +27,8 @@ if (isset($_POST['oldpass'])) // Change Password in Staff nav
     } else {
         array_push($arr, $data->num_rows);
         while ($row = mysqli_fetch_array($data)) {
-            array_push($arr, $row['o.appno']);
+            array_push($arr, $row['appno']);
         }
     }
-    echo $arr;
+    echo json_encode($arr);
 }

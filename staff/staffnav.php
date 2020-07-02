@@ -131,26 +131,29 @@
       $('.pop').popup();
       $("#togglemobile").on("click", function() {
         $('#navmodal').modal({
-          onApprove: function() {
+          onDeny: function() {
             return false;
           }
         }).modal("show");
       });
-      $('.ui.form').form({
+      $('#suggform').form({
         fields: {
-          name: {
-            identifier: 'appno',
+          rollno: {
+            identifier: 'rollno',
+            rules: [{
+              type: 'empty',
+              prompt: 'Please Enter the Register Number'
+            }, ],
+          },
+          addprop: {
+            identifier: 'appdrop',
             rules: [{
                 type: 'empty',
-                prompt: 'Please Enter the Application Number'
+                prompt: 'Please select the Application Number'
               },
               {
-                type: 'maxLength[16]',
-                prompt: 'Please Enter a Valid Application Number'
-              },
-              {
-                type: 'minLength[14]',
-                prompt: 'Your Enter a Valid Application Number'
+                type: 'match[""]',
+                prompt: 'Please select an Application Number'
               }
             ]
           }
@@ -273,33 +276,6 @@
       </div>
     </body>
   </div>
-  <script>
-    $(document).ready(function() {
-      $("#activateajax").on("click", function() {
-        if ($('#rollno').val().length != 8) {
-          $("#pri").attr("class", "field error");
-          $("#sec").attr("class", "disabled field");
-        } else if ($('#rollno').val().length == 8) {
-          $("#pri").attr("class", "field");
-          var regno = $('#rollno').val();
-          $("#suggform").attr("class", "ui blue double loading form segment");
-          data = {
-            name: "regno",
-            value: regno
-          };
-          $.ajax({
-            url: "ajax_handler.php",
-            type: "POST",
-            data: data,
-            success: function(d) {
-              $("#suggform").attr("class", "ui form segment");
-            }
-          });
-          $("#sec").attr("class", "field");
-        }
-      });
-    });
-  </script>
   <div class="ui small modal" id="changepass">
     <div class="header">Change Password</div>
     <div class="content">
@@ -326,13 +302,61 @@
     </div>
 
   </div>
+  <script>
+    $(document).ready(function() {
+      $("#activateajax").on("click", function() {
+        if ($('#rollno').val().length != 8) {
+          $("#pri").attr("class", "field error");
+          $("#sec").attr("class", "disabled field");
+          $("#appdrop").empty();
+        } else if ($('#rollno').val().length == 8) {
+          $("#appdrop").empty();
+          $("#pri").attr("class", "field");
+          var regno = $('#rollno').val();
+          $("#suggform").attr("class", "ui blue double loading form segment error");
+          data = [{
+            name: "regno",
+            value: regno
+          }];
+
+          $.ajax({
+            url: "ajax_handler.php",
+            type: "POST",
+            data: data,
+            success: function(d) {
+
+              d = JSON.parse(d);
+              $("#suggform").attr("class", "ui form segment error");
+              if (d[0] != 0) {
+                var i;
+                for (i = 1; i <= d[0]; i++) {
+                  var op = "<option value=" + d[i] + ">" + d[i] + "</option>";
+
+                  $(op).appendTo("#appdrop");
+                }
+                $("#sec").attr("class", "field");
+              } else {
+                Notiflix.Notify.Info("No Application Pending");
+              }
+            }
+          });
+
+        }
+      });
+      $("#appdrop").select(function() {
+        if ($('#appdrop').val() != "") {
+          $("#msubmit").removeAttr("disabled");
+        }
+      });
+    });
+  </script>
 
   <div class="ui modal" id="navmodal">
     <div class="header">KEC Student+</div>
     <div class="content">
       <p>OD Suggestion Approval</p>
 
-      <form action="PreOdAprv.php" method="POST" class="ui form segment" id="suggform">
+      <form action="PreOdAprv.php" method="POST" class="ui form segment error" id="suggform">
         <div class="two fields">
           <div class="field" id="pri">
             <label>Enter Register and Search: </label>
@@ -345,14 +369,13 @@
           <div class="disabled field" id="sec">
             <label>Select the Application Number: </label>
             <select class="ui clearable search dropdown" id="appdrop" name="appdrop">
-              <option value="AL">Alabama</option>
-              <option value="AK">Alaska</option>
+              <option value="">Select an Application</option>
             </select>
           </div>
         </div>
 
         <div class="actions">
-          <center><button type="submit" class="ui positive submit button">Go</button>
+          <center><button type="submit" class="ui positive submit button" id="msubmit" disabled>Go</button>
             <div class="ui negative button">Close</div>
             <div class="ui error message"></div>
         </div>
