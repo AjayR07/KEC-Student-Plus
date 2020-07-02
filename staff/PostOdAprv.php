@@ -1,13 +1,15 @@
 <?php
+
     session_start();
     if(!isset($_SESSION['user']))
     {
       header("Location: ../staffLog.php");
     }
     include_once('../db.php');
+    
     include_once('staffnav.php');
     include_once('../assets/notiflix.php');
-
+   
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +19,8 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title>Post OD Approve</title>
-
+    
 
     <link href="css/main.css" rel="stylesheet" media="all">
     <style>
@@ -49,7 +50,9 @@
 
 <body>
 <?php include_once('staffnav.php');
-include_once('../assets/notiflix.php');?>
+include_once('../assets/notiflix.php');
+?>
+
 
 <style>
   body
@@ -59,6 +62,7 @@ include_once('../assets/notiflix.php');?>
         }
 
 </style>
+
 <?php
 if(isset($_GET['id']))
 {
@@ -103,12 +107,14 @@ if(isset($_GET['id'])==false && isset($_POST['status'])==false)
 }
 
 ?>
+<?php include_once('EditApplication.php');?>
 <?php
 $a=0;
 $d=0;
 $o=0;
 $p=0;
 $mail=($_SESSION['type']=='OD')?$det['mail']:$cr['mail'];
+$gender=($_SESSION['type']=='OD')?$det['gender']:$cr['gender'];
 $phone=($_SESSION['type']=='OD')?$det['phone']:$cr['phone'];
 $regno=($_SESSION['type']=='OD')?$odrow['regno']:$cr['regno'];
 $name=($_SESSION['type']=='OD')?$name:$cr['name'];
@@ -156,6 +162,7 @@ while ($row = mysqli_fetch_array($data))
 }
 }
 ?>
+
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
@@ -195,8 +202,10 @@ while ($row = mysqli_fetch_array($data))
             }
         }
 ?>
+
 <center>
 <br>
+
 <script type="text/javascript">
   $(document).ready(function() {
 
@@ -206,10 +215,19 @@ while ($row = mysqli_fetch_array($data))
         position   : 'bottom center',
     popup: '#tool'
   });
-
+  $("#FAB").append('<a href="https://docs.google.com/viewerng/viewer?url=https://kecstudent.xyz/repos/certificates/<?php echo ($_SESSION['type']=='OD')?($det['batch'].'/'.$det['dept'].'/'.$det['sec'].'/'.$postrow['certificate']):($cr['batch'].'/'.$cr['dept'].'/'.$cr['sec'].'/'.$cr['file']);?>" target="_blank" data-tooltip="View Proof" data-position="left center"><i class="eye icon"></i></a><a href="../repos/certificates/<?php echo ($_SESSION['type']=='OD')?($det['batch'].'/'.$det['dept'].'/'.$det['sec'].'/'.$postrow['certificate']):($cr['batch'].'/'.$cr['dept'].'/'.$cr['sec'].'/'.$cr['file']);?>" download  data-tooltip="Download Proof" data-position="left center"><i class="download icon"></i></a>');
   });
 </script>
- <h1 align="center" style="color:bisque;">Proof Submission Form of <?php echo ($_SESSION['type']=='OD')?$name:$cr['name']; ?> <div class="pop"><i class="user circle icon" id="pop"></i></div></h1> <br>
+
+ <h1 align="center" style="color:bisque;">Proof Submission Form of <?php echo ($_SESSION['type']=='OD')?$name:$cr['name']; ?> <div class="pop"><h3><a class="ui right aligned item" id="pop" >
+<?php 
+if($gender=='Male')
+    echo '<img class="ui avatar image" src="../images/matthew.png"/>';
+else if($gender=='Female')
+    echo '<img class="ui avatar image" src="../images/molly.png"/>'; 
+else
+    echo '<img class="ui avatar image" src="../images/elyse.png"/>';
+?></a></h3></div></h1> <br>
  <div class="ui special basic popup" id="tool">
    <h1 class="header">
       Profile
@@ -235,10 +253,10 @@ while ($row = mysqli_fetch_array($data))
                     <div class="card-body">
                     <center> <h1 class="title"><b>Proof Approval</b> </h1></center>
                         <br>
-                        <table>
+                        <table id="tab">
                                 <tr>
                                     <td>Application:</td>
-                                    <td><?php echo $appno;?></td>
+                                    <td><h3><?php echo $appno;?>&nbsp <button class="ui circular icon button" style="background-color:bisque;color:black;" id="mod"> <i class="edit icon" ></i></button></h3></td>
                                 </tr>
 
                                 <tr>
@@ -250,23 +268,23 @@ while ($row = mysqli_fetch_array($data))
                                     <td><?php echo ($_SESSION['type']=='OD')?$name:$cr['name']; ?></td>
                                 </tr>
                                 <tr>
-                                    <td >Applied Date: &nbsp&nbsp&nbsp </td>
-                                    <td align="center"><?php echo ($_SESSION['type']=='OD')?date_format(date_create($odrow['appdate']),'d/m/Y'):date_format(date_create($cr['appdate']),'d/m/Y');?></td>
+                                    <td >Applied Date:</td>
+                                    <td><?php echo ($_SESSION['type']=='OD')?date_format(date_create($odrow['appdate']),'d/m/Y'):date_format(date_create($cr['appdate']),'d/m/Y');?></td>
                                 </tr>
                                 <tr>
-                                    <td>Date: </td>
-                                    <td>From: &nbsp<?php echo ($_SESSION['type']=='OD')?date_format(date_create($odrow['odfrom']),'d/m/Y'):date_format(date_create($cr['start']),'d/m/Y');?> <br>To &nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp
+                                    <td><br>Date: </td>
+                                    <td><br>From&nbsp: &nbsp&nbsp&nbsp<?php echo ($_SESSION['type']=='OD')?date_format(date_create($odrow['odfrom']),'d/m/Y'):date_format(date_create($cr['start']),'d/m/Y');?> <br><br>To &nbsp&nbsp&nbsp&nbsp&nbsp:&nbsp&nbsp&nbsp
                                       <?php echo ($_SESSION['type']=='OD')?date_format(date_create($odrow['odto']),'d/m/Y'):date_format(date_create($cr['end']),'d/m/Y');?></td>
 
                                 </tr>
                                 <tr>
-                                    <td>Type: </td>
-                                    <td><?php echo ($_SESSION['type']=='OD')?$odrow['odtype']:$cr['type'];?> <br></td>
+                                    <td><br>Type: </td>
+                                    <td><br><?php echo ($_SESSION['type']=='OD')?$odrow['odtype']:$cr['type'];?> <br></td>
 
                                 </tr>
                                 <tr>
                                     <td><?php echo ($_SESSION['type']=='OD')?'No. of Hrs: ':'No. of Days: ';?></td>
-                                    <td><?php echo ($_SESSION['type']=='OD')?$odrow['hrs']:$cr['days'];?>
+                                    <td><?php echo ($_SESSION['type']=='OD')?$odrow['hrs']:$cr['days'];?></td>
                                 </tr>
                                 <tr>
                                     <td>Purpose: </td>
@@ -289,7 +307,7 @@ while ($row = mysqli_fetch_array($data))
                                     <td><?php echo ($_SESSION['type']=='OD')?$postrow['prize']:"NA";?></td>
                                 </tr>
                             </table>
-
+                            
                     </div>
                 </div>
             </div>
@@ -312,6 +330,7 @@ while ($row = mysqli_fetch_array($data))
                     <!-- <a href="../repos/certificates/<?php //echo $det['batch'].'/'.$det['dept'].'/'.$det['sec'].'/'.$postrow['certificate'];?>"> <button> Download Proof</button></a><br> -->
                     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                         <center>
+         
                         <div class="fields">
                         <div class="field">
                             <button type="submit" name="status" class="big ui positive button" value="Approved">Approve</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -323,6 +342,7 @@ while ($row = mysqli_fetch_array($data))
                     </center>
                     </div>
                         </center>
+
                     </div>
                 </div>
             </div><br>
@@ -330,7 +350,39 @@ while ($row = mysqli_fetch_array($data))
     </div>
 
 </center>
+
+
+
+<script>
+
+  function editmodal()
+    {
+        $("#Editor").form('set values', {
+
+        e_regno    : "<?php echo ($_SESSION['type']=='OD')?$odrow['regno']:$cr['regno'];?>",
+        e_name     : "<?php echo ($_SESSION['type']=='OD')?$name:$cr['name']; ?>",
+
+        e_appno    : "<?php echo $appno ?>",
+        e_date     : "<?php echo ($_SESSION['type']=='OD')?date_format(date_create($odrow['appdate']),'d/m/Y'):date_format(date_create($cr['appdate']),'m/d/Y');?>",
+
+        e_start    : "<?php echo ($_SESSION['type']=='OD')?date_format(date_create($odrow['odfrom']),'d/m/Y'):date_format(date_create($cr['start']),'m/d/Y');?>",
+        e_end      : "<?php echo ($_SESSION['type']=='OD')?date_format(date_create($odrow['odto']),'d/m/Y'):date_format(date_create($cr['end']),'m/d/Y');?>",
+
+        e_type     : "<?php echo ($_SESSION['type']=='OD')?$odrow['odtype']:$cr['type'];?>",
+        e_hrs      : "<?php echo ($_SESSION['type']=='OD')?$odrow['hrs']:$cr['days'];?>",
+
+        e_title    : "<?php echo ($_SESSION['type']=='OD')?$odrow['title']:$cr['title'];?>",
+        e_college  : "<?php echo ($_SESSION['type']=='OD')?$odrow['college']:$cr['cname'];?>",
+
+        e_state    : "<?php echo ($_SESSION['type']=='OD')?$odrow['state']:$cr['state'];?>",
+        e_reward   : "<?php echo ($_SESSION['type']=='OD')?$postrow['prize']:"NA";?>",
+
+    });
+    $("#Editor").modal("show");
+    }
+
+</script>
+
 </body>
 
 </html>
-

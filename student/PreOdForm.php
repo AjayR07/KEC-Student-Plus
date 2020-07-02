@@ -1,9 +1,13 @@
 <?php
     session_start();
     include_once("../db.php");
+    if(!isset($_SESSION['uname']))
+    {
+        header("location: ../studLog.php");
+    }   
     include_once("studentnav.php");
 
-
+  
 ?>
 <?php
     $register=$_SESSION['uname'];
