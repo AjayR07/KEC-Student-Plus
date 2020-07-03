@@ -152,5 +152,8 @@ if ($data->num_rows == 0) {
         $('#pop').on("click", function() {
             $('.longer.modal').modal('setting', 'transition', 'vertical flip').modal('show');
         });
+        $('#avatar').on("click", function() {
+            $('.longer.modal').modal('setting', 'transition', 'vertical flip').modal('show');
+        });
     });
 </script>
