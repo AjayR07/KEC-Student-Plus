@@ -163,7 +163,7 @@ include_once('../assets/notiflix.php');
                                 <tr>
                                     <td>Application:</td>
                                     <td>
-                                        <h3><?php echo $appno; ?>&nbsp
+                                        <?php echo $appno; ?>&nbsp
                                     </td>
                                 </tr>
 

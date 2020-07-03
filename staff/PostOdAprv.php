@@ -189,7 +189,7 @@ include_once('../assets/notiflix.php');
                                 <tr>
                                     <td>Application:</td>
                                     <td>
-                                        <h3><?php echo $appno; ?>&nbsp <button class="ui circular icon button" style="background-color:bisque;color:black;" id="mod"> <i class="edit icon"></i></button></h3>
+                                        <?php echo $appno; ?>&nbsp<i id="mod" style="color:bisque;" class="small edit icon"></i>
                                     </td>
                                 </tr>
 
