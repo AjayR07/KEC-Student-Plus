@@ -101,7 +101,7 @@ if (isset($_SESSION["user"])) {
   </script>
   <div class="preloader"></div>
 
-  <div class="container animate__animated animate__heartBeat animate__delay-1s">
+  <div class="container animate__animated animate__pulse animate__slow">
     <div class="d-flex justify-content-center h-100">
       <div class="card">
         <div class="card-header">
