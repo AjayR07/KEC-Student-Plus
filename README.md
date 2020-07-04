@@ -2,10 +2,9 @@
 
 
 [![Semantic Status](https://img.shields.io/badge/Semantic--UI-Active-blue)](https://github.com/fomantic/Fomantic-UI)
-
 [![Server Status](https://img.shields.io/badge/Plesk-Active-green)](https://144.91.66.136:8443/login_up.php)
-
 [![Version](https://img.shields.io/badge/Ongoing--Version-3.6%20Dev-ffb6b4)](https://github.com/s-abinash/student/edit/master)
+
 
 <h3><em>Test Login credentials provided here!</em></h3>
 <ul>
