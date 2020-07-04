@@ -6,74 +6,82 @@ include_once("db.php");
 <html>
 
 <head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151639011-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151639011-2"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-151639011-2');
-</script>
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-151639011-2');
+	</script>
 
 	<title>KEC Student+</title>
 	<link rel="icon" type="image/png" href="./KEC.png">
 	<meta charset="utf-8" />
 	<meta name="dark-theme" color="#181818" />
-	
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-          <meta property="og:title" content="KEC Student+"/>
-          <meta property="og:description" content="KEC Student+;Kec;cse;Kongu Engineering College;KEC Student+ website;"/>
-          <meta property="og:type" content="On-Duty"/>
-          <meta property="og:url" content="index.php"/>
-          <meta property="og:site_name" content="KEC Student+" />
-        <meta name="description" content="KEC Student+, A initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>,Integrated with On-Duty Management, Kongu Engineering College, Perundurai,Student & Teacher Oriented"/>
-        <meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , http://student.kongu.edu ,students,Certificates Repository ,perundurai"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
-		
-    <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
+	<meta property="og:title" content="KEC Student+" />
+	<meta property="og:description" content="KEC Student+;Kec;cse;Kongu Engineering College;KEC Student+ website;" />
+	<meta property="og:type" content="On-Duty" />
+	<meta property="og:url" content="index.php" />
+	<meta property="og:site_name" content="KEC Student+" />
+	<meta name="description" content="KEC Student+, A initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>,Integrated with On-Duty Management, Kongu Engineering College, Perundurai,Student & Teacher Oriented" />
+	<meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , http://student.kongu.edu ,students,Certificates Repository ,perundurai" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
+
+	<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
 	<script src="./assets/Notiflix/Minified/notiflix-2.1.2.min.js"></script>
-	  <link rel="stylesheet" href="./assets/Notiflix/Minified/notiflix-2.1.2.min.css">
-   		<style>
-/* Refers the whole setup */
-::-webkit-scrollbar {
-	width: 13px;
-	border-radius: 13px;
-}
+	<link rel="stylesheet" href="./assets/Notiflix/Minified/notiflix-2.1.2.min.css">
+	<style>
+		/* Refers the whole setup */
+		::-webkit-scrollbar {
+			width: 13px;
+			border-radius: 13px;
+		}
 
-/* Refers tracking path */
-::-webkit-scrollbar-track {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 13px;
-	opacity: 1.0;
-	/* background-color: #F5F5F5; */
-}
-/* Refers Draggable Bar */
-::-webkit-scrollbar-thumb {
-	border-radius: 13px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #555;
-}
+		/* Refers tracking path */
+		::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			border-radius: 13px;
+			opacity: 1.0;
+			/* background-color: #F5F5F5; */
+		}
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #ef8376; 
-}
-</style>
-	<link rel="stylesheet" href="assets/css/main.css" />
-<!-- No Script Part -->
-	<noscript><meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>
+		/* Refers Draggable Bar */
+		::-webkit-scrollbar-thumb {
+			border-radius: 13px;
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+
+			background-color: #555;
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #ef8376;
+		}
+	</style>
+	<link rel="stylesheet" href="./assets/css/main.css" />
+	<!-- No Script Part -->
+	<noscript>
+		<meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
 	<link rel="stylesheet" href="./assets/Fomantic/dist/semantic.min.css" type="text/css" />
 	<script src="./assets/jquery.min.js"></script>
-    <script src="./assets/Fomantic/dist/semantic.min.js"></script>
+	<script src="./assets/Fomantic/dist/semantic.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-	<script src="https://use.fontawesome.com/4daae1ed5b.js"></script>
+	<!-- <script src="https://use.fontawesome.com/4daae1ed5b.js"></script> -->
 	<style>
 		.preloader {
 			position: -webkit-sticky;
-  			position: sticky;
+			position: sticky;
 			top: 0;
 			left: 0;
 			width: 100%;
@@ -93,20 +101,21 @@ include_once("db.php");
 			font-family: 'Open Sans', sans-serif;
 			overflow: hidden;
 		}
+
 		html {
-		scroll-behavior: smooth;
+			scroll-behavior: smooth;
 		}
 	</style>
 	<script>
-	//Notiflix.Notify.Init({position:'left-bottom', closeButton: true, borderRadius:'15px', width:'350px',});		
+		//Notiflix.Notify.Init({position:'left-bottom', closeButton: true, borderRadius:'15px', width:'350px',});		
 		$(window).on("load", function() {
 			$('.preloader').hide();
 			$('body').css({
-			overflow: 'auto',});
+				overflow: 'auto',
+			});
 			//Cookie Policy
 			//Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our cookie policy. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
 		});
-
 	</script>
 </head>
 
@@ -129,7 +138,7 @@ include_once("db.php");
 				</footer>
 			</div>
 
-<!-- Nav -->
+			<!-- Nav -->
 			<nav id="nav">
 				<ul>
 					<li><a href="index.php">Home</a></li>
@@ -141,11 +150,11 @@ include_once("db.php");
 				</ul>
 			</nav>
 		</div>
-<?php
-$cert=($con->query("SELECT `appno` FROM `oddetails` WHERE `STATUS` LIKE 'Approved' UNION SELECT `appno` FROM `othercert` WHERE `STATUS` LIKE 'Approved'"))->num_rows;
-$user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registration` WHERE `STATUS` LIKE 'Verified'"))->num_rows;
- ?>
-<!-- Banner -->
+		<?php
+		$cert = ($con->query("SELECT `appno` FROM `oddetails` WHERE `STATUS` LIKE 'Approved' UNION SELECT `appno` FROM `othercert` WHERE `STATUS` LIKE 'Approved'"))->num_rows;
+		$user = ($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registration` WHERE `STATUS` LIKE 'Verified'"))->num_rows;
+		?>
+		<!-- Banner -->
 		<section id="banner">
 			<header>
 				<h2>Hi! You're surfing at <strong>KEC Student+</strong></h2>
@@ -157,85 +166,88 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 
 
 			<div class="ui statistic" style="margin-right:2%">
-			<div class="value">
+				<div class="value">
 					<?php echo $user ?>
-			</div>
-			<div class="label">
-			Registered Users
-			</div>
+				</div>
+				<div class="label">
+					Registered Users
+				</div>
 			</div>
 
-				<div class="ui statistic" style="margin-right:2%;"><br>
-						<div class="powr-hit-counter" id="51e3286c_1588395910"></div><script src="https://www.powr.io/powr.js?platform=html"></script>
+			<!-- Visitors Count -->
+			<div class="ui statistic" style="margin-right:2%;"><br>
+				<div class="powr-hit-counter" id="51e3286c_1588395910"></div>
+				<script src="https://www.powr.io/powr.js?platform=html"></script>
 
 			</div>
+			<!--  -->
 			<div class="ui statistic">
-			<div class="value">
-						<?php echo $cert ?>
-			</div>
-			<div class="label">
-			Certificates Uploaded
-			</div>
+				<div class="value">
+					<?php echo $cert ?>
+				</div>
+				<div class="label">
+					Certificates Uploaded
+				</div>
 			</div>
 		</section>
-									<div class="row" style="margin:3%">
-									<div class="ui stackable four column grid">
-									  <div class="column">
-											<div class="ui raised compact segment" style="text-align:center;padding:5%">
-											<a href="#" ><img class="ui fluid rounded image" src="images/pic01.png"></a>
-													<div class="ui header">
-														<a href="#">E-Mail Integration</a>
-													</div>
-													<div class="ui content">
-														With Responsive E-Mail support, you will be updated with your Status making it User-friendly
-													</div>
-											</div>
-									  </div>
-									  <div class="column">
-											<div class="ui raised compact segment" style="text-align:center;padding:2%">
-													<a href="#" ><img class="ui  rounded image" src="images/pic12.jpg"></a>
-													<div class="ui header">
-														<a href="#">Student And Teacher</a>
-													</div>
-													<div class="ui content">
-														<!-- Now student and teacher have different logins for their specified roles. -->
-														Now student and teacher can <br>co-ordinate in this e-Platform for their specified needs.
-													</div>
-											</div>
-										</div>
-									  <div class="column">
-											<div class="ui raised compact  segment" style="text-align:center;padding:2%">
-													<a href="#" ><img class="ui  rounded image" src="images/pic04.jpg"></a>
-													<div class="ui header">
-														<a href="#">On-Duty</a>
-													</div>
-													<div class="ui content">
-													On-Duty Applications can be applied anywhere through necessary documents uploaded
-													</div>
-											</div>
-										</div>
-									  <div class="column">
-											<div class="ui raised compact  segment" style="text-align:center;padding:2%">
-												<a href="#" ><img class="ui  rounded  image" src="images/pic81.png"></a>
-													<div class="ui header" style="padding-top:4%">
-														<a href="#">Amazon AWS Integrated</a>
-													</div>
-													<div class="ui content">
-													Through a prominent software solutions,integrated with AWS clients like SES and SNS
-													</div>
-											</div>
-										</div>
-									</div>
-								</div>
+		<div class="row" style="margin:3%">
+			<div class="ui stackable four column grid">
+				<div class="column">
+					<div class="ui raised compact segment" style="text-align:center;padding:5%">
+						<a href="#"><img class="ui fluid rounded image" src="images/pic01.png"></a>
+						<div class="ui header">
+							<a href="#">E-Mail Integration</a>
+						</div>
+						<div class="ui content">
+							With Responsive E-Mail support, you will be updated with your Status making it User-friendly
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui raised compact segment" style="text-align:center;padding:2%">
+						<a href="#"><img class="ui  rounded image" src="images/pic12.jpg"></a>
+						<div class="ui header">
+							<a href="#">Student And Teacher</a>
+						</div>
+						<div class="ui content">
+							<!-- Now student and teacher have different logins for their specified roles. -->
+							Now student and teacher can <br>co-ordinate in this e-Platform for their specified needs.
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui raised compact  segment" style="text-align:center;padding:2%">
+						<a href="#"><img class="ui  rounded image" src="images/pic04.jpg"></a>
+						<div class="ui header">
+							<a href="#">On-Duty</a>
+						</div>
+						<div class="ui content">
+							On-Duty Applications can be applied anywhere through necessary documents uploaded
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="ui raised compact  segment" style="text-align:center;padding:2%">
+						<a href="#"><img class="ui  rounded  image" src="images/pic81.png"></a>
+						<div class="ui header" style="padding-top:4%">
+							<a href="#">Amazon AWS Integrated</a>
+						</div>
+						<div class="ui content">
+							Through a prominent software solutions,integrated with AWS clients like SES and SNS
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-	<!-- Main -->
-			<div class="ui raised segment" style="width:96%;margin:0 auto;text-align:center;margin-bottom:2%">
-			<a href="#" ><img class="ui fluid rounded  image" src="images/pic06.jpg" ></a>
+		<!-- Main -->
+		<div class="ui raised segment" style="width:96%;margin:0 auto;text-align:center;margin-bottom:2%">
+			<a href="#"><img class="ui fluid rounded  image" src="images/pic06.jpg"></a>
 			<div class="ui header">
 				<br>
 				<h2><a>Students made product</a></h2>
 			</div>
-			<p  style="padding:2% 3%;font-size:160%;text-align:center;">
+			<p style="padding:2% 3%;font-size:160%;text-align:center;">
 				This product was created by students of Kongu Engineering College, a college supporting students
 				and their talents
 			</p>
@@ -252,7 +264,7 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 					and has established the college as a forum for imparting value based education for men and women.
 				</p>
 			</div>
-			</div>
+		</div>
 
 
 
@@ -338,20 +350,22 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 					</section>
 					<section class="col-4 col-12-mobile">
 						<header>
-		<h2 class="icon solid fa-bell circled"></h2><br><span class="label">What's New <i class="lightbulb yellow icon"></i></span>
+							<h2 class="icon solid fa-bell circled"></h2><br><span class="label">What's New <i class="lightbulb yellow icon"></i></span>
 						</header>
 
-						<marquee  direction="up" height="250px">
-						<ul type = "disc">
-						    <li>Bugs fixed.</li><br>
-							<li>Improved User Experience.</li><br>
-							<li>Mobile view improved.</li><br>
-							<li>Sidebar given for Staff and Students.</li><br>
-						</ul>
+						<marquee direction="up" height="250px">
+							<ul type="disc">
+								<li>Bugs fixed.</li><br>
+								<li>Improved User Experience.</li><br>
+								<li>Mobile view improved.</li><br>
+								<li>Sidebar given for Staff and Students.</li><br>
+							</ul>
 						</marquee>
 
-					<h6 style="text-align:center;font-size:13px;font-family: Arial, Helvetica, sans-serif;">		
-					<span>Last Updated on <span class="ui green text">01-July-2020    <div class="ui purple horizontal label">New</div></span></span><br><spans>Version : 3.5 Beta</span></h6>
+						<h6 style="text-align:center;font-size:13px;font-family: Arial, Helvetica, sans-serif;">
+							<span>Last Updated on <span class="ui green text">01-July-2020 <div class="ui purple horizontal label">New</div></span></span><br>
+							<spans>Version : 4.0 Alpha</span>
+						</h6>
 
 					</section>
 
@@ -372,9 +386,9 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 								<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 							</ul> -->
 							<ul class="icons">
-							<a href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u"> Give us Feedback<em data-emoji="slight_smile" ></em></a>
+								<a href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u"> Give us Feedback<em data-emoji="slight_smile"></em></a>
 							</ul>
-											
+
 						</section>
 						<!-- Copyright -->
 						<div class="contact">
@@ -382,11 +396,13 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 								<li>Admin: <span ondragend="window.location.href='./admin/login.php'"><i class="fa fa-user-secret" aria-hidden="true"></i></span></li>
 								<li>About us: <a href="./aboutUs.html">Check out!</a></li>
 								<li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!" target="_blank">studentplus@kongu.edu</a></li>
-								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India <!--i class="in flag"></!i--></li>
+								<li>Made with <i class="fa fa-heart heart" style="color:red"></i> in India
+									<!--i class="in flag"></!i-->
+								</li>
 								<li><a href="./entity/faq/index.html">FAQ </a></li>
 							</ul>
 							<br>
-							<h4 style="text-decoration:underline;text-decoration-style: dotted;">Version : 3.5 Beta</h4>
+							<h4 style="text-decoration:underline;text-decoration-style: dotted;">Version : 4.0 Alpha</h4>
 						</div>
 
 					</div>
@@ -400,10 +416,10 @@ $user=($con->query("SELECT `name` FROM `staff` UNION SELECT `name` FROM `registr
 					<li> &copy; Kongu Engineering College.</li>
 					<li>All rights reserved.</li>
 					<li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
-					<li><a href="./entity/policy/terms-conditions">Terms & Condition</a> </li>
-					<li><a href="./entity/policy/cookie-policy">Cookie Policy</a> </li>						
+					<li><a href="./entity/policy/terms-conditions">Terms & Conditions</a> </li>
+					<li><a href="./entity/policy/cookie-policy">Cookie Policy</a> </li>
 				</ul>
-			</div>	
+			</div>
 		</div>
 	</div>
 
