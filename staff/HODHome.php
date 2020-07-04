@@ -163,7 +163,7 @@ function getDetails($batch)
   <br>
   <div class="ui raised very padded container segment">
     <center>
-      <h1 class="ui header">Hi <?php echo $staff; ?>!</h1>
+      <h1 class="ui header">Hi <?php echo $_SESSION['staffname']; ?>!</h1>
       <h3 class="description">Today's On-Duty Trend</h3>
     </center>
     <br><br>
