@@ -241,6 +241,7 @@
 
     function SubmitDetails() {
       data = $("#passform").serializeArray();
+      $("#passform").attr("class", "ui blue double loading form segment error");
       data[3] = {
         name: "staffid",
         value: "<?php echo $_SESSION['staffid']; ?>"
@@ -251,6 +252,7 @@
         type: "POST",
         data: data,
         success: function(d) {
+          $("#passform").attr("class", "ui form segment error");
           $('#changepass').modal('hide');
           Notiflix.Notify.Success(d);
         }
@@ -278,7 +280,10 @@
       </div>
     </body>
   </div>
+
+  <!-- Password Changing Modal -->
   <div class="ui small modal" id="changepass">
+    <i class="close icon"></i>
     <div class="header">Change Password</div>
     <div class="content">
       <form class="ui form segment error" id="passform">
@@ -358,7 +363,9 @@
     }
   </script>
 
+  <!-- Suggestion Modal -->
   <div class="ui modal" id="navmodal">
+    <i class="close icon"></i>
     <div class="header">KEC Student+</div>
     <div class="content">
       <p>OD Suggestion Approval</p>
