@@ -27,7 +27,7 @@
           <input type="text" name="e_appno" id="e_appno" placeholder="Application Number" readonly>
         </div>
         <div class="field">
-          <label>Applied Date:</label>
+          <label>Applied Date (DD/MM/YYYY): </label>
 
           <div class="ui calendar" id="date_calendar">
             <div class="ui input right icon">
@@ -40,7 +40,7 @@
 
       <div class="two fields">
         <div class="field">
-          <label>Start Date:</label>
+          <label>Start Date (DD/MM/YYYY):</label>
           <div class="ui calendar" id="rangestart">
             <div class="ui input right icon">
               <i class="calendar icon"></i>
@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="field">
-          <label>End Date:</label>
+          <label>End Date (DD/MM/YYYY):</label>
           <div class="ui calendar" id="rangeend">
             <div class="ui input right icon">
 
@@ -193,16 +193,16 @@
       var pgTitle = $(document).attr('title');
       var form = $("#editor").serialize() + "&editApp=edited&odtype=" + apptype + "&pageFrom=" + pgTitle;
 
+      $("#editor").attr("class", "ui blue double loading form raised segment");
 
       $.ajax({
         url: "ajax_handler.php",
         data: form,
         type: "POST",
         success: function(d) {
+          $("#editor").attr("class", "ui form raised segment");
           Notiflix.Notify.Success(d);
           location.reload(true);
-
-
         }
       });
       return false;
