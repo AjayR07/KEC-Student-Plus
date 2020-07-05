@@ -1,24 +1,10 @@
 <?php
 include_once("db.php");
-
 ?>
 <!DOCTYPE HTML>
 <html>
 
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-151639011-2"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-
-		function gtag() {
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-151639011-2');
-	</script>
-
 	<title>KEC Student+</title>
 	<link rel="icon" type="image/png" href="./KEC.png">
 	<meta charset="utf-8" />
@@ -30,52 +16,19 @@ include_once("db.php");
 	<meta property="og:type" content="On-Duty" />
 	<meta property="og:url" content="index.php" />
 	<meta property="og:site_name" content="KEC Student+" />
-	<meta name="description" content="KEC Student+, A initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>,Integrated with On-Duty Management, Kongu Engineering College, Perundurai,Student & Teacher Oriented" />
+	<meta name="description" content="KEC Student+, An initiative managed by geeks from CSE, KEC which is Integrated with On-Duty Management, Kongu Engineering College, Perundurai." />
 	<meta name="keywords" content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , http://student.kongu.edu ,students,Certificates Repository ,perundurai" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
-
+	<script src="./assets/jquery.min.js"></script>
 	<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
-	<script src="./assets/Notiflix/Minified/notiflix-2.1.2.min.js"></script>
-	<link rel="stylesheet" href="./assets/Notiflix/Minified/notiflix-2.1.2.min.css">
-	<style>
-		/* Refers the whole setup */
-		::-webkit-scrollbar {
-			width: 13px;
-			border-radius: 13px;
-		}
 
-		/* Refers tracking path */
-		::-webkit-scrollbar-track {
-			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-			border-radius: 13px;
-			opacity: 1.0;
-			/* background-color: #F5F5F5; */
-		}
-
-		/* Refers Draggable Bar */
-		::-webkit-scrollbar-thumb {
-			border-radius: 13px;
-			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-			box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-
-			background-color: #555;
-		}
-
-		/* Handle on hover */
-		::-webkit-scrollbar-thumb:hover {
-			background: #ef8376;
-		}
-	</style>
 	<link rel="stylesheet" href="./assets/css/main.css" />
 	<!-- No Script Part -->
 	<noscript>
 		<meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
-	<link rel="stylesheet" href="./assets/Fomantic/dist/semantic.min.css" type="text/css" />
-	<script src="./assets/jquery.min.js"></script>
-	<script src="./assets/Fomantic/dist/semantic.min.js"></script>
+
 	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 	<!-- <script src="https://use.fontawesome.com/4daae1ed5b.js"></script> -->
 	<style>
@@ -121,6 +74,7 @@ include_once("db.php");
 
 <body class="homepage is-preload">
 	<div class="preloader"></div>
+	<link rel="stylesheet" href="./assets/Fomantic/dist/semantic.min.css" type="text/css" />
 	<div id="page-wrapper">
 
 		<!-- Header -->
@@ -159,7 +113,7 @@ include_once("db.php");
 			<header>
 				<h2>Hi! You're surfing at <strong>KEC Student+</strong></h2>
 				<p>
-					A initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>
+					An initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>
 					<br></br>
 				</p>
 			</header>
@@ -177,7 +131,7 @@ include_once("db.php");
 			<!-- Visitors Count -->
 			<div class="ui statistic" style="margin-right:2%;"><br>
 				<div class="powr-hit-counter" id="51e3286c_1588395910"></div>
-				<script src="https://www.powr.io/powr.js?platform=html"></script>
+
 
 			</div>
 			<!--  -->
@@ -423,7 +377,39 @@ include_once("db.php");
 		</div>
 	</div>
 
+	<style>
+		/* Refers the whole setup */
+		::-webkit-scrollbar {
+			width: 13px;
+			border-radius: 13px;
+		}
+
+		/* Refers tracking path */
+		::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+			border-radius: 13px;
+			opacity: 1.0;
+			/* background-color: #F5F5F5; */
+		}
+
+		/* Refers Draggable Bar */
+		::-webkit-scrollbar-thumb {
+			border-radius: 13px;
+			-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+			box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+
+			background-color: #555;
+		}
+
+		/* Handle on hover */
+		::-webkit-scrollbar-thumb:hover {
+			background: #ef8376;
+		}
+	</style>
+
 	<!-- Scripts -->
+	<script src="https://www.powr.io/powr.js?platform=html"></script>
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.dropotron.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -432,6 +418,7 @@ include_once("db.php");
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="./assets/Fomantic/dist/semantic.min.js"></script>
 
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">

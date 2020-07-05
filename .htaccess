@@ -11,7 +11,7 @@ RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NC,L,R]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^ %{REQUEST_URI}.html [NC,L]
-
+RewriteRule index.html home.php
 
 ErrorDocument 403 /errorfile/error403.html
 ErrorDocument 404 /errorfile/error404.html
