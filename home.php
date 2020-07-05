@@ -95,12 +95,12 @@ include_once("db.php");
 			<!-- Nav -->
 			<nav id="nav">
 				<ul>
-					<li><a href="index.php">Home</a></li>
-					<li><a href="studLog.php">Login</a></li>
-					<li><a href="registration.php">Registration</a></li>
-					<li><a href="staffLog.php">Staff</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="studLog">Login</a></li>
+					<li><a href="registration">Registration</a></li>
+					<li><a href="staffLog">Staff</a></li>
 					<li><a href="./entity/faq/index.html">FAQ </a></li>
-					<li><a href="aboutUs.html">About Us</a></li>
+					<li><a href="aboutUs">About Us</a></li>
 				</ul>
 			</nav>
 		</div>
