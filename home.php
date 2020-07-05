@@ -131,8 +131,6 @@ include_once("db.php");
 			<!-- Visitors Count -->
 			<div class="ui statistic" style="margin-right:2%;"><br>
 				<div class="powr-hit-counter" id="51e3286c_1588395910"></div>
-
-
 			</div>
 			<!--  -->
 			<div class="ui statistic">
@@ -409,7 +407,7 @@ include_once("db.php");
 	</style>
 
 	<!-- Scripts -->
-	<script src="https://www.powr.io/powr.js?platform=html"></script>
+	<!-- <script src="https://www.powr.io/powr.js?platform=html"></script> -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.dropotron.min.js"></script>
 	<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -423,6 +421,7 @@ include_once("db.php");
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">
 		window.addEventListener("load", function() {
+
 			var Tawk_API = Tawk_API || {},
 				Tawk_LoadStart = new Date();
 			(function() {
@@ -434,6 +433,17 @@ include_once("db.php");
 				s1.setAttribute('crossorigin', '*');
 				s0.parentNode.insertBefore(s1, s0);
 			})();
+
+			function includeJS(filename) {
+				var head = document.getElementsByTagName('head')[0];
+
+				var script = document.createElement('script');
+				script.src = filename;
+				script.type = 'text/javascript';
+
+				head.appendChild(script)
+			}
+			includeJS("https://www.powr.io/powr.js?platform=html");
 		});
 	</script>
 
