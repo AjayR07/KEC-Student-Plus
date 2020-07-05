@@ -21,7 +21,7 @@ include_once("db.php");
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	<meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
 	<script src="./assets/jquery.min.js"></script>
-	<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
+
 
 	<link rel="stylesheet" href="./assets/css/main.css" />
 	<!-- No Script Part -->
@@ -29,7 +29,6 @@ include_once("db.php");
 		<meta http-equiv="refresh" content="0; URL='./errorfile/noscript.html'" /></noscript>
 	<!-- -------- -->
 
-	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 	<!-- <script src="https://use.fontawesome.com/4daae1ed5b.js"></script> -->
 	<style>
 		.preloader {
@@ -111,9 +110,9 @@ include_once("db.php");
 		<!-- Banner -->
 		<section id="banner">
 			<header>
-				<h2>Hi! You're surfing at <strong>KEC Student+</strong></h2>
+				<h2>Hi! You're looking at <strong>KEC Student+</strong></h2>
 				<p>
-					An initiative managed by a group of teens, Working for the student's utmost <strong>satisfaction</strong>
+					An initiative by a group of teens from CSE, working for the students' utmost <strong>satisfaction</strong>
 					<br></br>
 				</p>
 			</header>
@@ -151,7 +150,7 @@ include_once("db.php");
 							<a href="#">E-Mail Integration</a>
 						</div>
 						<div class="ui content">
-							With Responsive E-Mail support, you will be updated with your Status making it User-friendly
+							With Responsive E-Mail support, you will be notified with your Status making it User-friendly
 						</div>
 					</div>
 				</div>
@@ -163,7 +162,7 @@ include_once("db.php");
 						</div>
 						<div class="ui content">
 							<!-- Now student and teacher have different logins for their specified roles. -->
-							Now student and teacher can <br>co-ordinate in this e-Platform for their specified needs.
+							Now student and teacher can <br>co-ordinate in this e-Platform for their specific needs.
 						</div>
 					</div>
 				</div>
@@ -174,7 +173,7 @@ include_once("db.php");
 							<a href="#">On-Duty</a>
 						</div>
 						<div class="ui content">
-							On-Duty Applications can be applied anywhere through necessary documents uploaded
+							Applications can be applied anywhere wihtout the need of pen and paper.
 						</div>
 					</div>
 				</div>
@@ -185,7 +184,7 @@ include_once("db.php");
 							<a href="#">Amazon AWS Integrated</a>
 						</div>
 						<div class="ui content">
-							Through a prominent software solutions,integrated with AWS clients like SES and SNS
+							Through a prominent software solutions, integrated with AWS clients like SES and SNS.
 						</div>
 					</div>
 				</div>
@@ -197,11 +196,10 @@ include_once("db.php");
 			<a href="#"><img class="ui fluid rounded  image" src="images/pic06.jpg"></a>
 			<div class="ui header">
 				<br>
-				<h2><a>Students made product</a></h2>
+				<h2><a>Students made website</a></h2>
 			</div>
 			<p style="padding:2% 3%;font-size:160%;text-align:center;">
-				This product was created by students of Kongu Engineering College, a college supporting students
-				and their talents
+				This website was created by students of CSE, Kongu Engineering College. <a href="./aboutUs.html">About Us!</a>
 			</p>
 			<div class="ui content" style="padding:2% 4%;font-size:20px">
 				<p>
@@ -217,9 +215,6 @@ include_once("db.php");
 				</p>
 			</div>
 		</div>
-
-
-
 
 		<!-- Features -->
 
@@ -285,7 +280,7 @@ include_once("db.php");
 							<li>
 								<article class="post stub">
 									<header>
-										<h3><a href="#">Mail Integrated</a></h3>
+										<h3><a href="#">E-Mail Integrated</a></h3>
 									</header>
 
 								</article>
@@ -293,7 +288,7 @@ include_once("db.php");
 							<li>
 								<article class="post stub">
 									<header>
-										<h3><a href="#">Student & Teacher Oriented</a></h3>
+										<h3><a href="#">Student & Faculty Oriented</a></h3>
 									</header>
 
 								</article>
@@ -308,14 +303,16 @@ include_once("db.php");
 						<marquee direction="up" height="250px">
 							<ul type="disc">
 								<li>Bugs fixed.</li><br>
-								<li>Improved User Experience.</li><br>
+								<li>Loaders on Process.</li><br>
 								<li>Mobile view improved.</li><br>
 								<li>Sidebar given for Staff and Students.</li><br>
+								<li>Reduced Page loading time</li>
+								<li>Added Animations</li>
 							</ul>
 						</marquee>
 
 						<h6 style="text-align:center;font-size:13px;font-family: Arial, Helvetica, sans-serif;">
-							<span>Last Updated on <span class="ui green text">01-July-2020 <div class="ui purple horizontal label">New</div></span></span><br>
+							<span>Last Updated on <span class="ui green text">06-July-2020 <div class="ui purple horizontal label">New</div></span></span><br>
 							<spans>Version : 4.0 Alpha</span>
 						</h6>
 
@@ -365,8 +362,8 @@ include_once("db.php");
 			<div class="copyright">
 
 				<ul class="menu">
-					<li> &copy; Kongu Engineering College.</li>
-					<li>All rights reserved.</li>
+					<li> &copy; Kongu Engineering College</li>
+					<li>All rights reserved</li>
 					<li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
 					<li><a href="./entity/policy/terms-conditions">Terms & Conditions</a> </li>
 					<li><a href="./entity/policy/cookie-policy">Cookie Policy</a> </li>
@@ -405,7 +402,8 @@ include_once("db.php");
 			background: #ef8376;
 		}
 	</style>
-
+	<link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 	<!-- Scripts -->
 	<!-- <script src="https://www.powr.io/powr.js?platform=html"></script> -->
 	<script src="assets/js/jquery.min.js"></script>
@@ -448,8 +446,6 @@ include_once("db.php");
 	</script>
 
 	<!--End of Tawk.to Script-->
-
-
 </body>
 
 </html>
