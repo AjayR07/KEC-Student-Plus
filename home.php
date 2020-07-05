@@ -74,7 +74,7 @@ include_once("db.php");
 
 <body class="homepage is-preload">
 	<div class="preloader"></div>
-	<link rel="stylesheet" href="./assets/Fomantic/dist/semantic.min.css" type="text/css" />
+
 	<div id="page-wrapper">
 
 		<!-- Header -->
@@ -376,7 +376,7 @@ include_once("db.php");
 			</div>
 		</div>
 	</div>
-
+	<link rel="stylesheet" href="./assets/Fomantic/dist/semantic.min.css" type="text/css" />
 	<style>
 		/* Refers the whole setup */
 		::-webkit-scrollbar {
@@ -418,21 +418,23 @@ include_once("db.php");
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script src="./assets/Fomantic/dist/semantic.min.js"></script>
+	<!-- <script src="./assets/Fomantic/dist/semantic.min.js"></script> -->
 
 	<!--Start of Tawk.to Script-->
 	<script type="text/javascript">
-		var Tawk_API = Tawk_API || {},
-			Tawk_LoadStart = new Date();
-		(function() {
-			var s1 = document.createElement("script"),
-				s0 = document.getElementsByTagName("script")[0];
-			s1.async = true;
-			s1.src = 'https://embed.tawk.to/5e88048d35bcbb0c9aada123/default';
-			s1.charset = 'UTF-8';
-			s1.setAttribute('crossorigin', '*');
-			s0.parentNode.insertBefore(s1, s0);
-		})();
+		window.addEventListener("load", function() {
+			var Tawk_API = Tawk_API || {},
+				Tawk_LoadStart = new Date();
+			(function() {
+				var s1 = document.createElement("script"),
+					s0 = document.getElementsByTagName("script")[0];
+				s1.async = true;
+				s1.src = 'https://embed.tawk.to/5e88048d35bcbb0c9aada123/default';
+				s1.charset = 'UTF-8';
+				s1.setAttribute('crossorigin', '*');
+				s0.parentNode.insertBefore(s1, s0);
+			})();
+		});
 	</script>
 
 	<!--End of Tawk.to Script-->
