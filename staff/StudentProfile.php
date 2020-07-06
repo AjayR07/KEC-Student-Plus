@@ -41,6 +41,8 @@ $phone = $temp['phone'];
 $regno = $odrow['regno'];
 $name = $temp['name'];
 $gender = $temp['gender'];
+$batch = $temp['batch'];
+$sec = $temp['sec'];
 $sql = "SELECT o.status as status, p.status1 as status1, p.status2 as status2, p.status3 as status3,p.advisor as advisor,o.odfrom as odfrom, o.odto as odto, o.hrs as hrs from registration r, oddetails o,preod p where (r.regno like '$regno') and (r.regno like o.regno) and (o.appno like p.appno)";
 //echo '<script>alert("'.$sql.'")</script>';
 $sql2 = "SELECT c.status as othercert from othercert c where c.regno like '$regno'";
