@@ -42,12 +42,10 @@ include_once('../assets/notiflix.php');
         else
           echo '<img class="hoverZoomLink" src="../images/elyse.png"/>';
         ?>
-
       </a>
       <h1 style="font-family: Georgia, serif; font-size: 25px;"><?php echo $name; ?></h1>
 
     </header>
-    <?php include_once('../staff/StudentProfile.php'); ?>
     <div class="profile-bio">
       <h5 style="color: #009933; font-size: 20px;">Computer Science and Engineering</h5>
       <h5 style="font-size: 17px">

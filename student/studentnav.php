@@ -140,7 +140,7 @@ include_once('../db.php');
 
 <body id="root">
   <?php
-  include_once('../staff/StudentProfile.php'); ?>
+  include_once('./StudentProfile.php'); ?>
   <div class="preloader">
 
     <body>
