@@ -11,14 +11,6 @@ RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [NC,L,R]
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^ %{REQUEST_URI}.html [NC,L]
-RewriteRule index.html home.php
-
-<filesMatch ".(ico|jpg|jpeg|png|gif|svg)$">
- Header set Cache-Control "max-age=2592000, public"
-</filesMatch>
-<filesMatch ".(css|js)$">
- Header set Cache-Control "max-age=86400, public"
-</filesMatch>
 
 
 ErrorDocument 403 /errorfile/error403.html
