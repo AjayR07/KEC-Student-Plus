@@ -78,7 +78,7 @@ if ($data->num_rows == 0) {
         </div>
         <div class="description" style="height: 300px; width: 800px;overflow: auto;">
 
-            <table class="ui compact inverted table">
+            <table class="ui inverted table">
                 <tr>
                     <td>Phone: </td>
                     <td><a target="_blank" href="tel:<?php echo $phone; ?>"><?php echo $phone; ?></a></td>
