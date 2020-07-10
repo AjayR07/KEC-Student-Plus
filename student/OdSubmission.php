@@ -14,7 +14,7 @@ include_once('../assets/notiflix.php');
 <html lang="en">
 
 <head>
-<?php
+    <?php
 if(isset($_POST['PROCEED']))
 {
     $appno =$_POST['appnum'];
@@ -50,250 +50,278 @@ if(!isset($_POST['PROCEED']))
     <meta charset="utf-8">
     <!-- Title Page-->
     <title>OD Proof Submission</title>
-  
+
     <link href="../assets/Fomantic/dist/semantic.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
     <script src="../assets/Fomantic/dist/semantic.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<script>
-    $(document).ready(function(){
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+    $(document).ready(function() {
         $('.ui.dropdown').dropdown();
         $('.message .close')
-  .on('click', function() {
-    $(this)
-      .closest('.message')
-      .transition('fade')
-    ;
-  });
-      }
-        );
-</script>
-<style>
-body  {
-  background-image: url("../backlogout.jpg");
-}
-</style>
+            .on('click', function() {
+                $(this)
+                    .closest('.message')
+                    .transition('fade');
+            });
+    });
+    </script>
+    <style>
+    body {
+        background-image: url("../backlogout.jpg");
+    }
+    </style>
 
 
     <style>
-            .card
-            {
-                height: 100%;
-                width: 100%;
-            }
-            table, th, td
-            {
+    .card {
+        height: 100%;
+        width: 100%;
+    }
 
-                height: 100;
-            border: 1px solid black;
-            color:white;
+    table,
+    th,
+    td {
+
+        height: 100;
+        border: 1px solid black;
+        color: white;
 
 
-            font-size: 130%;
-            }
-            button {
-                background-color: #4CAF50; /* Green */
-                border: none;
-                color: white;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-            }
-            tr{
-                height: 45px;
-            }
-            p{
+        font-size: 130%;
+    }
 
-                    color:white;
-                    font-size: 150%;
+    button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
 
-            }
-            th {
-                    text-align: left;
-            }
-            .wrapper wrapper--w780
-            {
+    tr {
+        height: 45px;
+    }
 
-                visibility:hidden;
-            }
+    p {
 
+        color: white;
+        font-size: 150%;
+
+    }
+
+    th {
+        text-align: left;
+    }
+
+    .wrapper wrapper--w780 {
+
+        visibility: hidden;
+    }
+
+    .ui.action.input input[type="file"] {
+        display: none;
+    }
     </style>
 
 </head>
 
 
 <body>
-<?php include_once('studentnav.php');
+    <?php include_once('studentnav.php');
 include_once('../assets/notiflix.php');
 ?>
- 
-<div class="nupload">
-<center>
-<div class="page-wrapper p-t-20 p-b-20" >
-        <div class="wrapper wrapper--w780">
-            <div class="card card-3">
-                <center><br><br><br><h1 style="color:white" > <b>On Duty</b></h1><center>
-                            <div class="card-body">
-                            <div class="ui form">
-                            <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
-                             <div class="fields">
-                            <div class="field">
-                             <label style="color: rgb(255,255,255);">Select an application number: </label>   <br />
-                             <div class="ui selection dropdown">
-                                    <input type="hidden" name="appnum" style="width:auto;">
-                                    <i class="dropdown icon"></i>
-                                    <div class="default text">Select Application Number</div>
-                                    <div class="menu">
-                                        <?php echo fill_appno($con);?>
-                                    </div>
-                                    </div>
-                            </div>
-                            </div>
-                            <div class="field">
-                                 <button type="submit" class="ui positive button" name="PROCEED" >Proceed</button>
-                            </div>
-                            </div>
-                        </form>
 
-                            </div>
-                            </div>
+    <div class="nupload">
+        <center>
+            <div class="page-wrapper p-t-20 p-b-20">
+                <div class="wrapper wrapper--w780">
+                    <div class="card card-3">
+                        <center><br><br><br>
+                            <h1 style="color:white"> <b>On Duty</b></h1>
+                            <center>
+                                <div class="card-body">
+                                    <div class="ui form">
+                                        <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
+                                            <div class="fields">
+                                                <div class="field">
+                                                    <label style="color: rgb(255,255,255);">Select an application
+                                                        number: </label> <br />
+                                                    <div class="ui selection dropdown">
+                                                        <input type="hidden" name="appnum" style="width:auto;">
+                                                        <i class="dropdown icon"></i>
+                                                        <div class="default text">Select Application Number</div>
+                                                        <div class="menu">
+                                                            <?php echo fill_appno($con);?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <button type="submit" class="ui positive button"
+                                                    name="PROCEED">Proceed</button>
+                                            </div>
+                                    </div>
+                                    </form>
+
+                                </div>
+                    </div>
 
                 </div>
             </div>
- </center>
-</div>
+        </center>
+    </div>
 
     <div class="whole">
         <br>
         <center>
             <div class="container" sytle="width:60%">
-            <div class="ui large floating black message">
-            <i class="close icon"></i>
-            <div class="header">
-                The Proof should satisfy these conditions:
+                <div class="ui large floating black message">
+                    <i class="close icon"></i>
+                    <div class="header">
+                        The Proof should satisfy these conditions:
+                    </div>
+                    <ul class="list">
+                        <li>Only PDFs are allowed for upload. If you have any other formats, please convert them to PDF.
+                            <a href="https://www.freepdfconvert.com/" target="_blank" class="alert-link">Click here to
+                                Convert</a></li>
+                        <li>The size must be less than 1 MB. You can convert it using this link. <a
+                                href="https://www.freepdfconvert.com/compress-pdf" target="_blank"
+                                class="alert-link">Click here to Compress</a></li>
+                    </ul>
+                </div>
             </div>
-            <ul class="list">
-                <li>Only PDFs are allowed for upload. If you have any other formats, please convert them to PDF. <a href="https://www.freepdfconvert.com/" target="_blank" class="alert-link">Click here to Convert</a></li>
-                <li>The size must be less than 1 MB. You can convert it using this link. <a href="https://www.freepdfconvert.com/compress-pdf" target="_blank" class="alert-link">Click here to Compress</a></li>
-            </ul>
-            </div>
-            </div>
-            </center>
-            <div class="page-wrapper p-t-10 p-b-100 font-poppins" >
+        </center>
+        <div class="page-wrapper p-t-10 p-b-100 font-poppins">
             <div class="wrapper wrapper--w780">
-            <div class="card card-3">
-                <center><br><br><h1 style="color:white" > <b>On Duty</b></h1><center>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card-image">
-                            <div class="card-body">
-                                <table>
-                                    <tr>
-                                        <td>Application:</td>
-                                        <td><div class="text text-success"><?php echo $appno;?></div></td>
-                                    </tr>
+                <div class="card card-3">
+                    <center><br><br>
+                        <h1 style="color:white"> <b>On Duty</b></h1>
+                    </center>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-image">
+                                <div class="card-body">
+                                    <center>
+                                        <table>
+                                            <tr>
+                                                <td>Application:</td>
+                                                <td>
+                                                    <div class="text text-success"><?php echo $appno;?></div>
+                                                </td>
+                                            </tr>
 
-                                    <tr>
-                                        <td>Roll No: </td>
-                                        <td><?php echo $odrow['regno'];?></td>
+                                            <tr>
+                                                <td>Roll No: </td>
+                                                <td><?php echo $odrow['regno'];?></td>
 
-                                        </tr>
-                                    <tr>
-                                        <td>Name: </td>
-                                        <td><?php echo $_SESSION['name']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Name: </td>
+                                                <td><?php echo $_SESSION['name']; ?></td>
 
-                                    </tr>
-                                    <tr>
-                                        <td >Applied Date:&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp </td>
-                                        <td><?php echo $odrow['appdate'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Od Date: </td>
-                                    <td>From: &nbsp<?php echo $odrow['appdate'];?> <br>To &nbsp &nbsp : &nbsp   <?php echo $odrow['odto'];?></td></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Applied Date:&nbsp &nbsp&nbsp &nbsp&nbsp &nbsp </td>
+                                                <td><?php echo $odrow['appdate'];?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Od Date: </td>
+                                                <td>From: &nbsp<?php echo $odrow['appdate'];?> <br>To &nbsp &nbsp :
+                                                    &nbsp <?php echo $odrow['odto'];?></td>
+                                                </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>No. of Hrs:</td><td><?php echo $odrow['hrs'];?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>No. of Hrs:</td>
+                                                <td><?php echo $odrow['hrs'];?></td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>Purpose: </td>
-                                        <td><?php echo $odrow['purpose'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Title: </td>
-                                        <td><?php echo $odrow['title'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>College: </td>
-                                        <td><?php echo $odrow['college'];?></td>
-                                    </tr>
-                                    <tr>
-                                        <td>State: </td>
-                                        <td><?php echo $odrow['state'];?></td>
-                                    </tr>
-                                </table>
+                                            </tr>
+                                            <tr>
+                                                <td>Purpose: </td>
+                                                <td><?php echo $odrow['purpose'];?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Title: </td>
+                                                <td><?php echo $odrow['title'];?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>College: </td>
+                                                <td><?php echo $odrow['college'];?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>State: </td>
+                                                <td><?php echo $odrow['state'];?></td>
+                                            </tr>
+                                        </table>
+                                    </center>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card card-3" style="margin-top:20px;">
-            <center><br><h1 style="color:white"> <b>Submit Proof</b></h1><center>
-                <div class="card-image">
-                    <div class="card-body">
-                        <form  action="<?php echo $_SERVER['PHP_SELF'];?>" method="post" enctype="multipart/form-data">
-                            <div class="row" style="color: white; font-size: 16px; padding: 0px 0px 40px 0px;text-align: left">
-                            <div class="ui form">
-                            <h4 style="color: rgb(255,255,255);"> Awards Won : </h4><br/>
-                            <div class="field">
-                              <select class="ui dropdown" name="prize" style="width:auto;" required>
-                                <option value="PARTICIPATION">Participation</option>
-                                <option value="FIRST">First</option>
-                                <option value="SECOND">Second</option>
-                                <option value="THIRD">Third</option>
-                                <option value="FOURTH">Fourth</option>
-                                <option value="FIFTH">Fifth</option>
-                                <option value="CONSOLATION">Consolation</option>
-                              </select>
-                        </div>
-                      </div></div>
-                        <div class="ui form">
-                        <div class="field">
-                        <label>Select the Certificate</label>
-                        <div class="form-group">
-                        <div class="input-group input-file" id="file" name="file">
-                        <div class="ui fluid action input">
-                            <input type="text" class="form-control" placeholder='Click here to Choose a Certificate...' required />
-                            <button class="ui secondary button" type="button">Choose</button>
-                        </div>
-                        </div>
-                        </div>
-                        </div>
-                            <div class="ui form">
-                              <div class="two fields">
-                                <div class="field">
-                                <button type="submit" class="ui blue button" name="kipload">Submit & Upload</button>
+                <div class="card card-3" style="margin-top:20px;">
+                    <center><br>
+                        <h1 style="color:white"> <b>Submit Proof</b></h1>
+                        <center>
+                            <div class="card-image">
+                                <div class="card-body">
+                                    <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="post"
+                                        enctype="multipart/form-data">
+                                        <div class="row"
+                                            style="color: white; font-size: 16px; padding: 0px 0px 40px 0px;text-align: left">
+                                            <div class="ui form">
+                                                <h4 style="color: rgb(255,255,255);"> Awards Won : </h4><br />
+                                                <div class="field">
+                                                    <select class="ui dropdown" name="prize" style="width:auto;"
+                                                        required>
+                                                        <option value="PARTICIPATION">Participation</option>
+                                                        <option value="FIRST">First</option>
+                                                        <option value="SECOND">Second</option>
+                                                        <option value="THIRD">Third</option>
+                                                        <option value="FOURTH">Fourth</option>
+                                                        <option value="FIFTH">Fifth</option>
+                                                        <option value="CONSOLATION">Consolation</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="ui form">
+                                            <div class="field">
+                                                <label>Select the Certificate</label>
+                                                <div class="ui action input">
+                                                    <input type="text" placeholder="Upload PDF" readonly>
+                                                    <input type="file" id="file" name="file" required>
+                                                    <div class="ui icon button">
+                                                        Choose <i class="attach icon"></i>
+                                                    </div>
+                                                </div>
+                                            </div><br />
+                                            <div class="two fields">
+                                                <div class="field">
+                                                    <button type="submit" class="ui blue button"
+                                                        name="kipload">Submit</button>
+                                                </div>
+                                                <div class="field">
+                                                    <button type="reset" class="ui negative button">Reset</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="field">
-                                <button type="reset" class="ui negative button">Reset</button>
                             </div>
-                          </div>
-                        </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
 
-<?php
+    <?php
 function fill_appno($con)
  {
     $output = '';
@@ -313,7 +341,7 @@ function fill_appno($con)
 ?>
 
 
-<?php
+    <?php
 if(isset($_POST["kipload"]))
 {
   //  echo '<script>alert("getting inside kipload");</script>';
@@ -365,45 +393,31 @@ if(isset($_POST["kipload"]))
 }
 ?>
 
-<script>
-    $(".dropdown-menu  a").click(function()
-    {
+    <script>
+    $(".dropdown-menu  a").click(function() {
         $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
         $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
-      });
-</script>
-<script>
-    function bs_input_file() {
-	$(".input-file").before(
-		function() {
-			if ( ! $(this).prev().hasClass('input-ghost') ) {
-				var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
-				element.attr("name",$(this).attr("name"));
-				element.change(function(){
-					element.next(element).find('input').val((element.val()).split('\\').pop());
-				});
-				$(this).find(".ui secondary button").click(function(){
-					element.click();
-				});
-				$(this).find("button.btn-reset").click(function(){
-					element.val(null);
-					$(this).parents(".input-file").find('input').val('');
-				});
-				$(this).find('input').css("cursor","pointer");
-				$(this).find('input').mousedown(function()
-                {
-					$(this).parents('.input-file').prev().click();
-					return false;
-				});
-				return element;
-			}
-		}
-	);
-}
-$(function() {
-	bs_input_file();
-});
-</script>
-<link href="../staff/css/main.css" rel="stylesheet" media="all">
+    });
+    </script>
+    <script>
+    $(document).ready(function() {
+        $("input:text").click(function() {
+            $(this).parent().find("input:file").click();
+        });
+
+        $(".ui.icon.button").click(function() {
+            $(this).parent().find("input:file").click();
+        });
+
+        $('input:file', '.ui.action.input')
+            .on('change', function(e) {
+                var name = e.target.files[0].name;
+                $('input:text', $(e.target).parent()).val(name);
+            });
+
+    });
+    </script>
+    <link href="../staff/css/main.css" rel="stylesheet" media="all">
 </body>
+
 </html>

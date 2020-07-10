@@ -12,25 +12,30 @@ include_once('../assets/notiflix.php');
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="icon" type="image/png" href="../KEC.png">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Other Certificate Registration</title>
-    </head>
+
+<head>
+    <link rel="icon" type="image/png" href="../KEC.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Other Certificate Registration</title>
+</head>
 <div class="pusher" background="../backlogout.jpg">
 
-<?php include_once('studentnav.php');
+    <?php include_once('studentnav.php');
 include_once('../assets/notiflix.php');
 ?>
-<style>
-.pusher  {
-  background-image: url("../backlogout.jpg");
-  padding-bottom:3%;
- 
-}
-</style>
+    <style>
+    .pusher {
+        background-image: url("../backlogout.jpg");
+        padding-bottom: 3%;
 
-<?php
+    }
+
+    .ui.action.input input[type="file"] {
+        display: none;
+    }
+    </style>
+
+    <?php
 $register=$_SESSION['uname'];
 $sql="SELECT * FROM `registration` WHERE `regno` LIKE '$register'";
 $data=$con->query($sql);
@@ -46,159 +51,147 @@ $temp6=rand(10,99);
 $appno=strval("CR").strval($temp1).strval($temp2).strval($temp3).strval($temp4).strval($temp5).strval($temp6);
 ?>
 
-<div class="ui card centered" style="width:75%;">
-  <div class="content">
-    <div class="header"><h1 style="text-align:center">Other Certificate Registration</h1></div>
-    <div class="meta" style="text-align:center">Only authenticated certificates can be uploaded</div>
-    <div class="description">
-      <br>
-    <form enctype="multipart/form-data" class="ui form" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-  <h2 style="text-align:center">Application Number: <?php echo $appno; ?> </h2>
-  <br>
-  <div class="field">
-    <label>Registration Number</label>
-    <input type="text" name="regno" value="<?php echo $register; ?>" required readonly>
-  </div>
-  <br>
-  <div class="field">
-    <label>Name</label>
-    <input type="text" name="name" value="<?php echo $name; ?>" required readonly>
-  </div>
-  <br>
-  <div class="field">
-  <label>Applied Date</label>
-  <div class="ui calendar">
-  <div class="ui input left icon">
-    <i class="calendar icon"></i>
-    <input type="text" name="appdate" value="<?php echo date('d/m/Y'); ?>" required readonly>
-  </div>
-</div>
-  </div>
-  <br>
-<div class="ui form">
-  <div class="two fields">
-    <div class="field">
-      <label>Start Date</label>
-      <div class="ui calendar" id="rangestart">
-        <div class="ui input left icon">
-          <i class="calendar icon"></i>
-          <input type="text" name="start" placeholder="Start" required>
+    <div class="ui card centered" style="width:75%;">
+        <div class="content">
+            <div class="header">
+                <h1 style="text-align:center">Other Certificate Registration</h1>
+            </div>
+            <div class="meta" style="text-align:center">Only authenticated certificates can be uploaded</div>
+            <div class="description">
+                <br>
+                <form enctype="multipart/form-data" class="ui form" method="POST"
+                    action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                    <h2 style="text-align:center">Application Number: <?php echo $appno; ?> </h2>
+                    <br>
+                    <div class="field">
+                        <label>Registration Number</label>
+                        <input type="text" name="regno" value="<?php echo $register; ?>" required readonly>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label>Name</label>
+                        <input type="text" name="name" value="<?php echo $name; ?>" required readonly>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label>Applied Date</label>
+                        <div class="ui calendar">
+                            <div class="ui input left icon">
+                                <i class="calendar icon"></i>
+                                <input type="text" name="appdate" value="<?php echo date('d/m/Y'); ?>" required
+                                    readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="ui form">
+                        <div class="two fields">
+                            <div class="field">
+                                <label>Start Date</label>
+                                <div class="ui calendar" id="rangestart">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" name="start" placeholder="Start" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label>End Date</label>
+                                <div class="ui calendar" id="rangeend">
+                                    <div class="ui input left icon">
+                                        <i class="calendar icon"></i>
+                                        <input type="text" name="end" placeholder="End" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label>Certificate Category</label>
+                        <div class="ui selection dropdown">
+                            <input type="hidden" name="category" required>
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Category</div>
+                            <div class="menu">
+                                <div class="item" data-value="WORKSHOP">Workshop</div>
+                                <div class="item" data-value="INTERNSHIP">Internship</div>
+                                <div class="item" data-value="IV">Industrial Visit</div>
+                                <div class="item" data-value="IPT">In-Plant Training</div>
+                                <div class="item" data-value="COURSE">Online Certification</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label>Name of the College/Company</label>
+                        <input type="text" name="cname" placeholder="Company/College" required>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label>State</label>
+                        <div class="ui selection dropdown">
+                            <input type="hidden" name="state" required>
+                            <i class="dropdown icon"></i>
+                            <div class="default text">State</div>
+                            <div class="menu">
+                                <div class="item" data-value="Inside Tamilnadu">Inside Tamilnadu</div>
+                                <div class="item" data-value="Outside Tamilnadu">Outside Tamilnadu</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label>Title/Job Title/Course Name</label>
+                        <input type="text" name="title" placeholder="Give Student if Not Applicable" required>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label>Purpose</label>
+                        <input type="text" name="purpose" placeholder="Purpose" required>
+                    </div>
+                    <br>
+                    <div class="field">
+                        <label>Select the Certificate</label>
+                        <div class="ui action input">
+                            <input type="text" placeholder="Upload PDF" readonly>
+                            <input type="file" id="file" name="file" required>
+                            <div class="ui icon button">
+                                Choose <i class="attach icon"></i>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden" required>
+                            <label>I assure that the given details were authentic and true to my knowledge.</label>
+                        </div>
+                    </div>
+                    <br>
+
+                    <button class="ui positive button" type="submit" name="submit">Submit</button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
-    <div class="field">
-      <label>End Date</label>
-      <div class="ui calendar" id="rangeend">
-        <div class="ui input left icon">
-          <i class="calendar icon"></i>
-          <input type="text" name="end" placeholder="End" required>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<br>
-<div class="field">
-      <label>Certificate Category</label>
-      <div class="ui selection dropdown">
-          <input type="hidden" name="category" required>
-          <i class="dropdown icon"></i>
-          <div class="default text">Category</div>
-          <div class="menu">
-              <div class="item" data-value="WORKSHOP">Workshop</div>
-              <div class="item" data-value="INTERNSHIP">Internship</div>
-              <div class="item" data-value="IV">Industrial Visit</div>
-              <div class="item" data-value="IPT">In-Plant Training</div>
-              <div class="item" data-value="COURSE">Online Certification</div>
-          </div>
-      </div>
-  </div>
-  <br>
-  <div class="field">
-    <label>Name of the College/Company</label>
-    <input type="text" name="cname" placeholder="Company/College" required>
-  </div>
-  <br>
-  <div class="field">
-      <label>State</label>
-      <div class="ui selection dropdown">
-          <input type="hidden" name="state" required>
-          <i class="dropdown icon"></i>
-          <div class="default text">State</div>
-          <div class="menu">
-              <div class="item" data-value="Inside Tamilnadu">Inside Tamilnadu</div>
-              <div class="item" data-value="Outside Tamilnadu">Outside Tamilnadu</div>
-          </div>
-      </div>
-  </div>
-  <br>
-  <div class="field">
-    <label>Title/Job Title/Course Name</label>
-    <input type="text" name="title" placeholder="Give Student if Not Applicable" required>
-  </div>
-  <br>
-  <div class="field">
-    <label>Purpose</label>
-    <input type="text" name="purpose" placeholder="Purpose" required>
-  </div>
-  <br>
-<div class="field">
-<label>Select the Certificate</label>
-<div class="form-group">
-   <div class="input-group input-file" id="file" name="file">
-   <div class="ui fluid action input">
-       <input type="text" class="form-control" placeholder='Click here to Choose a Certificate...' required />
-       <button class="ui secondary button" type="button">Choose</button>
-   </div>
- </div>
-</div>
- <br>
-  <div class="field">
-    <div class="ui checkbox">
-      <input type="checkbox" tabindex="0" class="hidden" required>
-      <label>I assure that the given details were authentic and true to my knowledge.</label>
-    </div>
-  </div>
-  <br>
-
-
-
-  <button class="ui positive button" type="submit" name="submit">Submit</button>
-</form>
-    </div>
-  </div>
-</div>
 </div>
 <script>
-    function bs_input_file() {
-	$(".input-file").before(
-		function() {
-			if ( ! $(this).prev().hasClass('input-ghost') ) {
-				var element = $("<input type='file' class='input-ghost' style='visibility:hidden; height:0'>");
-				element.attr("name",$(this).attr("name"));
-				element.change(function(){
-					element.next(element).find('input').val((element.val()).split('\\').pop());
-				});
-				$(this).find(".ui secondary button").click(function(){
-					element.click();
-				});
-				$(this).find("button.btn-reset").click(function(){
-					element.val(null);
-					$(this).parents(".input-file").find('input').val('');
-				});
-				$(this).find('input').css("cursor","pointer");
-				$(this).find('input').mousedown(function()
-                {
-					$(this).parents('.input-file').prev().click();
-					return false;
-				});
-				return element;
-			}
-		}
-	);
-}
-$(function() {
-	bs_input_file();
+$(document).ready(function() {
+    $("input:text").click(function() {
+        $(this).parent().find("input:file").click();
+    });
+
+    $(".ui.icon.button").click(function() {
+        $(this).parent().find("input:file").click();
+    });
+
+    $('input:file', '.ui.action.input')
+        .on('change', function(e) {
+            var name = e.target.files[0].name;
+            $('input:text', $(e.target).parent()).val(name);
+        });
+
 });
 </script>
 
@@ -268,52 +261,53 @@ if(isset($_POST["submit"]))
 }
 ?>
 <script>
-    $(document).ready(function(){
-  $('#rangestart').calendar({
-  type: 'date',
-  maxDate: new Date(),
-  formatter: {
-    date: function (date, settings) {
-      if (!date) return '';
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-      if (day.toString().length == 1) {
-            day = "0" + day;
-        }
-        if (month.toString().length == 1) {
-            month = "0" + month;
-        }
-      return day + '/' + month + '/' + year;
-    }
-  },
-  
-  endCalendar: $('#rangeend')
+$(document).ready(function() {
+    $('#rangestart').calendar({
+        type: 'date',
+        maxDate: new Date(),
+        formatter: {
+            date: function(date, settings) {
+                if (!date) return '';
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+                if (day.toString().length == 1) {
+                    day = "0" + day;
+                }
+                if (month.toString().length == 1) {
+                    month = "0" + month;
+                }
+                return day + '/' + month + '/' + year;
+            }
+        },
+
+        endCalendar: $('#rangeend')
+    });
+    $('#rangeend').calendar({
+        type: 'date',
+        maxDate: new Date(),
+        formatter: {
+            date: function(date, settings) {
+                if (!date) return '';
+                var day = date.getDate();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+                if (day.toString().length == 1) {
+                    day = "0" + day;
+                }
+                if (month.toString().length == 1) {
+                    month = "0" + month;
+                }
+                return day + '/' + month + '/' + year;
+            }
+        },
+        startCalendar: $('#rangestart')
+    });
+    $('.ui.dropdown').dropdown();
+    $('.ui.checkbox').checkbox();
 });
-$('#rangeend').calendar({
-  type: 'date',
-  maxDate: new Date(),
-  formatter: {
-    date: function (date, settings) {
-      if (!date) return '';
-      var day = date.getDate();
-      var month = date.getMonth() + 1;
-      var year = date.getFullYear();
-      if (day.toString().length == 1) {
-            day = "0" + day;
-        }
-        if (month.toString().length == 1) {
-            month = "0" + month;
-        }
-      return day + '/' + month + '/' + year;
-    }
-  },
-  startCalendar: $('#rangestart')
-});
-$('.ui.dropdown').dropdown();
-$('.ui.checkbox').checkbox();
-});
-    </script>
+</script>
 
 </body>
+
 </html>
