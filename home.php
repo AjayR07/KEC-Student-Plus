@@ -60,17 +60,7 @@ include_once("db.php");
         scroll-behavior: smooth;
     }
     </style>
-    <script>
-    //Notiflix.Notify.Init({position:'left-bottom', closeButton: true, borderRadius:'15px', width:'350px',});		
-    $(window).on("load", function() {
-        $('.preloader').hide();
-        $('body').css({
-            overflow: 'auto',
-        });
-        //Cookie Policy
-        //Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our cookie policy. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
-    });
-    </script>
+
 </head>
 
 <body class="homepage is-preload">
@@ -335,7 +325,8 @@ include_once("db.php");
                             <header>
                                 <h3>KEC Student+ </h3>
                             </header>
-                            <p>An initiative managed by a group of teens, Working for the students utmost satisfaction.
+                            <p>An initiative managed by a group of developers, working for the students' utmost
+                                satisfaction.
                             </p>
 
                             <!-- <ul class="icons">
@@ -345,7 +336,7 @@ include_once("db.php");
 							</ul> -->
                             <ul class="icons">
                                 <a
-                                    href="https://https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u">
+                                    href="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__hxfHbFUOFNCUEFCVzQ1TERNTThDRVFFRk1FVzZJNi4u">
                                     Give us Feedback<em data-emoji="slight_smile"></em></a>
                             </ul>
 
@@ -353,19 +344,24 @@ include_once("db.php");
                         <!-- Copyright -->
                         <div class="contact">
                             <ul class="menu">
-                                <li>Admin: <span ondragend="window.location.href='./admin/login.php'"><i
-                                            class="fa fa-user-secret" aria-hidden="true"></i></span></li>
-                                <li>About us: <a href="./aboutUs.html">Check out!</a></li>
-                                <li>Mail: <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!"
-                                        target="_blank">studentplus@kongu.edu</a></li>
-                                <li>Made with <i class="fa fa-heart heart" style="color:red"></i> in KEC
-                                    <!--i class="in flag"></!i-->
+                                <li><a ondragend="window.location.href='./admin/login.php'">Admin <i
+                                            class="fa fa-user-secret" aria-hidden="true"></i></a></li>
+                                <li><span><a href="./aboutUs.html">About Us <i class="fas fa-users"></i> </a></span>
                                 </li>
-                                <li><a href="./entity/faq/index.html">FAQ </a></li>
+                                <li><span> <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!"
+                                            target="_blank">Send Mail
+                                            <i class="far fa-envelope"></i></a></span></li>
+                                <li><span><a href="http://t.me/kecstudent" target="_blank">Telegram <i
+                                                class="fab fa-telegram-plane"></i>
+                                        </a></span></li>
+
+
                             </ul>
                             <br>
-                            <h4 style="text-decoration:underline;text-decoration-style: dotted;">Version : 4.0 Alpha
-                            </h4>
+                            <h5 class="ui text">Made with <i class="fa fa-heart heart" style="color:red"></i> in KEC
+
+                            </h5>
+
                         </div>
 
                     </div>
@@ -381,8 +377,11 @@ include_once("db.php");
                     <li><a href="./entity/policy/privacy-policy">Privacy Policy</a> </li>
                     <li><a href="./entity/policy/terms-conditions">Terms & Conditions</a> </li>
                     <li><a href="./entity/policy/cookie-policy">Cookie Policy</a> </li>
+                    <li>Version : 4.0 Alpha</li>
+
                 </ul>
             </div>
+
         </div>
     </div>
     <link rel="stylesheet" href="./assets/Fomantic/dist/semantic.min.css" type="text/css" />
@@ -407,7 +406,6 @@ include_once("db.php");
         border-radius: 13px;
         -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
         box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-
         background-color: #555;
     }
 
@@ -416,6 +414,18 @@ include_once("db.php");
         background: #ef8376;
     }
     </style>
+
+    <script>
+    //Notiflix.Notify.Init({position:'left-bottom', closeButton: true, borderRadius:'15px', width:'350px',});		
+    $(window).on("load", function() {
+        $('.preloader').hide();
+        $('body').css({
+            overflow: 'auto',
+        });
+        //Cookie Policy
+        //Notiflix.Notify.Info('Cookies help us deliver our services. By using our services, you agree to our cookie policy. Click for Details',function(){window.location.href='./entity/policy/cookie-policy.html'});
+    });
+    </script>
     <link href='https://fonts.googleapis.com/css?family=Oregano' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <!-- Scripts -->
