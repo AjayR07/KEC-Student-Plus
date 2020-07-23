@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Jun 30, 2020 at 05:02 AM
--- Server version: 8.0.18
--- PHP Version: 7.4.5
+-- Host: localhost:3306
+-- Generation Time: Jul 23, 2020 at 09:36 AM
+-- Server version: 10.4.13-MariaDB-log
+-- PHP Version: 7.3.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -27,15 +27,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `eventinfo`
 --
 
-DROP TABLE IF EXISTS `eventinfo`;
-CREATE TABLE IF NOT EXISTS `eventinfo` (
-  `eventid` varchar(15) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  `name` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  `staff` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  `staffid` varchar(15) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+CREATE TABLE `eventinfo` (
+  `eventid` varchar(15) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `staff` varchar(30) NOT NULL,
+  `staffid` varchar(15) NOT NULL,
   `date` date NOT NULL,
-  `description` varchar(300) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  PRIMARY KEY (`eventid`)
+  `description` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -56,15 +54,22 @@ INSERT INTO `eventinfo` (`eventid`, `name`, `staff`, `staffid`, `date`, `descrip
 -- Table structure for table `noncertinfo`
 --
 
-DROP TABLE IF EXISTS `noncertinfo`;
-CREATE TABLE IF NOT EXISTS `noncertinfo` (
+CREATE TABLE `noncertinfo` (
   `appno` varchar(16) NOT NULL,
   `day` int(11) NOT NULL,
   `hrs` varchar(20) NOT NULL,
   `reason` varchar(50) NOT NULL,
-  `total` int(11) NOT NULL,
-  PRIMARY KEY (`appno`,`day`)
+  `total` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+--
+-- Dumping data for table `noncertinfo`
+--
+
+INSERT INTO `noncertinfo` (`appno`, `day`, `hrs`, `reason`, `total`) VALUES
+('NC0CSE000030721', 1, '1,2,3,4', 'Comment', 4),
+('NC0CSE000070739', 1, '1,2,5,6,7', 'Sample', 5),
+('NC18CSE007290689', 1, '2,3,5,6', 'hjklkk', 4);
 
 -- --------------------------------------------------------
 
@@ -72,22 +77,28 @@ CREATE TABLE IF NOT EXISTS `noncertinfo` (
 -- Table structure for table `noncertod`
 --
 
-DROP TABLE IF EXISTS `noncertod`;
-CREATE TABLE IF NOT EXISTS `noncertod` (
-  `appno` varchar(16) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  `regno` varchar(8) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+CREATE TABLE `noncertod` (
+  `appno` varchar(16) NOT NULL,
+  `regno` varchar(8) NOT NULL,
   `appdate` date NOT NULL,
-  `need` varchar(100) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  `appfacty` varchar(30) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
-  `activity` varchar(25) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL,
+  `need` varchar(100) NOT NULL,
+  `appfacty` varchar(30) NOT NULL,
+  `activity` varchar(25) NOT NULL,
   `start` date NOT NULL,
   `end` date NOT NULL,
   `nodays` int(11) NOT NULL,
-  `advisor` varchar(20) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT 'Pending',
-  `yearin` varchar(20) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT 'Pending',
-  PRIMARY KEY (`appno`),
-  KEY `Foreign` (`regno`)
+  `advisor` varchar(20) NOT NULL DEFAULT 'Pending',
+  `yearin` varchar(20) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+--
+-- Dumping data for table `noncertod`
+--
+
+INSERT INTO `noncertod` (`appno`, `regno`, `appdate`, `need`, `appfacty`, `activity`, `start`, `end`, `nodays`, `advisor`, `yearin`) VALUES
+('NC0CSE000030721', '20CSR000', '2020-07-03', 'NA', 'Latha - CSE', 'Youth Red Cross', '2020-07-04', '2020-07-04', 1, 'Pending', 'Pending'),
+('NC0CSE000070739', '20CSR000', '2020-07-07', 'NA', 'Suganthe', 'Self Development Club', '2020-07-08', '2020-07-08', 1, 'Pending', 'Pending'),
+('NC18CSE007290689', '18CSR007', '2020-06-29', 'NA', 'hcbdnf', 'Pasumai Vanam', '2020-06-30', '2020-06-30', 1, 'Approved', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -95,8 +106,7 @@ CREATE TABLE IF NOT EXISTS `noncertod` (
 -- Table structure for table `oddetails`
 --
 
-DROP TABLE IF EXISTS `oddetails`;
-CREATE TABLE IF NOT EXISTS `oddetails` (
+CREATE TABLE `oddetails` (
   `appno` varchar(25) NOT NULL,
   `regno` varchar(8) NOT NULL,
   `appdate` date NOT NULL,
@@ -108,9 +118,7 @@ CREATE TABLE IF NOT EXISTS `oddetails` (
   `college` varchar(40) NOT NULL,
   `state` varchar(25) NOT NULL,
   `purpose` varchar(80) NOT NULL,
-  `status` varchar(15) NOT NULL DEFAULT 'Pending',
-  PRIMARY KEY (`appno`),
-  KEY `regno constraint` (`regno`)
+  `status` varchar(15) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -118,11 +126,34 @@ CREATE TABLE IF NOT EXISTS `oddetails` (
 --
 
 INSERT INTO `oddetails` (`appno`, `regno`, `appdate`, `odtype`, `title`, `odfrom`, `odto`, `hrs`, `college`, `state`, `purpose`, `status`) VALUES
-('00CSE000230643', '20CSR000', '2020-06-23', 'PAPER', 'Big Data', '2020-06-24', '2020-06-24', 'full', 'Kumaraguru College of Tech', 'TAMILNADU', 'NIL', 'Pending'),
-('0CSE000230697', '20CSR000', '2020-06-23', 'SPORT', 'Yoga', '2020-06-24', '2020-06-24', 'full', 'KEC', 'TAMILNADU', 'NIL', 'Pending'),
-('0CSE000290686', '20CSR000', '2020-06-29', 'PAPER', 'Big Data', '2020-06-29', '2020-06-29', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Pending'),
-('18CSE002210654', '18CSR002', '2020-06-21', 'SPORT', 'Yoga Competition', '2020-06-22', '2020-06-22', 'full', 'KEC', 'TAMILNADU', 'NIL', 'Pending'),
-('18CSE061210627', '18CSR061', '2020-06-21', 'PAPER', 'Big Data', '2020-06-22', '2020-06-22', 'full', 'Kongu Engineering College', 'TAMILNADU', 'NIL', 'Pending');
+('00CSE000230643', '20CSR000', '2020-06-23', 'PAPER', 'Big Data', '2020-07-07', '2020-07-09', 'full', 'Kumaraguru College of Tech', 'TAMILNADU', 'NIL', 'Pending'),
+('0CSE000070798', '20CSR000', '2020-07-07', 'PAPER', 'Big Data', '2020-07-07', '2020-07-07', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Pending'),
+('0CSE000230697', '20CSR000', '2020-06-23', 'SPORT', 'Yoga', '2020-07-07', '2020-07-09', 'full', 'KEC', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE002210654', '18CSR002', '2020-06-21', 'SPORT', 'Yoga Competition', '2020-07-07', '2020-07-09', 'full', 'KEC', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE007290619', '18CSR007', '2020-06-29', 'HACKATHON', 'Talent show', '2020-07-07', '2020-07-09', 'full', 'University college of Engineering', 'OTHERSTATE', 'NIL', 'Pending'),
+('18CSE007290649', '18CSR007', '2020-06-29', 'PROJECT', 'GMS', '2020-07-07', '2020-07-09', 'full', 'University college of Engineering', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE007290665', '18CSR007', '2020-06-29', 'HACKATHON', 'BasketBall', '2020-07-07', '2020-07-09', 'full', 'University college of Engineering', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE007290674', '18CSR007', '2020-06-29', 'Singing', 'Karnatic', '2020-07-07', '2020-07-09', '2 hours', 'University college of Engineering', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE007290681', '18CSR007', '2020-06-29', 'Workshop', 'GMS', '2020-07-07', '2020-07-09', 'half', 'Anna university', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE008290650', '18CSR008', '2020-06-29', 'HACKATHON', 'SAMPLE_FORMAT_WEBSITE', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Approved'),
+('18CSE008290659', '18CSR008', '2020-06-29', 'HACKATHON', 'SAMPLE_FORMAT_WEBSITE', '2020-07-07', '2020-07-09', 'full', 'University college of Engineering', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE014290626', '18CSR014', '2020-06-29', 'PAPER', 'Sample', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Approved'),
+('18CSE014290639', '18CSR014', '2020-06-29', 'PROJECT', 'Samp', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE030070732', '18CSR030', '2020-07-07', 'HACKATHON', 'Hackathon', '2020-07-07', '2020-07-09', 'full', 'Anna university', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE030290652', '18CSR030', '2020-06-29', 'SPORT', 'Basketball ', '2020-07-07', '2020-07-09', 'full', 'Anna university', 'TAMILNADU', 'NIL', 'Declined'),
+('18CSE030290697', '18CSR030', '2020-06-29', 'SPORT', 'Basketball ', '2020-07-07', '2020-07-09', 'full', 'Anna university', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE033290665', '18CSR033', '2020-06-29', 'PROJECT', 'Incentive techbin', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Approved'),
+('18CSE050290639', '18CSR050', '2020-06-29', 'PAPER', 'Digital Jwellery', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE050290696', '18CSR050', '2020-06-29', 'PAPER', 'Digital Jwellery', '2020-07-07', '2020-07-09', 'full', 'Coimbatore Institute of Technology', 'TAMILNADU', 'NIL', 'Approved'),
+('18CSE061210627', '18CSR061', '2020-06-21', 'PAPER', 'Big Data', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE078290669', '18CSR078', '2020-06-29', 'CODING', 'big data', '2020-07-07', '2020-07-09', 'full', 'Ariyalur Engineering college', 'TAMILNADU', 'NIL', 'Approved'),
+('18CSE085290649', '18CSR085', '2020-06-29', 'PAPER', 'Edge', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Pending'),
+('18CSE085290689', '18CSR085', '2020-06-29', 'HACKATHON', 'Hackathon', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Approved'),
+('18CSE120290619', '18CSR120', '2020-06-29', 'PAPER', 'Paper', '2020-07-07', '2020-07-09', 'full', 'Mec Engineering College', 'OTHERSTATE', 'NIL', 'Pending'),
+('19CSE002290684', '19CSR002', '2020-06-29', 'PROJECT', '1styear', '2020-07-07', '2020-07-09', 'full', 'Kongu Engineering College (Autonomous)', 'TAMILNADU', 'NIL', 'Approved'),
+('19CSE019290654', '19CSR019', '2020-06-29', 'PAPER', 'Nana tech', '2020-07-07', '2020-07-09', 'full', 'University college of Engineering', 'TAMILNADU', 'NIL', 'Approved'),
+('19CSE047290639', '19CSR047', '2020-06-29', 'SPORT', 'Table Tennis', '2020-07-07', '2020-07-09', 'full', 'Apollo Engineering College', 'TAMILNADU', 'NIL', 'Approved'),
+('19CSE055290678', '19CSR055', '2020-06-29', 'Workshop', 'Big Data', '2020-07-07', '2020-07-09', 'full', 'Anna university', 'TAMILNADU', 'NIL', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -130,8 +161,7 @@ INSERT INTO `oddetails` (`appno`, `regno`, `appdate`, `odtype`, `title`, `odfrom
 -- Table structure for table `othercert`
 --
 
-DROP TABLE IF EXISTS `othercert`;
-CREATE TABLE IF NOT EXISTS `othercert` (
+CREATE TABLE `othercert` (
   `appno` varchar(25) NOT NULL,
   `regno` varchar(8) NOT NULL,
   `appdate` date NOT NULL,
@@ -144,10 +174,18 @@ CREATE TABLE IF NOT EXISTS `othercert` (
   `state` varchar(25) NOT NULL,
   `purpose` varchar(80) NOT NULL,
   `file` varchar(50) NOT NULL,
-  `status` varchar(15) NOT NULL DEFAULT 'Pending',
-  PRIMARY KEY (`appno`),
-  KEY `regno` (`regno`)
+  `status` varchar(15) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+--
+-- Dumping data for table `othercert`
+--
+
+INSERT INTO `othercert` (`appno`, `regno`, `appdate`, `type`, `title`, `start`, `end`, `days`, `cname`, `state`, `purpose`, `file`, `status`) VALUES
+('CR18CSE030070739', '18CSR030', '2020-07-07', 'WORKSHOP', 'ML', '2020-07-07', '2020-07-07', '1', 'KEC', 'Inside Tamilnadu', 'To bloom  in the field of ML', 'CR18CSR030_WORKSHOP_07JUL_1269.pdf', 'Pending'),
+('CR18CSE092290631', '18CSR092', '2020-06-29', 'WORKSHOP', 'ML', '2020-06-29', '2020-06-29', '1', 'Kongu Engineering College', 'Inside Tamilnadu', 'To get better knowledge in ML', 'CR18CSR092_WORKSHOP_29JUN_4384.pdf', 'Approved'),
+('CR18CSE102290626', '18CSR102', '2020-06-29', 'WORKSHOP', 'Iot', '2020-06-29', '2020-06-29', '1', 'Kongu', 'Inside Tamilnadu', 'Summa', 'CR18CSR102_WORKSHOP_29JUN_1033.pdf', 'Approved'),
+('CR18CSE120290624', '18CSR120', '2020-06-29', 'INTERNSHIP', 'test', '2020-06-17', '2020-06-18', '2', 'Test', 'Inside Tamilnadu', 'test', 'CR18CSR120_INTERNSHIP_29JUN_0386.pdf', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -155,15 +193,29 @@ CREATE TABLE IF NOT EXISTS `othercert` (
 -- Table structure for table `postod`
 --
 
-DROP TABLE IF EXISTS `postod`;
-CREATE TABLE IF NOT EXISTS `postod` (
+CREATE TABLE `postod` (
   `appno` varchar(25) NOT NULL,
   `prize` varchar(20) DEFAULT NULL,
   `certificate` varchar(30) DEFAULT NULL,
-  `status` varchar(15) DEFAULT 'Pending',
-  PRIMARY KEY (`appno`),
-  UNIQUE KEY `certificate` (`certificate`)
+  `status` varchar(15) DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
+
+--
+-- Dumping data for table `postod`
+--
+
+INSERT INTO `postod` (`appno`, `prize`, `certificate`, `status`) VALUES
+('18CSE008290650', 'PARTICIPATION', '18CSR008__29JUN_3691.pdf', 'Approved'),
+('18CSE014290626', 'CONSOLATION', '18CSR014__29JUN_2153.pdf', 'Approved'),
+('18CSE030290652', 'PARTICIPATION', '18CSR030__29JUN_4153.pdf', 'Declined'),
+('18CSE033290665', 'PARTICIPATION', '18CSR033__29JUN_1237.pdf', 'Approved'),
+('18CSE050290696', 'PARTICIPATION', '18CSR050__29JUN_3999.pdf', 'Approved'),
+('18CSE078290669', 'PARTICIPATION', '18CSR078__29JUN_2797.pdf', 'Approved'),
+('18CSE085290689', 'FIRST', '18CSR085__29JUN_1443.pdf', 'Approved'),
+('19CSE002290684', 'SECOND', '19CSR002__29JUN_2043.pdf', 'Approved'),
+('19CSE019290654', 'PARTICIPATION', '19CSR019__29JUN_2196.pdf', 'Approved'),
+('19CSE047290639', 'PARTICIPATION', '19CSR047__29JUN_2683.pdf', 'Approved'),
+('19CSE055290678', 'FIRST', '19CSR055__29JUN_1019.pdf', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -171,8 +223,7 @@ CREATE TABLE IF NOT EXISTS `postod` (
 -- Table structure for table `preod`
 --
 
-DROP TABLE IF EXISTS `preod`;
-CREATE TABLE IF NOT EXISTS `preod` (
+CREATE TABLE `preod` (
   `appno` varchar(25) NOT NULL,
   `staff1` varchar(20) DEFAULT NULL,
   `comments1` varchar(50) DEFAULT NULL,
@@ -184,8 +235,7 @@ CREATE TABLE IF NOT EXISTS `preod` (
   `comments3` varchar(50) DEFAULT NULL,
   `status3` varchar(10) DEFAULT NULL,
   `advisor` varchar(15) NOT NULL DEFAULT 'Pending',
-  `yearin` varchar(15) NOT NULL DEFAULT 'Pending',
-  PRIMARY KEY (`appno`)
+  `yearin` varchar(15) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -193,11 +243,34 @@ CREATE TABLE IF NOT EXISTS `preod` (
 --
 
 INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comments2`, `status2`, `staff3`, `comments3`, `status3`, `advisor`, `yearin`) VALUES
-('00CSE000230643', 'Check', 'Good', 'Approved', 'Check2', 'Good', 'Approved', 'Test Staff', 'Good', 'Approved', 'Pending', 'Pending'),
-('0CSE000230697', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Pending', 'Pending'),
-('0CSE000290686', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
-('18CSE002210654', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Pending'),
-('18CSE061210627', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending');
+('00CSE000230643', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Approved', 'Approved'),
+('0CSE000070798', 'Dr.N.Shanthi', 'Nice', 'Approved', NULL, NULL, NULL, NULL, NULL, NULL, 'Pending', 'Pending'),
+('0CSE000230697', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE002210654', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE007290619', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE007290649', 'Dr.R.S.Latha', 'Give ur best', 'Approved', NULL, NULL, NULL, NULL, NULL, NULL, 'Approved', 'Approved'),
+('18CSE007290665', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE007290674', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE007290681', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE008290650', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE008290659', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE014290626', 'Dr.R.S.Latha', 'Good', 'Approved', 'Dr.R.S.Latha', 'nice', 'Approved', 'Dr.R.S.Latha', 'good', 'Approved', 'Approved', 'Approved'),
+('18CSE014290639', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Approved', 'Approved'),
+('18CSE030070732', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE030290652', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE030290697', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE033290665', 'Dr.R.S.Latha', 'Good', 'Approved', 'Dr.R.S.Latha', 'nice', 'Approved', NULL, NULL, 'Approved', 'Approved', 'Approved'),
+('18CSE050290639', NULL, NULL, 'Approved', NULL, NULL, 'Declined', NULL, NULL, NULL, 'Approved', 'Approved'),
+('18CSE050290696', NULL, NULL, 'Approved', NULL, NULL, 'Approved', NULL, NULL, 'Approved', 'Approved', 'Approved'),
+('18CSE061210627', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Approved', 'Approved'),
+('18CSE078290669', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE085290649', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Approved', 'Approved'),
+('18CSE085290689', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('18CSE120290619', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Approved', 'Approved'),
+('19CSE002290684', NULL, NULL, 'Approved', NULL, NULL, 'Approved', NULL, NULL, 'Approved', 'Approved', 'Approved'),
+('19CSE019290654', NULL, NULL, 'Approved', 'Dr.R.S.Latha', 'nice', 'Approved', NULL, 'Approved', 'Approved', 'Approved', 'Approved'),
+('19CSE047290639', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved'),
+('19CSE055290678', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'NA', 'NA', 'Approved', 'Approved', 'Approved');
 
 -- --------------------------------------------------------
 
@@ -205,8 +278,7 @@ INSERT INTO `preod` (`appno`, `staff1`, `comments1`, `status1`, `staff2`, `comme
 -- Table structure for table `registration`
 --
 
-DROP TABLE IF EXISTS `registration`;
-CREATE TABLE IF NOT EXISTS `registration` (
+CREATE TABLE `registration` (
   `regno` varchar(8) NOT NULL,
   `name` varchar(40) NOT NULL,
   `batch` int(11) NOT NULL,
@@ -216,10 +288,8 @@ CREATE TABLE IF NOT EXISTS `registration` (
   `mail` varchar(50) NOT NULL,
   `phone` bigint(10) NOT NULL,
   `residence` varchar(13) DEFAULT NULL,
-  `pass` varchar(255) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
-  `status` varchar(13) CHARACTER SET utf32 COLLATE utf32_general_ci NOT NULL DEFAULT 'Not Verified',
-  PRIMARY KEY (`regno`),
-  UNIQUE KEY `mail` (`mail`)
+  `pass` varchar(255) DEFAULT NULL,
+  `status` varchar(13) NOT NULL DEFAULT 'Not Verified'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -503,17 +573,17 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR005', 'Ajay Krishnaa M', 2018, 'CSE', 'A', 'Female', 'ajaykrishnaam.18cse@kongu.edu', 9789345803, NULL, NULL, 'Not Verified'),
 ('18CSR006', 'Ajay Kumar K B', 2018, 'CSE', 'A', 'Female', 'ajaykumarkb.18cse@kongu.edu', 9843964484, NULL, NULL, 'Not Verified'),
 ('18CSR007', 'Ajay R', 2018, 'CSE', 'A', 'Male', 'ajayr.18cse@kongu.edu', 9944790344, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
-('18CSR008', 'Ajith Kumar K', 2018, 'CSE', 'A', 'Male', 'ajithkumark.18cse@kongu.edu', 8110859406, NULL, NULL, 'Not Verified'),
+('18CSR008', 'Ajith Kumar K', 2018, 'CSE', 'A', 'Male', 'ajithkumark.18cse@kongu.edu', 8110859406, 'Day Scholar', '5ca803e597cb7529e70ff9ffca3f2d751559a88a', 'Not Verified'),
 ('18CSR009', 'Akash V', 2018, 'CSE', 'A', 'Male', 'akashv.18cse@kongu.edu', 9487992268, NULL, NULL, 'Not Verified'),
 ('18CSR010', 'Akshykumar Bhiva Mote B', 2018, 'CSE', 'A', 'Male', 'akshykumarbhivamoteb.18cse@kongu.edu', 6379516967, NULL, NULL, 'Not Verified'),
 ('18CSR011', 'Ananya M', 2018, 'CSE', 'A', 'Female', 'ananyam.18cse@kongu.edu', 6379645099, NULL, NULL, 'Not Verified'),
 ('18CSR012', 'Anju R', 2018, 'CSE', 'A', 'Female', 'anjur.18cse@kongu.edu', 9843137133, NULL, NULL, 'Not Verified'),
 ('18CSR013', 'Anuradha R', 2018, 'CSE', 'A', 'Female', 'anuradhar.18cse@kongu.edu', 9159795583, NULL, NULL, 'Not Verified'),
-('18CSR014', 'Anusruti D', 2018, 'CSE', 'A', 'Female', 'anusrutid.18cse@kongu.edu', 9442122591, NULL, NULL, 'Not Verified'),
+('18CSR014', 'Anusruti D', 2018, 'CSE', 'A', 'Female', 'anusrutid.18cse@kongu.edu', 9442122591, 'Hosteller', '317ba15e1acbe156158afc76db0008a353625bf4', 'Not Verified'),
 ('18CSR015', 'Arul Prasath V', 2018, 'CSE', 'A', 'Male', 'arulprasathv.18cse@kongu.edu', 9994198353, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('18CSR016', 'Arvindkumar P', 2018, 'CSE', 'A', 'Male', 'arvindkumarp.18cse@kongu.edu', 9489231654, NULL, NULL, 'Not Verified'),
 ('18CSR017', 'Arwin Prakadis R S', 2018, 'CSE', 'A', 'Male', 'arwinprakadisrs.18cse@kongu.edu', 6383348013, NULL, NULL, 'Not Verified'),
-('18CSR018', 'Ashwath G S', 2018, 'CSE', 'A', 'Male', 'ashwathgs.18cse@kongu.edu', 9361144460, NULL, NULL, 'Not Verified'),
+('18CSR018', 'Ashwath G S', 2018, 'CSE', 'A', 'Male', 'ashwathgs.18cse@kongu.edu', 9361144460, 'Hosteller', 'e8f3b7bc7847ea509f79676aa98495b5133ed368', 'Not Verified'),
 ('18CSR019', 'Ashwin M', 2018, 'CSE', 'A', 'Male', 'ashwinm.18cse@kongu.edu', 8248382213, NULL, NULL, 'Not Verified'),
 ('18CSR020', 'Aswin Siranjeevi T', 2018, 'CSE', 'A', 'Male', 'aswinsiranjeevit.18cse@kongu.edu', 7402036773, NULL, NULL, 'Not Verified'),
 ('18CSR021', 'Aswin Surya K', 2018, 'CSE', 'A', 'Male', 'aswinsuryak.18cse@kongu.edu', 8754956004, NULL, NULL, 'Not Verified'),
@@ -525,10 +595,10 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR027', 'Boomika S', 2018, 'CSE', 'A', 'Female', 'boomikas.18cse@kongu.edu', 6379148944, NULL, NULL, 'Not Verified'),
 ('18CSR028', 'Deepak Prasath G', 2018, 'CSE', 'A', 'Male', 'deepakprasathg.18cse@kongu.edu', 9095716066, NULL, NULL, 'Not Verified'),
 ('18CSR029', 'Deepika K', 2018, 'CSE', 'A', 'Female', 'deepikak.18cse@kongu.edu', 8248175585, NULL, NULL, 'Not Verified'),
-('18CSR030', 'Deepti R', 2018, 'CSE', 'A', 'Female', 'deeptir. 18cse@kongu.edu', 6369375535, NULL, NULL, 'Not Verified'),
+('18CSR030', 'Deepti R', 2018, 'CSE', 'A', 'Female', 'deeptir. 18cse@kongu.edu', 6369375535, 'Hosteller', '473249bb2db7b4a221f2a094cceb500b07608d76', 'Verified'),
 ('18CSR031', 'Devisowbarnikaa M', 2018, 'CSE', 'A', 'Female', 'devisowbarnikaam.18cse@kongu.edu', 9360796900, NULL, NULL, 'Not Verified'),
 ('18CSR032', 'Dhanush S', 2018, 'CSE', 'A', 'Male', 'dhanushs.18cse@kongu.edu', 9942447470, NULL, NULL, 'Not Verified'),
-('18CSR033', 'Dhanvarsha S', 2018, 'CSE', 'A', 'Female', 'dhanvarshas.18cse@kongu.edu', 9486193793, NULL, NULL, 'Not Verified'),
+('18CSR033', 'Dhanvarsha S', 2018, 'CSE', 'A', 'Female', 'dhanvarshas.18cse@kongu.edu', 9486193793, 'Day Scholar', 'd2e672a7e57da5d3092e5d037d091bf0adf24679', 'Not Verified'),
 ('18CSR034', 'Dharani Priya T', 2018, 'CSE', 'A', 'Female', 'dharanipriyat.18cse@kongu.edu', 7010161962, NULL, NULL, 'Not Verified'),
 ('18CSR035', 'Dharati N', 2018, 'CSE', 'A', 'Female', 'dharatin.18cse@kongu.edu', 8667052110, NULL, NULL, 'Not Verified'),
 ('18CSR036', 'Dhineshkumar B', 2018, 'CSE', 'A', 'Male', 'dhineshkumarb.18cse@kongu.edu', 8531988989, NULL, NULL, 'Not Verified'),
@@ -545,7 +615,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR047', 'Gokul Prasshanth V', 2018, 'CSE', 'A', 'Male', 'gokulprasshanthv.18cse@kongu.edu', 9655084944, NULL, NULL, 'Not Verified'),
 ('18CSR048', 'Gokul R', 2018, 'CSE', 'A', 'Male', 'gokulr.18cse@kongu.edu', 6382101110, NULL, NULL, 'Not Verified'),
 ('18CSR049', 'Gowtham U', 2018, 'CSE', 'A', 'Male', 'gowthamu.18cse@kongu.edu', 9597780059, NULL, NULL, 'Not Verified'),
-('18CSR050', 'Gowthamkrishnan S', 2018, 'CSE', 'A', 'Male', 'gowthamkrishnans.18cse@kongu.edu', 6379286927, NULL, NULL, 'Not Verified'),
+('18CSR050', 'Gowthamkrishnan S', 2018, 'CSE', 'A', 'Male', 'gowthamkrishnans.18cse@kongu.edu', 6379286927, 'Day Scholar', '9227d37b041df94154563feb9babca1a91007cbb', 'Not Verified'),
 ('18CSR051', 'Harini K R', 2018, 'CSE', 'A', 'Female', 'harinikr.18cse@kongu.edu', 9442782277, NULL, NULL, 'Not Verified'),
 ('18CSR052', 'Harini S', 2018, 'CSE', 'A', 'Female', 'harinis.18cse@kongu.edu', 9585666583, NULL, NULL, 'Not Verified'),
 ('18CSR053', 'Hariprakash K', 2018, 'CSE', 'A', 'Male', 'hariprakashk.18cse@kongu.edu', 9487977460, NULL, NULL, 'Not Verified'),
@@ -572,21 +642,21 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR074', 'Kalaivani S P', 2018, 'CSE', 'B', 'FEMALE', 'kalaivanisp.18cse@kongu.edu', 9790586539, NULL, NULL, 'Not Verified'),
 ('18CSR076', 'Kamalesh K', 2018, 'CSE', 'B', 'MALE', 'kaMALEshk.18cse@kongu.edu', 6385730235, NULL, NULL, 'Not Verified'),
 ('18CSR077', 'Kamali R', 2018, 'CSE', 'B', 'FEMALE', 'kamalir.18cse@kongu.edu', 6379129950, NULL, NULL, 'Not Verified'),
-('18CSR078', 'Kanishk R C', 2018, 'CSE', 'B', 'MALE', 'kanishkrc.18cse@kongu.edu', 7373485899, NULL, NULL, 'Not Verified'),
+('18CSR078', 'Kanishk R C', 2018, 'CSE', 'B', 'MALE', 'kanishkrc.18cse@kongu.edu', 7373485899, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('18CSR079', 'Kannan B', 2018, 'CSE', 'B', 'MALE', 'kannanb.18cse@kongu.edu', 7339255840, NULL, NULL, 'Not Verified'),
 ('18CSR080', 'Karthi S', 2018, 'CSE', 'B', 'MALE', 'karthis.18cse@kongu.edu', 6374943844, NULL, NULL, 'Not Verified'),
 ('18CSR081', 'Karthik T', 2018, 'CSE', 'B', 'MALE', 'karthikt.18cse@kongu.edu', 6379796297, NULL, NULL, 'Not Verified'),
 ('18CSR082', 'Karthika P', 2018, 'CSE', 'B', 'FEMALE', 'karthikap.18cse@kongu.edu', 9445323249, NULL, NULL, 'Not Verified'),
 ('18CSR083', 'Karthika V', 2018, 'CSE', 'B', 'FEMALE', 'karthikav.18cse@kongu.edu', 9994021587, NULL, NULL, 'Not Verified'),
 ('18CSR084', 'Karthikraja R', 2018, 'CSE', 'B', 'MALE', 'karthikrajar.18cse@kongu.edu', 9750167588, NULL, NULL, 'Not Verified'),
-('18CSR085', 'Karunakaran R', 2018, 'CSE', 'B', 'MALE', 'karunakaranr.18cse@kongu.edu', 7868879132, NULL, NULL, 'Not Verified'),
+('18CSR085', 'Karunakaran R', 2018, 'CSE', 'B', 'MALE', 'karunakaranr.18cse@kongu.edu', 7868879132, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('18CSR086', 'Keerthivasan M', 2018, 'CSE', 'B', 'MALE', 'keerthivasanm.18cse@kongu.edu', 8428196719, NULL, NULL, 'Not Verified'),
 ('18CSR087', 'Kevin Ruban D', 2018, 'CSE', 'B', 'MALE', 'kevinruband.18cse@kongu.edu', 9789388977, NULL, NULL, 'Not Verified'),
 ('18CSR088', 'Kiranbharath K', 2018, 'CSE', 'B', 'MALE', 'kiranbharathk.18cse@kongu.edu', 9677681068, NULL, NULL, 'Not Verified'),
 ('18CSR089', 'Kishore N', 2018, 'CSE', 'B', 'MALE', 'kishoren.18cse@kongu.edu', 9790443260, NULL, NULL, 'Not Verified'),
 ('18CSR090', 'Krithika S', 2018, 'CSE', 'B', 'FEMALE', 'krithikas.18cse@kongu.edu', 8220220667, NULL, NULL, 'Not Verified'),
 ('18CSR091', 'Kumaresan R', 2018, 'CSE', 'B', 'MALE', 'kumaresanr.18cse@kongu.edu', 6379047974, NULL, NULL, 'Not Verified'),
-('18CSR092', 'Lavanya G', 2018, 'CSE', 'B', 'FEMALE', 'lavanyag.18cse@kongu.edu', 7395895096, NULL, NULL, 'Not Verified'),
+('18CSR092', 'Lavanya G', 2018, 'CSE', 'B', 'FEMALE', 'lavanyag.18cse@kongu.edu', 7395895096, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('18CSR093', 'Lawvanya Priya T', 2018, 'CSE', 'B', 'FEMALE', 'lawvanyapriyat.18cse@kongu.edu', 9487600539, NULL, NULL, 'Not Verified'),
 ('18CSR094', 'Lekshmi S L', 2018, 'CSE', 'B', 'FEMALE', 'lekshmisl.18cse@kongu.edu', 8903267912, NULL, NULL, 'Not Verified'),
 ('18CSR095', 'Logesh T', 2018, 'CSE', 'B', 'MALE ', 'logesht.18cse@kongu.edu', 7305746782, NULL, NULL, 'Not Verified'),
@@ -596,7 +666,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR099', 'Maghathani S', 2018, 'CSE', 'B', 'FEMALE', 'maghathanis.18cse@kongu.edu', 9790464858, NULL, NULL, 'Not Verified'),
 ('18CSR100', 'Mailvizhi S', 2018, 'CSE', 'B', 'FEMALE', 'mailvizhis.18cse@kongu.edu', 9677410433, NULL, NULL, 'Not Verified'),
 ('18CSR101', 'Mangala Prasath M', 2018, 'CSE', 'B', 'MALE', 'mangalaprasathm.18cse@kongu.edu', 6382504685, NULL, NULL, 'Not Verified'),
-('18CSR102', 'Manjunath R', 2018, 'CSE', 'B', 'MALE', 'manjunathr.18cse@kongu.edu', 6383323050, NULL, NULL, 'Not Verified'),
+('18CSR102', 'Manjunath R', 2018, 'CSE', 'B', 'MALE', 'manjunathr.18cse@kongu.edu', 6383323050, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('18CSR103', 'Manoj Prabakaran R', 2018, 'CSE', 'B', 'MALE', 'manojprabakaranr.18cse@kongu.edu', 9487302686, NULL, NULL, 'Not Verified'),
 ('18CSR104', 'Manoowranjith A J', 2018, 'CSE', 'B', 'MALE', 'manoowranjithaj.18cse@kongu.edu', 7339162631, NULL, NULL, 'Not Verified'),
 ('18CSR105', 'Meiarasu K', 2018, 'CSE', 'B', 'MALE', 'meiarasuk.18cse@kongu.edu', 8300070410, NULL, NULL, 'Not Verified'),
@@ -614,17 +684,17 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR117', 'Nanthini K', 2018, 'CSE', 'B', 'FEMALE', 'nanthinik.18cse@kongu.edu', 6383691630, NULL, NULL, 'Not Verified'),
 ('18CSR118', 'Narmatha B R', 2018, 'CSE', 'B', 'FEMALE', 'narmathabr.18cse@kongu.edu', 7548872474, NULL, NULL, 'Not Verified'),
 ('18CSR119', 'Naveen Kumar N', 2018, 'CSE', 'B', 'MALE', 'naveenkumarn.18cse@kongu.edu', 7548872229, NULL, NULL, 'Not Verified'),
-('18CSR120', 'Naveen Prasad T', 2018, 'CSE', 'B', 'MALE', 'naveenprasadt.18cse@kongu.edu', 9789142781, NULL, NULL, 'Not Verified'),
+('18CSR120', 'Naveen Prasad T', 2018, 'CSE', 'B', 'MALE', 'naveenprasadt.18cse@kongu.edu', 9789142781, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('18CSR121', 'Navin A E', 2018, 'CSE', 'C', 'MALE', 'navinae.18cse@kongu.edu', 9944995714, NULL, NULL, 'Not Verified'),
 ('18CSR122', 'Ninisa B A', 2018, 'CSE', 'C', 'FEMALE', 'ninisaba.18cse@kongu.edu', 6369048217, NULL, NULL, 'Not Verified'),
 ('18CSR123', 'Nivashini K', 2018, 'CSE', 'C', 'FEMALE', 'nivashinik.18cse@kongu.edu', 9894335846, NULL, NULL, 'Not Verified'),
 ('18CSR124', 'Nowneesh T', 2018, 'CSE', 'C', 'MALE', 'nowneesht.18cse@kongu.edu', 9965552513, NULL, NULL, 'Not Verified'),
 ('18CSR125', 'Obuli Sai Naren', 2018, 'CSE', 'C', 'MALE', 'obulisainaren.18cse@kongu.edu', 9003743543, NULL, NULL, 'Not Verified'),
-('18CSR126', 'Om Surya Prakash A', 2018, 'CSE', 'C', 'MALE', 'omsuryaprakasha.18cse@kongu.edu', 9965081177, NULL, NULL, 'Not Verified'),
+('18CSR126', 'Om Surya Prakash A', 2018, 'CSE', 'C', 'MALE', 'omsuryaprakasha.18cse@kongu.edu', 9965081177, NULL, NULL, 'Not Verified');
+INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `mail`, `phone`, `residence`, `pass`, `status`) VALUES
 ('18CSR127', 'Palani Kumar M', 2018, 'CSE', 'C', 'MALE', 'palanikumarm.18cse@kongu.edu', 7708429288, NULL, NULL, 'Not Verified'),
 ('18CSR128', 'Poongundran M', 2018, 'CSE', 'C', 'MALE', 'poongundranm.18cse@kongu.edu', 9080067899, NULL, NULL, 'Not Verified'),
-('18CSR129', 'Praanesh P S', 2018, 'CSE', 'C', 'MALE', 'praaneshps.18cse@kongu.edu', 7604868661, NULL, NULL, 'Not Verified');
-INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `mail`, `phone`, `residence`, `pass`, `status`) VALUES
+('18CSR129', 'Praanesh P S', 2018, 'CSE', 'C', 'MALE', 'praaneshps.18cse@kongu.edu', 7604868661, NULL, NULL, 'Not Verified'),
 ('18CSR130', 'Prabu B', 2018, 'CSE', 'C', 'MALE', 'prabub.18cse@kongu.edu', 6382710300, NULL, NULL, 'Not Verified'),
 ('18CSR131', 'Pradeep C', 2018, 'CSE', 'C', 'MALE', 'pradeepc.18cse@kongu.edu', 9787136466, NULL, NULL, 'Not Verified'),
 ('18CSR132', 'Pradeep A', 2018, 'CSE', 'C', 'MALE', 'pradeepa.18cse@kongu.edu', 9597980415, NULL, NULL, 'Not Verified'),
@@ -734,7 +804,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('18CSR237', 'Yokesh P', 2018, 'CSE', 'D', 'Male', 'yokeshp.18cse@kongu.edu', 7695946628, NULL, NULL, 'Not Verified'),
 ('18CSR238', 'Yuvan Prasad.S', 2018, 'CSE', 'D', 'Male', 'yuvanprasads.18cse@kongu.edu', 7845516789, NULL, NULL, 'Not Verified'),
 ('19CSR001', 'Aathish R', 2019, 'CSE', 'A', 'Male', 'aathishr.19cse@kongu.edu', 9677993475, NULL, NULL, 'Not Verified'),
-('19CSR002', 'Abinaya.C ', 2019, 'CSE', 'A', 'Female', 'abinayac.19cse@kongu.edu ', 9361117693, NULL, NULL, 'Not Verified'),
+('19CSR002', 'Abinaya.C ', 2019, 'CSE', 'A', 'Female', 'abinayac.19cse@kongu.edu ', 9361117693, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('19CSR003', 'Abishankari S', 2019, 'CSE', 'A', 'Female', 'abishankaris.19cse@kongu.edu ', 9344361382, NULL, NULL, 'Not Verified'),
 ('19CSR004', 'Abishek.A', 2019, 'CSE', 'A', 'Male', 'abisheka.19cse@kongu.edu', 8098618013, NULL, NULL, 'Not Verified'),
 ('19CSR005', 'Aishwarya.K', 2019, 'CSE', 'A', 'Female', 'aishwaryak.19cse@kongu.edu', 8072283853, NULL, NULL, 'Not Verified'),
@@ -751,7 +821,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('19CSR016', 'Bharathi S', 2019, 'CSE', 'A', 'Female', 'bharathis.19cse@kongu.edu', 6383054118, NULL, NULL, 'Not Verified'),
 ('19CSR017', 'Boomika Ebb', 2019, 'CSE', 'A', 'Female', 'boomikaebb.19cse@kongu.edu', 9443054049, NULL, NULL, 'Not Verified'),
 ('19CSR018', 'Boomika R B', 2019, 'CSE', 'A', 'Female', 'boomikarb.19cse@kongu.edu', 6385221033, NULL, NULL, 'Not Verified'),
-('19CSR019', 'Brindha.G', 2019, 'CSE', 'A', 'Female', 'brindhag.19cse@kongu.edu', 9150748656, NULL, NULL, 'Not Verified'),
+('19CSR019', 'Brindha.G', 2019, 'CSE', 'A', 'Female', 'brindhag.19cse@kongu.edu', 9150748656, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('19CSR020', 'Chandeep G', 2019, 'CSE', 'A', 'Male', 'chandeepg.19cse@kongu.edu', 6374061856, NULL, NULL, 'Not Verified'),
 ('19CSR021', 'Charanraj.T', 2019, 'CSE', 'A', 'Male', 'charanrajt.19cse@kongu.edu', 8825850137, NULL, NULL, 'Not Verified'),
 ('19CSR022', 'Cibikumar M V', 2019, 'CSE', 'A', 'Male', 'cibikumarmv.19cse@kongu.edu', 8667216323, NULL, NULL, 'Not Verified'),
@@ -779,7 +849,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('19CSR044', 'Gokula Kannan G', 2019, 'CSE', 'A', 'Male', 'gokulakannang.19cse@kongu.edu', 9043322155, NULL, NULL, 'Not Verified'),
 ('19CSR045', 'Gomanishwaran S', 2019, 'CSE', 'A', 'Male', 'gomanishwarans.19cse@kongu.edu', 6369758058, NULL, NULL, 'Not Verified'),
 ('19CSR046', 'Gowri. P', 2019, 'CSE', 'A', 'Female', 'gowrip.19cse@kongu.edu', 6381207610, NULL, NULL, 'Not Verified'),
-('19CSR047', 'Gowtham.V', 2019, 'CSE', 'A', 'Male', 'gowthamv.19cse@kongu.edu', 8825806427, NULL, NULL, 'Not Verified'),
+('19CSR047', 'Gowtham.V', 2019, 'CSE', 'A', 'Male', 'gowthamv.19cse@kongu.edu', 8825806427, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('19CSR048', 'Gurudeepa. R', 2019, 'CSE', 'A', 'Female', 'gurudeepar.19cse@kongu.edu ', 7358976245, NULL, NULL, 'Not Verified'),
 ('19CSR049', 'Hareesh Raj. R', 2019, 'CSE', 'A', 'Male', 'hareeshrajr.19cse@kongu.edu', 8667330395, NULL, NULL, 'Not Verified'),
 ('19CSR050', 'Hari Prasath. P', 2019, 'CSE', 'A', 'Male', 'hariprasathp. 19cse@kongu.edu', 9360687365, NULL, NULL, 'Not Verified'),
@@ -787,7 +857,7 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 ('19CSR052', 'Hariharan G', 2019, 'CSE', 'A', 'Male', 'hariharang.19cse@kongu.edu', 9965277280, NULL, NULL, 'Not Verified'),
 ('19CSR053', 'Hariharan T', 2019, 'CSE', 'A', 'Male', 'hariharant.19cse@kongu.edu', 9360709021, NULL, NULL, 'Not Verified'),
 ('19CSR054', 'Haris S ', 2019, 'CSE', 'A', 'Male', 'hariss19cse@kongu.edu', 8825763513, NULL, NULL, 'Not Verified'),
-('19CSR055', 'Harish M ', 2019, 'CSE', 'A', 'Male', 'harishm.19cse@kongu.edu', 9597052229, NULL, NULL, 'Not Verified'),
+('19CSR055', 'Harish M ', 2019, 'CSE', 'A', 'Male', 'harishm.19cse@kongu.edu', 9597052229, NULL, '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Verified'),
 ('19CSR056', 'Harish K P', 2019, 'CSE', 'A', 'Male', 'harishkp.19cse@kongu.edu', 6383215551, NULL, NULL, 'Not Verified'),
 ('19CSR057', 'Harishraaj.S', 2019, 'CSE', 'A', 'Male', 'harishraajs.19cse@kongu.edu', 9003673507, NULL, NULL, 'Not Verified'),
 ('19CSR058', 'Harisudhan S ', 2019, 'CSE', 'A', 'Male', 'harisudhans.19cse@kongu.edu ', 7339462599, NULL, NULL, 'Not Verified'),
@@ -968,21 +1038,17 @@ INSERT INTO `registration` (`regno`, `name`, `batch`, `dept`, `sec`, `gender`, `
 -- Table structure for table `staff`
 --
 
-DROP TABLE IF EXISTS `staff`;
-CREATE TABLE IF NOT EXISTS `staff` (
+CREATE TABLE `staff` (
   `staffid` varchar(12) NOT NULL,
   `name` varchar(30) NOT NULL,
   `userid` varchar(30) NOT NULL,
-  `pass` varchar(255) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
+  `pass` varchar(255) DEFAULT NULL,
   `mail` varchar(45) NOT NULL,
   `dept` varchar(5) NOT NULL,
-  `batch` varchar(4) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
-  `sec` varchar(2) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
-  `designation` varchar(25) CHARACTER SET utf32 COLLATE utf32_general_ci DEFAULT NULL,
-  `status` varchar(12) NOT NULL DEFAULT 'Not Changed',
-  PRIMARY KEY (`staffid`) USING BTREE,
-  UNIQUE KEY `mail` (`mail`),
-  UNIQUE KEY `staffid` (`userid`) USING BTREE
+  `batch` varchar(4) DEFAULT NULL,
+  `sec` varchar(2) DEFAULT NULL,
+  `designation` varchar(25) DEFAULT NULL,
+  `status` varchar(12) NOT NULL DEFAULT 'Not Changed'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf32;
 
 --
@@ -990,20 +1056,20 @@ CREATE TABLE IF NOT EXISTS `staff` (
 --
 
 INSERT INTO `staff` (`staffid`, `name`, `userid`, `pass`, `mail`, `dept`, `batch`, `sec`, `designation`, `status`) VALUES
-('CSE001SF', 'Dr.N.Shanthi', 'shanthi', 'b2d788c31f49e1601f12eed77581cc6efa2e9b52', 'shanthi.cse@kongu.edu', 'CSE', NULL, NULL, 'HOD', 'Not Changed'),
+('CSE001SF', 'Dr.N.Shanthi', 'shanthi', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'shanthi.cse@kongu.edu', 'CSE', NULL, NULL, 'HOD', 'Changed'),
 ('CSE002SF', 'Dr.R.R.Rajalaxmi', 'rrr', 'dd7ca98ab81ec122dc2f0c809b438201cb32aeae', 'rrr.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE003SF', 'Dr.K.Kousalya', 'kouse', 'c8be9a810a9156f3042ad0447d49b50f111c010a', 'kouse.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
-('CSE004SF', 'Dr.S.Malliga', 'mallisenthil', '0c422ba64421103f8f58fc3c8676caf9c7c73178', 'mallisenthil.cse@kongu.edu', 'CSE', '2018', NULL, 'Year in Charge', 'Not Changed'),
+('CSE004SF', 'Dr.S.Malliga', 'mallisenthil', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'mallisenthil.cse@kongu.edu', 'CSE', '2018', NULL, 'Year in Charge', 'Changed'),
 ('CSE005SF', 'Dr.R.C.Suganthe', 'suganthe_rc', '8bfcbc26ee80586b32a33934ffbfa1a5bad3ee06', 'suganthe_rc.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE006SF', 'Dr.P.Natesan', 'natesanp', 'a65152f5adc31a90dcd4d4130f69f9a98c424d0c', 'natesanp.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
-('CSE007SF', 'Dr.C.S.Kanimozhi Selvi', 'kanimozhi', '5253762a6393e8c01c11e27e1682756e65dd4436', 'kanimozhi.cse@kongu.edu', 'CSE', '2019', NULL, 'Year in Charge', 'Not Changed'),
+('CSE007SF', 'Dr.C.S.Kanimozhi Selvi', 'kanimozhi', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'kanimozhi.cse@kongu.edu', 'CSE', '2019', NULL, 'Year in Charge', 'Changed'),
 ('CSE008SF', 'Dr.E.Gothai', 'egothai', 'ab2a1808f6efbae0bbf812bd1b951255c0f14057', 'egothai.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE009SF', 'Dr.P.Jayanthi', 'jayanthime', '9a54585f1231c973d2dda47e691985123524f125', 'jayanthime.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE010SF', 'Dr.S.Shanthi', 'shanthis', '09b2c7022d2250d7da5b8a4d87be6f03b25978de', 'shanthis.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE011SF', 'Mr.N.P.Saravanan', 'npsaravanan', 'd6fc7991f7679ab1b36074c59860069778ab593a', 'npsaravanan.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE012SF', 'Dr.K.Nirmala Devi', 'k_nirmal', 'ca601d26bb1078ff401d39e885b750ec35a2f8f7', 'k_nirmal.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE013SF', 'Ms.PCD.Kalaivaani', 'kalairupa', '6185b6dc968a9507570a4bcf063dd40be8d62989', 'kalairupa.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
-('CSE014SF', 'Dr.R.S.Latha', 'latha', 'c474c69ec38df64299cc7158e50c04556e8bf685', 'latha.cse@kongu.edu', 'CSE', '2018', 'A', 'Advisor', 'Not Changed'),
+('CSE014SF', 'Dr.R.S.Latha', 'latha', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'latha.cse@kongu.edu', 'CSE', '2018', 'A', 'Advisor', 'Changed'),
 ('CSE015SF', 'Dr.N.Krishnamoorthy', 'nmoorthy', '2f70e239c7a5d80384275be451075e4cb7125e9e', 'nmoorthy.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE016SF', 'Dr.K.Sangeetha', 'sangeetha_k', '0570074901196255d91e99fd49c2b21193868d74', 'sangeetha_k.cse@kongu.edu', 'CSE', '2018', 'B', 'Advisor', 'Not Changed'),
 ('CSE017SF', 'Dr.S.V.Kogilavani', 'kogilavani', '7bd56dbda41d30f8e7340e8934f18724b57f6350', 'kogilavani.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
@@ -1025,18 +1091,83 @@ INSERT INTO `staff` (`staffid`, `name`, `userid`, `pass`, `mail`, `dept`, `batch
 ('CSE032SF', 'Ms.M.Sangeetha', 'sangeetham', '8805e457c02d39baf4a62a143900af272868451e', 'sangeetham.cse@kongu.edu', 'CSE', '2018', 'D', 'Advisor', 'Not Changed'),
 ('CSE033SF', 'Ms.O.R.Deepa', 'ord', '0c9bc17fff9b24104038a0b93419944f4dd0d7ee', 'ord.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE034SF', 'Mr.P.S.Prakash', 'psprakash', 'c09617edc7ff700faf66ec71a7646b2506e20035', 'psprakash.cse@kongu.edu', 'CSE', '2019', 'B', 'Advisor', 'Not Changed'),
-('CSE035SF', 'Ms.K.S.Kalaivani', 'kalaivani', '17babd80c0b9495973220d7283bfdab71ed04148', 'kalaivani.cse@kongu.edu', 'CSE', '2018', 'B', 'Advisor', 'Not Changed'),
+('CSE035SF', 'Ms.K.S.Kalaivani', 'kalaivani', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'kalaivani.cse@kongu.edu', 'CSE', '2018', 'B', 'Advisor', 'Changed'),
 ('CSE036SF', 'Mr.S.Santhoshkumar', 'sanvins', '017f521f42d04b1e00374e9cd9ffd2cf0408d372', 'sanvins.cse@kongu.edu', 'CSE', '2019', 'D', 'Advisor', 'Not Changed'),
 ('CSE037SF', 'Ms.C.Sagana', 'sagana', '8518d9dccfb1a70c5b53f3b4031afbea286df0ec', 'sagana.c.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE038SF', 'Mr.B.Krishnakumar', 'krishnakumar', '53a6593ea063a3cda52a0e5ef1ec89326dd75176', 'krishnakumar.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE039SF', 'Ms.S.Mohana Saranya', 'mohanasaranya', '8479315e5f0a64098994c2cc3e28e3d18ff94a3a', 'mohanasaranya.cse@kongu.edu', 'CSE', '2019', 'A', 'Advisor', 'Not Changed'),
 ('CSE040SF', 'Ms.S.Mohanapriya', 'mohanapriyas', '33d6357cfaaf0f72991b0ecd8c56da066613c089', 'mohanapriyas.cse@kongu.edu', 'CSE', '2019', 'C', 'Advisor', 'Not Changed'),
-('CSE041SF', 'Ms.P.S.Nandhini', 'nandhini', '6633098f33b49f36c2bdb0d14a00912bfb8172de', 'nandhini.cse@kongu.edu', 'CSE', '2019', 'A', 'Advisor', 'Not Changed'),
+('CSE041SF', 'Ms.P.S.Nandhini', 'nandhini', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'nandhini.cse@kongu.edu', 'CSE', '2019', 'A', 'Advisor', 'Changed'),
 ('CSE042SF', 'Ms.K.Tamil Selvi', 'tamilselvik', 'c3077f350f9aff932e72261a46ce6a250b1e85f4', 'tamilselvik.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE043SF', 'Ms.M.K.Dharani', 'dharani', 'eaeea4d6fc9e54f0ff16c4f4591ee7652580aaa3', 'dharani.cse@kongu.edu', 'CSE', '2019', 'D', 'Advisor', 'Not Changed'),
 ('CSE044SF', 'Ms.Vani Rajasekar', 'vanikecit', '9aa209a1a53da2ba816c7b911235e5fac2a2a6a2', 'vanikecit.cse@kongu.edu', 'CSE', '2018', 'C', 'Advisor', 'Not Changed'),
 ('CSE045SF', 'Ms.K.Venu', 'venu', '8deda5a8117c871c8fb9861137dd50db46b71568', 'venu.cse@kongu.edu', 'CSE', NULL, NULL, NULL, 'Not Changed'),
 ('CSE046SF', 'Dr.K.Dinesh', 'dinesh', 'f23818deaf9b13ec78570b1013e87860cbcc6066', 'dinesh.cse@kongu.edu', 'CSE', '2019', 'C', 'Advisor', 'Not Changed');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `eventinfo`
+--
+ALTER TABLE `eventinfo`
+  ADD PRIMARY KEY (`eventid`);
+
+--
+-- Indexes for table `noncertinfo`
+--
+ALTER TABLE `noncertinfo`
+  ADD PRIMARY KEY (`appno`,`day`);
+
+--
+-- Indexes for table `noncertod`
+--
+ALTER TABLE `noncertod`
+  ADD PRIMARY KEY (`appno`),
+  ADD KEY `Foreign` (`regno`);
+
+--
+-- Indexes for table `oddetails`
+--
+ALTER TABLE `oddetails`
+  ADD PRIMARY KEY (`appno`),
+  ADD KEY `regno constraint` (`regno`);
+
+--
+-- Indexes for table `othercert`
+--
+ALTER TABLE `othercert`
+  ADD PRIMARY KEY (`appno`),
+  ADD KEY `regno` (`regno`);
+
+--
+-- Indexes for table `postod`
+--
+ALTER TABLE `postod`
+  ADD PRIMARY KEY (`appno`),
+  ADD UNIQUE KEY `certificate` (`certificate`);
+
+--
+-- Indexes for table `preod`
+--
+ALTER TABLE `preod`
+  ADD PRIMARY KEY (`appno`);
+
+--
+-- Indexes for table `registration`
+--
+ALTER TABLE `registration`
+  ADD PRIMARY KEY (`regno`),
+  ADD UNIQUE KEY `mail` (`mail`);
+
+--
+-- Indexes for table `staff`
+--
+ALTER TABLE `staff`
+  ADD PRIMARY KEY (`staffid`) USING BTREE,
+  ADD UNIQUE KEY `mail` (`mail`),
+  ADD UNIQUE KEY `staffid` (`userid`) USING BTREE;
 
 --
 -- Constraints for dumped tables
