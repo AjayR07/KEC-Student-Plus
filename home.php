@@ -21,7 +21,11 @@ include_once("db.php");
     <meta name="keywords"
         content="KEC Student+, kongu, kec, kongu engineering college, On-Duty Management,http://www.kongu.edu, http://www.kongu.ac.in , http://student.kongu.edu ,students,Certificates Repository ,perundurai" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta name="author" content="Abinash S Arul Prasath V Ajay R Adhithiya GJ">
+    <meta name="copyright" content="KEC Student+ is a trademark of students of KEC, Abinash S, Ajay R, Arul Prasath V">
+    <meta name="author" content="Abinash S, Arul Prasath V, Ajay R">
+    <meta name="robots" content="index,follow">
+    <meta name="distribution" content="Global">
+    <meta name="publisher" content="Abinash, Kongu Engineering College">
     <script src="./assets/jquery.min.js"></script>
 
 
@@ -351,7 +355,7 @@ include_once("db.php");
                                 <li><span> <a href="mailto:studentplus@kongu.edu?subject=Hey Buddy!"
                                             target="_blank">Send Mail
                                             <i class="far fa-envelope"></i></a></span></li>
-                                <li><span><a href="http://t.me/kecstudent" target="_blank">Telegram <i
+                                <li><span><a href="https://tttttt.me/kecstudent" target="_blank">Telegram <i
                                                 class="fab fa-telegram-plane"></i>
                                         </a></span></li>
 

@@ -1,0 +1,16 @@
+Txt Log:
+
+[25/07/2020 07:38 PM] - Dr.Latha
+Insert: Has given attendance for $Theory of Computation for the date - $19/07/2020 - $3
+Edit  : Has edited attendance for $Theory of Computation for the date - $18/07/2020 - $5
+
+
+Database Log:
+
+Table Name: Log
+
+id	timestamp		user		nature		operation		IP
+ 
+1	2020-07-25 19:38       	santhosh 	login		Logged in 		192.98.87.0
+2	2020-07-25 19:39	santhosh	insert		entered attendance	192.98.87.0
+								so and so		
