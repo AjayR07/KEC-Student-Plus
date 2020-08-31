@@ -10,7 +10,7 @@ use PHPMailer\PHPMailer\Exception;
 require '../PHPMailer/src/Exception.php';
 require '../PHPMailer/src/PHPMailer.php';
 require '../PHPMailer/src/SMTP.php';
-include_once('./entity/mailheader.php');
+include_once('./mailheader.php');
 $rollno=$_SESSION['rollno'];
 $mailto=$_SESSION['mail'];
 $Name=$_SESSION['name'];
